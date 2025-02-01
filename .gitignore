@@ -8,7 +8,7 @@
 
 /media/*
 !/media/.htaccess
-
+/generated/*
 !/media/customer
 /media/customer/*
 !/media/customer/.htaccess
