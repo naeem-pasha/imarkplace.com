@@ -1,0 +1,76 @@
+<?php 
+    $news = $block->get_newspk();
+    $counter = 0;
+    if(count($news) > 0):
+?>
+<!-- <a href="<?php echo $block->getBaseUrl().'news/all/index'; ?>">See All</a> -->
+<div class="home-news-slider">
+<div class="owl-carousel owl-theme">
+    <?php foreach ($news as $_news) {
+        if($counter == 6){
+            break;
+        }
+        $img_url = null;
+        if($_news['image']){
+            $img_url = $_news['image'];
+        }else{
+            $img_url = $block->getBaseUrl().'/media/blog/news-placeholder.jpg';
+        }
+    ?>
+        <div class="news-slider__item">
+            <img alt="imarkplace" src="<?php echo $img_url ?>"   width="100%" />
+            <div class="news-slider__item_details">
+                <h3 class="news__title"><?= $_news['title'] ?></h3>
+                <?php if($_news['source']): ?>
+                <h5 class="news__source"> Source : <span> <?= $_news['source'] ?></span></h5>
+                <?php endif; ?>
+                <p class="news__detail"><?= $_news['description'] ?></p>
+                <h5 class="news__published">Publish at : <span> <?= $_news['published_at'] ?><span></h5>
+                <?php if ( $_news['url'] ): ?>
+                    <a href="<?php echo $_news['url'] ?>" target="_blank" rel="noopener" class="news__readmore">Read more »</a>
+                <?php endif;?>
+            </div>
+        </div>
+    <?php 
+            $counter = $counter+1;
+        } 
+    ?>
+    </div>
+</div>
+<?php 
+    endif;
+?>
+
+<script>
+    require(['jquery', 'owlWidget'], function($) {
+        $(function() {
+            $('.home-news-slider').owlWidget({
+                items: 3,
+                dots: false,
+                nav: true,
+                loop: true,
+                margin: 30,
+                responsive: {
+                    "0": {
+                        "items": 1
+                    },
+                    "576": {
+                        "items": 2
+                    },
+                    "768": {
+                        "items": 2
+                    },
+                    "992": {
+                        "items": 3
+                    },
+                    "1200": {
+                        "items": 3
+                    },
+                    "1600": {
+                        "items": 3
+                    }
+                }
+            });
+        });
+    });
+</script>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Webworks\SmartLane\Api\SmartLaneRepositoryInterface" type="Webworks\SmartLane\Model\SmartLaneRepository" />
+    <preference for="Webworks\SmartLane\Api\SuggestedCouriersRepositoryInterface" type="Webworks\SmartLane\Model\SuggestedCouriersApiRepository" />
+    <type name="Webworks\SmartLane\Ui\Component\MassAction\Courier\Assignoptions">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="urlPath" xsi:type="string">smartlane/bookorder/booknow</item>
+                <item name="paramName" xsi:type="string">courier_slug</item>
+                <item name="confirm" xsi:type="array">
+                    <item name="title" xsi:type="string" translate="true">Smartlane Confirmation</item>
+                    <item name="message" xsi:type="string" translate="true">Selected order(s) will be processed by smartlane. Do you want to proceed?</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <!--<virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="smartlane_courier_tracking_info" xsi:type="string">sales_order.smartlane_courier_tracking_info</item>
+            </argument>
+        </arguments>
+    </virtualType>-->
+</config>

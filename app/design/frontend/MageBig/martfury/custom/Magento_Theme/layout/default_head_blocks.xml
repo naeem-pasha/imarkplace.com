@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © magebig.com - All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+         <css src="css/main.css" rel="stylesheet" type="text/css" order="100" />
+         <css src="css/custom.css" rel="stylesheet" type="text/css" order="110" />
+         <css src="css/home.css" rel="stylesheet" type="text/css"  order="130"/>
+         <css src="css/header.css" rel="stylesheet" type="text/css"  order="120"/>
+         <css src="css/footer.css" rel="stylesheet" type="text/css"  order="140"/>
+         <css src="css/styles2.css" rel="stylesheet" type="text/css"  order="150"/>
+        
+         <!--<link src="js/main.js" />-->
+         <link src="js/custom.js" />
+         <!-- Add your external stylesheet link here -->
+         <css src="css/external-styles.less" />
+         <!--
+         <link rel="stylesheet" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+         <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"/>
+        -->
+    </head>
+</page>
+<!--<link  rel="stylesheet" type="text/css"  media="all" href="{{MEDIA_URL}}styles2.css" />-->

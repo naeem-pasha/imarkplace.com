@@ -1,0 +1,187 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MarketplaceLearningManagementSystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+?>
+<?php
+$lmsHelper = $block->getData('lmsHelper');
+$contentData = $lmsHelper->courseContentData();
+$lmsHelper->getProductType();
+$isShowSection = $lmsHelper->getFieldValue('display_settings', 'course_sections');
+$isShowDescription = $lmsHelper->getFieldValue('display_settings', 'short_description');
+
+
+$totalLec = ($lmsHelper->getTotalLecturesOfCourse() == 1) ? ($lmsHelper->getTotalLecturesOfCourse() . " " . __('Lecture') . " + " .
+    $lmsHelper->getTotalAssignmentOfCourse() . " " . __("Assignment")) : ($lmsHelper->getTotalLecturesOfCourse() . " " . __('Lectures') . " + " .
+    $lmsHelper->getTotalAssignmentOfCourse() . " " . __("Assignment"));
+
+?>
+
+
+
+<?php if ($detailedInfoGroup = $block->getGroupSortedChildNames('detailed_info', 'getChildHtml')): ?>
+    <?php if ($lmsHelper->getProductType() && $isShowSection) { ?>
+        <div class="product info detailed">
+            <div id="course-content-details">
+                <div id="content-details-title-bar">
+                    <span id="title">
+                        <?= $block->escapeHtml(__('Course Content')) ?>
+                    </span>
+                    <span id="lectures">
+                        <?= $block->escapeHtml($totalLec) ?>
+                    </span>
+                    <span id="duration">
+                        <?= $block->escapeHtml(__('Duration')) ?>
+                    </span>
+                </div>
+                <div id="course-content-accordion" data-mage-init='{
+                    "accordion":{
+                        "active": [0],
+                        "collapsible": true,
+                        "openedState": "active",
+                        "multipleCollapsible": true
+                    }}'>
+                    <?php $index = 1; ?>
+                    <?php if (is_array($contentData)) { ?>
+                        <?php foreach ($contentData as $sectionData) { ?>
+                            <div data-role="collapsible" class="section">
+                                <div data-role="trigger">
+                                    <span class="section-title">
+                                        <?= $block->escapeHtml($index++ . ". " . $sectionData['title']) ?>
+                                    </span>
+                                    <span class="section-icon">
+                                        <img alt="imarkplace" src="<?= $block->escapeUrl(
+                                            $block->getViewFileUrl(
+                                                'Webkul_MarketplaceLearningManagementSystem::images/accordion_arrow.png'
+                                            )
+                                        )
+                                            ?>" height="20" width="20" class="section-collapsible-icon">
+                                    </span>
+                                    <span class="section-duration">
+                                        <?=
+                                            $block->escapeHtml($sectionData['duration']) ?>
+                                    </span>
+                                    <?php
+                                    $totalSectionsLecture = $lmsHelper->countSectionLecture($sectionData['content']);
+                                    $totalSectionsAssignment = $lmsHelper->countSectionAssignment($sectionData['content']);
+                                    $totalsInfo = '';
+                                    if (!$totalSectionsLecture && $totalSectionsAssignment) {
+                                        $totalsInfo = $totalSectionsAssignment . " " . __('Assignment');
+                                    } elseif ($totalSectionsLecture && !$totalSectionsAssignment) {
+                                        $totalsInfo = $totalSectionsLecture . " " . __('Lecture');
+                                    } elseif ($totalSectionsLecture && $totalSectionsAssignment) {
+                                        $totalsInfo = $totalSectionsLecture . " " . __('Lecture') .
+                                            " & " . $totalSectionsAssignment . " " . __('Assignment');
+                                    }
+
+                                    ?>
+                                    <span class="total-lectures">
+                                        <?= $block->escapeHtml($totalsInfo) ?>
+                                    </span>
+                                </div>
+                            </div>
+                            <div data-role="content">
+                                <?php foreach ($sectionData['content'] as $contentData) { ?>
+                                    <div class="<?=
+                                        (!$contentData['preview']) ? 'content locked' :
+                                        'content unlocked';
+                                    ?>" data-url="<?=
+                                        ($contentData['preview']) ?
+                                        $block->escapeUrl(
+                                            $lmsHelper->getContentUrl(
+                                                $contentData['content_id']
+                                            )
+                                        ) : '' ?>">
+                                        <?php
+                                        $playIcon = 'Webkul_MarketplaceLearningManagementSystem::images/play_button.png';
+                                        $lockIcon = 'Webkul_MarketplaceLearningManagementSystem::images/lock.png';
+                                        ?>
+                                        <span class="content-icon">
+                                            <img alt="imarkplace" src="<?=
+                                                ($contentData['preview']) ?
+                                                $block->escapeUrl(
+                                                    $block->getViewFileUrl(
+                                                        $playIcon
+                                                    )
+                                                ) :
+                                                $block->escapeUrl(
+                                                    $block->getViewFileUrl(
+                                                        $lockIcon
+                                                    )
+                                                ) ?>" height="15" width="15" class="content-data-icon">
+                                        </span>
+                                        <span class="content-title">
+                                            <?= $block->escapeHtml($contentData['content-title']) ?>
+                                        </span>
+                                        <span class="content-duration">
+                                            <?= $block->escapeHtml($contentData['duration']) ?>
+                                        </span>
+                                        <span class="content-preview">
+                                            <?= ($contentData['preview']) ? $block->escapeHtml(__('Preview')) : '' ?>
+                                        </span>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
+    ?>
+    <div class="product info detailed">
+        <?php $layout = $block->getLayout(); ?>
+        <div class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
+            <?php foreach ($detailedInfoGroup as $name): ?>
+                <?php
+                $html = $layout->renderElement($name);
+                if (!trim($html)) {
+                    continue;
+                }
+                $alias = $layout->getElementAlias($name);
+                $label = $block->getChildData($alias, 'title');
+                ?>
+
+
+                <div class="data item title" data-role="collapsible" id="tab-label-<?=  /*@noEscape */$alias ?>">
+                    <a class="data switch" tabindex="-1" data-toggle="trigger" href="#<? //= /*@noEscape */$alias ?>"
+                        id="tab-label-<?= /*@noEscape */$alias ?>-title">
+                        <?= /*@noEscape */$label ?>
+                    </a>
+                </div>
+
+
+                <div>
+                    <div class="data item content" aria-labelledby="tab-label-<?= /*@noEscape */$alias ?>-title"
+                        id="<?= /*@noEscape */$alias ?>" data-role="content">
+
+                        <?php if ($name == "product.info.description" && !$isShowDescription): ?>
+                            <?= "" ?>
+                        <?php else: ?>
+                            <?= /*@noEscape */$html ?>
+                        <?php endif; ?>
+                    </div>
+
+                </div>
+
+            <?php endforeach; ?>
+
+        </div>
+
+    </div>
+    </div>
+
+
+
+<?php endif; ?>

@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/smartlane/updateorderstatus" method="POST">
+        <service class="Webworks\SmartLane\Api\SmartLaneRepositoryInterface" method="updateOrderStatus"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+
+     <route url="/V1/smartlane/verifyauth" method="POST">
+        <service class="Webworks\SmartLane\Api\SmartLaneRepositoryInterface" method="VerifyAuthKeys"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+
+    <route url="/V1/smartlane/post/courier-suggestions-config" method="POST">
+        <service class="Webworks\SmartLane\Api\SuggestedCouriersRepositoryInterface" method="createSuggestedCouriers"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+</routes>

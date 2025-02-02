@@ -1,0 +1,127 @@
+<?php
+/**
+ * Webkul MpAffiliate User Status.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @license   https://store.webkul.com/license.html
+ */
+$isAffiliate = $block->isAffiliate();
+$config = $block->getAffiliateConfig();
+$allSeller = $block->getAllSeller() ;
+$blogUrl = $block->getAffBlogUrl($isAffiliate['data']['customer_id']);
+$option = [];
+foreach ($allSeller as $key => $value) {
+    $name = $block->getNameCustomer($value['seller_id']);
+    $shopName = $block->getShopName($value['seller_id']);
+    $option[$value['seller_id']] = $name." - ".$shopName;
+}
+$tableData = $block->getAllRequest();
+if (($isAffiliate || $config['registration']) && $config['enable']) { ?>
+    <fieldset class="info wk-affiliate-fieldset fieldset" id="affiliate-request">
+        <legend class="legend">
+            <span><?= /* @noEscape */ __('Select Seller') ?></span>
+        </legend>
+        <div>
+            <form action="<?= /* @noEscape */ $block->getSaveAction() ?>"
+                method="POST"
+                id="form-affiliate-sent"
+                data-mage-init='{"validation":{}}'>
+                <div class="fieldset form-list" id="cust">
+                    <div class="field">
+                        <label class="label"><?= /* @noEscape */ __('Select seller') ?> : </label>
+                        <div class="control">
+                            <select name="selecttoseller" id="select-to-seller" required>
+                                <option value="">
+                                    <?= /* @noEscape */ __('Select') ?>
+                                </option>                                
+                                <?php foreach ($option as $key => $val) {?>
+                                    <option value="<?= /* @noEscape */ $key?>">
+                                        <?= /* @noEscape */ $val ?>
+                                    </option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <label class="label"><?= /* @noEscape */ __('Blog Url') ?> : </label>
+                <div class="control">
+                    <input type="url"
+                        class="required-entry validate-url input-text"
+                        name="blog_url"
+                        id="blog_url"
+                        value="<?= /* @noEscape */ $isAffiliate ? $block->escapeHtml($blogUrl):''; ?>"/>
+                    <p><?= /* @noEscape */ $block->getBlogUrlHint(); ?></p>
+                </div>
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <button title="Save" class="action save primary" type="submit">
+                            <span><?= /* @noEscape */ __('Send Request')?></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+    <fieldset class="info wk-affiliate-fieldset fieldset">
+        <legend class="legend">
+            <span><?= /* @noEscape */ __('List of Seller') ?></span>
+        </legend>
+        <div class="grid">
+            <div class="hor-scroll">
+            <?php if ($tableData): ?>
+                <table cellspacing="0" class="border wk-mp-list-table">
+                    <thead>
+                        <tr class="wk-content">
+                            <th class=" name">
+                                <span class="label"><?= /* @noEscape */ __('Seller Name')?></span>
+                            </th>
+                            <th >
+                                <span class="label"><?= /* @noEscape */ __('Seller Email')?></span>
+                            </th>
+                            <th class="">
+                                <span class="label name"><?= /* @noEscape */ __('Blog URL')?></span>
+                            </th>
+                            <th class="">
+                                <span class="label name"><?= /* @noEscape */ __('Status')?></span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    foreach ($tableData as $key) { ?>
+                        <tr class="wk-row-view">
+                            <td class="wk-first_td">
+                                <?= /* @noEscape */ $block->getNameCustomer($key['seller_id']); ?>
+                            </td>
+                            <td><?= /* @noEscape */ $block->getEmailSeller($key['seller_id']); ?></td>
+                            <td><?= /* @noEscape */ $key['aff_link']; ?></td>
+                            <?php if ($key['status']==2) {?>
+                                <td><?= /* @noEscape */ __('Pending')?></td>
+                            <?php } else { ?>
+                                <?php if ($key['status']==1) { ?>
+                                    <td><?= /* @noEscape */ __('Accepted')?></td>
+                                <?php } else { ?>
+                                    <td><?= /* @noEscape */ __('Rejected')?></td>
+                                <?php } ?>
+                            <?php } ?>
+                        </tr>
+                    <?php } ?>
+                    </tbody>
+                </table>
+        <?php else: ?>
+            <div class="wk-emptymsg">
+            <?= /* @noEscape */ __('No Request Sent') ?>
+            </div>
+        <?php endif ?>
+        </div>
+    </fieldset>
+<?php } ?>
+<div class="buttons-set">
+    <p class="back-link">
+        <a href="javascript:;" onclick="javascript: window.history.back();" class="left">
+            &laquo; <?= /* @noEscape */ __('Back') ?>
+        </a>
+    </p>
+</div>

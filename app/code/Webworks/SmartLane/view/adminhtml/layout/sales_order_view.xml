@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!--add custom block -->
+        <referenceBlock name="order_additional_info">
+            <container name="smartlane_tracking_info" htmlTag="div" htmlClass="smartlane_tracking_info">
+                <block name="trackinginfo.viewmodel" template="Webworks_SmartLane::order/view/courier_tracking_info.phtml">
+                    <arguments>
+                        <argument name="view_model" xsi:type="object">Webworks\SmartLane\ViewModel\TrackingInfo</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceBlock>
+
+    </body>
+</page>

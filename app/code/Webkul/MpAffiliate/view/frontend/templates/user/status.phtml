@@ -1,0 +1,60 @@
+<?php
+/**
+ * Webkul MpAffiliate User Status.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+$isAffiliate = $block->isAffiliate();
+$blogUrl = $block->getAffBlogUrl($isAffiliate['data']['customer_id']);
+$config = $block->getAffiliateConfig();
+?>
+<fieldset class="info wk-affiliate-fieldset fieldset" id="affiliate-user">
+    <legend class="legend">
+        <span><?= /* @noEscape */ __('Edit Blog Url') ?></span>
+    </legend>
+<br/>
+<form action="<?= /* @noEscape */ $block->getUrl('mpaffiliate/user/status/'); ?>"
+    method="POST"
+    id="form-affilait-status"
+    data-mage-init='{"validation":{}}'>
+    <?= /* @noEscape */ $block->getBlockHtml('formkey'); ?>
+    <div class="fieldset form-list" id="cust">
+        <div class="field required">
+            <label class="label"><?= /* @noEscape */ __('Blog Url') ?> : </label>
+            <div class="control">
+                <input type="text"
+                    value="<?= /* @noEscape */ $isAffiliate ? $block->escapeHtml($blogUrl):''; ?>"
+                    class="required-entry validate-url input-text"
+                    name="blog_url"
+                    id="blog_url" />
+                  <p><?= /* @noEscape */ $block->getBlogUrlHint(); ?></p>
+                    <script type="text/x-magento-init">
+                        {
+                            "*": {
+                                "affRequest": {}
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button title="Save" class="action save primary" type="submit">
+                    <span><?= /* @noEscape */ __('Save')?></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</fieldset>
+<div class="buttons-set">
+    <p class="back-link">
+        <a href="javascript:;" onclick="javascript: window.history.back();" class="left">
+            &laquo; <?= /* @noEscape */ __('Back') ?>
+        </a>
+    </p>
+</div>

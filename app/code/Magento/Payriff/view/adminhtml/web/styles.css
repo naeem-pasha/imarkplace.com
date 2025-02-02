@@ -1,0 +1,7 @@
+.payriff-section .heading {
+    background: url(https://abhipay.com.pk/logo.svg) no-repeat 0% 50% / 14rem auto;
+    padding-left: 20rem;
+}
+.payriff-section .button-container {float: right;}
+.payriff-section .link-more {margin-left: 5px;}
+#payment_other_payriff_iframe .value{ width: 100%!important; }

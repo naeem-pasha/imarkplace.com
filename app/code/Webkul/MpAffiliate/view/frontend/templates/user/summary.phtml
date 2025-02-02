@@ -1,0 +1,159 @@
+<?php
+/**
+ * Webkul MpAffiliate User Summary template.
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+?>
+<?php
+$viewModel = $block->getViewModel();
+$isAffiliate=$block->isAffiliate();
+$summaryDetail = $block->getCollection();
+$priceHelper = $viewModel->getPricingHelper();
+if ($isAffiliate) { ?>
+    <div class="wk-mp-design ">
+        <fieldset class="fieldset info wk-mp-fieldset">
+            <legend class="legend">
+                <span><?= /* @noEscape */ __('Affiliate Summary') ?></span>
+            </legend>
+            <div class="grid">
+                <div class="hor-scroll">
+                    <form action="" method="GET">
+                        <table cellspacing="0" class="border wk-mp-list-table">
+                            <thead>
+                                <tr id="wk-mp-tr-heading">
+                                    <th><span><?= /* @noEscape */ __('Seller Email') ?></span></th>
+                                    <th><span>&nbsp;</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="wk-mp-body">
+                                <tr>
+                                    <td>
+                                        <span>
+                                            <input type="text"
+                                            name="seller_email"
+                                            id="seller_email"
+                                            class="input-text"
+                                            value="<?= /* @noEscape */ $block->getRequest()->getParam('seller_email')?>"
+                                            placeholder="<?= /* @noEscape */ __('Search By Seller Email'); ?>"/>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button class="button" title="Save" type="submit">
+                                            <span><span><span><?= /* @noEscape */ __('Submit') ?></span></span></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                    <?php if ($summaryDetail->getSize()==0) { ?>
+                        <div class="wk_emptymsg">
+                            <?= /* @noEscape */ __('No Summary Available') ?>
+                        </div>
+                    <?php } else { ?>
+                        <table cellspacing="0" class="border wk-mp-list-table wk-mp-list-container-table">
+                            <thead>
+                                <tr class="wk-content">
+                                    <th class="">
+                                        <span class="label"><?= /* @noEscape */ __('Seller Name')?></span>
+                                    </th>
+                                    <th>
+                                        <span class="label"><?= /* @noEscape */ __('Seller Email')?></span>
+                                    </th>
+                                    <th >
+                                        <span class="label"><?= /* @noEscape */ __('Click')?></span>
+                                    </th>
+                                    <th >
+                                        <span class="label"><?= /* @noEscape */ __('Unique Click')?></span>
+                                    </th>
+                                    <th >
+                                        <span class="label"><?= /* @noEscape */ __('Total Sales')?></span>
+                                    </th>
+                                    <th >
+                                        <span class="label"><?= /* @noEscape */ __('Sale Commission')?></span>
+                                    </th>
+                                    <th>
+                                        <span class="label"><?= /* @noEscape */ __('Received')?></span>
+                                    </th>
+                                    <th>
+                                        <span class="label"><?= /* @noEscape */ __('Balance')?></span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach ($summaryDetail as $key => $val) {
+                                $sellerData = $block->getSellerData($val->getSellerId());
+                                $totalComm = $block->getTotalCommission($val->getAffCustomerId(), $val->getSellerId());
+                                $paid = $block->getTotalPaid($val->getAffCustomerId(), $val->getSellerId());
+                                $balance = $val['balance_amount'];
+                                ?>
+                                <tr class="wk_row_view">
+                                    <td data-th="<?= $block->escapeHtmlAttr(__('Seller Name')) ?>">
+                                        <span title="Seller's Name" class="label">
+                                        <?= /* @noEscape */ $block->escapeHtml($sellerData->getName());?>
+                                        </span>
+                                    </td>
+                                    <td data-th="<?= $block->escapeHtmlAttr(__('Seller Email')) ?>">
+                                        <span title="Seller's Email" class="label">
+                                        <?= /* @noEscape */ $block->escapeHtml($sellerData->getEmail());?>
+                                        </span>
+                                    </td>
+                                    <td data-th="<?= $block->escapeHtmlAttr(__('Total Clicks')) ?>">
+                                        <span title="Total Clicks" class="label">
+                                        <?= /* @noEscape */ $block->escapeHtml($val->getClicks());?>
+                                        </span>
+                                    </td>
+                                    <td data-th="<?= $block->escapeHtmlAttr(__('Total Unique Clicks')) ?>">
+                                        <span title="Total Unique Clicks" class="label">
+                                        <?= /* @noEscape */ $block->escapeHtml($val->getUniqueClicks());?>
+                                        </span>
+                                    </td>
+                                    <td data-th="<?= $block->escapeHtmlAttr(__('Total Sales')) ?>">
+                                        <span title="Total Sales" class="label">
+                                        <?= /* @noEscape */ $block->escapeHtml(
+                                            $block->getTotalSale($val->getAffCustomerId(), $val->getSellerId())
+                                        );?>
+                                        </span>
+                                    </td>
+                                    <td data-th="<?= $block->escapeHtmlAttr(__('Sale Commission')) ?>">
+                                        <span title="Sale Commission" class="label">
+                                        <?= /* @noEscape */ $block->escapeHtml(
+                                            $priceHelper->currency($totalComm, true, false)
+                                        );?>
+                                        </span>
+                                    </td>
+                                    <td data-th="<?= $block->escapeHtmlAttr(__('Received')) ?>">
+                                        <span title="Received" class="label">
+                                        <?= /* @noEscape */ $block->escapeHtml(
+                                            $priceHelper->currency($paid, true, false)
+                                        );?>
+                                        </span>
+                                    </td>
+                                    <td data-th="<?= $block->escapeHtmlAttr(__('Balance')) ?>">
+                                        <span title="Balance" class="label">
+                                        <?= /* @noEscape */ $block->escapeHtml(
+                                            $priceHelper->currency($balance, true, false)
+                                        );?>
+                                        </span>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                </table>
+                        <?= /* @noEscape */ $block->getPagerHtml();?>
+            <?php } ?>
+        </div>
+    </div>
+</div>
+<?php } ?>
+<div class="buttons-set">
+    <p class="back-link">
+        <a href="javascript:;" onclick="javascript: window.history.back();" class="left">
+            &laquo; <?= /* @noEscape */ __('Back') ?>
+        </a>
+    </p>
+</div>

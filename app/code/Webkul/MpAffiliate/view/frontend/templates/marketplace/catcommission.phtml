@@ -1,0 +1,201 @@
+<?php
+/**
+ * Webkul MpAffiliate Commission layout.
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @license   https://store.webkul.com/license.html
+ */
+$commissions = $block->getCommissions();
+$editComm = false;
+$editId = $block->getRequest()->getParam("edit");
+if ($editId) {
+    $editComm = $block->getCommission($editId);
+}
+$categorycommissionsaveUrl = $block->getUrl(
+    'mpaffiliate/marketplace/categorycommissionsave',
+    ['_secure' => $block->getRequest()->isSecure()]
+);
+?>
+<form action="<?= /* @noEscape */  $categorycommissionsaveUrl ?>"
+    enctype="multipart/form-data"
+    method="post" id="catcommissionform"
+    data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+        <legend class="legend">
+            <h2 style="float:left;"><?= /* @noEscape */  __("Set Commission") ?></h2>
+            <button class="button wk-mp-btn"
+                title="<?= /* @noEscape */  __('Save') ?>"
+                type="submit" id="save-btn">
+                <span><span><?= /* @noEscape */  __('Save') ?></span></span>
+            </button>
+        </legend>
+        <?php
+        if ($editComm) { ?>
+            <input name="entity_id" value="<?= /* @noEscape */ $editComm->getId();?>" type="hidden"/>
+        <?php  }
+        ?>
+        <div class="field required">
+            <label class="label"><?= /* @noEscape */  __('Select Category') ?>:</label>
+            <div id="category-list" data-bind="scope: 'category'">
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            </div>
+            <?php $defaultPlaceholder = ($editComm ? $block->getCategoryName($editComm->getCategoryId()):'Select...') ?>
+            <script type="text/x-magento-init">
+                {
+                    "*": {
+                        "Magento_Ui/js/core/app": {
+                            "components": {
+                                "category": {
+                                    "component": "Magento_Ui/js/form/element/ui-select",
+                                    "template" : "Webkul_MpAffiliate/catcommission",
+                                    "filterOptions": true,
+                                    "levelsVisibility": "1",
+                                    "multiple": false,
+                                    "showCheckbox": false,
+                                    "selectedPlaceholders" : {
+                                        "defaultPlaceholder":"<?= /* @noEscape */ $defaultPlaceholder ?>"
+                                    },
+                                    "options": <?= /* @noEscape */  $block->getCategoriesTree()?>
+                                }
+                            }
+                        }
+                    }
+                }
+            </script>
+        </div>
+        <div class="field required">
+                <label class="label"><?= /* @noEscape */  __('Commission Type') ?> : </label>
+                <div class="input-box">
+                    <select class="select validate-select" name="commission_type">
+                        <option value="">Select Commission Type</option>
+                        <option value="fixed"
+                            <?php if ($editComm && $editComm->getCommissionType()=="fixed") { echo "selected"; } ?>
+                        >
+                            <?= /* @noEscape */  __('Fixed')?>
+                        </option>
+                        <option value="percent"
+                            <?php if ($editComm && $editComm->getCommissionType()=="percent") { echo "selected"; }  ?>
+                        >
+                            <?= /* @noEscape */  __('Percent')?>
+                        </option>
+                    </select>
+                </div>
+            </div>
+        <div class="fieldset form-list" id="cust">
+            <div class="field required">
+                <label class="label"><?= /* @noEscape */  __('Commission') ?> : </label>
+                <div class="control">
+                    <?php
+                    $catCommissionVal = '';
+                    if ($editComm) {
+                        $catCommissionVal = $editComm->getCommission();
+                    }
+                    ?>
+                    <input type="text"
+                        class="input-text required-entry validate-zero-or-greater"
+                        name="commission"
+                        value="<?= /* @noEscape */ $catCommissionVal ?>" aria-required="true">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<?php
+if (!$editId) { ?>
+    <?php if (count($commissions)) { ?>
+        <div id="all-commissions" style=" margin-top: 50px; ">
+            <div>
+                <h2 style="float:left;"><?= /* @noEscape */  __("Commissions :") ?></h2>
+            </div>
+            <table cellspacing="0" class="border wk-mp-list-table wk-mp-list-container-table">
+                <thead>
+                    <tr class="wk-content">
+                        <th class="wk-first-td">
+                            <span ><?= /* @noEscape */  __('Category Name')?></span>
+                        </th>
+                        <th class="">
+                            <span><?= /* @noEscape */  __('Commission Type')?></span>
+                        </th>
+                        <th class="">
+                            <span><?= /* @noEscape */  __('Commission')?></span>
+                        </th>
+                        <th class="">
+                            <span><?= /* @noEscape */  __('Action')?></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="commission-table">
+            <?php foreach ($commissions as $commission) {
+                    $catName = $block->getCategoryName($commission->getCategoryId());
+                ?>
+                    <tr class="wk-row-view">
+                        <td class="">
+                            <span class="label">
+                            <?= /* @noEscape */  $catName;?>
+                            </span>
+                        </td>
+                        <td class="">
+                            <span class="label">
+                            <?= /* @noEscape */  $commission->getCommissionType();?>
+                            </span>
+                        </td>
+                        <td class="">
+                            <span class="label">
+                            <?= /* @noEscape */  $commission->getCommission();?>
+                            </span>
+                        </td>
+                        <td class="">
+                            <?php
+                            $categoryCommissionDeleteUrl = $block->getUrl(
+                                'mpaffiliate/marketplace/categorycommission',
+                                ['delete' => $commission->getId()]
+                            );
+                            $categoryCommissionEditeUrl = $block->getUrl(
+                                'mpaffiliate/marketplace/categorycommission',
+                                ['edit' => $commission->getId()]
+                            );
+                            ?>
+                            <a href="<?= /* @noEscape */  $categoryCommissionDeleteUrl ?>">
+                                <button>
+                                    <span>
+                                        <span>
+                                            <?= /* @noEscape */  __('Delete')?>
+                                        </span>
+                                    </span>
+                                </button>
+                            </a>
+                            <a href="<?= /* @noEscape */  $categoryCommissionEditeUrl ?>">
+                                <button>
+                                    <span>
+                                        <span>
+                                            <?= /* @noEscape */  __('Edit')?>
+                                        </span>
+                                    </span>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        </div>
+        <?php if ($block->getPagerHtml()): ?>
+            <div class="toolbar bottom"><?= /* @noEscape */  $block->getPagerHtml(); ?></div>
+        <?php endif; ?>
+    <?php }?>
+<?php } ?>
+<script type="text/x-magento-init">
+{
+"*": {
+      "mpaffiliateCatcommission": {}
+    }
+}
+</script>
+<div class="buttons-set">
+    <p class="back-link">
+        <a href="javascript:;" onclick="javascript: window.history.back();" class="left">
+            &laquo; <?= /* @noEscape */ __('Back') ?>
+        </a>
+    </p>
+</div>

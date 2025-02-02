@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="seller-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Webkul_Marketplace/css/wk_block.css"/>
+        <css src="Webkul_Marketplace/css/style.css"/>
+        <css src="Webkul_Marketplace/css/product.css"/>
+        <css src="Webkul_Marketplace/css/layout.css"/>
+    </head>
+    <body>
+        <referenceContainer name="seller.content">
+            <block class="Webkul\MpAffiliate\Block\Marketplace\Request" name="mpaffiliate_marketplace_Request" template="Webkul_MpAffiliate::marketplace/request.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

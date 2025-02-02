@@ -1,0 +1,30 @@
+<script>
+require([
+    'jquery',
+    'prototype',
+], function(jQuery){
+    function function_name() {
+        params = {
+        };
+
+        new Ajax.Request('<?php echo $block->getAjaxUrl() ?>', {
+            loaderArea:     false,
+            asynchronous:   true,
+            parameters:     params,
+            onSuccess: function(transport) {
+                var response = JSON.parse(transport.responseText);
+                console.log(response);
+               jQuery('body').trigger('processStop');;
+                jQuery('#row_webworks_smartlane_create_integration td:last').text(response).css({"background-color": "red", "font-size": "18px","color":"#fff","padding-left":"10px"});
+            }
+        });
+    }
+
+    jQuery('#smartlanebutton').click(function () {
+         jQuery('body').trigger('processStart');
+        function_name ();
+    });
+});
+</script>
+
+<?php echo $block->getButtonHtml() ?>

@@ -1,0 +1,146 @@
+<?php
+use Magento\Framework\App\Action\Action;
+
+$i = 0;
+?>
+<?php if (!$carousel): ?>
+    <div class="product-items row">
+    <?php endif ?>
+    <div class="carousel-item active">
+    <?php foreach ($collection as $_product): ?>
+        <?php if ($carousel == 1 && $row > 1 && $i == 0): ?>
+            
+            <?php endif ?>
+            <?php if (($i % $column == 0 || ($row > 1 && $i % $row == 0)) && $carousel): ?>
+                    <div
+                        class="product-items <?= $type; ?> <?= $carousel && $row == 1 ? ' owl-carousel owl-theme' : '' ?> <?= !$carousel ? ' row' : '' ?>">
+                    <?php endif ?>
+
+                    <?php $i++ ?>
+                            <div class="product-show">
+                                <div class="card product-card h-97 ">
+                                <a href="<?= /* @escapeNotVerified */ $_product->getProductUrl() ?>" class="product photo product-item-photo">
+                                    <p>
+                                            <?php
+                                            if ($labelHelper->getDiscountPercent($_product)): ?>
+                                                <span
+                                                    class="discount-percent"><?= $labelHelper->getDiscountPercent($_product); ?></span>
+                                            <?php endif; ?>
+                                    </p>
+                                    <?php $productImage = $block->getImage($_product, $image); ?>
+                                    <?= $productImage->toHtml(); ?>
+                                    <div class="card-body">
+                                        <h5 class="card-title"> <?= $block->escapeHtml($_product->getName()) ?></h5>
+                                        <div class="star-rating">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star" id="black"></span>
+                                            <span class="fa fa-star" id="black"></span>
+                                        </div>
+                                        <p class="price"><?= /* @escapeNotVerified */ $block->getProductPriceHtml(
+                                            $_product,
+                                            \Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE,
+                                            \Magento\Framework\Pricing\Render::ZONE_ITEM_LIST,
+                                            ['price_id_suffix' => '-' . $pricePrefixId]
+                                        ) ?></p>
+                                    </div>
+                                </a>
+                                </div>
+                          
+                                <!--its valid condition value is !=4 -->
+                                <?php if ($block->getData('product_style') == 400000000): ?>
+                                    <div class="product-btn">
+                                        <div class="row no-gutters text-center">
+
+                                            <div class="col-2 btn-qiuk-view" <?php if (!$showQuickview): ?>style="display: none;" <?php endif; ?>>
+                                                <?= $this->helper('MageBig\QuickView\Helper\Data')->getQuickViewButton($_product, 'mb-tooltip'); ?>
+                                            </div>
+
+                                            <?php if ($showAddCart): ?>
+                                                <?php if ($_product->isSaleable()): ?>
+                                                    <div class="col-8 btn-add-to-cart">
+                                                        <?php $url = $block->getAddToCartUrl($_product); ?>
+                                                        <form data-role="tocart-form" action="<?= /* @escapeNotVerified */ $url; ?>"
+                                                            method="post">
+                                                            <input type="hidden" name="product"
+                                                                value="<?= /* @escapeNotVerified */ $_product->getEntityId(); ?>">
+                                                            <input type="hidden"
+                                                                name="<?= /* @escapeNotVerified */ Action::PARAM_NAME_URL_ENCODED; ?>"
+                                                                value="<?= /* @escapeNotVerified */ $urlHelper->getEncodedUrl($url) ?>">
+                                                            <?= $block->getBlockHtml('formkey') ?>
+                                                            <button type="submit" title="<?= $block->escapeHtml(__('Add to Cart')); ?>"
+                                                                class="action tocart mb-tooltip">
+                                                                <!-- <i class="mbi mbi-bag2"><span></span></i>  -->
+                                                                <span class="bag-img-icon">
+                                                                    <!-- <img src="/media/wysiwyg/shopping_bag.svg"> -->
+                                                                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <mask id="mask0_510_873" style="mask-type:alpha"
+                                                                            maskUnits="userSpaceOnUse" x="0" y="0" width="32"
+                                                                            height="32">
+                                                                            <rect width="32" height="32" fill="#D9D9D9" />
+                                                                        </mask>
+                                                                        <g mask="url(#mask0_510_873)">
+                                                                            <path
+                                                                                d="M8.83268 28C8.21046 28 7.69402 27.7947 7.28335 27.384C6.87179 26.9724 6.66602 26.4556 6.66602 25.8333V11.5C6.66602 10.8778 6.87179 10.3613 7.28335 9.95067C7.69402 9.53911 8.21046 9.33333 8.83268 9.33333H11.3327V8.66667C11.3327 7.37778 11.7882 6.27778 12.6993 5.36667C13.6105 4.45556 14.7105 4 15.9993 4C17.2882 4 18.3882 4.45556 19.2993 5.36667C20.2105 6.27778 20.666 7.37778 20.666 8.66667V9.33333H23.166C23.7882 9.33333 24.3051 9.53911 24.7167 9.95067C25.1273 10.3613 25.3327 10.8778 25.3327 11.5V25.8333C25.3327 26.4556 25.1273 26.9724 24.7167 27.384C24.3051 27.7947 23.7882 28 23.166 28H8.83268ZM8.83268 26.6667H23.166C23.3882 26.6667 23.5825 26.5831 23.7487 26.416C23.9158 26.2498 23.9993 26.0556 23.9993 25.8333V11.5C23.9993 11.2778 23.9158 11.0836 23.7487 10.9173C23.5825 10.7502 23.3882 10.6667 23.166 10.6667H20.666V14C20.666 14.2 20.6051 14.3613 20.4833 14.484C20.3607 14.6058 20.1993 14.6667 19.9993 14.6667C19.7993 14.6667 19.638 14.6058 19.5153 14.484C19.3936 14.3613 19.3327 14.2 19.3327 14V10.6667H12.666V14C12.666 14.2 12.6051 14.3613 12.4833 14.484C12.3607 14.6058 12.1993 14.6667 11.9993 14.6667C11.7993 14.6667 11.638 14.6058 11.5153 14.484C11.3936 14.3613 11.3327 14.2 11.3327 14V10.6667H8.83268C8.61046 10.6667 8.41624 10.7502 8.25002 10.9173C8.0829 11.0836 7.99935 11.2778 7.99935 11.5V25.8333C7.99935 26.0556 8.0829 26.2498 8.25002 26.416C8.41624 26.5831 8.61046 26.6667 8.83268 26.6667ZM12.666 9.33333H19.3327V8.66667C19.3327 7.73333 19.0105 6.94444 18.366 6.3C17.7216 5.65556 16.9327 5.33333 15.9993 5.33333C15.066 5.33333 14.2771 5.65556 13.6327 6.3C12.9882 6.94444 12.666 7.73333 12.666 8.66667V9.33333Z"
+                                                                                fill="#1C1B1F" />
+                                                                        </g>
+                                                                    </svg>
+                                                                    Add to cart </span>
+
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                <?php else: ?>
+                                                    <div class="col ">
+                                                        <?php if ($_product->getIsSalable()): ?>
+                                                            <div class="stock available">
+                                                                <span><?= /* @escapeNotVerified */ __('In stock') ?></span></div>
+                                                        <?php else: ?>
+                                                            <div class="stock unavailable">
+                                                                <span><?= /* @escapeNotVerified */ __('Out of stock') ?></span></div>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+
+                                            <?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && $showWishlist): ?>
+                                                <div class="col-2 btn-wishlist">
+                                                    <button type="button"
+                                                        data-post='<?= /* @escapeNotVerified */ $block->getAddToWishlistParams($_product); ?>'
+                                                        class="action towishlist mb-tooltip" data-action="add-to-wishlist"
+                                                        title="<?= /* @escapeNotVerified */ __('Add to Wishlist') ?>"><i
+                                                            class="mbi mbi-heart"></i></button>
+                                                </div>
+                                            <?php endif; ?>
+
+                                            <?php if ($block->getAddToCompareUrl() && $showCompare): ?>
+                                                <?php $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare'); ?>
+                                                <div class="col btn-compare">
+                                                    <button type="button" class="action tocompare mb-tooltip"
+                                                        data-post='<?= /* @escapeNotVerified */ $compareHelper->getPostDataParams($_product); ?>'
+                                                        title="<?= /* @escapeNotVerified */ __('Add to Compare') ?>"><i
+                                                            class="mbi mbi-chart-bars"></i></button>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                                <!--The above code is not using in our scenario-->
+
+
+
+                            </div>
+                            <?php if (($i == $count || $i % $column == 0 || ($row > 1 && $i % $row == 0)) && $carousel): ?>
+                    </div>
+               
+            <?php endif ?>
+            <?php if ($carousel && $row > 1 && $i == $count): ?>
+            
+        <?php endif ?>
+    <?php endforeach ?>
+    </div>
+    <?php if (!$carousel): ?>
+    </div>
+<?php endif ?>

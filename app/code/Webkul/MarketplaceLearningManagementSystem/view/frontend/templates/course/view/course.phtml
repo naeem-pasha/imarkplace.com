@@ -1,0 +1,401 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MarketplaceLearningManagementSystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+/* Block - \Webkul\MarketplaceLearningManagementSystem\Block\Course\CourseView.php */
+?>
+<?php
+ $helper = $block->getHelper();
+ $contentData = $helper->courseContentData();
+ $productId = $block->getRequest()->getParam('id');
+ $contentId = $block->getRequest()->getParam('cid');
+ $courseDataProvider = $block->getCourseDataProvider();
+ $contentDescription = '';
+ $coursePercentage = $courseDataProvider->getPercentageOfCourse($productId);
+ $twitterShare = filter_var($helper->getFieldValue('social_share_for_course', 'twitter_share'), FILTER_VALIDATE_BOOLEAN); 
+ $facebookShare = filter_var($helper->getFieldValue('social_share_for_course', 'facebook_share'), FILTER_VALIDATE_BOOLEAN); 
+ $emailShare = filter_var($helper->getFieldValue('social_share_for_course', 'email_share'), FILTER_VALIDATE_BOOLEAN); 
+ $showShareAfterPurchase = filter_var($helper->getFieldValue('display_settings', 'share_option'), FILTER_VALIDATE_BOOLEAN); 
+ $isShowDescription = filter_var($helper->getFieldValue('display_settings', 'short_description'), FILTER_VALIDATE_BOOLEAN); 
+ $customerCourse = $courseDataProvider->getCurrentCustomerCourseIds(); 
+ $showShare = ($showShareAfterPurchase && in_array($productId, $customerCourse))? true : false;
+ 
+?>
+
+<div class="page-title-wrapper product">
+    <span class="course-title">
+        <?= $block->escapeHtml($helper->getProdutName()) ?>
+    </span>
+    <?php if ($showShareAfterPurchase && in_array($productId, $customerCourse)) { ?>
+        <?php if ($emailShare) { ?>
+            <span class="course-share-button">
+                <a href="<?= $block->escapeUrl($helper->getShareButtonUrl('mail')); ?>">
+                    <img alt="imarkplace" src="<?=
+                        $block->escapeUrl($block->getViewFileUrl(
+                            'Webkul_MarketplaceLearningManagementSystem::images/mail.jpeg'
+                        )) ?>" 
+                        width="30" height="30"
+                    >
+                </a>
+            </span>
+        <?php } ?>
+        <?php if ($twitterShare) {?>
+            <span class="course-share-button">
+                <a 
+                    href="<?= $block->escapeUrl($helper->getShareButtonUrl('tw')); ?>" 
+                    target="_blank" rel="noopener"
+                >
+                <span>
+                    <img alt="imarkplace" src="
+                        <?= $block->escapeUrl($block->getViewFileUrl(
+                            'Webkul_MarketplaceLearningManagementSystem::images/twitter.png'
+                        )) ?>"
+                        width="33" height="30"
+                    >
+                </span>
+                </a>
+            </span>
+        <?php } ?>
+        <?php if ($facebookShare) {?>
+            <span class="course-share-button">
+                <a href="<?= $block->escapeUrl($helper->getShareButtonUrl('fb')); ?>"       
+                    target="_blank" rel="noopener"
+                > 
+                    <img alt="imarkplace" 
+                        src="<?=
+                            $block->escapeUrl($block->getViewFileUrl(
+                                'Webkul_MarketplaceLearningManagementSystem::images/facebook.png'
+                            )) ?>" 
+                        width="30" height="30"
+                    >
+                </a>
+            </span>
+        <?php } ?>
+    <?php } ?>
+    <span class="course-progress-bar">
+        <?= ($coursePercentage)?
+            $block->escapeHtml($coursePercentage. '% '.__('Completed')): '';?>
+    </span>
+</div>
+<div class="course-content-data" cellspacing="0" cellpadding="0">
+    <table>
+        <tr>
+            <td width="75%" id="course-content-player" rowspan=2>
+                <div 
+                    id="video-player-container"
+                    data-contentid="<?=
+                        $block->escapeHtml($block->getRequest()->getParam('cid')) ?>"
+                    data-courseid="<?=
+                        $block->escapeHtml($block->getRequest()->getParam('id')) ?>"
+                    data-baseurl = "<?= $block->escapeUrl($block->getBaseUrl()); ?>"
+                >
+                    <div id="icon-url" 
+                        data-icon="<?= $block->escapeUrl(
+                            $block->getViewFileUrl(
+                                'Webkul_MarketplaceLearningManagementSystem::images/plyr_icon.svg'
+                            )
+                        ) ?>"
+                    > </div> 
+                    <video width="360"
+                        controls
+                        crossorigin
+                        playsinline
+                        id="player"
+                    >
+                        <source
+                            src="<?= $block->escapeUrl($block->getVideoFileUrl()) ?>"
+                        />
+                    </video>
+                </div>
+            </td>
+            <td id="course-content-title">
+                <span>
+                    <?= $block->escapeHtml(__('Course Content')) ?>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td id="course-content-list">
+                <div id="content-data-column">
+                    <div id="course-content-accordion" data-mage-init='{
+                        "accordion":{
+                            "active": [0],
+                            "collapsible": true,
+                            "openedState": "active",
+                            "multipleCollapsible": true
+                        }}'>
+                        <?php $index = 1;
+                            $arrowIcon = 'Webkul_MarketplaceLearningManagementSystem::images/accordion_arrow.png';
+                        foreach ($contentData as $sectionData) { ?>
+                            <div data-role="collapsible" class="section-column">
+                                <div data-role="trigger">
+                                    <div>
+                                        <span class="section-label">
+                                            <?= $block->escapeHtml(__('Section')." ".$index++)
+                                            ?>
+                                        </span>
+                                        <span class="total-lectures">
+                                            <?= $block->escapeHtml(
+                                                count($sectionData['content'])." ".
+                                                    __('Lectures')
+                                            ) ?>
+                                        </span>
+                                        <span class="section-duration">
+                                            <?= $block->escapeHtml(
+                                                $sectionData['duration']
+                                            ) ?>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class="section-title">
+                                        <?= $block->escapeHtml($sectionData['title']) ?>
+                                        </span>
+                                        <span class="section-icon">
+                                            <img alt="imarkplace" src="
+                                                <?= $block->escapeUrl($block->getViewFileUrl(
+                                                    $arrowIcon
+                                                )) ?>" height="20" width="20" 
+                                                class="section-collapsible-icon">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-role="content" class="course-content-item">
+                            <?php foreach ($sectionData['content'] as $contentData) {
+                                if ($block->getRequest()->getParam('cid') == $contentData['content_id']
+                                ) {
+                                    $contentDescription = $contentData['description'];
+                                }?>
+                                <div class="content-item <?=
+                                    ($block->getRequest()->getParam('cid') ==
+                                        $contentData['content_id']) ? 'active' : '' ?>"
+                                    data-content-url="
+                                        <?=
+                                        ($contentData['preview'] && !$contentData['assignment'])?
+                                            $block->escapeUrl($block->getUrl(
+                                                'mplms/course/view',
+                                                ['_current' => false, '_use_rewrite' => true]
+                                            )."id/".$block->getRequest()->getParam('id')."/".
+                                            "cid/".$contentData['content_id']): '';
+                                        ?>"
+                                >
+                                <?php
+                                    $docBlueIcon = 'Webkul_MarketplaceLearningManagementSystem::images/doc_blue.png';
+                                    $playIcon = 'Webkul_MarketplaceLearningManagementSystem::images/play_button.png';
+                                    $docGrayIcon = 'Webkul_MarketplaceLearningManagementSystem::images/doc_gray.png';
+                                    $lockIcon = 'Webkul_MarketplaceLearningManagementSystem::images/lock.png';
+                                ?>
+                                    <div class="
+                                        <?= (!$contentData['preview'])? 'content locked':
+                                            'content unlocked';
+                                        ?>" 
+                                    >
+                                        <span class="content-icon">
+                                            <img alt="imarkplace" 
+                                                src="
+                                                <?=
+                                                ($contentData['preview'])? (($contentData['assignment'])?
+                                                    $block->escapeUrl(
+                                                        $block->getViewFileUrl(
+                                                            $docBlueIcon
+                                                        )
+                                                    ) :
+                                                    $block->escapeUrl(
+                                                        $block->getViewFileUrl(
+                                                            $playIcon
+                                                        )
+                                                    )) :
+                                                    (($contentData['assignment'])? $block->escapeUrl(
+                                                        $block->getViewFileUrl(
+                                                            $docGrayIcon
+                                                        )
+                                                    ) :
+                                                    $block->escapeUrl(
+                                                        $block->getViewFileUrl(
+                                                            $lockIcon
+                                                        )
+                                                    )
+                                                ) ?>" 
+                                                height="15" 
+                                                width="15" 
+                                                class="content-data-icon"
+                                            >
+                                        </span>
+                                        <span class="content-title">
+                                            <?= $block->escapeHtml($contentData['content-title']) ?>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class="content-duration">
+                                            <?= $block->escapeHtml($contentData['duration']) ?>
+                                        </span>
+                                        <?php
+                                        if ($contentData['preview'] && $contentData['assignment']) {
+                                            $downloadIcon =
+                                                $block->getViewFileUrl(
+                                                    'Webkul_MarketplaceLearningManagementSystem::images/download.jpg'
+                                                );
+                                            ?>
+                                            <span class="content-file-download-icon">
+                                                <a 
+                                                    href="
+                                                        <?=
+                                                        $block->escapeUrl(
+                                                            $helper->getFileUrl(
+                                                                $contentData['content_id']
+                                                            )
+                                                        ) ?>" 
+                                                    download
+                                                >
+                                                    <img alt="imarkplace" 
+                                                    src="<?= $block->escapeUrl($downloadIcon)
+                                                    ?>"
+                                                    height="20" 
+                                                    width="20" 
+                                                    class="content-data-icon"
+                                                    >
+                                                </a>
+                                            </span>
+                                            <?php
+                                        } elseif (!$contentData['assignment']) {
+                                            $circleIconUrl =
+                                                $block->getViewFileUrl(
+                                                    'Webkul_MarketplaceLearningManagementSystem::images/circle.png'
+                                                )
+                                            ?>
+                                            <span class="content-view-icon">
+                                                <img alt="imarkplace" 
+                                                    src="<?= $block->escapeUrl($circleIconUrl)?>" 
+                                                    height="15" 
+                                                    width="15" 
+                                                    class="content-data-icon"
+                                                >
+                                            </span>
+                                            <?php
+                                        } else {
+                                            $downloadGrayIcon =
+                                                'Webkul_MarketplaceLearningManagementSystem::images/download_gray.png';
+                                            $iconUrl =
+                                                $block->getViewFileUrl(
+                                                    $downloadGrayIcon
+                                                )
+                                            ?>
+                                            <span class="content-file-download-icon">
+                                                <img alt="imarkplace" 
+                                                    src="<?= $block->escapeUrl($iconUrl) ?>" 
+                                                    height="15" 
+                                                    width="15" 
+                                                    class="content-data-icon"
+                                                >
+                                            </span>
+                                            <?php
+                                        }?>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="course-additional-info">
+    <div id="course-tab-bar">
+        <span id="description-tab" class="details-tab">
+            <?= $block->escapeHtml(__('Description')) ?>
+        </span>
+        <span id="overview-tab" class="details-tab">
+            <?= $block->escapeHtml(__('Overview')) ?>
+        </span>
+        <span id="qna-tab" class="details-tab"><?= $block->escapeHtml(__('Q&A')) ?></span>
+    </div>
+    <div class="tab-data">
+        <div id="course-description-tab-data">
+            <?= /* @noEscape */ $block->escapeHtml($contentDescription)?>
+        </div>
+        <div id="course-overview-tab-data">
+            <strong class="overview-title">
+                <?= $block->escapeHtml(__('About This Course')) ?>
+            </strong>
+            <table cellspacing='0' class="overview-table">
+                <tr>
+                    <th rowspan='3' width="200">
+                        <?= $block->escapeHtml(__('Features')) ?>
+                    </th>
+                    <td width="150">
+                        <?= $block->escapeHtml(__('Skill Level'))." - " ?>
+                        <b> <?= $block->escapeHtml($helper->getCourseLevel()['text']) ?> </b>
+                    </td>
+                    <td width="150">
+                        <?= $block->escapeHtml(__('Lectures'))." - " ?><b> 
+                        <?= $block->escapeHtml($helper->getTotalChapterOfCourse()) ?> </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="150">
+                        <?= $block->escapeHtml(__('Student'))." - " ?><b>
+                        <?= $block->escapeHtml($helper->getEnrollStudents()) ?></b>
+                    </td>
+                    <td width="150">
+                        <?= $block->escapeHtml(__('Video'))." - " ?><b> 
+                        <?= $block->escapeHtml($helper->getTotalDurationOfCourse()) ?> </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="150">
+                        <?= $block->escapeHtml(__('Language'))." - " ?><b> 
+                        <?= $block->escapeHtml($helper->getCourseLanguage()['text']) ?> </b>
+                    </td>
+                    <td width="150">
+                        <?= $block->escapeHtml(__('Access'))." - "?>
+                        <b><?= $block->escapeHtml(__('LifeTime')) ?></b>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="150"><?= $block->escapeHtml(__('Short Description')) ?></th>
+                    <td><?= /* @noEscape */ ($isShowDescription) ? $helper->getCourseShortDescription() : ""; ?> 
+                    </td>
+                </tr>
+            </table>
+            
+        </div>
+        <div id="course-qna-tab-data" data-bind="scope:'qnareply'">
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <?php
+                $replyIcon = 'Webkul_MarketplaceLearningManagementSystem::images/reply.jpg';
+            ?>
+            <script type="text/x-magento-init">
+            {
+                "#course-qna-tab-data": {
+                    "Magento_Ui/js/core/app": {
+                    "components": {
+                        "qnareply": {
+                            "component": "Webkul_MarketplaceLearningManagementSystem/js/qnareply/qnareply",
+                            "contentId" : "<?=  $block->escapeHtml($contentId) ?>",
+                            "courseId" : "<?=  $block->escapeHtml($productId) ?>",
+                            "baseUrl" : "<?= $block->escapeUrl($block->getBaseUrl()); ?>",
+                            "currentUserSortName" : "<?=
+                                    $block->escapeHtml($helper->getCurrentUserSortName())
+                            ?>",
+                            "msgIcon" : "<?=
+                                $block->escapeUrl(
+                                    $block->getViewFileUrl($replyIcon)
+                                ) ?>"
+                        }
+                    }
+                    }
+                }
+            }
+            </script>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+Legend
+
++ Features
+- Bugs
+-------------------------------- Version 5.0.0-p1 -----------------------------------
+    - Bug Fix
+
+-------------------------------- Version 5.0.0 --------------------------------------
+    + Compatible with Magento 2.4.x.
+
+-------------------------------- Version 3.0.0 --------------------------------------
+    + Allow admin and seller to create course type products.
+    + Allow admin and seller to add video for course product.
+    + Allow admin and seller to add assignment for course product.
+    + Allow admin and seller to add reply for questions of customer.
+    + Customer can ask course content related question.
+    + Customer can watch course content preview video before buy.
+    + Customer can see course completion percentage.

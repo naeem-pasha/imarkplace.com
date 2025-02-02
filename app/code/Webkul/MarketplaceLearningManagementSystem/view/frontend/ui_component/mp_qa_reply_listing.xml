@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MarketplaceLearningManagementSystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+ -->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">mp_qa_reply_listing.mp_qa_reply_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>qa_reply_columns</spinner>
+        <deps>
+            <dep>mp_qa_reply_listing.mp_qa_reply_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="mp_qa_reply_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <filterUrlParams>
+                <param name="id">*</param>
+            </filterUrlParams>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">entity_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="Webkul\MarketplaceLearningManagementSystem\Ui\DataProvider\Product\QAReplyDataProvider" name="mp_qa_reply_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="params" xsi:type="array">
+                        <item name="filters_modifier" xsi:type="array"/>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <statefull>
+                    <property name="applied" xsi:type="boolean">false</property>
+                </statefull>
+            </settings>
+        </filters>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="qa_reply_columns" class="Magento\Ui\Component\Listing\Columns">
+        <column name="entity_id" sortOrder="1">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="qa_id" sortOrder="2">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">QA Id</label>
+            </settings>
+        </column>
+        <column name="replied_by" sortOrder="3">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="truncate" xsi:type="number">50</item>
+                    <item name="nl2br" xsi:type="boolean">true</item>
+                    <item name="escape" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Replied By</label>
+            </settings>
+        </column>
+        <column name="qna_thread" sortOrder="4">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="truncate" xsi:type="number">100</item>
+                    <item name="nl2br" xsi:type="boolean">true</item>
+                    <item name="escape" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <filter>text</filter>
+                <label translate="true">QnA Thread</label>
+            </settings>
+        </column>
+        <column name="created_at" sortOrder="4">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Created At</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Webkul\MarketplaceLearningManagementSystem\Ui\Component\Listing\Columns\MpQAReplyActions" component="Webkul_MarketplaceLearningManagementSystem/js/grid/actions" sortOrder="100">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+    <modal name="qa_reply_modal">
+        <settings>
+            <options>
+                <option name="title" xsi:type="string" translate="true">Add/Update Reply</option>
+            </options>
+        </settings>
+        <insertForm name="qa_reply_form_loader" component="Webkul_MarketplaceLearningManagementSystem/js/form/components/qa-insert-form">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="listingProvider" xsi:type="string">ns = mp_qa_reply_listing, index = mp_qa_reply_listing</item>
+                    <item name="modalProvider" xsi:type="string">${ $.parentName }</item>
+                </item>
+            </argument>
+            <settings>
+                <formSubmitType>ajax</formSubmitType>
+                <renderUrl path="mui/index/render">
+                    <param name="handle">qa_reply_edit</param>
+                    <param name="buttons">1</param>
+                </renderUrl>
+                <loading>false</loading>
+                <toolbarContainer>${ $.parentName }</toolbarContainer>
+                <externalProvider>${ $.ns }.mp_qa_reply_edit_form_data_source</externalProvider>
+                <ns>mp_qa_reply_edit_form</ns>
+            </settings>
+        </insertForm>
+    </modal>
+</listing>

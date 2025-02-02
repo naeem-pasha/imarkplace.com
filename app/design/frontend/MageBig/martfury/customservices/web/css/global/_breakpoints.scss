@@ -1,0 +1,45 @@
+$mobile-xs: 380px;
+$mobile-max: 767px;
+$tablet-min: 768px;
+$tablet-max: 1023px;
+$desktop-min: 1024px;
+$desktop-l-min: 1200px;
+$desktop-xl-min: 1440px;
+$desktop-xxl-min: 1920px;
+// Media mixins
+@mixin for-mobile-xs {
+  @media (max-width: $mobile-xs) {
+    @content;
+  }
+}
+
+@mixin for-mobile {
+  @media (max-width: $tablet-min - 1px) {
+    @content;
+  }
+}
+
+@mixin for-tablet {
+  @media (min-width: $tablet-min) and (max-width: $tablet-max) {
+    @content;
+  }
+}
+
+@mixin for-desktop {
+  @media (min-width: $desktop-min) {
+    @content;
+  }
+}
+// Visibility helpers
+.for-mobile {
+  @include for-desktop {
+    display: none !important;
+  }
+}
+
+.for-desktop {
+  @include for-mobile {
+    display: none !important;
+  }
+}
+

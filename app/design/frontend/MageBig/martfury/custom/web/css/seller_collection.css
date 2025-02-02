@@ -1,0 +1,609 @@
+/* CSS FOR SELLER COLLECTION PAGE */
+
+:root {
+    --font-bold: 600;
+    --font-semibold: 500;
+    --page-background:#f5f5f5;
+    --button-color:#c53e3e;
+    --price-color:#c53e3e;
+  }
+  
+
+  #C body {
+    background-color: var(--page-background);
+  }
+  
+
+/* Navbar Categories Hover Starts */
+
+#C .header .vertical-menu:hover {
+    background: #000 !important;
+}
+/* Navbar Categories Hover Ends */
+
+/* Side Menu Styling Starts */
+
+#C .filter-content .filter-options .filter-options-title {
+    padding: 10px 0 10px;
+    margin-bottom: 10px;
+}
+.filter-options .filter-options-title {
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 15px 0 5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    position: relative;
+    cursor: pointer;
+}
+
+#layered-filter-block .filter-content .filter-options>div, #layered-filter-block .filter-title {
+    background-color: var(--page-background);
+    margin-bottom: 0px;
+    padding: 10px;
+    border-radius: 2px;
+}
+
+#C .filter-content .filter-options .filter-options-content {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.filter-options .filter-options-content {
+    font-size: 1.4rem;
+    margin: 0;
+    padding: 0 0 20px;
+    border-bottom: 1px solid #d8d8d8;
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+}
+
+.block.filter {
+    background-color: var(--page-background) !important;
+}
+
+/* Side Menu Styling Ends */
+
+
+/* Main Section Styling Starts */
+#maincontent.page-main .columns.row .main-wrap.col-12 {
+    padding: 0;
+    background: 0 0;
+}
+
+/* Top Navigation Styling Starts */
+.wk-supplier-menu-li.active{
+    background-color: var(--button-color) !important;
+}
+
+.wk-supplier-menu-li:hover{
+background-color: var(--button-color) !important;
+}
+
+/* Top Navigation Styling Ends */
+
+body.layout01.layout02 .wk-supplier-collection-header-box.wk-supplier-margin-bottom {
+    background-color: #fff;
+    margin-bottom: 0px;
+    font-weight: 400;
+    padding-top: 5px;
+}
+
+body.layout01.layout02 .wk-supplier-collection-header-box .wk-supplier-container-right {
+    padding: 15px 0px;
+}
+
+.wk-supplier-btn-wrapper, .wk-supplier-msg-container {
+    display: none;
+}
+
+body.layout01.layout02 .wk-supplier-container-right .wk-supplier-info-wrapper .wk-supplier-info-container {
+    display: flex;
+    align-items: center;
+}
+
+body.layout01.layout02 .wk-supplier-collection-header-box.wk-supplier-margin-bottom .wk-supplier-container-right .wk-supplier-info-container .wk-supplier-info-title-container {
+    padding-right: 7px;
+}
+
+.product-reviews-summary .rating-summary .rating-result {
+    vertical-align: top;
+}
+
+.main-container1 {
+    width: 100%;
+}
+
+/* Toolbar Section Starts */
+
+#C .order-2 #product-container-wrap .toolbar-products {
+    margin: 15px 0;
+    border-radius: 5px;
+}
+
+.toolbar-products {
+    padding: 7px 10px;
+    display: inline-block;
+    width: 100%;
+    font-size: 1.72rem;
+}
+
+body.layout01.layout02 .toolbar-products .sorter select {
+    margin-left: 6px;
+}
+
+.toolbar-products .sorter .sorter-action {
+    position: absolute;
+    top: 0;
+    right: -24px;
+    color: #000;
+    font-weight: 500;
+    height: 100%;
+}
+
+
+
+
+/* Toolbar Section Ends */
+
+
+
+/*Seller Collection Heading Styling Starts  */
+.block-title.wk-mp-float-left h4{
+    text-align: center;
+    font-weight: 600 !important;
+    margin-top: 1.3rem;
+    margin-bottom: 2.2rem;
+}
+
+/*Seller Collection Heading Styling Ends  */
+
+/* Product Pricing Styling Starts */
+.price-container .price{
+    font-size: 1.9rem !important;
+    color: var(--price-color) !important;
+
+}
+
+
+/* Product Pricing Styling Ends */
+
+
+
+
+/* Card Section Styling  Starts*/
+.products.wrapper.grid.products-grid {
+    position: relative;
+    margin-right: -15px;
+    margin-left: 10px;
+}
+
+.product-item-info {
+    max-width: 100%;
+}
+
+.product-show {
+    overflow: hidden;
+}
+
+.product-show>a.photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.main-photo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+/* Products Card Outer Section */
+body.layout01.layout02 .wk-mp-collection-right {
+    background-color: transparent !important;
+}
+
+
+#C .page-products .product-item .product-show .product-image-container {
+    margin-bottom: 0;
+}
+
+
+#C .product-items .product-item  .product-item-details {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins",sans-serif !important;
+}
+
+.details {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    margin: 7px !important;
+}
+
+
+.catalog-category-view.page-layout-2columns-left .product-items .product-item-info .product-item-details .product-item-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+
+.product-item-name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;    
+}
+  
+.product-item-name {
+    max-height: 100%;
+    margin-bottom: 0;
+    display: block;
+    font-weight: 400;
+    text-align: center;
+    width: 100%;
+    overflow: hidden !important;
+}
+
+
+ .product-item-name a {
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    font-weight: 600 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    margin-bottom: 7px;
+    color: #000;
+    min-height: 100% !important;
+}
+
+/* Cards Btn Styling Starts */
+
+.product-item-inner{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.product-item-actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.action.primary:hover { 
+    color: #fff !important;
+}
+
+/* Heart Btn Styling Starts */
+
+.product-item-inner .actions-secondary a {
+background-color: var(--button-color) !important;
+
+}
+
+/* Heart Btn Styling Ends */
+
+
+/* Cards Btn Styling Ends */
+
+
+/* Cards Image Section Styling Starts */
+.product-item-photo img {
+    width: 100vw !important;
+    height: auto;
+    max-width: 85% !important;
+}
+/* Cards Image Section Styling Ends */
+
+/* Card Section Styling Ends*/
+
+
+/* Load More Btn Section Styling Starts*/
+.mb-trigger {
+    cursor: pointer;
+    text-align: center;
+}
+
+.mb-trigger-next {
+    margin-bottom: 40px !important;
+    margin-top: 40px !important;
+}
+#C .action.primary, #C .action.secondary {
+    background: var(--button-color) ;
+    border: 1px solid var(--button-color);
+    font-weight: var(--font-bold);
+}
+
+/* Load More Btn Section Styling Ends*/
+
+
+
+
+
+/* Main Section Styling Ends */
+
+
+/* Row Class Starts */
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+/* Row Class Ends */
+
+
+
+
+
+/* Media Queries for Vendor Page Starts*/
+
+
+@media (max-width:576px){
+    .main-container1 .columns {
+        width: 100%;
+    }
+
+    .toolbar-products {
+        /* width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 1.3rem; */
+        padding: 7px 10px;
+        background-color: #f5f5f5;
+        display: inline-block;
+        width: 100%;
+        font-size: 1.4rem;
+    }
+
+    .toolbar-products .sorter {
+        border: 1px solid #b8b8b8;
+        background-color: #fff;
+        width: 46%;
+        margin-left: 1rem;
+        top: -5px !important;
+        float: left;
+        position: relative;
+    
+    }
+
+    .toolbar-products .sorter select {
+        width: 95% !important;
+        max-width: 100% !important;
+        background-color: #fff !important;
+        margin-left: 0rem !important;
+    }
+
+
+    .sorter-action:before {
+        font-size: 16px !important;
+    }
+    .wk-mp-collection-left .filter-title strong {
+        margin: 0.7rem 1rem ;
+
+    }
+    .wk-supplier-banner.wk-supplier-margin-bottom {
+        margin-bottom: 1px !important;
+    }
+
+    
+    /* Card Section Styling Starts*/
+    .products.list.items.product-items {
+        width: 101%;
+    }
+    
+    .column.main .product-items {
+        margin-left: 0;
+    }
+    
+    
+    #C .page-products .product-items .product-item {
+        background: #fff;
+        border-right: 1px solid #e6e6e6;
+        border-bottom: 1px solid #e6e6e6;
+        padding: 0 !important;
+        margin-bottom: 0;
+        vertical-align: top;
+    }
+
+
+    .product-item-info {
+    
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        
+    }
+
+    .product-show {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 0 !important;
+    }
+
+    .product-show>a.photo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main-photo {
+        width: 100% !important;
+    }
+    
+    #C .product-items .product-item .product-item-details {
+        padding: 0.47rem !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Poppins',sans-serif !important;
+    }
+    .details {
+        margin: 7px !important;
+    }
+
+    .product-item-name {
+        padding: 0 0.26rem !important;
+    }
+
+    .product-item-name a {
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        overflow: hidden;
+        text-transform: capitalize;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        margin-bottom: 7px;
+        min-height: 100% !important;
+    }
+      
+    .price-box {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            gap: 0.6rem;   
+    }
+
+    .product-item-photo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    /* Card Btn Styling Starts */
+    .product-item-actions{
+        flex-direction: column;
+        gap: 1.4rem;
+    }
+  
+    .product-item-inner .action.primary {
+        padding: 2px 9px !important;
+        min-width: 100% !important;
+    }
+
+    /* Card Btn Styling Ends */
+
+
+    /* Card Section Styling Ends*/
+
+    .products.wrapper.grid.products-grid {
+     position: relative;
+     margin-left: 0px;
+     margin-right: 0px;
+    }
+
+
+    /* Price Styling Starts */
+    .price-container .price{
+        font-size: 1.57rem !important;
+
+    
+    }
+
+
+    .wk-mp-collection-right {
+        padding: 0rem !important;
+    }
+    
+    .wk-mp-collection-container {
+        padding-top: 5rem !important;
+    }
+    .block.filter {
+        background-color: var(--page-background) !important;
+    }
+   
+    .mb-trigger-next .action.primary{
+        min-width: 32%;
+}
+
+
+}
+
+
+
+@media (max-width:767px){
+        .wk_mp_design .block-account {
+        position: absolute !important;
+        top: 37px !important;
+        margin-bottom: 2.5rem;
+        
+        }
+
+    
+}
+
+@media (min-width: 576px) and (max-width: 1200px){
+    #C .page-products .product-items .product-item {
+        background: #fff;
+        border-right: 1px solid #e6e6e6;
+        border-bottom: 1px solid #e6e6e6;
+        padding: 0 !important;
+        margin-bottom: 0;
+        vertical-align: top;
+    }
+
+    .product-item-inner .action.primary {
+        padding: 4px 11px;
+        min-width: 100%
+    }
+
+    .mb-trigger-next .action.primary{
+        min-width: 37%;
+}
+
+    
+    }
+
+
+@media (min-width: 1200px){
+#C .page-products .product-items .product-item {
+    background: #fff;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 0 !important;
+    margin-bottom: 0;
+    vertical-align: top;
+    
+}
+
+.product-item-inner .action.primary {
+    padding: 4px 11px;
+    min-width: 100%
+}
+
+ .mb-trigger-next .action.primary{
+        min-width: 21%;
+}
+
+}
+
+
+/* Media Queries for Vendor Page Ends*/
+
+
+

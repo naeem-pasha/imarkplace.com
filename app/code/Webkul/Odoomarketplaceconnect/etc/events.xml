@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_Odoomarketplaceconnect
+ * @author    Webkul
+ * @copyright Copyright (c) 2010-2017 Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_save_after">
+        <observer name="webkul_odoomarketplaceconnect_adminhtml_customer_save_after_observer" instance="Webkul\Odoomarketplaceconnect\Observer\AdminhtmlCustomerSaveAfterObserver" />
+    </event>
+    <event name="mp_product_save_after">
+        <observer name="webkul_odoomarketplaceconnect_mp_product_save_after_observer" instance="Webkul\Odoomarketplaceconnect\Observer\ProductSaveAfterObserver" />
+    </event>
+    <event name="mp_pay_seller">
+        <observer name="webkul_odoomarketplaceconnect_mp_pay_seller_observer" instance="Webkul\Odoomarketplaceconnect\Observer\PaySellerAfterObserver" />
+    </event>
+    <event name="mp_approve_product">
+        <observer name="webkul_odoomarketplaceconnect_mp_approve_product_observer" instance="Webkul\Odoomarketplaceconnect\Observer\ApproveProductObserver" />
+    </event>
+    <event name="mp_disapprove_product">
+        <observer name="webkul_odoomarketplaceconnect_mp_disapprove_product_observer" instance="Webkul\Odoomarketplaceconnect\Observer\DisapproveProductAfterObserver" />
+    </event>
+    <event name="mp_approve_seller">
+        <observer name="webkul_odoomarketplaceconnect_mp_approve_seller_observer" instance="Webkul\Odoomarketplaceconnect\Observer\ApproveSellerObserver" />
+    </event>
+    <event name="mp_disapprove_seller">
+        <observer name="webkul_odoomarketplaceconnect_mp_disapprove_seller_observer" instance="Webkul\Odoomarketplaceconnect\Observer\DisapproveSellerAfterObserver" />
+    </event>
+    <event name="mp_approve_order">
+        <observer name="webkul_odoomarketplaceconnect_mp_approve_order_observer" instance="Webkul\Odoomarketplaceconnect\Observer\ApproveOrderAfterObserver" />
+    </event>
+    <event name="odoomagentoconnect_mapping_delete_after">
+        <observer name="webkul_odoomarketplaceconnect_mapping_delete_after_observer" instance="Webkul\Odoomarketplaceconnect\Observer\MappingDeleteAfterObserver" />
+    </event>
+</config>

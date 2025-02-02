@@ -1,0 +1,93 @@
+<?php
+/**
+ * Copyright © magebig.com - All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Add to Cart'); ?>
+<?php if ($_product->isSaleable()): ?>
+    <div class="box-tocart ">
+        <div class="fieldset-add">
+            <?php if ($block->shouldRenderQuantity()): ?>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 lineupquantity">
+                            <label class="labelquantity" for="qty"><span>
+                                    <?= /* @escapeNotVerified */ __('Quantity') ?>:
+                                </span></label>
+                            <div class="field">
+
+                                <div class="control">
+                                    <div class="custom-qty reduced"><button type="button" class="btn-qty minus"><span
+                                                class="mbi mbi-minus"></span></button></div>
+                                    <input name="qty" id="qty"
+                                        value="<?= /* @escapeNotVerified */ $block->getProductDefaultQty() * 1 ?>"
+                                        title="<?= /* @escapeNotVerified */ __('Qty') ?>" class="input-text qty"
+                                        data-validate="<?= $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>" />
+                                    <div class="custom-qty increase"><button type="button" class="btn-qty plus"><span
+                                                class="mbi mbi-plus"></span></button></div>
+                                </div>
+                                <?= $this->getLayout()->createBlock("Magento\CatalogInventory\Block\Qtyincrements")->setTemplate("Magento_Catalog::product/view/qtyincrements.phtml")->toHtml() ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            <?php endif; ?>
+            <div class="add-cart-btn">
+                <button type="submit" title="<?= /* @escapeNotVerified */ $buttonTitle ?>" class="action primary add-cart1"
+                    id="product-addtocart-button">
+                    <span>
+                        <?= /* @escapeNotVerified */ $buttonTitle ?>
+                    </span>
+                    <!-- <span class="btnglobalspan">
+                        <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                    </span>
+--> </button>
+            </div>
+
+            <div class="actions">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 wishlisticonnew">
+                            <?= $block->getChildHtml('', true) ?>
+                            <p class="addtowish">ADD TO WISHLIST</p>
+                        </div>
+                        <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12"></div>
+                        <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12"></div>
+                    </div>
+                </div>
+
+            </div>
+
+           
+
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php if ($block->isRedirectToCartEnabled()): ?>
+    <script type="text/x-magento-init">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "#product_addtocart_form": {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        "Magento_Catalog/product/view/validation": {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            "radioCheckboxClosest": ".nested"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </script>
+<?php else: ?>
+    <script type="text/x-magento-init">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "#product_addtocart_form": {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        "Magento_Catalog/js/validate-product": {}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </script>
+<?php endif; ?>

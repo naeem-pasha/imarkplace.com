@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * Copyright © magebig.com - All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php $_menu = $block->getHtml(-1, 'level-top', 'submenu'); ?>
+<div class="mb-navigation vertical-menu d-none d-md-block test">
+
+    <div class="title custom-menu-dropdown">
+         <!-- <img alt="imarkplace" src="/media/wysiwyg/menu.svg">  -->
+        <!--<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_98_2294" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
+            <rect width="32" height="32" fill="#D9D9D9"/>
+            </mask>
+            <g mask="url(#mask0_98_2294)">
+            <path d="M21.9664 16.6333L15.3997 10.0667L21.9664 3.46667L28.5664 10.0667L21.9664 16.6333ZM5.06641 14.4V5.06667H14.3997V14.4H5.06641ZM17.5997 26.9333V17.6H26.9331V26.9333H17.5997ZM5.06641 26.9333V17.6H14.3997V26.9333H5.06641ZM7.06641 12.4H12.3997V7.06668H7.06641V12.4ZM21.9997 13.8667L25.7664 10.1L21.9997 6.33334L18.2331 10.1L21.9997 13.8667ZM19.5997 24.9333H24.9331V19.6H19.5997V24.9333ZM7.06641 24.9333H12.3997V19.6H7.06641V24.9333Z" fill="white"/>
+            </g>
+        </svg>-->
+        <svg viewBox="0 0 100 80" class="width-6">
+            <rect width="70" height="12" rx="10" fill="white"></rect>
+            <rect y="30" width="70" height="12" rx="10" fill="white"></rect>
+            <rect y="60" width="70" height="12" rx="10" fill="white"></rect>
+        </svg>
+        <span class="mbi mbi-menuu"></span>
+        <span class="d-none d-md-block custom-menu-dropdown-icons" style="color:white;">
+            <?= __("All Categories") ?>
+            <i class="mbi mbi-ios-arrow-down1"></i>
+        </span>
+    </div>
+    <div class="navigation" data-action="navigation">
+        <ul class="term-list smartmenu magebig-nav prepnt_cat">
+            
+            <?= /* @escapeNotVerified */ $_menu; ?>
+            <?= /* @escapeNotVerified */ $block->getChildHtml(); ?>
+        </ul> 
+        <?php
+            echo $this->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId('c_custom_menu')
+           ->toHtml();
+        ?>
+     </div> 
+</div>

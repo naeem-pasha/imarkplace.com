@@ -1,0 +1,41 @@
+.no-pad {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.action.primary,
+.action.secondary {
+    // background-color: var(--c-primary);
+    // border-color: var(--c-primary);
+    // border-radius: 5px;
+
+    // &:hover {
+    //     background-color: transparent;
+    // }
+    @include button-primary;
+}
+
+a {
+    color: #000;
+
+    &:hover {
+        color: var(--c-primary);
+    }
+}
+
+.special-price .price {
+    color: var(--c-price);
+    margin-right: 10px;
+}
+
+.old-price .price {
+    color: var(--c-gray);
+}
+
+.price {
+    font-size: 1.4rem;
+}

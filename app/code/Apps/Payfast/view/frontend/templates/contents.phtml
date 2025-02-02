@@ -1,0 +1,31 @@
+<div class='payfast'>
+    <div class='errors'>
+        <div style="width:200px;margin:auto;margin-top:20px">
+            <img alt="imarkplace" style="width:100%" src="<?php echo $block->getViewFileUrl('Apps_Payfast::images/payfast_logo_loading.png'); ?>">
+            <center>Connecting to PayFast ...</center>
+        </div>
+        <form method="POST" name='payfast_webcehckout' action='<?= $this->getAction() ?>'>
+            <?php $storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE; ?>
+            <INPUT TYPE="hidden" NAME="MERCHANT_ID" VALUE="<?php echo $this->publicConfig->getValue("payment/payfast/payfast_merchant_id", $storeScope); ?>">
+            <INPUT TYPE="hidden" NAME="MERCHANT_NAME" value="<?php echo $this->publicConfig->getValue("payment/payfast/payfast_merchant_name", $storeScope); ?>">
+            <INPUT TYPE="hidden" NAME="TOKEN" VALUE="<?php echo $this->authToken; ?>">
+            <INPUT TYPE="hidden" NAME="PROCCODE" VALUE="00">
+            <INPUT TYPE="hidden" NAME="TXNAMT" VALUE = "<?php echo $this->orderAmount; ?>">
+            <INPUT TYPE="hidden" NAME="CUSTOMER_MOBILE_NO" VALUE="<?php echo $this->customerData['mobile']; ?>">
+            <INPUT TYPE="hidden" NAME="CUSTOMER_EMAIL_ADDRESS" VALUE="<?php echo $this->customerData['email']; ?>">
+            <INPUT TYPE="hidden" NAME="SIGNATURE" VALUE="MAGENTO2EXTPAYFAST">
+            <INPUT TYPE="hidden" NAME="VERSION" VALUE="MAG2-VER1.0">
+            <INPUT TYPE="hidden" NAME="TXNDESC" VALUE="Product Purchased via <?php echo $this->publicConfig->getValue("payment/payfast/payfast_merchant_name", $storeScope); ?>">
+            <INPUT TYPE="hidden" NAME="SUCCESS_URL" VALUE="<?php echo $this->responseUrl; ?>">
+            <INPUT TYPE="hidden" NAME="FAILURE_URL" VALUE="<?php echo $this->responseUrl; ?>">
+            <INPUT TYPE="hidden" NAME="BASKET_ID" VALUE="<?php echo $this->basketId; ?>"> 
+            <INPUT TYPE="hidden" NAME="ORDER_DATE" VALUE="<?php echo date('Y-m-d H:i:s', time()); ?>">
+            <INPUT TYPE="hidden" NAME="CHECKOUT_URL" VALUE="<?php echo $this->responseUrl; ?>">
+
+        </form>
+        <script>
+            document.payfast_webcehckout.submit();
+        </script>
+    </div>
+
+</div>

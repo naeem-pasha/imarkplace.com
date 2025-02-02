@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/** MpAffiliate menu xml
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+
+        <add id="Webkul_MpAffiliate::manager" title="Marketplace Affiliate" module="Webkul_MpAffiliate" sortOrder="10"  parent="Webkul_Marketplace::marketplace" resource="Webkul_MpAffiliate::manager" />
+        <!--<add id="Webkul_MpAffiliate::affiliate" title="Manage Affiliate" module="Webkul_MpAffiliate" sortOrder="10" resource="Webkul_MpAffiliate::manager" parent="Webkul_MpAffiliate::manager" />-->
+        <add id="Webkul_MpAffiliate::affiliate_user" title="Manage Affiliate User" module="Webkul_MpAffiliate" sortOrder="20" parent="Webkul_MpAffiliate::manager" action="mpaffiliate/user/index" resource="Webkul_MpAffiliate::affiliate_user"/>
+        <add id="Webkul_MpAffiliate::affiliate_email" title="Email Affiliate" module="Webkul_MpAffiliate" sortOrder="30" parent="Webkul_MpAffiliate::manager" action="mpaffiliate/user/emailnotify" resource="Webkul_MpAffiliate::affiliate_email"/>
+
+        <!--<add id="Webkul_MpAffiliate::statistics" title="Statistics" module="Webkul_MpAffiliate" sortOrder="50" resource="Webkul_MpAffiliate::manager" parent="Webkul_MpAffiliate::manager" />-->
+        <add id="Webkul_MpAffiliate::statistics_traffic" title="Traffic" module="Webkul_MpAffiliate" sortOrder="40" parent="Webkul_MpAffiliate::manager" action="mpaffiliate/statistics/traffic" resource="Webkul_MpAffiliate::statistics_traffic"/>
+        <add id="Webkul_MpAffiliate::statistics_sales" title="Sales" module="Webkul_MpAffiliate" sortOrder="50" parent="Webkul_MpAffiliate::manager" action="mpaffiliate/statistics/sales" resource="Webkul_MpAffiliate::statistics_sales"/>
+        <add id="Webkul_MpAffiliate::statistics_payment" title="Payment Records" module="Webkul_MpAffiliate" sortOrder="60" parent="Webkul_MpAffiliate::manager" action="mpaffiliate/statistics/payment" resource="Webkul_MpAffiliate::statistics_payment"/>
+        <add id="Webkul_MpAffiliate::statistics_graph" title="Statistics Graph" module="Webkul_MpAffiliate" sortOrder="70" parent="Webkul_MpAffiliate::manager" action="mpaffiliate/statistics/graph" resource="Webkul_MpAffiliate::statistics_graph"/>
+    </menu>
+</config>

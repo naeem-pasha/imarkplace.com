@@ -1,0 +1,140 @@
+<?php
+/**
+ * Webkul Affiliate User Navigation.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+
+$viewModel = $block->getViewModel();
+$helper = $viewModel->getMpHelper();
+$isSellerGroup = $helper->isSellerGroupModuleInstalled();
+$affhelper = $viewModel->getHelper();
+$configdata = $affhelper->getAffiliateConfig();
+$isPartner = $helper->isSeller() && $configdata['enable'];
+$isAffReqAction = $helper->isAllowedAction('mpaffiliate/marketplace/affiliaterequest');
+$isAffConfAction = $helper->isAllowedAction('mpaffiliate/marketplace/affiliateconfiguration');
+$isMailtoAffiliateAction = $helper->isAllowedAction('mpaffiliate/marketplace/mailtoaffiliate');
+$isTextBannerAction = $helper->isAllowedAction('mpaffiliate/marketplace/textbanner');
+$isSummaryAction = $helper->isAllowedAction('mpaffiliate/marketplace/summary');
+$isPaymentAction = $helper->isAllowedAction('mpaffiliate/marketplace/payment');
+$isCatCommAction = $helper->isAllowedAction('mpaffiliate/marketplace/categorycommission');
+if ($isPartner && (
+    (($isSellerGroup && $isAffReqAction) || !$isSellerGroup) ||
+    (($isSellerGroup && $isAffConfAction) || !$isSellerGroup) ||
+    (($isSellerGroup && $isMailtoAffiliateAction) || !$isSellerGroup) ||
+    (($isSellerGroup && $isTextBannerAction) || !$isSellerGroup) ||
+    (($isSellerGroup && $isSummaryAction) || !$isSellerGroup) ||
+    (($isSellerGroup && $isPaymentAction) || !$isSellerGroup)
+)) { ?>
+    <?php
+    $affiliateRequestUrl = $block->getUrl(
+        'mpaffiliate/marketplace/affiliaterequest',
+        ['_secure' => $block->getRequest()->isSecure()]
+    );
+    $affiliateConfigurationUrl = $block->getUrl(
+        'mpaffiliate/marketplace/affiliateconfiguration',
+        ['_secure' => $block->getRequest()->isSecure()]
+    );
+    $categoryCommissionUrl = $block->getUrl(
+        'mpaffiliate/marketplace/categorycommission',
+        ['_secure' => $block->getRequest()->isSecure()]
+    );
+    $mailToAffiliateUrl = $block->getUrl(
+        'mpaffiliate/marketplace/mailtoaffiliate',
+        ['_secure' => $block->getRequest()->isSecure()]
+    );
+    $textBannerUrl = $block->getUrl(
+        'mpaffiliate/marketplace/textbanner',
+        ['_secure' => $block->getRequest()->isSecure()]
+    );
+    $summaryUrl = $block->getUrl(
+        'mpaffiliate/marketplace/summary',
+        ['_secure' => $block->getRequest()->isSecure()]
+    );
+    $paymentUrl = $block->getUrl(
+        'mpaffiliate/marketplace/payment',
+        ['_secure' => $block->getRequest()->isSecure()]
+    );
+    ?>
+    <style type="text/css">
+        @media only screen and (max-width: 767px){
+
+            .block-collapsible-nav.wk-mp-main{
+                top: 20px;
+            }
+        }
+    </style>
+    <li class="level-0">
+        <a href="#" onclick="return false;" class="">
+            <span><?= /* @noEscape */  __('Manage Affiliate')?></span>
+        </a>
+        <div class="wk-mp-submenu">
+            <strong class="wk-mp-submenu-title"><?= /* @noEscape */  __('Manage Affiliate')?></strong>
+            <a href="#" class="action-close _close" data-role="wk-mp-close-submenu"></a>
+            <ul>
+                <li data-ui-id="menu-webkul-marketplace-menu" class="item-menu  parent  level-1">
+                    <strong class="wk-mp-submenu-group-title">
+                        <span><?= /* @noEscape */  __('Menu')?></span>
+                    </strong>
+                    <div class="wk-mp-submenu">
+                        <ul>
+                            <?php if (($isSellerGroup && $isAffReqAction) || !$isSellerGroup) { ?>
+                                <li class="level-2">
+                                    <a href="<?= /* @noEscape */  $affiliateRequestUrl ?>">
+                                        <span><?= /* @noEscape */  __('Affiliate Request') ?></span>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                            <?php if (($isSellerGroup && $isAffConfAction) || !$isSellerGroup) { ?>  
+                                <li class="level-2">
+                                    <a href="<?= /* @noEscape */  $affiliateConfigurationUrl ?>">
+                                        <span><?= /* @noEscape */  __('Affiliate Configuration') ?></span>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                            <?php if (($isSellerGroup && $isCatCommAction) || !$isSellerGroup) { ?>  
+                                <li class="level-2">
+                                    <a href="<?= /* @noEscape */  $categoryCommissionUrl; ?>">
+                                        <span><?= /* @noEscape */  __('Category Commission') ?></span>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                            <?php if (($isSellerGroup && $isMailtoAffiliateAction) || !$isSellerGroup) { ?>
+                                <li class="level-2">
+                                    <a href="<?= /* @noEscape */  $mailToAffiliateUrl ?>">
+                                        <span><?= /* @noEscape */  __('Mail to Affiliate') ?></span>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                            <?php if (($isSellerGroup && $isTextBannerAction) || !$isSellerGroup) { ?>
+                                <li class="level-2">
+                                    <a href="<?= /* @noEscape */  $textBannerUrl; ?>">
+                                        <span><?= /* @noEscape */  __('Text Banner') ?></span>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                            <?php if (($isSellerGroup && $isSummaryAction) || !$isSellerGroup) { ?>
+                                <li class="level-2">
+                                    <a href="<?= /* @noEscape */  $summaryUrl ?>">
+                                        <span><?= /* @noEscape */  __('Affiliate Summary') ?></span>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                            <?php if (($isSellerGroup && $isPaymentAction) || !$isSellerGroup) { ?>
+                                <li class="level-2">
+                                    <a href="<?= /* @noEscape */  $paymentUrl ?>">
+                                        <span><?= /* @noEscape */  __('Affiliate Payment') ?></span>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </li>
+<?php } ?>

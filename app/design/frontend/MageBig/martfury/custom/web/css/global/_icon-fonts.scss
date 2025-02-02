@@ -1,0 +1,128 @@
+@font-face {
+    font-family: "custom-icons";
+    src: url("../fonts/custom-icons/custom-icons.eot");
+    src: url("../fonts/custom-icons/custom-icons.eot?#iefix") format("embedded-opentype"), url("../fonts/custom-icons/custom-icons.woff") format("woff"),
+        url("../fonts/custom-icons/custom-icons.ttf") format("truetype"), url("../fonts/custom-icons/custom-icons.svg#custom-icons") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+[data-icon]:before {
+    font-family: "custom-icons" !important;
+    content: attr(data-icon);
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="ci-"]:before,
+[class*=" ci-"]:before {
+    font-family: "custom-icons" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.ci-arrow-down:before {
+    content: "\61";
+}
+.ci-arrow-left:before {
+    content: "\62";
+}
+.ci-arrow-right:before {
+    content: "\63";
+}
+.ci-blog:before {
+    content: "\64";
+}
+.ci-card:before {
+    content: "\65";
+}
+.ci-cart:before {
+    content: "\66";
+}
+.ci-chat:before {
+    content: "\67";
+}
+.ci-compare:before {
+    content: "\68";
+}
+.ci-delivery:before {
+    content: "\69";
+}
+.ci-email:before {
+    content: "\6a";
+}
+.ci-facebook:before {
+    content: "\6b";
+}
+.ci-hamburger:before {
+    content: "\6c";
+}
+.ci-heart:before {
+    content: "\6d";
+}
+.ci-instagram:before {
+    content: "\6e";
+}
+.ci-language:before {
+    content: "\6f";
+}
+.ci-linkedin:before {
+    content: "\70";
+}
+.ci-login:before {
+    content: "\71";
+}
+.ci-minus:before {
+    content: "\72";
+}
+.ci-payment:before {
+    content: "\73";
+}
+.ci-phone:before {
+    content: "\74";
+}
+.ci-plus:before {
+    content: "\75";
+}
+.ci-quote:before {
+    content: "\76";
+}
+.ci-rating:before {
+    content: "\77";
+}
+.ci-rating-outline:before {
+    content: "\78";
+}
+.ci-return:before {
+    content: "\79";
+}
+.ci-rocket:before {
+    content: "\7a";
+}
+.ci-search:before {
+    content: "\41";
+}
+.ci-support:before {
+    content: "\42";
+}
+.ci-twitter:before {
+    content: "\43";
+}
+.ci-watch:before {
+    content: "\44";
+}
+.ci-wishlist:before {
+    content: "\45";
+}

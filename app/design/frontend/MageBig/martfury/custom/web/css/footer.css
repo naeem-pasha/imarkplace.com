@@ -1,0 +1,382 @@
+/* Footer Section CSS Starts*/
+.page-footer {
+  margin: 0rem !important;
+}
+
+.widgetplus-block {
+  position: relative !important;
+}
+
+.page-footer {
+  background-color: #181717 !important;
+}
+
+.page-footer {
+  margin-top: 50px !important;
+  color: #fff !important;
+}
+
+.footer.content {
+  padding-top: 20px !important;
+}
+
+.footer.content {
+  border-top: initial !important;
+}
+
+.top-main {
+  padding-top: 24px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.top-main.container {
+  max-width: 1360px;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.footer-heading-title {
+  font-size: 2.2rem;
+  padding: 0 0 0.8rem;
+  margin: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: "Poppins",sans-serif !important;
+}
+
+.hide2 {
+  display: block !important;
+  border: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+.list-bullets {
+  list-style: none;
+}
+
+.social-icons-mobile {
+  display: none;
+  margin-top: -15px;
+}
+
+.list-bullets .list-item-footer {
+  margin: 0rem;
+}
+
+.list-bullets .list-item-footer .list-item-footer-anchor:hover {
+  text-decoration: none;
+  color: #fb808f;
+}
+
+.list-bullets {
+  list-style: none;
+  margin-top: 0.1rem;
+  margin-bottom: 0rem;
+  margin-right: 0rem;
+  margin-left: 0rem;
+  padding: 0;
+}
+
+.social-icons-desktop .list-bullets-social-icons {
+  margin-top: 0.71rem;
+  margin-bottom: 0rem;
+  margin-right: 0rem;
+  margin-left: 0rem;
+  list-style: none;
+  padding: 0;
+}
+
+
+.social-icons-desktop .list-bullets-social-icons .social-icon-heading {
+  display: block;
+  font-size: 2.2rem;
+  padding-top: 1.4rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
+  padding-bottom: 0rem;
+  text-transform: uppercase;
+  margin: 0rem;
+  font-weight: 600;
+  color: #fff;
+
+}
+
+.list-bullets-social-icons .social-icon-item {
+  display: inline-block;
+  margin-right: 1.1rem;
+}
+
+.list-bullets-social-icons .social-icon-item .social-icon-item-anchor {
+  text-decoration: none;
+  color: #bfa7a7;
+  font-size: 2.37rem;
+}
+
+.list-bullets .list-item-footer .list-item-footer-anchor {
+  color: #bfa7a7;
+  padding: 0;
+  font-size: 1.6rem;
+  line-height: 2.65rem;
+  text-transform: capitalize;
+}
+
+.list-bullets .list-item-footer .list-item-footer-para {
+  color: #bfa7a7;
+  padding: 0;
+  font-size: 1.5rem;
+  line-height: 2.64rem;
+  text-transform: capitalize;
+}
+
+
+.main-payment-container{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+}
+
+.copyright-div{
+  width: 100%;
+}
+
+.payment-div{
+  width: 100%;
+}
+
+.payment-div img{
+  width: 100%;
+}
+
+
+
+
+@media only screen and (max-width: 479px) {
+  .footer-heading-title {
+    font-size: 1.9rem;
+    font-family: "Poppins",sans-serif !important;
+
+  }
+
+}
+
+@media (min-width: 479px) and (max-width: 641px) {
+  .footer-heading-title {
+    font-size: 1.92rem;
+    font-family: "Poppins",sans-serif !important;
+
+  }
+}
+
+@media only screen and (max-width:767px) {
+  .top-main {
+    padding-top: 24px;
+    padding-bottom: 95px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+
+
+}
+
+@media (max-width:767px) {
+
+  .footer.content {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .collapse2-mobile {
+    clear: both;
+    position: relative;
+    margin-bottom: 1.35rem;
+  }
+
+  .footer-heading-title {
+    margin: 0;
+    padding-bottom: 0.8rem;
+    font-family: "Poppins",sans-serif !important;
+
+  }
+
+  .collapse2-mobile .mobile-toggle-option {
+    color: #bfa7a7;
+    cursor: pointer;
+    display: block !important;
+    font-size: 1.78rem;
+    line-height: normal;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: -5px;
+    width: 100%;
+  }
+
+  .collapse2-mobile .mobile-toggle-option:before {
+    content: "\f107";
+    font-family: FontAwesome;
+  }
+
+  .collapse2-mobile .visible-toggle .mobile-toggle-option:before {
+
+    content: "\f106";
+    font-family: FontAwesome;
+
+
+  }
+  
+  .mobile-toggle-content{
+    display: none;
+
+  }
+
+  .mobile-toggle-content.visible{
+    display: block;
+    padding-bottom: 1.3rem;
+
+  }
+
+  .mobile-toggle-content .list-bullets {
+    list-style: none;
+    margin-top: 0.1rem;
+    margin-bottom: 0rem;
+    margin-right: 0rem;
+    margin-left: 0rem;
+    padding: 0;
+  }
+
+  .mobile-toggle-content .list-bullets .list-item-footer {
+    margin: 0rem;
+  }
+
+  .list-bullets .list-item-footer .list-item-footer-anchor {
+    color: #bfa7a7;
+    padding: 0;
+    font-size: 1.4rem;
+    line-height: 2.35rem;
+    text-transform: capitalize;
+  }
+
+  .list-bullets .list-item-footer .list-item-footer-para {
+    color: #bfa7a7;
+    padding: 0;
+    font-size: 1.4rem;
+    line-height: 2.35rem;
+    text-transform: capitalize;
+  }
+
+  .social-icons-mobile {
+    display: block;
+    border-top: 0.7px solid #bfa7a7;
+    margin-top: 0rem;
+  }
+
+  .social-icons-mobile .list-bullets-social-icons {
+    text-align: center;
+    margin-top: 0.9rem;
+    margin-bottom: 0rem;
+    margin-right: 0rem;
+    margin-left: 0rem;
+    list-style: none;
+  }
+
+  .social-icons-mobile .list-bullets-social-icons .social-icon-heading {
+    display: block;
+    font-size: 1.9rem;
+    padding-top: 1.43rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    padding-bottom: 0rem;
+    text-transform: uppercase;
+    margin: 0rem;
+    font-weight: 600;
+    color: #fff;
+
+  }
+
+  .list-bullets-social-icons .social-icon-item {
+    display: inline-block;
+    margin-right: 1.1rem;
+  }
+
+  .list-bullets-social-icons .social-icon-item .social-icon-item-anchor {
+    text-decoration: none;
+    color: #bfa7a7;
+    font-size: 2.16rem;
+  }
+
+  .social-icons-desktop {
+    display: none;
+  }
+
+
+
+  .mobile-toggle-content.visible{
+  display: block;
+  padding-bottom: 1.3rem;
+}
+
+
+/* Footer Copyright Section Styling */
+.footer-copyright-payment{
+  width: 100%;
+}
+.main-payment-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.copyright-div{
+  width: 100%;
+}
+
+.copyright-div p{
+  text-align: center;
+}
+.payment-div img{
+  width: 100%;
+}
+
+}
+
+
+@media (min-width:767px) and (max-width:991px) {
+  .collapse2 {
+    margin-top: 15px;
+    clear: both;
+  }
+}
+
+
+
+
+
+@media only screen and (max-width:1200px) {
+  .top-main.container {
+    padding-left: 1.3rem;
+    padding-right: 1.3rem;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+
+  }
+
+
+
+}
+/* Footer Section CSS Ends*/

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="aalogics" translate="label" sortOrder="10">
+            <label>Aalogics</label>
+        </tab>
+        <section id="aalogics_newspk" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>News API</label>
+            <tab>aalogics</tab>
+            <resource>AALogics_NewsPk::config_news</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="api_url" translate="label" type="textarea" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API URL</label>
+                    <comment>Set API URl</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

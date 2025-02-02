@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul_MpAffiliate default layout.
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+		<css src="Webkul_MpAffiliate::css/style.css"/>
+	</head>
+    <body>
+        <referenceContainer name="layout2_seller_account_navigation">
+            <block class="Webkul\MpAffiliate\Block\Marketplace\Navigation" name="affiliate_account_layout2_sellernavigation" before="-" template="Webkul_MpAffiliate::layout2/marketplace/sellernavigation.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Webkul\MpAffiliate\ViewModel\Common</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="footer_links">
+            <block class="Webkul\MpAffiliate\Block\User\RegisterLink" name="affiliate-link1">
+                <arguments>
+                    <argument name="label" xsi:type="string">Affiliate Registration</argument>
+                    <argument name="path" xsi:type="string">customer/account/create/aff/1</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

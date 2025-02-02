@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MarketplaceLearningManagementSystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="seller-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+    </head>
+    <body>
+        <referenceContainer name="seller.content">
+            <referenceContainer name="marketplace_product_edit">
+                <block class="Webkul\MarketplaceLearningManagementSystem\Block\Product\ManageConfig" name="mplms_options" template="Webkul_MarketplaceLearningManagementSystem::product/edit.phtml" cacheable="false"/>
+            </referenceContainer>  
+            
+                <block after="marketplace_product_edit" class="Webkul\Marketplace\Block\Product\Create" name="course_qa_record" template="Webkul_MarketplaceLearningManagementSystem::product/qarecord.phtml" cacheable="false"/>
+                <block after="marketplace_product_edit" class="Webkul\Marketplace\Block\Product\Create" name="course_content_edit" template="Webkul_MarketplaceLearningManagementSystem::product/content.phtml" cacheable="false"/>
+            
+            <referenceContainer name="course_content_edit">
+                <uiComponent name="mp_course_content_listing"/>
+                <uiComponent name="mp_course_section_listing"/>
+                <uiComponent name="mp_course_section_form"/>
+                <uiComponent name="mp_course_content_form"/>
+            </referenceContainer>
+            <referenceContainer name="course_qa_record">
+                <uiComponent name="mp_qa_listing"/>
+            </referenceContainer>
+        </referenceContainer>
+    </body>
+</page>

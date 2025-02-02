@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+<!-- 
+/** 
+* Webkul Software. 
+* 
+* @category Webkul 
+* @package Webkul_MarketplaceLearningManagementSystem 
+* @author Webkul
+* @copyright Copyright (c) WebkulSoftware Private Limited (https://webkul.com) 
+* @license https://store.webkul.com/license.html 
+* 
+*/ 
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+        <tab id="webkul" translate="label" sortOrder="10">
+            <label>Webkul</label>
+        </tab>
+		<section id="wk_mplms" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+			<tab>webkul</tab>
+            <label>Marketplace Learning Management System</label>
+			<resource>Webkul_MarketplaceLearningManagementSystem::config_webkul_MarketplaceLearningManagementSystem</resource>
+			<group id="display_settings" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="10" translate="label">
+				<label>Dispay Settings</label>
+                <field id="enrolled_student" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="11" translate="label" type="select">
+					<label>Show no of Enrolled Students</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+                <field id="course_sections" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="12" translate="label" type="select">
+					<label>Show Course Section</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+                <field id="short_description" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="15" translate="label" type="select">
+					<label>Show Short Description about the Course</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+                <field id="course_duration" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="16" translate="label" type="select">
+					<label>Show Total Course Duration</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+                <field id="progress_bar" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="17" translate="label" type="select">
+					<label>Show Progress Bar after user has purchased the Course</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+                <field id="share_option" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="18" translate="label" type="select">
+					<label>Show Share Option after purchasing the Course</label> 
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+			</group>
+            <group id="social_share_for_course" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="20" translate="label">
+				<label>Social Share for Course</label>
+                <field id="twitter_share" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="10" translate="label" type="select">
+					<label>Twitter</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+                <field id="facebook_share" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="11" translate="label" type="select">
+					<label>Facebook</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+                <field id="email_share" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="13" translate="label" type="select">
+					<label>Email</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+            </group>
+		</section>
+	</system>
+</config>

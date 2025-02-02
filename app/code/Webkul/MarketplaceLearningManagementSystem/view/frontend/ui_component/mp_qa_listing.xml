@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MarketplaceLearningManagementSystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+ -->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">mp_qa_listing.mp_qa_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>qa_columns</spinner>
+        <deps>
+            <dep>mp_qa_listing.mp_qa_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="mp_qa_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="cacheRequests" xsi:type="boolean">false</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="Webkul\MarketplaceLearningManagementSystem\Ui\DataProvider\Product\QADataProvider" name="mp_qa_listing_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="params" xsi:type="array">
+                        <item name="filters_modifier" xsi:type="array"/>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <statefull>
+                    <property name="applied" xsi:type="boolean">false</property>
+                </statefull>
+            </settings>
+        </filters>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="qa_columns" class="Magento\Ui\Component\Listing\Columns">
+        <column name="entity_id" sortOrder="10">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="student_id" sortOrder="20">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Student Id</label>
+            </settings>
+        </column>
+        <column name="student_name" sortOrder="30">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="truncate" xsi:type="number">50</item>
+                    <item name="nl2br" xsi:type="boolean">true</item>
+                    <item name="escape" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Student Name</label>
+            </settings>
+        </column>
+        <column name="title" sortOrder="40">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="truncate" xsi:type="number">50</item>
+                    <item name="nl2br" xsi:type="boolean">true</item>
+                    <item name="escape" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Question Title</label>
+            </settings>
+        </column>
+        <column name="detail" sortOrder="50">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="truncate" xsi:type="number">50</item>
+                    <item name="nl2br" xsi:type="boolean">true</item>
+                    <item name="escape" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Question Detail</label>
+            </settings>
+        </column>
+        <column name="chapter" sortOrder="60">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Chapter</label>
+            </settings>
+        </column>
+        <column name="replies" sortOrder="80">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Replies</label>
+            </settings>
+        </column>
+        <column name="created_date" sortOrder="90">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Created At</label>
+            </settings>
+        </column>
+        <column name="status" sortOrder="100">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Webkul\MarketplaceLearningManagementSystem\Ui\Component\Listing\Columns\MpQAActions" sortOrder="200">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+    <modal name="qa_modal">
+        <settings>
+            <options>
+                <option name="title" xsi:type="string" translate="true">Question Answer</option>
+                <option name="buttons" xsi:type="array">
+                    <item name="0" xsi:type="array">
+                        <item name="text" xsi:type="string">Cancel</item>
+                        <item name="class" xsi:type="string">action-secondary</item>
+                        <item name="actions" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="targetName" xsi:type="string">${ $.name }</item>
+                                <item name="actionName" xsi:type="string">actionCancel</item>
+                            </item>
+                        </item>
+                    </item>
+                    <item name="1" xsi:type="array">
+                        <item name="text" xsi:type="string" translate="true">Add New Reply</item>
+                        <item name="class" xsi:type="string">action-primary</item>
+                        <item name="actions" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="targetName" xsi:type="string">mp_qa_listing.mp_qa_listing.mp_qa_reply_form_modal.qa_reply_modal_form_loader</item>
+                                <item name="actionName" xsi:type="string">destroyInserted</item>
+                            </item>
+                            <item name="1" xsi:type="array">
+                                <item name="targetName" xsi:type="string">mp_qa_listing.mp_qa_listing.mp_qa_reply_form_modal</item>
+                                <item name="actionName" xsi:type="string">openModal</item>
+                            </item>
+                            <item name="2" xsi:type="array">
+                                <item name="targetName" xsi:type="string">mp_qa_listing.mp_qa_listing.mp_qa_reply_form_modal.qa_reply_modal_form_loader</item>
+                                <item name="actionName" xsi:type="string">render</item>
+                            </item>
+                        </item>
+                    </item>
+                </option>
+            </options>
+        </settings>
+            <insertListing name="mp_qa_reply_listing">
+                <settings>
+                    <dataLinks>
+                        <exports>true</exports>
+                        <imports>true</imports>
+                    </dataLinks>
+                    <externalProvider>mp_qa_reply_listing.mp_qa_reply_listing_data_source</externalProvider>
+                    <autoRender>false</autoRender>
+                    <realTimeLink>true</realTimeLink>
+                    <dataScope>mp_qa_reply_listing</dataScope>
+                    <ns>mp_qa_reply_listing</ns>
+                    <exports>
+                        <link name="parentId">${ $.externalProvider }:params.entity_id</link>
+                    </exports>
+                    <imports>
+                        <link name="parentId">${ $.provider }:data.entity_id</link>
+                    </imports>
+                </settings>
+            </insertListing>
+    </modal>
+    <modal name="mp_qa_reply_form_modal">
+        <settings>
+            <options>
+                <option name="title" xsi:type="string" translate="true">Add/Update Reply</option>
+            </options>
+        </settings>
+        <insertForm name="qa_reply_modal_form_loader" component="Webkul_MarketplaceLearningManagementSystem/js/form/components/qa-insert-form">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="listingProvider" xsi:type="string">ns = mp_qa_reply_listing, index = mp_qa_reply_listing</item>
+                    <item name="modalProvider" xsi:type="string">${ $.parentName }</item>
+                </item>
+            </argument>
+            <settings>
+                <formSubmitType>ajax</formSubmitType>
+                <!-- <renderUrl path="mui/index/render_handle"> -->
+                <renderUrl path="mui/index/render">
+                    <param name="handle">qa_reply_grid</param>
+                    <param name="buttons">1</param>
+                </renderUrl>
+                <loading>false</loading>
+                <toolbarContainer>${ $.parentName }</toolbarContainer>
+                <externalProvider>${ $.ns }.mp_qa_reply_form_data_source</externalProvider>
+                <ns>mp_qa_reply_form</ns>
+            </settings>
+        </insertForm>
+    </modal>
+</listing>

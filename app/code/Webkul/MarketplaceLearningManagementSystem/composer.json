@@ -1,0 +1,21 @@
+{
+    "name": "webkul/module-marketplace-learning-management-system",
+    "description": "Marketplace Learning Management System Module",
+    "type": "magento2-module",
+    "license": [
+        "proprietary"
+    ],
+    "require": {
+        "webkul/module-marketplace": "5.0.*",
+        "php-ffmpeg/php-ffmpeg": "^0.18.0"
+    },
+    "version": "5.0.0-p1",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Webkul\\MarketplaceLearningManagementSystem\\": ""
+        }
+    }
+}

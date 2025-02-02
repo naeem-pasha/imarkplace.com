@@ -1,0 +1,59 @@
+Legend
+
++ Features
+- Bugs
+-------------------------------- Version 5.0.0 --------------------------------------
+	+ Compatible with Magento 2.4.x
+
+-------------------------------- Version 3.0.0 --------------------------------------
+	+ Compatible with magento 2.3
+
+-------------------------------- Version 2.0.4 --------------------------------------
+	- Fixed seller group issue
+
+-------------------------------- Version 2.0.3 --------------------------------------
+	- Fixed Some Bugs
+
+-------------------------------- Version 2.0.2 --------------------------------------
+	+ Category Commission functionality added
+
+-------------------------------- Version 2.0.1 --------------------------------------
+	+ Allow seller to add decimal values for per click and per unique click
+	- Fixed some issues
+
+-------------------------------- Version 2.0.0 --------------------------------------
+	+ Compatible with Separate Seller Dashboard navigation
+	+ Compatible with Magento 2.2.x and Marketplace 2.1.x
+	+ Installable through composer
+
+	AFFILIATE USER:
+
+	+ Separate registration and user panel for Affiliate User.
+	+ Send blog link approval request to sellers.
+	+ After approval from seller all products link will be available for banner.
+	+ Also text banners created by sellers will be appear at affiliate panel.
+	+ On clicks or sales of product affiliate will get the commission. 
+	+ Can see the summary of clicks and sales.
+	+ Can see the commission rate of each seller.
+	+ Can see the sold product detail.
+	+ Prefered Payment method filled by affiliate.
+	+ Able to see Paid summary from the seller.
+	+ Affiliate user can send the email to friends with product links to increase sales of products.
+	
+
+	SELLER:
+
+	+ Manage the affiliate request, seller can approve, unapprove and delete the request.
+	+ Manage the commission rate for Affiliate.
+	+ Seller can Create/Edit/Delete the text banners, need to approve textbanners.
+	+ Seller can see the summary of Affiliate users.
+	+ Seller can see the sales history.
+	+ Seller can pay to Affiliate.
+	+ Seller can send the email to approved Affiliate.
+
+	ADMIN:
+	
+	+ Admin can approve/unapprove affiliate.
+	+ Admin can set the payment method for affiliate.
+	+ Admin can control the Affiliate registration.
+

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        
+       <!-- <update id="Imark_RequestForQuote::fmeextensions" title="Request For Quote" module="Imark_Quickrfq" sortOrder="400" resource="Imark_Extensions::fmeextensions"/>
+        <add id="Imark_RequestForQuote::requestforquote" title="Request For Quote" module="Imark_RequestForQuote" sortOrder="60" parent="Imark_RequestForQuote::fmeextensions" action="requestforquote/index" resource="Imark_RequestForQuote::requestforquote"/>
+        -->
+        <add id="Imark_RequestForQuote::requestforquote" title="Request For Quote" module="Imark_RequestForQuote" sortOrder="51" resource="Imark_RequestForQuote::requestforquote"/>
+        <add id="Imark_RequestForQuote::post" title="Manage Request" module="Imark_RequestForQuote" sortOrder="10" action="requestforquote/index/index" resource="Imark_RequestForQuote::post" parent="Imark_RequestForQuote::requestforquote"/>
+    </menu>
+</config>

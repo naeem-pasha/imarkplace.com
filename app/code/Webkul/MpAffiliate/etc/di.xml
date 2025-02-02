@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul MpAffiliate DI
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+     <type name="\Magento\Customer\Controller\Account\CreatePost">
+        <plugin name="Webkul_MpAffilate::affiliate_reg_check"
+                type="Webkul\MpAffiliate\Block\Plugin\CheckIsRegisterAsAffiliate"
+                sortOrder="10" />
+    </type>
+
+	<virtualType name="Webkul\MpAffiliate\Model\ResourceModel\User\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mp_affiliate_user</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\MpAffiliate\Model\ResourceModel\User</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Webkul\MpAffiliate\Model\ResourceModel\User\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mp_affiliate_user</argument>
+            <argument name="eventPrefix" xsi:type="string">webkul_affiliate_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">webkul_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\MpAffiliate\Model\Resource\User</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mpaffiliate_user_grid_list_data_source" xsi:type="string">Webkul\MpAffiliate\Model\ResourceModel\User\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Webkul\MpAffiliate\Model\ResourceModel\TextBanner\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mp_affiliate_text_banner</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\MpAffiliate\Model\ResourceModel\TextBanner</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mpaffiliate_banner_grid_list_data_source" xsi:type="string">Webkul\MpAffiliate\Model\ResourceModel\TextBanner\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Webkul\MpAffiliate\Model\ResourceModel\Clicks\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mp_affiliate_clicks</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\MpAffiliate\Model\ResourceModel\Clicks</argument>
+        </arguments>
+    </virtualType>
+    <type name="Webkul\MpAffiliate\Model\ResourceModel\Clicks\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mp_affiliate_clicks</argument>
+            <argument name="eventPrefix" xsi:type="string">webkul_affiliate_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">webkul_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\MpAffiliate\Model\Resource\Clicks</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mpaffiliate_traffic_grid_list_data_source" xsi:type="string">Webkul\MpAffiliate\Model\ResourceModel\Clicks\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Webkul\MpAffiliate\Model\ResourceModel\Sale\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mp_affiliate_sale</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\MpAffiliate\Model\ResourceModel\Sale</argument>
+        </arguments>
+    </virtualType>
+
+     <type name="Webkul\MpAffiliate\Model\ResourceModel\Sale\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mp_affiliate_sale</argument>
+            <argument name="eventPrefix" xsi:type="string">webkul_affiliate_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">webkul_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\mpAffiliate\Model\Resource\Sale</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mpaffiliate_sales_grid_list_data_source" xsi:type="string">Webkul\MpAffiliate\Model\ResourceModel\Sale\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Webkul\MpAffiliate\Model\ResourceModel\Payment\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mp_affiliate_payment</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\MpAffiliate\Model\ResourceModel\Payment</argument>
+        </arguments>
+    </virtualType>
+
+     <type name="Webkul\MpAffiliate\Model\ResourceModel\Payment\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mp_affiliate_payment</argument>
+            <argument name="eventPrefix" xsi:type="string">mp_affiliate_payment_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">affiliate_payment_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\mpAffiliate\Model\Resource\Payment</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mpaffiliate_payment_grid_list_data_source" xsi:type="string">Webkul\MpAffiliate\Model\ResourceModel\Payment\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+     <type name="Webkul\MpAffiliate\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+
+    <type name="Webkul\MpAffiliate\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">mpaffiliateLogHandler</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">Webkul\MpAffiliate\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

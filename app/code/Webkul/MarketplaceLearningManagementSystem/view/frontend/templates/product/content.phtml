@@ -1,0 +1,153 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MarketplaceLearningManagementSystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+
+?>
+<?php /** @var $block \Webkul\Customoption\Block\Options */ ?>
+<?php
+$productBlock = $block->getLayout()->createBlock(\Webkul\Marketplace\Block\Product\Create::class);
+$productId = $block->getRequest()->getParam('id');
+$productCollection = $productBlock->getProduct($productId);
+$flag = false;
+if ($productCollection->getTypeId() == 'course') {
+    $flag = true;
+}
+if ($flag) {
+    ?>
+    <div class="fieldset-wrapper" id="product-course-content-wrapper" data-block="product-course-content">
+        <div class="fieldset-wrapper-title">
+            <strong class="title">
+                <span><?= $block->escapeHtml(__('Course Content')) ?></span>
+            </strong>
+        </div>
+        <div class="fieldset-wrapper-content"
+            id="product-course-content-options" data-role="product-course-content-options">
+            <fieldset class="fieldset">
+                <div class="actions">
+                    <button id="add_course_content"
+                        title="<?= $block->escapeHtml(__('Add Course Content')) ?>"
+                        type="button" class="action-default scalable add action wk-mp-btn"
+                        data-ui-id="admin-product-options-add-button">
+                            <span><?= $block->escapeHtml(__('Add Course Content')) ?></span>
+                        </button>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div id="course-content-model-body">
+        <?= $block->getChildHtml('mp_course_content_listing'); ?>
+    </div>
+    <div id="course-section-model-body" style="display:none">
+        <?= $block->getChildHtml('mp_course_section_listing'); ?>
+    </div>
+    <div id="course-section-form-model" style="display:none">
+        <?= $block->getChildHtml('mp_course_section_form'); ?>
+    </div>
+    <div id="course-content-form-model" style="display:none">
+        <?= $block->getChildHtml('mp_course_content_form'); ?>
+    </div>
+    <?php
+}
+?>
+<script>
+    require([
+        "jquery",
+        'Magento_Ui/js/modal/modal',
+        'mage/translate',
+    ], function($, modal, $t){
+        let self = this;
+        var modelOptions = {
+            type: 'slide',
+            responsive: true,
+            innerScroll: true,
+            title: $t('Course Contents'),
+            buttons: [
+                {
+                    text: $t("Course Sections"),
+                    'class': 'action',
+                    click: function () {
+                        courseSections();
+                    }
+                },
+                {
+                    text: 'Add New Content',
+                    class: 'primary action-default',
+                    id:'add_new_content',
+                    click: function() {
+                        courseContentForm();
+                    }
+                        
+                }
+            ]
+        }
+        var popup = modal(modelOptions, $('#course-content-model-body'));    
+
+        $('#add_course_content').on('click', function() {
+            $("#course-content-model-body").modal("openModal");
+        });
+
+        /**
+         * Course Section Popup
+         */
+        function courseSections() {
+            var modelOptions = {
+            type: 'slide',
+            responsive: true,
+            innerScroll: true,
+            title: $t('Course Sections'),
+            buttons: [
+                    {
+                        text: 'Add New Section',
+                        class: 'primary action-default',
+                        id:'add_new_section',
+                        click: function() {
+                            var self = this;
+                            courseSectionForm();
+                        }
+                            
+                    }
+                ]
+            }
+            var popup = modal(modelOptions, $('#course-section-model-body'));    
+            $("#course-section-model-body").modal("openModal");
+        }
+
+        /**
+         * Course Section Form
+         */
+        function courseSectionForm() {
+            var modelOptions = {
+            type: 'slide',
+            responsive: true,
+            innerScroll: true,
+            title: $t('Course Section Form'),
+            buttons: []
+            }
+            var popup = modal(modelOptions, $('#course-section-form-model'));  
+            $("#course-section-form-model").modal("openModal");
+        }
+
+        /**
+         * Course Content Form
+         */
+        function courseContentForm() {
+            var modelOptions = {
+            type: 'slide',
+            responsive: true,
+            innerScroll: true,
+            title: $t('Course Content Form'),
+            buttons: []
+            }
+            var popup = modal(modelOptions, $('#course-content-form-model'));  
+            $("#course-content-form-model").modal("openModal");
+        }
+
+    });
+</script>

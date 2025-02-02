@@ -1,0 +1,205 @@
+<?php
+/**
+ * Webkul MpAffiliate Marketplace Status.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @license   https://store.webkul.com/license.html
+ */
+
+$paramData = $block->getRequest()->getParams();
+$filter = '';
+$filterStatus = '';
+$filterDateFrom = '';
+if (isset($paramData['s'])) {
+    $filter = $paramData['s'] != '' ? $paramData['s'] : '';
+}
+if (isset($paramData['status'])) {
+    $filterStatus = $paramData['status'] != '' ? $paramData['status'] : '';
+}
+if (isset($paramData['blog'])) {
+    $filterDateFrom = $paramData['blog'] != '' ? $paramData['blog'] : '';
+}
+$allAffiliate = $block->getAllAffiliate();
+?>
+<div class="wk-mp-design">
+    <fieldset class="fieldset info wk-mp-fieldset">
+        <legend class="legend">
+            <span><?= /* @noEscape */  __('Affiliate Request') ?></span>
+        </legend>
+        <div class="grid">
+            <div class="hor-scroll">
+                <?php
+                $affiliateRequestUrl = $block->getUrl(
+                    'mpaffiliate/marketplace/affiliaterequest',
+                    ['_secure' => $block->getRequest()->isSecure()]
+                );
+                ?>
+                <form action="<?= /* @noEscape */  $affiliateRequestUrl?>"
+                    method="get"
+                    data-mage-init='{"validation":{}}'>
+                    <table cellspacing="0" class="border wk-mp-list-table">
+                        <thead>
+                            <tr id="wk-mp-tr-heading">
+                                <th><span><?= /* @noEscape */  __('Affiliate Email') ?></span></th>
+                                <th class="wk-list-th-display"><span><?= /* @noEscape */  __('Blog url') ?></span></th>
+                                <th><span><?= /* @noEscape */  __('Status') ?></span></th>
+                                <th><span>&nbsp;</span></th>
+                            </tr>
+                        </thead>
+                        <tbody class="wk-mp-body">
+                            <tr>
+                                <td>
+                                    <input type="text"
+                                        class="input-text"
+                                        name="s"
+                                        placeholder='<?= /* @noEscape */  __('Search by Email') ?>'
+                                        value="<?= /* @noEscape */  $filter?>"/>
+                                </td>
+                                <td class="wk-list-th-display">
+                                    <span class="">
+                                        <input type="text"
+                                            id="blog_url"
+                                            name="blog_url"
+                                            class="input-text"
+                                            value="<?= /* @noEscape */  $block->getRequest()->getParam('blog_url') ?>"
+                                            placeholder="enter the blog"/>
+                                    </span>
+                                </td>
+                                <td>
+                                    <select name="status" class="input-text">
+                                        <option value=""><?= /* @noEscape */  __('All') ?></option>
+                                        <option value="1" <?php if ($filterStatus == 1) {echo 'selected="selected"';}?>>
+                                        <?= /* @noEscape */  __('Approved') ?>
+                                        </option>
+                                        <option value="0" <?php if ($filterStatus == 0) {echo 'selected="selected"';}?>>
+                                        <?= /* @noEscape */  __('Unapproved') ?>
+                                        </option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button class="button" title="Save" type="submit">
+                                        <span><span><span><?= /* @noEscape */  __('Submit') ?></span></span></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            <?php if ($allAffiliate->getSize()>0) { ?>
+                <?php
+                $massRequestActionUrl = $block->getUrl(
+                    'mpaffiliate/marketplace/massrequestaction',
+                    ['_secure' => $block->getRequest()->isSecure()]
+                );
+                ?>
+                <form action="<?= /* @noEscape */  $massRequestActionUrl ?>"
+                    method="post"
+                    id="form-request-massaction"
+                    name="formRequestMassAction"
+                    data-mage-init='{"validation":{}}'>
+                    <?= /* @noEscape */  $block->getBlockHtml('formkey')?>
+                    <select class="mass-action-option required-entry" name="massaction">
+                        <option value=""><?= /* @noEscape */  __("Please Select"); ?></option>
+                        <?php foreach ($block->massActionOptions() as $key => $value) { ?>
+                        <option value="<?= /* @noEscape */  $key; ?>"><?= /* @noEscape */  __($value); ?></option>
+                        <?php } ?>
+                    </select>
+                    <button class="mass-action-btn button"
+                        title="<?= /* @noEscape */  __('Submit') ?>"
+                        type="submit"
+                        id="mass-delete-butn">
+                        <span><span><?= /* @noEscape */  __('Submit') ?></span></span>
+                    </button>
+                    <table cellspacing="0" class="border wk-mp-list-table wk-mp-list-container-table">
+                    <thead>
+                        <tr class="wk-content">
+                            <th class="wk-check-first-td">
+                                <span>
+                                    <input type="checkbox" name="selectall" value="all" id="selectall"/>
+                                </span>
+                            </th>
+                            <th class="">
+                                <span class="label name">
+                                    <?= /* @noEscape */  __('Affiliate Name')?>
+                                </span>
+                            </th>
+                            <th class="wk-list-th-display1">
+                                <span class="label pro-status">
+                                    <?= /* @noEscape */  __('Affiliate Email')?>
+                                </span>
+                            </th>
+                            <th class="wk-list-th-display">
+                                <span class="label qty">
+                                    <?= /* @noEscape */  __('Blog URL')?>
+                                </span>
+                            </th>
+                            <th class="">
+                                <span class="label qty">
+                                    <?= /* @noEscape */  __('Status')?>
+                                </span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    foreach ($allAffiliate as $value) { ?>
+                    <tr class="wk-row-view">
+                        <td class="wk-check-first-td">
+                            <span>
+                                <input type="checkbox"
+                                    name="mass_ids[]"
+                                    class="request-checkbox"
+                                    value="<?= /* @noEscape */  $value['affiliate_request_id']; ?>"/>
+                            </span>
+                        </td>
+                        <td class=""><?= /* @noEscape */  $value['firstname']." ".$value['lastname']; ?></td>
+                        <td class="wk-list-th-display1"><?= /* @noEscape */  $value['email']; ?></td>
+                        <td class="wk-list-th-display"><?= /* @noEscape */  $value['aff_link'] ; ?></td>
+                        <?php
+                        if ($value['status']==2) { ?>
+                        <td
+                            id="<?= /* @noEscape */  "status".$value['affiliate_request_id']?>">
+                            <?= /* @noEscape */  __('Not Approved')?>
+                        </td>
+                        <?php } elseif ($value['status']==1) { ?>
+                        <td
+                            id="<?= /* @noEscape */  "status".$value['affiliate_request_id']?>">
+                            <?= /* @noEscape */  __('Approved')?>
+                        </td>
+                        <?php } elseif ($value['status']==0) { ?>
+                        <td
+                            id="<?= /* @noEscape */  "status".$value['affiliate_request_id']?>">
+                            <?= /* @noEscape */  __('Unapproved')?>
+                        </td>
+                        <?php } ?>
+                    </tr>
+                <?php  } ?>
+                    </tbody>
+                </table>
+            </form>
+            <?php } else { ?>
+                    <div class="wk_emptymsg"><?= /* @noEscape */  __('No Request Available') ?></div>
+            <?php }  ?>
+            </div>
+        </div>
+        <?php if ($block->getPagerHtml()): ?>
+              <div class="order-products-toolbar toolbar bottom"><?= /* @noEscape */  $block->getPagerHtml(); ?></div>
+            <?php endif ?>
+    </fieldset>
+</div>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "mpaffiliateRequest":{}
+    }
+}
+</script>
+<div class="buttons-set">
+    <p class="back-link">
+        <a href="javascript:;" onclick="javascript: window.history.back();" class="left">
+            &laquo; <?= /* @noEscape */ __('Back') ?>
+        </a>
+    </p>
+</div>

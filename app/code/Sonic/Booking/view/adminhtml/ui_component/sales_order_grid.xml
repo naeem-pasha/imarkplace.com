@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+            <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions" class="Sonic\Booking\Ui\Component\SonicBookingMassAction">
+                <action name="order_bulk">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="type" xsi:type="string">order_bulk</item>
+                            <item name="label" xsi:type="string" translate="true">Booking Through Trax</item>
+                            <item name="url" xsi:type="url" path="ordersdetail/order/detail"/>
+                            <item name="confirm" xsi:type="array">
+                                <item name="title" xsi:type="string" translate="true">Booking Through Trax</item>
+                                <item name="message" xsi:type="string" translate="true">Are you sure to do selected items?</item>
+                            </item>
+                        </item>
+                    </argument>
+                </action>
+            </massaction>
+    </listingToolbar>
+</listing>

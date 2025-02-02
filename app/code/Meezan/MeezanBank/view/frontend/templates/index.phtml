@@ -1,0 +1,13 @@
+<?php
+	$Url= $block->getFormUrl();
+	$formUrl=$Url->getformUrl();
+	$_Checkout_type = $block->getConfig ( 'payment/meezan_bank/checkout_type' );
+		if($_Checkout_type == "1"){
+	?>
+		<iframe src="<?php echo $formUrl; ?>" id="frame" name="frame" width="1200" height="700" scrolling="NO" frameBorder="0"></iframe>
+	<?php
+		}
+		else
+		{
+		header("location:".$formUrl);exit;
+		}

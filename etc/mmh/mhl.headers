@@ -1,0 +1,14 @@
+; mhl.headers
+;
+; Default format file for displaying headers in
+; MIME messages.  show calls mhl with this
+; filter to display message header.
+;
+overflowtext="***",overflowoffset=5
+leftadjust,compwidth=9
+Date:formatfield="%<(nodate{text})%{text}%|%(pretty{text})%>"
+From:formatfield="%(putstr(trim(decode{text})))"
+To:formatfield="%(putstr(trim(decode{text})))"
+Cc:formatfield="%(putstr(trim(decode{text})))"
+Subject:formatfield="%(putstr(trim(decode{text})))"
+:

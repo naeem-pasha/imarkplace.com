@@ -1,0 +1,82 @@
+<?php
+/**
+ * Webkul MpAffiliate User Status.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+$isAffiliate = $block->isAffiliate();
+$config = $block->getAffiliateConfig();
+if (($isAffiliate || $config['registration']) && $config['enable']) { ?>
+<fieldset class="info wk-affiliate-fieldset fieldset" id="affiliate-user">
+    <legend class="legend">
+        <span><?= /* @noEscape */ __('Affiliate Request Panel') ?></span>
+    </legend>
+    <br />
+    <?php if ($isAffiliate && $isAffiliate['status'] == 0 && $isAffiliate['status']!="") { ?>
+            <div class="wk_emptymsg"><?= /* @noEscape */ __('Waiting for approval from admin') ?></div>
+    <?php } else { ?>
+        <form action="<?= /* @noEscape */ $block->getUrl('mpaffiliate/user/becomeaffiliate/'); ?>"
+            method="POST"
+            id="form-affilait-status"
+            data-mage-init='{"validation":{}}'>
+            <?= /* @noEscape */ $block->getBlockHtml('formkey'); ?>
+            <div class="fieldset form-list" id="cust">
+                <div class="field required">
+                    <label class="label"  for="blog_url"><?= /* @noEscape */ __('Blog Url') ?> : </label>
+                    <div class="control">
+                        <input type="text"
+                            value="<?= /* @noEscape */ $isAffiliate ?
+                                $block->getAffBlogUrl($isAffiliate['data']['customer_id']):''; ?>"
+                            class="required-entry validate-url input-text"
+                            name="blog_url"
+                            id="blog_url" />
+                        <p><?= /* @noEscape */ $config['blog_url_hint']; ?></p>
+                        <?php if ($isAffiliate === false) { ?>
+                            <input type="checkbox" value="1"
+                                class="checkbox required-entry vartical"
+                                id="affiliate-confirmation"
+                                title="<?= /* @noEscape */ __('Affilate Terms Accept')?>"
+                                name="aff_conf" aria-required="true" />
+                            <span class="wk-affiliate-terms-label">
+                            <div id="mpaff-terms" style="display:none;">
+                                <?= /* @noEscape */ $config['editor_textarea'] ?>
+                            </div>
+                            <?= /* @noEscape */ __('I agree to the')?>
+                            <a id="aff_term_light" href="#" class="font-bold">
+                                <?= /* @noEscape */ __('Affiliate Terms')?>
+                            </a>
+                            </span>
+                            <script type="text/x-magento-init">
+                            {
+                                "*": {
+                                    "affRequest": {}
+                                }
+                            }
+                        </script>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <button title="Save" class="action save primary" type="submit">
+                            <span><?= /* @noEscape */ __('Save')?></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+    <?php } ?>
+</fieldset>
+<?php }
+?>
+<div class="buttons-set">
+    <p class="back-link">
+        <a href="javascript:;" onclick="javascript: window.history.back();" class="left">
+            &laquo; <?= /* @noEscape */ __('Back') ?>
+        </a>
+    </p>
+</div>

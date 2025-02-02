@@ -1,0 +1,20 @@
+{
+	"name": "webkul/magento-odoo-bridge",
+	"description": "Odoo Bridge Module For Magento2",
+	"require": {
+		"magento/framework": "103.0.*"
+	},
+	"type":"magento2-module",
+	"version": "4.4.1",
+	"license": [
+		"proprietary"
+	],
+	"autoload": {
+		"files": [
+			"registration.php"
+		],
+		"psr-4": {
+			"Webkul\\Odoomagentoconnect\\": ""
+		}
+	}
+}

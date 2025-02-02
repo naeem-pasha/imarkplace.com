@@ -1,0 +1,10 @@
+.cms-index-index {
+    @include for-mobile-xs {
+    }
+
+    @include for-mobile {
+    }
+
+    @include for-desktop {
+    }
+}

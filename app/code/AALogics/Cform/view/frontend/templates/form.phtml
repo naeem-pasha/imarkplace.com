@@ -1,0 +1,112 @@
+<div class="container">
+    <div class="book-your-services">
+        <div class="book-your-services-form">
+            <form id="service-form" method="POST" enctype="multipart/form-data" data-mage-init='{"validation":{}}'>
+                <?php  if($block->getData('is_wallet') && $block->getData('is_wallet') == "yes" ): ?>
+                    <h5>Provide information below & we will get you registered for wallet account.</h5>
+                <?php else: ?>
+                    <!-- <h3>Book Your Services</h3> -->
+                <?php endif; ?>
+                <div class="name"><input name="name" type="text" placeholder="Name" data-validate='{"required":true}' ></div>
+                <div class="name"><input name="phone" type="number" placeholder="Phone" data-validate='{"required":true}' ></div>
+                <div class="dropdown dropdown-icon"> 
+                    <select id="select-choice" name="service">
+                        <?php if($block->getData('is_wallet') && $block->getData('is_wallet') == "yes" ):
+                            $wallet_aary = ['JazzCash','Easy Paisa','Upaisa wallet','UPaisa Debit Card','NAYA PAY','Credit Book
+                            '];
+                            foreach ($wallet_aary as $key=>$wallet_data):
+                        ?>
+                            <option value="<?php echo $wallet_data; ?>"><?php echo $wallet_data ?></option>
+
+                        <?php endforeach; else: foreach ($block->getsubCategories($block->getData('category_id')) as $key=>$data): ?>
+                            <option value="<?php echo $data->getName() ?>"><?php echo $data->getName() ?></option>
+                        <?php endforeach; endif; ?>
+                    </select>
+                </div>
+                <div class="dropdown dropdown-icon">
+                    <select id="select-choice1" name="city">
+                        <?php foreach ($block->_getCitiesOption() as $key=>$data): ?>
+                            <?php if($data['label'] != 'UNKNOWN'){ ?>
+                                <option value="<?php echo $data['label'] ?>" <?php if($data['label'] == 'KARACHI'){ echo 'selected';} ?> ><?php echo strtolower($data['label']) ?></option>
+                            <?php } ?>    
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="name"><input name="address" type="text" placeholder="Address"></div>
+                <?php
+                    $submit_btn_value = 'Request a Call';
+                    if($block->getData('is_wallet') && $block->getData('is_wallet') == "yes" ):
+                    $submit_btn_value = "Submit Information";
+                ?>
+                    <div class="name"><input name="cnic" type="text" placeholder="CNIC" data-validate='{"required":true}'></div>
+                <?php endif;  ?>
+                <div class="submit"><input id="add" type="submit" value="<?php echo $submit_btn_value; ?>" class="btn btn-primary"></div>
+	    </form>
+        </div>
+    </div>
+</div>
+<!-- <div class="col-lg-6">
+    <div class="book-your-services-image">
+        <?php
+              //$url = $block->getBaseUrl().'/media/wysiwyg/our-services1.png'
+        ?>
+        <img alt="imarkplace" src="
+          <?php
+               //echo $url;
+          ?>
+        "/>
+    </div>
+</div> -->
+
+
+<script>
+    require(['jquery','mage/validation'], function($) {
+        $(document).ready(function(){
+            var dataForm = $('#service-form');
+            dataForm.mage('validation', {});
+            $('#add').click( function() {   
+                var status = dataForm.validation('isValid');
+                if(status) {
+                    console.log('form is validated');
+                    var customurl = "<?php echo $this->getUrl("cform/index/index") ?>";
+                    console.log(customurl);
+                    $.ajax({
+                        url: customurl,
+                        type: "POST",
+                        data: $(this).closest('form').serialize(),
+                        dataType: "json",
+                        success: function(result){
+                            alert("message sent!!")
+                        }
+                    });
+                    $('#service-form')[0].reset(); 
+                    return false;
+                } else {
+                    console.log('form is not validated'); 
+                }   
+            });
+        });
+    });
+</script>
+
+<script>
+// require(['jquery'],function($){
+//     $(document).ready(function(){
+//         $("#add").click(function(){
+//         var customurl = "<?php //echo $this->getUrl("cform/index/index") ?>";
+//         console.log(customurl);
+//         $.ajax({
+//             url: customurl,
+//             type: "POST",
+//             data: $(this).closest('form').serialize(),
+//             dataType: "json",
+//             success: function(result){
+//                 alert("message sent!!")
+//             }
+//         });
+//         $('#service-form')[0].reset(); 
+//         return false;
+//         });
+//     });
+// }); 
+</script>

@@ -1,0 +1,226 @@
+.field.mplms-fieldset {
+    padding:10px;
+}
+.mplms-fieldset textarea{
+    width:80%;
+    height:120px;
+
+}
+.mplms-submit {
+    margin: 10px;
+    width: 120px;
+    height: 35px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+    background: #1979c3;
+    color: white;
+    border: 1px solid #1979c3;
+    cursor: pointer;
+}
+
+#course-content-accordion {
+    margin: 20px 20px 20px 0px;
+    width: 60%;
+    cursor: pointer;
+}
+#course-content-accordion .section {
+    border: 1px solid #c7c7c7;
+    background: #e0e0dd;
+    padding-left: 35px;
+    margin: 1px;
+    height: 30px;
+    padding-top: 6px;
+    font-size: 15px;
+}
+#course-content-accordion .section-title {
+    font-weight: bold;
+    opacity: .9;
+}
+#course-content-accordion .content {
+    margin: 10px 20px 10px 30px;
+    border-bottom: 1px solid #b7b4b4;
+}
+#course-content-accordion .content.locked {
+    opacity: .8;
+}
+#course-content-accordion .total-lectures {
+    margin-right: 20px;
+    float: right;
+}
+#course-content-accordion .section-duration {
+    margin-right: 20px;
+    float: right;
+}
+#course-content-accordion .content-preview {
+    margin-right: 20px;
+    color: #1070d4;
+    float: right;
+}
+#course-content-accordion .content-duration {
+    margin-right: 45px;
+    float: right;
+}
+#course-content-accordion .section-icon {
+    margin-right: 20px;
+    opacity: .8;
+    float: right;
+}
+.content-icon {
+    margin: 5px;
+}
+.course-info .courseinfo-icon {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+    padding: 0px;
+}
+.course-info>.details {
+    font-size: 16px;
+    margin: 5px 5px 5px 0px;
+}
+.courseinfo-icon.date {
+    opacity: .8;
+    height: 15px;
+    width: 15px;
+    margin-right: 0px;
+}
+.details.dateinfo {
+    border-top: 1px solid #b5b3b3;
+    padding-left: 10px;
+    margin-top: 20px;
+    padding: 5px;
+}
+.details.dateinfo>span {
+    margin-right: 15px;
+}
+.rectangle {
+    margin: 3px;
+    background: #656465;
+    font-size: 8px;
+    padding: 0px 3px 0px 40px;
+}
+.language-info {
+    font-size: 15px;
+    opacity: .9;
+    margin: 30px 0px 0px 5px;
+}
+#duration {
+    margin-left: 9%;
+    font-size: 16px;
+    font-weight: 600;
+}
+#lectures {
+    margin-left: 140px;
+    font-size: 16px;
+    font-weight: 600;
+}
+#title {
+    padding: 2px 10px 2px 10px;
+    margin-left: 30px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.total-duration {
+    margin-top: 20px;
+}
+#total-duration-text {
+    color: #1888e8;
+    font-weight: 600;
+}
+
+
+@media only screen and (max-width: 1250px) {
+    #course-content-accordion {
+        margin: 20px 20px 20px 0px;
+        width: 72%;
+    }
+    #duration {
+        margin-left: 12%;
+    }
+}
+@media only screen and (max-width: 1050px) {
+    #course-content-accordion {
+        margin: 20px 20px 20px 0px;
+        width: 80%;
+    }
+    #duration {
+        margin-left: 16%;
+    }
+}
+@media only screen and (max-width: 950px) {
+    #course-content-accordion {
+        margin: 20px 20px 20px 0px;
+        width: 95%;
+    }
+    #duration {
+        margin-left: 20%;
+    }
+    #lectures {
+        margin-left: 10%;
+    }
+    #course-content-accordion .total-lectures {
+        margin-right: 5px;
+        font-size: 14px;
+    }
+    #course-content-accordion .section-duration {
+        font-size: 14px;
+    }
+    #course-content-accordion .section-title {
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width: 750px) {
+    #course-content-accordion {
+        margin: 18px 5px 8px 0px;
+        font-size: 12px;
+    }
+    #title {
+        font-size: 13px;
+    }
+    #lectures {
+        font-size: 13px;
+    }
+    #duration {
+        display:none;
+    }
+    #course-content-accordion .total-lectures {
+        float: left;
+        margin-left: 10px;
+    }
+    #course-content-accordion .section-title {
+        float: left;
+    }
+    #course-content-accordion .section {
+        height: 40px !important;
+    }
+}
+@media only screen and (max-width: 550px) {
+    #course-content-accordion .content-preview {
+        display: none;
+    }
+}
+@media only screen and (max-width: 450px) {
+    #course-content-accordion .section {
+        height: 50px!important;
+    }
+    #course-content-accordion .total-lectures {
+        margin-left: 5px;
+        font-size: 10px;
+    }
+    #course-content-accordion .section-duration {
+        font-size: 10px;
+    }
+    #course-content-accordion .section-title {
+        font-size: 10px;
+    }
+    #course-content-accordion {
+        font-size: 10px;
+    }
+    #lectures {
+        font-size: 10px;
+    }
+    #title {
+        font-size: 10px;
+    }
+}

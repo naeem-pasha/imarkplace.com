@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © magebig.com - All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <remove src="css/home.css"/>
+        <remove src="css/styles2.css"/>
+        <remove src="css/custom.css"/>
+        <remove src="css/main.css"/>
+        <remove src="css/localfont.css"/>
+        <remove src="css/print.css"/>
+        <remove src="css/styles-l.css"/>
+        <css src="css/catalog_product_cart.css" rel="stylesheet" type="text/css"  order="160"/>
+    </head>
+    <body>
+        <!--<move element="checkout.cart.coupon" destination="cart.summary" after="checkout.cart.summary.title" />-->
+        <move element="checkout.cart.widget" destination="checkout.cart.container" after="-" />
+        <referenceBlock name="checkout.cart.crosssell" remove="true" />
+    </body>
+</page>

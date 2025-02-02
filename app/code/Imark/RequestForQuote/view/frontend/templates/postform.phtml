@@ -1,0 +1,135 @@
+<?php
+
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<style>
+    .modal-slide._show {
+     z-index: 910 !important;
+    }
+    div.modal-content-pasha .legend {
+        border-bottom:0px;
+    }
+    div.modal-content-pasha {
+    padding: 20px;
+    }
+    .fieldset h1{
+        text-align: center;
+        margin-bottom: 0px;
+    }
+    .modal-inner-wrap{
+        border-radius:20px;
+    }
+</style>
+<form style="display:none" method="post"  class="form quickrfq requestforquote" action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>" id="quickrfq_form formsubmit" enctype="multipart/form-data" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+
+
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Book Your Service') ?></span></legend><br />
+        
+        <div class="field contact_name required">
+            <!--<label class="label" for="contact_name"><span><?php /* @escapeNotVerified */ //echo __('Full Name AS Per CNIC') 
+                                                                ?></span></label>-->
+            <div class="control">
+                <input name="contact_name" id="contact_name" title="<?php /* @escapeNotVerified */ echo __('Full Name AS Per CNIC') ?>" placeholder="Full Name AS Per CNIC" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}" />
+            </div>
+        </div>
+        <div class="field city_name required">
+            <!--<label class="label" for="contact_name"><span><?php /* @escapeNotVerified */ //echo __('Full Name AS Per CNIC') 
+                                                                ?></span></label>-->
+            <div class="control">
+                <input name="city" id="city_name" title="<?php /* @escapeNotVerified */ echo __('City Name') ?>" placeholder="City Name" value="" class="input-text" type="text" data-validate="{required:true}" />
+            </div>
+        </div>
+        <div class="field phone">
+            <!--<label class="label" for="phone"><span><?php /* @escapeNotVerified */ //echo __('Mobile Number') 
+                                                        ?></span></label>-->
+            <div class="control">
+                <input name="phone" data-inputmask="'mask': '0399-99999999'" maxlength="12" id="phone" title="<?php /* @escapeNotVerified */ echo __('Phone Number') ?>" value="" class="input-text" placeholder="Mobile" type="text" data-validate="{required:true}" />
+            </div>
+        </div>
+      
+        <div class="field email">
+            <!--<label class="label" for="email"><span><?php /* @escapeNotVerified */ //echo __('Email') 
+                                                        ?></span></label> -->
+            <div class="control">
+                <input name="email" id="email" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" placeholder="Email" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:false, 'validate-email':true}" />
+            </div>
+        </div>
+
+        <div class="field project_title required">
+            <!-- <label class="label" for="project_title"><span><?php /* @escapeNotVerified */ //echo __('Project Title') 
+                                                                ?></span></label> -->
+            <!--<div class="control">
+                <input name="project_title" data-inputmask="'mask': '99999-9999999-9'" id="project_title" title="<?php /* @escapeNotVerified */ //echo __('CNIC Number') ?>" value="" class="input-text" type="text" placeholder="CNIC" />
+            </div>-->
+        </div>
+     
+        <div class="field">
+            <?php if ($block->isCaptchaEnable()) : ?>
+                <div class="g-recaptcha" name="recaptcha" id="recaptcha" data-sitekey="<?php echo $block->getPublicKey(); ?>"></div>
+                <div>
+                    <p style="
+                        cursor: auto;
+                        /* text-decoration: underline; */
+                        color: #9b9b9b;
+                        padding-left: 235px;
+                        font-family: Roboto,helvetica,arial,sans-serif;
+                        font-size: 8px;
+                        font-weight: 400;
+                        margin-top: -35px;">
+                    </p>
+                </div>
+                <br>
+            <?php endif; ?>
+        </div>
+        <?php echo $block->getChildHtml('form.additional.info'); ?>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button id="close" type="submit" title="<?php /* @escapeNotVerified */ echo __('Submit') ?>" class="action submit primary">
+                <span><?php /* @escapeNotVerified */ echo __('Submit') ?></span>
+            </button>
+        </div>
+    </div>
+</form>
+
+<!--<script>
+require(['jquery'],function(){
+    jQuery(document).ready(function() {
+        jQuery("#formsubmit").submit(function(){
+            var contactVal = jQuery("input[name='contact_name']").val();
+            var cityVal = jQuery("input[name='city']").val();
+            var phoneVal = jQuery("input[name='phone']").val();
+            var emailVal = jQuery("input[name='email']").val();
+            var projTitleVal = jQuery("input[name='project_title']").val();
+            var url = "<?php /* @escapeNotVerified */ //echo $block->getFormAction(); ?>";
+            jQuery.ajax({
+            url: url,
+            type: "POST",
+            data: {contact_name:contactVal,city_name:cityVal,phone:phoneVal,email:emailVal,project_title:projTitleVal},
+            showLoader: true,
+            cache: false,
+            success: function(response){
+                console.log(response.output);
+            }
+        });
+        return false;
+        });
+    });
+});
+</script>-->
+<style type="text/css">
+    #recaptcha {
+        display: inline-block;
+        position: relative;
+
+
+    }
+</style>

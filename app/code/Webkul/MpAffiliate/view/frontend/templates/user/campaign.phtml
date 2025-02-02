@@ -1,0 +1,89 @@
+<?php
+/**
+ * Webkul Affiliate Banner template.
+ * @category  Webkul
+ * @package   Webkul_Affiliate
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+
+$isAffiliate = $block->isAffiliate();
+$affId = $isAffiliate['data']['customer_id'];
+$config = $block->getAffiliateConfig();
+$block->getAllDetail($affId);
+
+if ($isAffiliate && $config['enable']) {?>
+    <fieldset class="info wk-affiliate-fieldset fieldset" id="affiliate-preferences">
+        <legend class="legend">
+            <span><?= /* @noEscape */ __('E-mail Campaign') ?></span>
+        </legend>
+        <br />
+        <form action="<?= /* @noEscape */ $block->getSaveAction() ?>"
+            method="POST"
+            id="form-affiliate-prefer"
+            data-mage-init='{"validation":{}}'>
+            <?= /* @noEscape */ $block->getBlockHtml('formkey'); ?>
+            <div class="fieldset form-list" id="cust">
+                <div class="field required">
+                    <label class="label"><?= /* @noEscape */ __('Email Address') ?> : </label>
+                    <div class="control">
+                        <textarea type="text" class="input-text required-entry"
+                            id="wk_emailcampaign_id"
+                            title="Email Address" name="email"></textarea>
+                        <p><?= /* @noEscape */ __('add multiple email address using comma (,) separate')?></p>
+                   </div>
+                </div>
+                <div class="field required">
+                    <label class="label"><?= /* @noEscape */ __('Subject') ?> : </label>
+                    <div class="control">
+                        <input type="text" class="input-text required-entry" title="Subject" name="subject">
+                   </div>
+                </div>
+                <div class="field required">
+                    <label class="label"><?= /* @noEscape */ __('Message') ?> : </label>
+                        <div class="control">
+                            <textarea type="text" id="textshow"
+                                class="input-text required-entry email_message"
+                                title="Message"
+                                name="message"></textarea>
+                        </div>
+                   
+                       </div>
+                </div>
+            <div class="actions-toolbar showData">
+                <div class="primary">
+                     <button  id="show" type="button"
+                        class="action primary preview"
+                        title="Add Product Links">
+                        <span><?= /* @noEscape */ __('Add Product Links')?></span>
+                     </button>
+                </div>
+                <div class="primary">
+                    <button title="Save" id="show1" class="action save primary" type="submit">
+                        <span><?= /* @noEscape */ __('Send mail')?></span>
+                    </button>
+                </div>
+                <div class="wk-row-view">
+                    <div style="display:none;" class="banner_content">
+                        <?= /* @noEscape */ $block->getAllDetail($affId);?>
+                    <div>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+    <script type="text/x-magento-init">
+    {
+        "*": {
+            "showAllData": {}
+        }
+    }
+    </script>
+<?php } ?>
+<div class="buttons-set">
+    <p class="back-link">
+        <a href="javascript:;" onclick="javascript: window.history.back();" class="left">
+            &laquo; <?= /* @noEscape */ __('Back') ?>
+        </a>
+    </p>
+</div>

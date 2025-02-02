@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MarketplaceLearningManagementSystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Webkul_MarketplaceLearningManagementSystem::css/style.css"/>
+        <link src="Webkul_MarketplaceLearningManagementSystem::js/course/courseinfo.js"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Webkul\MarketplaceLearningManagementSystem\Block\Course\CourseInfo" name="lms_course_info" template="course/courseinfo.phtml"/>
+            <referenceBlock name="product.info.details">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">Webkul_MarketplaceLearningManagementSystem::course/product/view/details.phtml</argument>
+                </action>
+                <arguments>
+                    <argument name="lmsHelper" xsi:type="object" >Webkul\MarketplaceLearningManagementSystem\Helper\Data</argument>
+                </arguments>
+            </referenceBlock>
+        </referenceContainer>
+    </body>
+</page>

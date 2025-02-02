@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul MpAffiliate ACL
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Webkul_Marketplace::marketplace" title="Marketplace Management">
+                    <resource id="Webkul_MpAffiliate::manager" title="Affiliate Management" sortOrder="10" >
+                        <resource id="Webkul_MpAffiliate::affiliate_user" title="Affiliate User" sortOrder="10" />
+                        <resource id="Webkul_MpAffiliate::affiliate_email" title="Affiliate Email" sortOrder="10" />
+                        <resource id="Webkul_MpAffiliate::statistics_traffic" title="Statistics Traffic" sortOrder="11" />
+                        <resource id="Webkul_MpAffiliate::statistics_sales" title="Statistics Sales" sortOrder="12" />
+                        <resource id="Webkul_MpAffiliate::statistics_payment" title="Statistics Payment" sortOrder="13" />
+                        <resource id="Webkul_MpAffiliate::statistics_graph" title="Statistics Graph" sortOrder="13" />
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Webkul_MpAffiliate::config_Mpaffiliate" title="Marketplace Affiliate Configuration" sortOrder="50" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

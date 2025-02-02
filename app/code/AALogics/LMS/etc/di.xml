@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Webkul\MarketplaceLearningManagementSystem\Controller\Adminhtml\Content\Save" type="AALogics\LMS\Controller\Adminhtml\Content\Save" />
+    <preference for="Webkul\MarketplaceLearningManagementSystem\Controller\Adminhtml\Content\Upload" type="AALogics\LMS\Controller\Adminhtml\Content\Upload" />
+    <preference for="Webkul\MarketplaceLearningManagementSystem\Controller\Adminhtml\Content\UploadAssignment" type="AALogics\LMS\Controller\Adminhtml\Content\UploadAssignment" />
+</config>

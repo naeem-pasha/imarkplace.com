@@ -1,0 +1,70 @@
+body {
+  font-family: var(--font-primary);
+}
+
+@for $i from 1 through 9 {
+  .fw#{$i} {
+    font-weight: $i * 100;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: var(--font-secondary);
+  color: var(--c-primary);
+  font-weight: 700;
+  margin: 0;
+}
+
+.font-text,
+.std,
+.desc,
+.text,
+.smartmenu {
+  font-family: var(--font-primary);
+}
+
+$headings: "h1" "h2" "h3" "h4" "h5" "h6";
+@each $heading in $headings {
+  #{$heading} {
+    font-size: var(--#{$heading});
+  }
+}
+
+.h1 {
+  font-size: var(--h1);
+}
+
+.h2 {
+  font-size: var(--h2);
+}
+
+.h3 {
+  font-size: var(--h3);
+}
+
+.h4 {
+  font-size: var(--h4);
+}
+
+.h5 {
+  font-size: var(--h5);
+}
+
+.h6 {
+  font-size: var(--h6);
+}
+
+.c-white {
+  color: white !important;
+}

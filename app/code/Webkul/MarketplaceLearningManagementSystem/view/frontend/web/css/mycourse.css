@@ -1,0 +1,32 @@
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MarketplaceLearningManagementSystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+.course-item-info {
+    width: 400px;;
+}
+li.course-item {
+    margin: 5px 20px 5px 10px;
+}
+.start-course-button {
+    margin-top: 5px;
+}
+.course-item-progress-bar {
+width: 100%;
+background-color: grey;
+margin: 10px 0px 5px 0px;
+}
+
+.course-bar {
+height: 5px;
+background-color: green;
+}
+.course-complete-status {
+    margin-bottom: 10px;
+    font-size: 11px;
+}

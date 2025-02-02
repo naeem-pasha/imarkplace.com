@@ -1,0 +1,29 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ */
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$helper = $objectManager->create(\Webkul\SellerSubDomain\Helper\Data::class);
+?>
+<?php $storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();?>
+<?php if ($block->isHomePage()):?>
+    <strong class="logo text-hide">
+<?php else: ?>
+    <a class="logo text-hide" href="<?= $block->getBaseUrl()  ?>" title="<?= $escaper->escapeUrl($storeName) ?>">
+<?php endif ?>
+        <img src="<?= $escaper->escapeUrl($block->getLogoSrc()) ?>"
+             alt="<?= $escaper->escapeUrl($block->getLogoAlt()) ?>"
+                <?= $escaper->escapeUrl($block->getLogoWidth()) ? 'width="' . $block->getLogoWidth() . '"' : '' ?>
+                <?= $escaper->escapeUrl($block->getLogoHeight()) ? 'height="' . $block->getLogoHeight() . '"' : '' ?>
+        />
+<?php if ($block->isHomePage()):?>
+    </strong>
+<?php else:?>
+    </a>
+<?php endif?>

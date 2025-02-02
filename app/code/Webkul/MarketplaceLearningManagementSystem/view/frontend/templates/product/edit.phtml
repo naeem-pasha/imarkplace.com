@@ -1,0 +1,61 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MarketplaceLearningManagementSystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+$lmsHelper = $block->getMpLmsHelper();
+$mpHelper = $block->getMpHelper();
+$courseLevels = $block->getCourseLevelOptions();
+$isPartner = $mpHelper->isSeller();
+$languagleOptions = $block->getLanguageOptions();
+
+if ($isPartner == 1) {
+    $rightseller = $mpHelper->isRightSeller($block->getRequest()->getParam('id'));
+    $productId = $block->getRequest()->getParam('id');
+    $product = $lmsHelper->getProductById($productId);
+    if ($rightseller == 1 && $product->getTypeId() == 'course') {
+        ?>
+        <div class="field">
+            <label class="label"><?= $block->escapeHtml(__('Course Level')) ?></label>
+            <div class="control">
+                <select name="product[course_level]" id="course_level">
+                    <?php foreach ($courseLevels as $level) {
+                        ?>
+                        <option value="<?= $block->escapeHtml($level['value']) ?>"
+                            <?= ($product->getCourseLevel() == $level['value'])? 'selected' : '' ?>
+                        >
+                            <?= $block->escapeHtml($level['label'])?>
+                        </option>
+                        <?php
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label"><?= $block->escapeHtml(__('Course Language ')) ?></label>
+            <div class="control">
+                <select name="product[course_language]" id="course_language">
+                    <?php foreach ($languagleOptions as $lang) {
+                        ?>
+                        <option value="<?= $block->escapeHtml($lang['value']) ?>"
+                            <?= ($product->getCourseLanguage() == $lang['value'])? 'selected' : '' ?>
+                        >
+                            <?= $block->escapeHtml($lang['label'])?>
+                        </option>
+                        <?php
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
+        
+        <?php
+
+    }
+}

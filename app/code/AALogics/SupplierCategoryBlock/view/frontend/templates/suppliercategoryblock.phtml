@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * @var \AALogics\SupplierCategoryBlock\Block\SupplierCategoryBlock $block
+ */
+
+?>
+<?php if(!empty($block->getSellerbyCategory($block->getData('category_id')))): ?>
+<div class="top-brands-wrap">
+    <div class="search-title">
+        <h2 class="title"><span><?php echo $block->getData('block_heading') ?></span></h2>
+        <div class="servicess_marketplace_items">
+            <div class="flex-containerss">
+                <div class="brand_caresol">
+                    <div class="owl-carousel owl-theme">
+                    <?php 
+                        foreach ($block->getSellerbyCategory($block->getData('category_id')) as $key=>$data): 
+                            $mapping_url = $block->getCustomerDataById($data['seller_id']);
+                        ?>
+                        <div class="item-slider">
+                            <?php 
+                                // if($data['shop_title']=="NBP Funds")
+                                // {
+                                //     $shop_url ="https://digital.nbpfunds.com/v3i/mpahgtxndu02wuo__CL";
+                                // }
+                                // elseif($data['shop_title']=="JazzCash"){
+                                //     $shop_url ="https://vdc.jazzcash.com.pk/visa-debit-card/order-card/cards/";
+                                // }
+                                // elseif($data['shop_title']=="Easy Paisa"){
+                                //     $shop_url ="https://play.google.com/store/apps/details?id=pk.com.telenor.phoenix&hl=en&gl=US&is_retargeting=true&af_inactivity_window=7d&shortlink=5bf54445&c=102220&pid=Website&af_click_lookback=7d&af_channel=Homepage%20Nav%20Bar&af_adset=Create%20Account%20Homepage%20Nav%20Bar";
+                                // }
+                                // elseif($data['shop_title']=="Upaisa wallet"){
+                                //     $shop_url ="https://www.upaisa.com/open-wallet.php";
+                                // }
+                                // elseif($data['shop_title']=="UPaisa Debit Card"){
+                                //     $shop_url ="https://www.upaisa.com/upaisa-debit-card.php";
+                                // }
+                                // elseif($data['shop_title']=="NAYA PAY"){
+                                //     $shop_url ="https://www.nayapay.com";
+                                // }
+                                // elseif($data['shop_title']=="Credit Book"){
+                                //     $shop_url ="https://www.creditbook.pk/";
+                                // }
+
+                                if($mapping_url){
+                                    $shop_url = $mapping_url;
+                                }
+                                else{
+                                    $shop_url = $block->getBaseUrl().'/marketplace/seller/profile/shop/'.$data['shop_url'];
+                                }
+                            ?>
+                            <a href="<?php echo $shop_url ?>" target="_blank" rel="noopener">
+                                <div class="our-ser_items">
+                                    <div class="item_image">
+                                    <?php 
+                                        $url= "";
+                                        if ($data['logo_pic']!=null) {
+                                                $url = $block->getBaseUrl().'/media/avatar/'.$data['logo_pic'];
+                                    ?>  
+                                        <img alt="imarkplace" src="<?php echo $url ?>"   /> 
+                                    <?php
+                                        }
+                                    ?>
+                                    </div>
+                                    <div class="item_title">
+                                        <p><?php  echo $data['shop_title']; ?></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

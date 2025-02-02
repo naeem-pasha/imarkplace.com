@@ -1,0 +1,12 @@
+<?php
+$viewModel = $block->getViewModel();
+
+?>
+<?php if(isset($viewModel->getTrackingInfo()['courier_name']) && isset($viewModel->getTrackingInfo()['cn'])){?>
+    <h2 class="title">Smartlane Information</h2>
+    <p><strong>Courier Name :</strong> <?php echo $viewModel->getTrackingInfo()['courier_name'] ?? 'N/A' ?><br/>
+        <strong>Courier Consignment Number :</strong> <?php echo $viewModel->getTrackingInfo()['cn'] ?? 'N/A'?><br/>
+        <strong>Smartlane Tracking Number :</strong> <?php echo $viewModel->getTrackingInfo()['sl_tracking'] ?? 'N/A'?><br/>
+        <strong>Courier Remarks :</strong> <?php echo $viewModel->getTrackingInfo()['courier_remarks'] ?? 'N/A'?>
+</p>
+<?php }?>

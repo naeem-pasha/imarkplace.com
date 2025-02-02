@@ -1,0 +1,85 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MarketplaceLearningManagementSystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+
+ /* Block - Webkul\MarketplaceLearningManagementSystem\Block\Course\MyCourse\CourseList */
+?>
+<?php
+$courseProductsData = $block->getCourseProductData();
+$helper = $block->getHelper();
+$isShowProgressBar = $helper->getFieldValue('display_settings', 'progress_bar');
+    
+if (!count($courseProductsData)) {
+    ?>
+        <div class="message info empty">
+            <span>
+            <?= $block->escapeHtml(__('You have no items in your course list')) ?>
+            </span>
+        </div>
+    <?php
+} else {
+    ?>
+        <div class="products wrapper grid products-grid">
+            <ol class="products list items product-items" style="display:inline-block;">
+    <?php
+    foreach ($courseProductsData as $data) {
+        ?>
+                <li class="item product product-item course-item">
+                    <div class="product-item-info course-item-info" data-container="product-grid">
+                        <a href="<?= $block->escapeUrl($data['url']) ?>" 
+                            class="product photo product-item-photo" tabindex="-1"
+                        >
+                            <span class="product-image-container course-image-container" style="width:300px;">
+                                <span class="product-image-wrapper course-image-wrapper" style="padding-bottom: 125%;">
+                                    <img alt="imarkplace" class="product-image-photo"
+                                        src="<?= $block->escapeUrl($data['image']) ?>"
+                                        max-width="240"
+                                        max-height="400"
+                                        alt="test course product2"
+                                    >
+                                </span>
+                            </span>
+                        </a>
+                        <div class="product-item-details course-item-details">
+                            <strong class="product name product-item-name">
+                                <a class="product-item-link"
+                                    href="<?= $block->escapeUrl($data['url']) ?>"
+                                ><?= $block->escapeHtml($data['name']) ?></a>
+                            </strong>
+                        </div>
+                        <?php
+                        $percentage = $helper->getPercentageOfCourse($data['id']);
+                        if ($isShowProgressBar) { ?>
+                            <div class="course-item-progress-bar" >
+                                <div class="course-bar" 
+                                    data-course-percentage="<?= $block->escapeHtml($percentage) ?>"
+                                >
+                                </div>
+                            </div>
+                        <?php } ?>
+                        <div class="course-complete-status">
+                            <span>
+                            <?= $block->escapeHtml($helper->getPercentageOfCourse($data['id']). __('% Complete')) ?> 
+                            </span>
+                        </div>
+                        <div class="start-course-button">
+                            <a href="<?= $block->escapeUrl($data['url']) ?>">
+                                <button class="action primary course-item-button">
+                                <?= $block->escapeHtml(__('Start Course')) ?>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+<?php   } ?>
+            </ol>
+        </div>
+    <?php
+}

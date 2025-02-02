@@ -1,0 +1,39 @@
+// Global
+@import "global/breakpoints";
+@import "global/variables";
+// @import "global/fonts";
+// @import "global/typography";
+@import "global/mixin";
+
+#C {
+    // @import "global/all";
+
+    // Components Global
+    @import "components/header";
+    @import "components/footer";
+
+    // Components
+    @import "components/blog";
+
+    // Pages
+    @import "pages/home";
+    @import "pages/plp";
+    @import "pages/pdp";
+    @import "pages/cart";
+    @import "pages/checkout";
+    // @import "pages/cms";
+
+    @import "rtl";
+
+    //
+    // Responsive
+    //
+    @include for-mobile-xs {
+    }
+
+    @include for-mobile {
+    }
+
+    @include for-tablet {
+    }
+}

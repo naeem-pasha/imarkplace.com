@@ -1,0 +1,141 @@
+Save,Save
+Update,Update
+"Content data delete successfully.","Content data delete successfully."
+"Content data save successfully.","Content data save successfully."
+"QA Record data delete successfully.","QA Record data delete successfully."
+"Reply data delete successfully.","Reply data delete successfully."
+"Section delete successfully.","Section delete successfully."
+"Section save successfully.","Section save successfully."
+"Section save failed.","Section save failed."
+"Course Status update successfully.","Course Status update successfully."
+"QA Record save successfully.","QA Record save successfully."
+"QA Reply save successfully.","QA Reply save successfully."
+"I wanted you to see this site","I wanted you to see this site"
+"I saw this and thought of you!","I saw this and thought of you!"
+" Minutes"," Minutes"
+" Hours"," Hours"
+"Select Type","Select Type"
+Content,Content
+Assignment,Assignment
+"Select Course Level","Select Course Level"
+Beginner,Beginner
+Intermediate,Intermediate
+Expert,Expert
+"Select Title","Select Title"
+"Select Status","Select Status"
+Pending,Pending
+Answered,Answered
+"Could not delete the content: %1","Could not delete the content: %1"
+"Could not delete the section: %1","Could not delete the section: %1"
+"Could not delete the qaRecord: %1","Could not delete the qaRecord: %1"
+"Could not delete the qaReply: %1","Could not delete the qaReply: %1"
+Course,Course
+"Edit Content","Edit Content"
+Delete,Delete
+"Delete content","Delete content"
+"Are you sure you want to delete the content?","Are you sure you want to delete the content?"
+"Edit Section","Edit Section"
+"Delete Section","Delete Section"
+"Are you sure you want to delete this Section?","Are you sure you want to delete this Section?"
+"View/Update QA","View/Update QA"
+"Delete QAThread","Delete QAThread"
+"Are you sure you want to delete this QAThread?","Are you sure you want to delete this QAThread?"
+"View/Update Reply","View/Update Reply"
+"Delete Reply","Delete Reply"
+"Are you sure you want to delete this Reply?","Are you sure you want to delete this Reply?"
+"Course Content","Course Content"
+"Add course content","Add course content"
+"New Course Section","New Course Section"
+"New Course Content","New Course Content"
+"Course Sections","Course Sections"
+"Add new section","Add new section"
+"Add new content","Add new content"
+"Content Sections","Content Sections"
+"Question & Answer","Question & Answer"
+"Select File to Import","Select File to Import"
+"Start Upload","Start Upload"
+"Allowed Extension: mp4, ogg","Allowed Extension: mp4, ogg"
+"Invalid Extension!","Invalid Extension!"
+" on demand video"," on demand video"
+Chapters,Chapters
+Assignments,Assignments
+"Published on:","Published on:"
+"Last Update:","Last Update:"
+"Skill Level","Skill Level"
+"Total Duration","Total Duration"
+"Enroll Student","Enroll Student"
+"Course Language","Course Language"
+"You have no items in your course list","You have no items in your course list"
+"% Complete","% Complete"
+"Start Course","Start Course"
+Lectures,Lectures
+Duration,Duration
+Preview,Preview
+Completed,Completed
+Section,Section
+Description,Description
+Overview,Overview
+Q&A,Q&A
+"About This Course","About This Course"
+Features,Features
+Student,Student
+Video,Video
+Language,Language
+Access,Access
+LifeTime,LifeTime
+"Course Level","Course Level"
+"Add Course Content","Add Course Content"
+"Question and Answer","Question and Answer"
+"Ask new question","Ask new question"
+Lecture,Lecture
+"Back to all questions","Back to all questions"
+"Add Reply","Add Reply"
+"Title or summary","Title or summary"
+Detail,Detail
+Publish,Publish
+"Sorry, there has been an error processing your request. Please try again later.","Sorry, there has been an error processing your request. Please try again later."
+"Course Contents","Course Contents"
+"Course Section Form","Course Section Form"
+"Course Content Form","Course Content Form"
+Webkul,Webkul
+"Marketplace Learning Management System","Marketplace Learning Management System"
+"Dispay Settings","Dispay Settings"
+"Show no of Enrolled Students","Show no of Enrolled Students"
+"Show Course Section","Show Course Section"
+"Show Short Description about the Course","Show Short Description about the Course"
+"Show Total Course Duration","Show Total Course Duration"
+"Show Progress Bar after user has purchased the Course","Show Progress Bar after user has purchased the Course"
+"Show Share Option before purchasing the Course","Show Share Option before purchasing the Course"
+"Social Share for Course","Social Share for Course"
+Twitter,Twitter
+Facebook,Facebook
+Email,Email
+"Content Title","Content Title"
+"Section Title","Section Title"
+Type,Type
+"Allowed file type: pdf, txt, zip","Allowed file type: pdf, txt, zip"
+ID,ID
+"Type Id","Type Id"
+"Section Id","Section Id"
+"File Name","File Name"
+"Sort Order ","Sort Order "
+"Course Id","Course Id"
+"Sort Order","Sort Order"
+"Update Section","Update Section"
+"Student Id","Student Id"
+"Student Name","Student Name"
+"Question Title","Question Title"
+"Question Detail","Question Detail"
+Chapter,Chapter
+Replies,Replies
+"Created At","Created At"
+Status,Status
+"Question Answer","Question Answer"
+"Add New Reply","Add New Reply"
+"Add/Update Reply","Add/Update Reply"
+reply,reply
+"QA Id","QA Id"
+"Replied By","Replied By"
+"QnA Thread","QnA Thread"
+"My Course","My Course"
+Submit,Submit

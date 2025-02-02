@@ -1,0 +1,35 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MarketplaceLearningManagementSystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+
+?>
+<?php /** @var $block \Webkul\Customoption\Block\Options */ ?>
+<?php
+$productBlock = $block->getLayout()->createBlock(\Webkul\Marketplace\Block\Product\Create::class);
+$productId = $block->getRequest()->getParam('id');
+$productCollection = $productBlock->getProduct($productId);
+$flag = false;
+if ($productCollection->getTypeId() == 'course') {
+    $flag = true;
+}
+if ($flag) {
+    ?>
+    <div class="fieldset-wrapper" id="product-qa-record-wrapper" data-block="product-qa-record">
+        <div class="fieldset-wrapper-title">
+            <strong class="title">
+                <span><?= $block->escapeHtml(__('Question and Answer')) ?></span>
+            </strong>
+        </div>
+    </div>
+    <div id="course-qa-record-grid">
+        <?= $block->getChildHtml(); ?>
+    </div>
+    <?php
+}

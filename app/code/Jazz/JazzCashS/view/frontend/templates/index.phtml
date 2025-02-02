@@ -1,0 +1,121 @@
+
+ <?php
+
+	$t = microtime ( true );
+	$micro = sprintf ( "%06d", ($t - floor ( $t )) * 1000000 );
+	$d = new DateTime ( date ( 'Y-m-d H:i:s.' . $micro, $t ) );
+	
+	$order = $block->getOrder ();
+	
+	$orderId = $order->getIncrementId ();
+	
+	$_ActionURL = $block->getConfig ( 'payment/jazz_cashs/action_url' );
+	$_MerchantID = $block->getConfig ( 'payment/jazz_cashs/merchant_ID' );
+	$_Password = $block->getConfig ( 'payment/jazz_cashs/password' );
+	$_ReturnURL = $block->getConfig ( 'payment/jazz_cashs/return_url' );
+	$_IntegritySalt = $block->getConfig ( 'payment/jazz_cashs/integrity_salt' );
+	$_ExpiryHours = $block->getConfig ( 'payment/jazz_cashs/expire_in_hour' );
+	
+	$_TxnType = "OTC";
+	
+	$orderItems = $order->getAllItems ();
+	
+	foreach ( $orderItems as $item ) {
+		
+		$product_name [] = $item->getName ();
+		
+		$product_id [] = $item->getProductId ();
+	}
+	
+	$productDesc = $product_name;
+
+	$_Language = 'EN';
+	$_Version = '1.1';
+	$_Currency = 'PKR'; // $orderItems['base_currency_code'];
+	$_Description = implode ( ",", $productDesc );
+	$_BillReference = $orderId;
+	
+	$AmountTmp = $order->getGrandTotal () * 100;
+	$AmtSplitArray = explode ( '.', $AmountTmp );
+	$_FormattedAmount = $AmtSplitArray [0];
+
+	date_default_timezone_set ( "Asia/karachi" );
+	$DateTime = new DateTime ();
+	// $_TxnRefNumber = "T" . $DateTime->format('YmdHisu');
+	$_TxnRefNumber = "T" . $d->format ( "YmdHisu" ); // note at point on "u"
+	$_TxnDateTime = $DateTime->format ( 'YmdHis' );
+	$ExpiryDateTime = $DateTime;
+	$ExpiryDateTime->modify ( '+' . $_ExpiryHours . ' hours' );
+	$_ExpiryDateTime = $ExpiryDateTime->format ( 'YmdHis' );
+	
+	$ppmpf1 = '1';
+	$ppmpf2 = '2';
+	$ppmpf3 = '3';
+	$ppmpf4 = '4';
+	$ppmpf5 = '5';
+	
+	$_TxnRefNumber = substr ( $_TxnRefNumber, 0, - 3 );
+	 	
+	$SortedArrayOld = $_IntegritySalt . '&' . $_FormattedAmount . '&' . $_BillReference . '&' . $_Description . '&' . $_Language . '&' . $_MerchantID . '&' . $_Password . '&' . $_ReturnURL . '&' . $_Currency . '&' . $_TxnDateTime . '&' . $_ExpiryDateTime . '&' . $_TxnRefNumber . '&' . $_TxnType . '&' . $_Version . '&' . $ppmpf1 . '&' . $ppmpf2 . '&' . $ppmpf3 . '&' . $ppmpf4 . '&' . $ppmpf5;
+	
+	$_Securehash = hash_hmac ( 'sha256', $SortedArrayOld, $_IntegritySalt );
+	
+	?>
+
+<div>
+
+
+
+	<form name="jsform" method="post" action="<?php echo $_ActionURL;?>">
+		<input type="hidden" name="pp_Version"
+			value="<?php echo  $_Version;?>" /> <input type="hidden"
+			name="pp_TxnType" value="OTC" /> <input type="hidden"
+			name="pp_Language" value="<?php echo $_Language;?>" /> <input
+			type="hidden" name="pp_MerchantID" value="<?php echo $_MerchantID;?>" />
+		<input type="hidden" name="pp_SubMerchantID" value="" /> <input
+			type="hidden" name="pp_Password" value="<?php echo $_Password;?>" />
+		<input type="hidden" name="pp_BankID" value="" /> <input type="hidden"
+			name="pp_ProductID" value="" /> <input type="hidden"
+			name="pp_TxnRefNo" value="<?php echo $_TxnRefNumber;?>" /> <input
+			type="hidden" name="pp_Amount"
+			value="<?php echo $_FormattedAmount; ?>" /> <input type="hidden"
+			name="pp_TxnCurrency" value="<?php echo $_Currency;?>" /> <input
+			type="hidden" name="pp_TxnDateTime"
+			value="<?php echo $_TxnDateTime; ?>" /> <input type="hidden"
+			name="pp_BillReference" value="<?php echo $_BillReference; ?>" /> <input
+			type="hidden" name="pp_Description"
+			value="<?php echo $_Description; ?>" /> <input type="hidden"
+			name="pp_TxnExpiryDateTime" value="<?php echo $_ExpiryDateTime; ?>" />
+		<input type="hidden" name="pp_ReturnURL"
+			value="<?php echo $_ReturnURL; ?>" /> <input type="hidden"
+			name="pp_SecureHash" value="<?php echo $_Securehash; ?>" /> <input
+			type="hidden" name="ppmpf_1" value="<?php echo $ppmpf1; ?>" /> <input
+			type="hidden" name="ppmpf_2" value="<?php echo $ppmpf2; ?>" /> <input
+			type="hidden" name="ppmpf_3" value="<?php echo $ppmpf3; ?>" /> <input
+			type="hidden" name="ppmpf_4" value="<?php echo $ppmpf4; ?>" /> <input
+			type="hidden" name="ppmpf_5" value="<?php echo $ppmpf5; ?>" />
+
+
+	</form>
+
+	<script type="text/javascript">
+		document.jsform.submit(); 
+</script>
+	<h1>Redirecting to .....</h1>	
+		<img alt="imarkplace"
+			src="<?php echo $this->getViewFileUrl('Jazz_JazzCashM::images/jazzcash.png'); ?>"
+			style="border:00px solid red; width: 500px; position: fixed; left: 33%; top: auto; z-index: 1;" />
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

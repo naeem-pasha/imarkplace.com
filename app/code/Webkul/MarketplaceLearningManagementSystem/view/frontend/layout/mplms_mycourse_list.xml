@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+* Webkul Software.
+*
+* @category  Webkul
+* @package   Webkul_MarketplaceLearningManagementSystem
+* @author    Webkul
+* @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+* @license   https://store.webkul.com/license.html
+*/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd"> 
+    <head>
+        <css src="Webkul_MarketplaceLearningManagementSystem::css/mycourse.css"/>
+        <link src="Webkul_MarketplaceLearningManagementSystem::js/course/mycourse.js"/>
+    </head>
+    <update handle="customer_account"/> 
+    <body> 
+        <referenceBlock name="page.main.title"> 
+            <action method="setPageTitle"> 
+                <argument translate="true" name="title" xsi:type="string">My Course</argument> 
+            </action> 
+         </referenceBlock> 
+        <referenceContainer name="content"> 
+            <block class="Webkul\MarketplaceLearningManagementSystem\Block\Course\MyCourse\CourseList" name="my_course" template="Webkul_MarketplaceLearningManagementSystem::course/mycourse/list.phtml" cacheable="false"> 
+            </block> 
+        </referenceContainer> 
+    </body> 
+</page>

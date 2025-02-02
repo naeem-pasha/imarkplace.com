@@ -1,0 +1,154 @@
+<h1>Order Booking page</h1>
+
+<?php
+
+$order_data = $block->getOrderData();
+?>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css">
+<style type="text/css">
+  body div.soic_booking_page *{font-size: 14px;}
+  table{font-size: 14px;}
+</style>
+<div class="container-fluid sonic_booking_page p-3">
+  <div class="row card">
+    <div class="col justify-content-center card-body">
+    <table class="table table-bordered table-lg mb-1">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Order Id</th>
+        <th scope="col">Consignee Name</th>
+        <th scope="col">Consignee Address</th>
+        <th scope="col">Consignee Phone</th>
+        <th scope="col">Consignee City</th>
+        <th scope="col">Amount</th>
+      </tr>
+    </thead>
+      <tbody>
+        <?php
+        $shipping_cities = array();
+            foreach ($order_data as $oid => $order){
+              $shipping_cities[$oid] = $order['shipping_city'];
+                echo '<tr>
+                        <td>'.$order['order_increment_id'].'</td>
+                        <td>'.$order['firstname'] . ' ' . $order['lastname'].'</td>
+                        <td>'.$order['shipping_address'].'</td>
+                        <td>'.$order['shipping_phone'].'</td>
+                        <td>'.$order['shipping_city'].'</td>
+                        <td>'.$order['amount'].'</td>
+                      </tr>';
+            }
+        ?>
+      </tbody>
+       
+    </table>
+    
+  </div>
+  
+  </div>
+  <?php 
+
+  $pickup_addresses = $block->getPickupAddress();
+  $pickup_address_options = '';
+  if($pickup_addresses != null){
+    foreach($pickup_addresses as $paddress){
+      if($paddress['status'] == 1){
+          $pickup_address_options .= '<option value="'.$paddress['id'].'">'.$paddress['address'].'</option>';
+      }
+    }
+  }
+  
+
+  $shipping_mode_options = '<option value="1">Overnight</option><option value="2">Overland</option><option value="3">Detain</option>';
+
+
+  $shipping_city_ids = array();
+  $cities = $block->getCities();
+  $cities_options = '<option value="">Select City</option>';
+  if($cities != null){
+    foreach($cities as $city){
+      $cities_options .= '<option value="'.$city['id'].'">'.$city['name'].'</option>';
+    }
+    foreach($shipping_cities as $orderid => $shipping_city){
+      foreach ($cities as $key => $city) {
+        $shipping_city_name = strtolower($shipping_city);
+        $city_name = strtolower($city['name']);
+        if($shipping_city_name == $city_name){
+          $shipping_city_ids[$orderid] = $city['id'];
+        }
+      }
+    }
+  }
+  
+  ?>
+
+    <form method="POST" id="order_booking_form" action="<?php echo $block->getUrl('orderbook/order/result'); ?>" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+    <input name="form_key" type="hidden" value="<?php echo $block->getFormKey(); ?>">
+      <h3 class="m-1">Edit Order Details</h3>
+    <div class="card row">
+      <div class="card-body col">
+        <table class="table table-bordered table-lg">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Order Id</th>
+        <th scope="col">Pickup Address</th>
+        <th scope="col">Shipping Mode</th>
+        <th scope="col">Consignee Phone</th>
+        <th scope="col">Consignee Address</th>
+        <th scope="col">Special instructions</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Consignee City</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach($order_data as $order_id => $detail){
+        echo '<tr><input type="hidden" name="row_order_id['.$order_id.']" value="'. $order_id .'"><td>'.$detail['order_increment_id'].'</td>';
+        echo '<td><select class="select2 form-control pickup_address" id="pickup_address_'.$order_id.'" name="pickup_address['. $order_id .']" required>' . $pickup_address_options . '</select></td>';
+        echo '<td><select class="select2 form-control shipping_mode" name="shipping_mode['. $order_id .']" required>' . $shipping_mode_options . '</select></td>';
+        echo '<td><input type="text" class="form-control" name="consignee_phone['.$order_id.']" value="'. $detail['shipping_phone'] .'" required></td>';
+        echo '<td><textarea class="form-control" name="consignee_address['. $order_id .']" required>'. $detail['shipping_address'] .'</textarea></td>';
+        echo '<td><textarea class="form-control"  name="special_instruction['. $order_id .']"></textarea></td>';
+        echo '<td><input type="text" class="form-control" name="amount['.$order_id.']" value="'. $detail['amount'] .'" required></td>';
+         echo '<td><select class="select2 form-control city" id="select_city_'.$order_id.'" name="city['. $order_id .']" required>' . $cities_options . '</select></td>';
+           
+        echo '</tr>';
+      }
+      ?>
+    </tbody>
+    </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button type="submit" class="btn btn-dark btn-lg mt-2">Submit</button>
+      </div>
+    </div>
+      
+    </form>
+
+</div>
+
+<script type="text/javascript">
+    var order_cities = <?php echo json_encode($shipping_city_ids) ?>;
+    
+  document.addEventListener('readystatechange', event => { 
+    
+    if (event.target.readyState === "complete") {
+
+        
+        if(Object.keys(order_cities).length > 0){
+          for(var order_id in order_cities){
+            var select_id = 'select_city_' + order_id;
+            var select_drop = document.getElementById(select_id);
+            
+            select_drop.value = parseInt(order_cities[order_id]);
+
+          }
+        }
+
+
+        
+    }
+});
+  
+</script>

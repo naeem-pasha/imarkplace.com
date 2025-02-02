@@ -1,0 +1,27 @@
+<?php  $news = $block->view_news()->getData(); ?>
+<div class="container">
+    <?php 
+        if($news): 
+        $img_url = null;    
+        if($news['image']){
+            $img_url = $news['image'];
+        }else{
+            $url = $block->getBaseUrl().'/media/blog/news-placeholder.jpg';
+        }
+    ?>
+        <h2><?= $news['title'] ?></h2>
+        <?php if($news['author']): ?>
+            <h5>Author : <?= $news['author'] ?></h5>
+        <?php endif; ?>
+        <h5>Publish at : <?= $news['published_at'] ?></h5>
+        <img alt="imarkplace" src="<?php echo $url ?>"   width="200px" style="float:left;" />
+        <?php if($news['content']): ?>
+            <p><?= $news['content'] ?></p>
+        <?php else: ?>
+            <p><?= $news['description'] ?></p>
+        <?php endif; ?>
+        
+    <?php else: ?>
+        <p>Not Found.</p>
+    <?php endif; ?>
+</div>

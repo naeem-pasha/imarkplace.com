@@ -1,0 +1,50 @@
+
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="payment-method" data-bind="css: {'_active': (getCode() == isChecked())}">
+    <div class="payment-method-title field choice">
+        <input type="radio"
+               name="payment[method]"
+               class="radio"
+               data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod, visible: isRadioButtonVisible()"/>
+       
+         <span data-bind="text: getTitle()"></span>
+    </div>
+    <div class="payment-method-content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+  
+        <div class="delivry-content">
+         <img alt="imarkplace" src="https://lh3.googleusercontent.com/-KR3uhnuU3qo/W4fpRKRGM0I/AAAAAAAAAFc/cmogQ-czRIcsQTkDwR-ZanDT--s6SC3HQCL0BGAYYCw/h50/2018-08-30.png" />
+ <p>
+JazzCash Shop is an easy payment solution.<br />
+Click "Place Order" and your JazzCash voucher number will be generated and displayed on your screen<br />
+You can visit any JazzCash shop and pay against your token within 24 hours.<br />
+To see the list of JazzCash shop locations, <a href="http://www.jazzcash.com.pk/agent-locator/">Click Here</a><br />
+You are almost done!<br />
+To change or edit your order, go back. No changes will be allowed once you click "Place Order".<br />
+</p> 
+        </div>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button class="action primary checkout"
+                        type="submit"
+                        data-bind="
+                        click: placeOrder,
+                        attr: {title: $t('Place Order')},
+                        css: {disabled: !isPlaceOrderActionAllowed()},
+                        enable: (getCode() == isChecked())
+                        "
+                        disabled>
+                    <span data-bind="i18n: 'Place Order'"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

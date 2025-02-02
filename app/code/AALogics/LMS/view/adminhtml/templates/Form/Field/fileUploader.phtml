@@ -1,0 +1,97 @@
+<div id="content-uploader">
+<form id="uploadForm" action="<?= $block->escapeUrl($block->getUploaderUrl()) ?>" method="post" enctype="multipart/form-data">
+<?= $block->getBlockHtml('formkey'); ?>
+    <div class="admin-field _required fileuploader-fieldset">
+        <span class="file-upload-label uploader-label">
+            <label>
+                <span>
+                    <?= $block->escapeHtml(__('Select File to Import')) ?>
+                </span>
+            </label>
+        </span>
+        <span class="admin__field-control uploader-field-control">
+            <input name="importContent" id="importContent" type="file" class="import-filebox"/>
+            <input type="submit" id="startUpload" value="<?= $block->escapeHtml(__('Start Upload')) ?>" class="btnSubmit" /><br>
+            <span class="allowed-ext"><?= $block->escapeHtml(__('Allowed Extension: mp4, ogg')) ?></span>
+            <label class="admin__field-error uploader-error"><?= $block->escapeHtml(__('Invalid Extension!')) ?></label>
+            <label class="admin__field-error file-error"><?= $block->escapeHtml(__('The uploaded file exceeds the max file size.')) ?></label>
+        </span>
+    </div>
+    <div id="progress-div"><div id="progress-bar"></div></div>
+</form>
+</div>
+
+<script type="text/javascript">
+require([
+    'jquery',
+    'Webkul_MarketplaceLearningManagementSystem/js/bin/jquery.form'
+], function ($) {
+    $(document).ready(function() {
+        if($("input[name='import_file']").val() == '') {
+            $('#save-course-content').attr("disabled", true);
+        }
+        $('.uploader-error').hide();
+        $('.file-error').hide();
+
+        $('#startUpload').click(function(e) {
+            e.preventDefault();
+            if($('#importContent').val()) {
+                $('#uploadForm').ajaxSubmit({
+                    beforeSubmit: function() {
+                    $("#progress-bar").width('0%');
+                    },
+                    uploadProgress: function (event, position, total, percentComplete){
+                        $("#progress-bar").width(percentComplete + '%');
+                        $("#progress-bar").html('<div id="progress-status">' + percentComplete +' %</div>')
+                    },
+                    success:function (response){
+                        response = JSON.parse(response)
+                        if(response.error == '0'){
+                            response = JSON.stringify(response);
+                            $('#save-course-content').attr("disabled", false);
+                            $("input[name='import_file']").val(response).trigger('change');
+                            $('.file-error').hide();
+                        }else{
+                            $('.file-error').show();
+                            $('#startUpload').attr('disabled', true);
+                            $("#progress-bar").width('0%');
+                            $("#progress-bar").html('<div id="progress-status">' + 0 +' %</div>')
+                        }
+                    },
+                    resetForm: false
+                });
+                return false;
+            }
+        });
+
+        $("select[name='type']").change(function(){
+            if ($(this).val() == 2) {
+                $('#save-course-content').attr("disabled", false);
+                $('#content-uploader').hide();
+            } else {
+                $('#content-uploader').show();
+
+                if ($("input[name='import_file']").val() == '') {
+                    $('#save-course-content').attr("disabled", true);
+                } else {
+                    $('#save-course-content').attr("disabled", false);
+                }
+            }
+        });
+
+        $('#importContent').change(function(){
+            let ext = ($(this).val()).split(".");
+            if (ext[ext.length -1] != "mp4" && ext[ext.length -1] != "ogg") {
+                $('.uploader-error').show();
+                $('#startUpload').attr('disabled', true);
+                $('#save-course-content').attr("disabled", true);
+            } else{
+                $('.uploader-error').hide();
+                $('.file-error').hide();
+                $('#startUpload').attr('disabled', false);
+                $('#save-course-content').attr("disabled", false);
+            }
+        });
+    });
+});
+</script>

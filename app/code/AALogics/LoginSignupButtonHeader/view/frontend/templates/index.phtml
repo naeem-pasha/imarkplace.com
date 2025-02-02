@@ -1,0 +1,17 @@
+<?php 
+    $is_login = $block->is_login();
+    if($is_login == 'logout'){
+?>
+    <ul class="custom-login">
+        <li class="authorization-link top-links">
+            <a href="#social-login-popup" class="social-login" data-effect="mfp-move-from-top"> Log In </a> 
+        </li>
+    </ul>
+    <div class="col-auto top-links"><a href="/customer/account/create/">Signup</a></div>
+<?php 
+    }else{
+?> 
+    <div class="col-auto top-links"><a href="/customer/account/logout/">Logout</a></div>
+<?php 
+    }
+?> 

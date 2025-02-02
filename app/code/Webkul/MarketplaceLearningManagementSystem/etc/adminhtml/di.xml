@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MarketplaceLearningManagementSystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="course_product_attribute" xsi:type="array">
+                    <item name="class" xsi:type="string">Webkul\MarketplaceLearningManagementSystem\Ui\DataProvider\Product\Form\Modifier\CourseProductAttribute</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Webkul\MarketplaceLearningManagementSystem\Ui\DataProvider\Product\Form\Modifier\CourseProductAttribute">
+        <arguments>
+            <argument name="formName" xsi:type="string">content_form</argument>
+            <argument name="dataScopeName" xsi:type="string">content_form.content_form</argument>
+            <argument name="dataSourceName" xsi:type="string">content_form.content_form_data_source</argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Odoomarketplaceconnect Menu
+ *
+* @category  Webkul
+ * @package   Webkul_Odoomarketplaceconnect
+ * @author    Webkul
+ * @copyright Copyright (c) 2010-2017 Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ *
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Webkul_Odoomarketplaceconnect::marketplace" title="Marketplace" module="Webkul_Odoomarketplaceconnect" sortOrder="1" parent="Webkul_Odoomagentoconnect::manager" resource="Webkul_Odoomarketplaceconnect::marketplace"/>
+			<add id="Webkul_Odoomarketplaceconnect::sellers" title="Sellers" module="Webkul_Odoomarketplaceconnect" sortOrder="1" parent="Webkul_Odoomarketplaceconnect::marketplace" action="odoomarketplaceconnect/sellers" resource="Webkul_Odoomarketplaceconnect::sellers"/>
+			<add id="Webkul_Odoomarketplaceconnect::category" title="Website Categories" module="Webkul_Odoomarketplaceconnect" sortOrder="2" parent="Webkul_Odoomarketplaceconnect::marketplace" action="odoomarketplaceconnect/category" resource="Webkul_Odoomarketplaceconnect::category"/>
+			<add id="Webkul_Odoomarketplaceconnect::product" title="Seller Products" module="Webkul_Odoomarketplaceconnect" sortOrder="3" parent="Webkul_Odoomarketplaceconnect::marketplace" action="odoomarketplaceconnect/product" resource="Webkul_Odoomarketplaceconnect::product"/>
+			<add id="Webkul_Odoomarketplaceconnect::order" title="Seller Orders" module="Webkul_Odoomarketplaceconnect" sortOrder="4" parent="Webkul_Odoomarketplaceconnect::marketplace" action="odoomarketplaceconnect/order" resource="Webkul_Odoomarketplaceconnect::order"/>
+			<add id="Webkul_Odoomarketplaceconnect::transaction" title="Seller Transactions" module="Webkul_Odoomarketplaceconnect" sortOrder="5" parent="Webkul_Odoomarketplaceconnect::marketplace" action="odoomarketplaceconnect/transaction" resource="Webkul_Odoomarketplaceconnect::transaction"/>
+	</menu>
+</config>

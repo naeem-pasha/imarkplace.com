@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="magefan_blog_recent" class="AALogics\BlogCategoryWidget\Block\BlogsPdpBlock">
+        <label translate="true">Blog Posts Show in Product page</label>
+        <description>Display recent blog posts</description>
+        <parameters>
+            <parameter name="title" xsi:type="text"  visible="true" sort_order="10" >
+                <label translate="true">Title</label>
+                <description translate="true">Please specify title you want to display on the frontend. You can leave it blank if necessary.</description>
+            </parameter>
+            <parameter name="no_repeat_posts_enable" xsi:type="select"  source_model="Magento\Config\Model\Config\Source\Yesno" visible="true" sort_order="15" >
+                <label translate="true">Don't repeat posts</label>
+                <description translate="true">Set it to YES if you display multiple recent post widgets on the same page and don't want them do display the same posts.</description>
+            </parameter>
+            <parameter name="number_of_posts" xsi:type="text"  visible="true" sort_order="20" >
+                <label translate="true">Number of Posts</label>
+                <description translate="true">Please indicate number of recent posts you want to display. Leave blank to use predefined "Posts Per Page" value.</description>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

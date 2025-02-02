@@ -1,0 +1,66 @@
+<?php
+/**
+ * Webkul MpAffiliate Banner template.
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+ $allAffiliate = $block->getAllAffiliate();
+?>
+ <fieldset class="info wk-affiliate-fieldset fieldset" id="affiliate-preferences">
+    <form action="<?= /* @noEscape */  $block->getSaveAction() ?>"
+        method="POST"
+        id="form-affiliate-prefer"
+        data-mage-init='{"validation":{}}'>
+        <?= /* @noEscape */  $block->getBlockHtml('formkey'); ?>
+         <div class="fieldset form-list" id="cust">
+             <div class="field">
+                 <label class="label"><?= /* @noEscape */  __('Email Address') ?> : </label>
+                 <div class="control">
+                     <select name="aff_user" id="aff_user">
+                            <option selected="selected" value="all">All</option>
+                            <?php foreach ($allAffiliate as $value) {?>
+                               <option value="<?= /* @noEscape */  $value['affiliate_id'];?>">
+                                   <?= /* @noEscape */  $value['firstname']." ".$value['lastname'];?>
+                               </option>
+                            <?php } ?>
+                       </select>
+                </div>
+             </div>
+             <div class="field">
+                 <label class="label"><?= /* @noEscape */  __('Subject') ?> : </label>
+                 <div class="control">
+                     <input type="text" class="input-text required-entry" title="Subject" name="subject">
+                </div>
+             </div>
+             <div class="field">
+                 <label class="label"><?= /* @noEscape */  __('Message') ?> : </label>
+                   <div class="control">
+                    <textarea type="text"
+                        id="textshow"
+                        class="input-text required-entry email_message"
+                        title="Message"
+                        name="message">
+                    </textarea>
+                </div>
+
+             </div>
+             </div>
+             <div class="actions-toolbar showData">
+               <div class="primary">
+                   <button title="Send" id="show1" class="action save primary" type="submit">
+                       <span><?= /* @noEscape */  __('Send mail')?></span>
+                   </button>
+               </div>
+             </div>
+     </form>
+ </fieldset>
+<div class="buttons-set">
+    <p class="back-link">
+        <a href="javascript:;" onclick="javascript: window.history.back();" class="left">
+            &laquo; <?= /* @noEscape */ __('Back') ?>
+        </a>
+    </p>
+</div>

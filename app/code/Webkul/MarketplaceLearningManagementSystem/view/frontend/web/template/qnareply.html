@@ -1,0 +1,170 @@
+<div class="qa-record qa-tab">
+    <div>
+        <span class="qa-record-tab-title">
+            <strong data-bind="Questions of this course"></strong>
+        </span>
+        <span class="qa-tab-button">
+            <span data-bind="event:{click: viewForm}">
+                <span data-bind="i18n: 'Ask new question'"></span>
+            </span>
+        </span>
+    </div>
+    <div class="qna-record-data">
+        <table>
+            <!--ko foreach: { data: getQaRecord(), as: 'data'}-->
+                <tbody>
+                    <tr>
+                        <td width="10" >
+                            <span class="user-icon" data-bind="text: data.sname"></span>
+                        </td>
+                        <td>
+                            <div class="question-title">
+                                <strong data-bind="text: data.title">
+                                </strong>
+                            </div>
+                            <div>
+                                <span data-bind="text: data.detail"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="10"></td>
+                        <td>
+                            <span class="qa-username" data-bind="text: data.student_name"></span>.
+                            <span data-bind="i18n: 'Lecture'">-</span>
+                            <span class="qa-lecture-title" data-bind="text: ' - '+data.chapter"></span>.
+                            <span class="qa-created-at" data-bind="text: data.created_date"></span>
+                            <span data-bind="click: function(){ $parent.viewReply(data)}" class="view-qa-replies">
+                                    <span>
+                                        <img alt="imarkplace" data-bind="attr:{src: $parent.getMsgIconUrl()}" width="20" height="20" >
+                                    </span>
+                                    <span id="no-of-reply" data-bind="text: data.replies"></span>
+                                </dl>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            <!--/ko-->
+        </table>
+    </div>
+</div>
+
+<div class="qa-reply qa-tab">
+    <div>
+        <span class="qa-tab-button">
+            <span data-bind="event:{click: viewRecord}">
+                <span data-bind="i18n: 'Back to all questions'">
+            </span>
+        </span>
+    </div>
+    <div class="qa-reply-data">
+        <table>
+            <!--ko foreach: { data: getQuestionData(), as: 'data'}-->
+            <tbody>
+                <tr>
+                    <td width="10">
+                        <span class="user-icon" data-bind="text: data.sname"></span>
+                    </td>
+                    <td>
+                        <div>
+                            <div>
+                                <strong data-bind="text: data.title"></strong>
+                            </div>
+                            <div>
+                                <span class="qa-username" data-bind="text: data.student_name">username</span>.
+                                <span class="qa-lecture-title">Lecture-24</span>.
+                                <span data-bind="text: data.created_date"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <span data-bind="text: data.detail"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"> 
+                        <span id="no-of-replies" data-bind="text: data.replies + ' replies'"> replies</span>
+                    </td>
+                </tr>
+            </tbody>
+            <!--/ko-->
+            <!--ko foreach: { data: getQaReply(), as: 'data'}-->
+            <tbody>
+                <tr>
+                    <td width="10">
+                        <span class="user-reply-icon" data-bind="text: data.sname"></span>
+                    </td>
+                    <td>
+                        <div>
+                            <span class="reply-username" data-bind="text: data.replied_by"></span>.
+                            <span data-bind="text: data.created_at"></span>
+                        </div>
+                        <div>
+                            <span data-bind="text: data.qna_thread"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                </tr>
+            </tbody>
+            <!--/ko-->
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="current-user-icon" data-bind="text: getCurrentUserSortName()"></span>
+                    </td>
+                    <td>
+                        <div>
+                            <div>
+                                <textarea name="reply" class="detail-textarea" id="reply-detail"></textarea>
+                            </div>
+                            <div>
+                                <button class="action primary" data-bind="event:{click: submitReply}">
+                                    <span data-bind="i18n: 'Add Reply'"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="qa-form qa-tab">
+        <div>
+            <span class="qa-tab-button">
+                <span data-bind="event:{click: viewRecord}">
+                    <span data-bind="i18n: 'Back to all questions'">
+                </span>
+            </span>
+        </div>
+        <div class="error-notification">
+            <div class="message-error error message">
+                    <span id="error-msg"></span>
+            </div>
+        </div>
+        <div>
+            <div class="qa-form-field">
+                <span data-bind="i18n: 'Title or summary'">
+                </span>
+                <span>
+                    <input type="text" id="question-title">
+                </span>
+            </div>
+            <div class="qa-form-field">
+                <span data-bind="i18n: 'Detail'">
+                </span>
+                <span >
+                    <textarea class="detail-textarea" id="question-detail"></textarea>
+                </span>
+            </div>
+            <div class="qa-form-field">
+                <button class="action primary" data-bind="click: submitRecord">
+                    <span data-bind="i18n: 'Publish'">
+                    </span>
+                </button>
+            </div>
+        </div>
+</div>

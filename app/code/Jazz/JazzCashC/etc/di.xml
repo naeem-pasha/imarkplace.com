@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Payment Method Facade configuration -->
+    <virtualType name="JazzCashCFacade" type="Magento\Payment\Model\Method\Adapter">
+        <arguments>
+            <argument name="code" xsi:type="const">\Jazz\JazzCashC\Model\Ui\ConfigProvider::CODE</argument>
+            <argument name="formBlockType" xsi:type="string">Magento\Payment\Block\Form</argument>
+            <argument name="infoBlockType" xsi:type="string">Jazz\JazzCashC\Block\Info</argument>
+            <argument name="valueHandlerPool" xsi:type="object">JazzCashCValueHandlerPool</argument>
+            <argument name="commandPool" xsi:type="object">JazzCashCCommandPool</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Configuration reader -->
+    <virtualType name="JazzCashCConfig" type="Magento\Payment\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="const">\Jazz\JazzCashC\Model\Ui\ConfigProvider::CODE</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Logger, initialized with JazzCashCConfig -->
+    <virtualType name="JazzCashCLogger" type="Magento\Payment\Model\Method\Logger">
+        <arguments>
+            <argument name="config" xsi:type="object">JazzCashCConfig</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Jazz\JazzCashC\Gateway\Http\Client\ClientMock">
+        <arguments>
+            <argument name="logger" xsi:type="object">JazzCashCLogger</argument>
+        </arguments>
+    </type>
+
+    <!-- Commands infrastructure -->
+    <virtualType name="JazzCashCCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="authorize" xsi:type="string">JazzCashCAuthorizeCommand</item>
+                <item name="capture" xsi:type="string">JazzCashCCaptureCommand</item>
+                <item name="void" xsi:type="string">JazzCashCVoidCommand</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Authorize command -->
+    <virtualType name="JazzCashCAuthorizeCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
+        <arguments>
+            <argument name="requestBuilder" xsi:type="object">JazzCashCAuthorizationRequest</argument>
+            <argument name="handler" xsi:type="object">JazzCashCResponseHandlerComposite</argument>
+            <argument name="transferFactory" xsi:type="object">Jazz\JazzCashC\Gateway\Http\TransferFactory</argument>
+            <argument name="client" xsi:type="object">Jazz\JazzCashC\Gateway\Http\Client\ClientMock</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Authorization Request -->
+    <virtualType name="JazzCashCAuthorizationRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
+        <arguments>
+            <argument name="builders" xsi:type="array">
+                <item name="transaction" xsi:type="string">Jazz\JazzCashC\Gateway\Request\AuthorizationRequest</item>
+                <item name="mockData" xsi:type="string">Jazz\JazzCashC\Gateway\Request\MockDataRequest</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Jazz\JazzCashC\Gateway\Request\AuthorizationRequest">
+        <arguments>
+            <argument name="config" xsi:type="object">JazzCashCConfig</argument>
+        </arguments>
+    </type>
+
+    <!-- Capture command -->
+    <virtualType name="JazzCashCCaptureCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
+        <arguments>
+            <argument name="requestBuilder" xsi:type="object">Jazz\JazzCashC\Gateway\Request\CaptureRequest</argument>
+            <argument name="handler" xsi:type="object">Jazz\JazzCashC\Gateway\Response\TxnIdHandler</argument>
+            <argument name="transferFactory" xsi:type="object">Jazz\JazzCashC\Gateway\Http\TransferFactory</argument>
+            <argument name="validator" xsi:type="object">Jazz\JazzCashC\Gateway\Validator\ResponseCodeValidator</argument>
+            <argument name="client" xsi:type="object">Jazz\JazzCashC\Gateway\Http\Client\ClientMock</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Capture Request -->
+    <type name="Jazz\JazzCashC\Gateway\Request\CaptureRequest">
+        <arguments>
+            <argument name="config" xsi:type="object">JazzCashCConfig</argument>
+        </arguments>
+    </type>
+
+    <!-- Void command -->
+    <virtualType name="JazzCashCVoidCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
+        <arguments>
+            <argument name="requestBuilder" xsi:type="object">Jazz\JazzCashC\Gateway\Request\VoidRequest</argument>
+            <argument name="handler" xsi:type="object">Jazz\JazzCashC\Gateway\Response\TxnIdHandler</argument>
+            <argument name="transferFactory" xsi:type="object">Jazz\JazzCashC\Gateway\Http\TransferFactory</argument>
+            <argument name="validator" xsi:type="object">Jazz\JazzCashC\Gateway\Validator\ResponseCodeValidator</argument>
+            <argument name="client" xsi:type="object">Jazz\JazzCashC\Gateway\Http\Client\ClientMock</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Void Request -->
+    <type name="Jazz\JazzCashC\Gateway\Request\VoidRequest">
+        <arguments>
+            <argument name="config" xsi:type="object">JazzCashCConfig</argument>
+        </arguments>
+    </type>
+
+    <!-- Response handlers -->
+    <virtualType name="JazzCashCResponseHandlerComposite" type="Magento\Payment\Gateway\Response\HandlerChain">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="txnid" xsi:type="string">Jazz\JazzCashC\Gateway\Response\TxnIdHandler</item>
+                <item name="fraud" xsi:type="string">Jazz\JazzCashC\Gateway\Response\FraudHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Value handlers infrastructure -->
+    <virtualType name="JazzCashCValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="string">JazzCashCConfigValueHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="JazzCashCConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">JazzCashCConfig</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Jazz\JazzCashC\Block\Info">
+        <arguments>
+            <argument name="config" xsi:type="object">JazzCashCConfig</argument>
+        </arguments>
+    </type>
+    
+
+</config>

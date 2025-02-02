@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul MpAffiliate User Payment layout.
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Webkul\MpAffiliate\Block\User\Payment" name="mpaffiliate_user_payment" template="Webkul_MpAffiliate::user/payment.phtml" cacheable="false" />
+        </referenceContainer>
+    </body>
+</page>

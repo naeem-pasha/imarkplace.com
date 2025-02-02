@@ -1,0 +1,533 @@
+/* CSS FOR CATALOG SEARCH CATEGORY PAGE */
+
+:root {
+    --font-bold: 600;
+    --font-semibold: 500;
+    --page-background: #f5f5f5;
+    --button-color: #c53e3e;
+    --price-color: #c53e3e;
+    --price-gradient:linear-gradient(#ea1b98,#ff1b00);
+  }
+  
+  #C body {
+      background-color: var(--page-background);
+      
+  }
+  
+  .main-container1 {
+    width: 100%;
+  }
+  
+  /* Navbar Categories Hover Starts */
+  
+  #C .header .vertical-menu:hover {
+    background: #000 !important;
+  }
+  /* Navbar Categories Hover Ends */
+  
+  /* Top Main Container Styling Starts*/
+  #maincontent.page-main .columns.row .main-wrap.col-12 {
+    padding: 0;
+    background: 0 0;
+  }
+  
+  /* Toolbar Products Styling Starts */
+  
+  #C .order-2 #product-container-wrap .toolbar-products {
+    margin: 15px 0;
+    border-radius: 5px;
+    background-color: #f5f5f5 !important;
+  }
+  
+  .toolbar-products {
+    padding: 7px 10px;
+    display: inline-block;
+  }
+  
+  body.layout01.layout02 .toolbar-products .sorter select {
+    margin-left: 6px;
+  }
+  
+  button,
+  select {
+    text-transform: none;
+  }
+
+
+/* Make This Styling Changes For The Quick View Btn Starts */
+.product-btn{
+  width:100%;
+  padding:5px 0px;
+  margin:7.5px;
+}
+.product-btn>div:first-child {
+ display: flex;
+ align-items: center;
+ justify-content: center; 
+}
+.btn-quickview.mb-tooltip:hover {
+  color: #fff;
+}
+.btn-quickview.mb-tooltip:hover .mbi-eye {
+  background-color: #c53e3e;
+}
+
+.product-btn .btn-add-to-cart {
+  display: flex;
+  justify-content: center;
+  margin-top: .5rem;
+
+}
+
+.action.tocart.mb-tooltip {
+  color: #fff;
+  margin-bottom: 1rem;
+  background-color: #c53e3e;
+  border-radius: .6rem;
+  padding: .7rem 1.2rem;
+}
+
+.action.tocart.mb-tooltip .bag-img-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-tocart .fieldset-add .custom-qty .btn-qty.minus {
+  background-color: #c53e3e !important;
+}
+
+.box-tocart .fieldset-add .custom-qty .btn-qty.plus {
+  background-color: #c53e3e !important;
+}
+
+/* Make This Styling Changes For The Quick View Btn Ends */
+
+  
+  .toolbar-products .modes {
+    padding: 8px;
+  }
+  
+  /* Toolbar Products Styling Starts */
+  
+  .products.wrapper.grid.products-grid {
+    position: relative;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  
+  /* Top Main Container Styling Ends*/
+  
+  /* Row Class Starts */
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+  
+  /* Row Class Ends */
+  
+  /* Cards Section Styling Starts */
+  
+  body.layout01.layout02 ol.products.list.items.product-items {
+  width: 100%;
+  margin: 0 !important;
+  }
+  
+  .products.wrapper.grid.products-grid {
+    position: relative;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  
+  .product-show > a.photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .main-photo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  
+  #C .page-products .product-item .product-show .product-image-container {
+    margin-bottom: 0;
+  }
+  
+  #C .product-items img.product-image-photo {
+    margin: 0;
+  }
+  
+  /* Discount Percent Styling Starts */
+  #C .product-item .product-item-info .discount-percent {
+    background: var(--button-color);
+    top: 0px;
+    right: 0px;
+  }
+  /* Discount Percent Styling Ends */
+  
+  
+  /* Product Details Styling Starts */
+  #C .product-items .product-item .product-show .product-item-details {
+      padding: 0; 
+      display: flex; 
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: "Poppins",sans-serif !important;
+  }
+  
+  .product-item .product-item-name{
+      overflow: hidden !important;
+      max-height: 100%;
+      margin-bottom: 0px;
+      font-weight: 400;
+      text-align: center;
+      width: 100%;
+  
+  }
+  
+  
+  .product-item .product-item-name a {
+      color: #1c1b1f !important;
+      font-size: 14px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-transform: capitalize;
+      font-weight: 600 !important;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      margin-bottom: 7px;
+      min-height: 100% !important;
+  }
+  
+  /* Price Section Styling Starts */
+  .price{
+      color: var(--button-color) !important;
+      font-weight: 500 !important;
+      margin:0;
+      -webkit-background-clip:text !important;
+      -webkit-text-fll-color:transparent !important;
+      
+  }
+  
+  .old-price {
+      text-decoration: line-through !important;
+  }
+  
+  
+  #C .product-items .product-item .product-show .product-btn {
+      position: relative;
+      margin-bottom: 0;
+  }
+  
+  /* Price Section Styling Ends */
+  
+  /* Product Details Styling End */
+  .product-item-info {
+      max-width: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  
+  /* List Item Section Styling Starts */
+  .results .block{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+  }
+  
+  /* Load More Section CSS Starts */
+  
+  #C .action.primary, #C .action.secondary {
+      background: var(--button-color);
+      border: 1px solid var(--button-color);
+      font-weight: 500;
+  }
+  
+  .mb-trigger-next {
+      margin-top: 40px !important;
+      margin-bottom: 40px !important;
+  }
+  
+  
+  /* Load More Section CSS Starts */
+  
+  /* CSS To Hide Swatches Section */
+  #C .page-products .product-items .product-item .swatches-list {
+      display: none;
+  }
+  
+  
+  /* CSS To Hide SWatches Section */
+  
+  
+  /* Cards Section Styling Ends */
+  
+  /* Media Queries For Catalog Search Page Starts */
+  @media (max-width: 576px) {
+    .main-container1 .columns {
+      width: 100%;
+      margin: 0;
+    }
+  
+    .main-wrap {
+      width: 100%;
+    }
+  
+    
+  .action.tocart.mb-tooltip {
+  padding: 0.3rem 1.2rem;
+  }
+
+    #product-container-wrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .toolbar-products {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 1.3rem;
+      background-color: #f5f5f5 !important;
+    }
+  
+    .toolbar-products .sorter {
+      border: 1px solid #b8b8b8;
+      background-color: #fff;
+      width: 100%;
+      margin-left: 1rem;
+    }
+  
+    body.layout01.layout02 .toolbar-products .sorter select {
+      width: 74% !important;
+    }
+  
+    .toolbar-products .sorter .sorter-action {
+      position: absolute;
+      top: 0;
+      right: -24px;
+      color: #000;
+      font-weight: 500;
+      height: 100%;
+    }
+  
+    .sorter-action:before {
+      font-size: 16px !important;
+    }
+  
+    .toolbar-products .modes {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1rem;
+    }
+  
+    /* Cards Styling Media Query */
+    .products.list.items.product-items {
+      width: 100%;
+    }
+  
+    #C .page-products .product-items .product-item {
+      background: #fff;
+      border-right: 1px solid #e6e6e6;
+      border-bottom: 1px solid #e6e6e6;
+      padding: 0 !important;
+      margin-bottom: 0;
+      vertical-align: top;
+    }
+  
+    .product-item-info {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .product-show {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-bottom: 0rem !important;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+  
+    .product-show > a.photo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .main-photo {
+      width: 100% !important;
+    }
+  
+    /* Cards Styling Media Query */
+  
+    /* Discount Percent Styling Starts */
+    #C .product-item .product-item-info .discount-percent {
+      background: var(--button-color);
+      top: 0px;
+      right: 0px;
+    }
+  
+    /* Discount Percent Styling Ends */
+  
+     
+   /* Product Details Styling Starts */
+   #C .product-items .product-item .product-show .product-item-details {
+      padding: 0.47rem !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins',sans-serif !important;
+   }
+  
+  .details {
+      margin: 7px !important;
+  }
+  
+  .product-item .product-item-name {
+      padding: 0rem 0.26rem !important;
+  }
+  
+  .product-item .product-item-name a {
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      overflow: hidden;
+      text-transform: capitalize;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      margin-bottom: 7px;
+      min-height: 100% !important;
+  }
+  
+  /* Price Styling Starts */
+  .price-box {
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      gap: 0.6rem;
+  }
+  
+  .price{
+      font-size: 1.4rem !important;
+  }
+  
+  .product-image-container{
+      display: inline !important;
+  }
+  
+  
+  /* Price Styling Ends */
+  
+  
+   /* Product Details Styling Starts */
+  
+  
+  
+  
+  }
+  
+  @media (min-width: 576px) and (max-width: 1200px) {
+    #C .page-products .product-items .product-item {
+      background: #fff;
+      border-right: 1px solid #e6e6e6;
+      border-bottom: 1px solid #e6e6e6;
+      padding: 0 !important;
+      margin-bottom: 0;
+      vertical-align: top;
+     }
+  
+     .price-box {
+      margin: 0 0 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+     }
+  
+    .product-item .product-item-name {
+      padding: 0 0.7rem !important;
+    }
+  
+    .product-item .product-item-name a {
+      font-size: 13px !important;
+  
+    }
+    .main-container1 .columns {
+      width: 100%;
+      margin: 0;
+    }
+  
+    .product-image-container{
+      display: inline !important;
+    }
+  
+    .product-show {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-bottom: 0rem !important;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+    
+    .products.wrapper.grid.products-grid {
+      position: relative;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  
+  }
+  
+  @media (min-width: 1200px) {
+    #C .page-products .product-items .product-item {
+      background: #fff;
+      border-right: 1px solid #e6e6e6;
+      border-bottom: 1px solid #e6e6e6;
+      padding: 0 !important;
+      margin-bottom: 0;   
+      vertical-align: top;
+    }
+  
+    .products.wrapper.grid.products-grid {
+      width: 100%;
+      max-width: 100%;
+     
+  }
+  
+  .main-container1 .columns {
+      width: 100%;
+      margin: 0;
+  }
+    
+  
+  }
+  
+  /* Media Queries For Catalog Search Page Ends */
+  
+  
+  

@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @var \AALogics\SubCategoryBlock\Block\SubCategoryBlock $block
+ */
+?>
+
+<div class="top-brands-wrap">
+    <div class="search-title">
+        <h2 class="title"><span><?php echo $block->getData('block_heading') ?></span></h2>
+        <p>Click Any Services to Get a Quote</p>
+        <div class="our_Services_itemss">
+            <div class="flex-containerss">
+                <div class="brand_caresol">
+                    <div class="owl-carousel owl-theme">
+                    <?php foreach ($block->getsubCategories($block->getData('category_id')) as $key=>$data): ?>
+                        <div class="item-slider">
+                            <div class="our-ser_items" title="Click to Request">
+                                <div class="item_image">
+                                    <?php 
+                                    $url= "";
+                                    if ($image = $data->getData('smartmenu_cat_imgicon')) {
+                                            $url = $block->getBaseUrl().$image;
+                                    ?>  
+                                    <img alt="imarkplace" src="<?php echo $url ?>"   /> 
+                                    <?php
+                                        }
+                                    ?>
+                                    
+                                </div>
+                                <div class="item_title">
+                                    <p><?php echo $data->getName() ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+</div>

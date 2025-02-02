@@ -1,0 +1,129 @@
+<style>
+    .sub_service_page .heading {
+        text-align: center;
+        margin: 30px 0;
+    }
+
+    .sub_service_page .heading h5 {
+        font-weight: 300;
+        font-size: 18px;
+        text-transform: uppercase;
+        color: #6F6F6F;
+    }
+
+    .sub_service_page .heading h2 {
+        font-weight: 400;
+        font-size: 36px;
+        text-transform: uppercase;
+        color: #000000;
+    }
+
+    .sub_service_page .heading h2:after {
+        content: "";
+        background: linear-gradient(180deg, #EB2291 0%, #FF1A00 100%);
+        height: 3px;
+        width: 120px;
+        display: block;
+        margin: auto;
+    }
+
+    .single_card {
+        margin: 0 0 30px 0;
+        background-color: #fff;
+       text-align:center;
+    }
+    .single_card:hover .text_wrap{
+        color: #fff;
+        background: linear-gradient(180deg, #EB2291 0%, #FF1A00 100%);
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+    }
+    .single_card:hover .text_wrap h4{
+        color: #fff;
+    }
+
+    .single_card .img_wrap img {
+        width: 100%;
+        /* border-radius: 30px; */
+        height: 150px;
+        object-fit: cover;
+    }
+
+    .single_card .text_wrap {
+        padding: 20px 10px 10px 10px;
+        /* margin: 20px 0; */
+    }
+
+    .text_wrap h4 {
+        font-weight: 700;
+        font-size: 24px;
+        text-transform: capitalize;
+        color: #000000;
+        margin-bottom: 14px;
+    }
+
+    .text_wrap p {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        text-transform: capitalize;
+        color: #6F6F6F;
+    }
+
+    .top_services .single_service .icon {
+        margin-bottom: 20px;
+    }
+
+    #C .page-products .page-title-wrapper {
+    	display: none;
+    	background: #fff;
+    	text-align: center;
+    	margin-bottom: 15px
+    }
+    .category-image .image {
+    	display: none;
+    	height: auto;
+    	max-width: 100%;
+    }
+</style>
+
+<?php
+$subcategories = $block->getSubCategories();
+?>
+<div class="sub_service_page">
+    <div class="heading">
+        <h5>What can we help you</h5>
+    </div>
+    <div class="all_cards">
+        <div class="container">
+            <div class="row">
+                <?php //print"<pre>"; print_r($subcategories);                        ?>
+                <?php foreach ($subcategories as $subCategory): ?>
+                    <?php //echo $subCategory['description'];                        ?>
+                    <?php $subCtgName = $subCategory['name'] ?>
+                    <?php
+                    $url = $subCategory['description'];
+                    if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
+                        $url = $subCategory['description'];
+                    } else {
+                        $url = $subCategory['url'];
+                    }
+                    ?>
+                    <div class="col-md-2">
+                        <a href="<?php echo $url; ?>">
+                            <div class="single_card pasha_card">
+                                <div class="img_wrap text_wrap">
+                                    <img src="<?php echo $subCategory['image'] ?>" alt="" />
+                                    <p>
+                                        <?php echo $subCategory['name'] ?>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+
+            </div>
+        </div>
+    </div>
+</div>

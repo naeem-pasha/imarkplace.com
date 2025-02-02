@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2020 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+        <head>
+             <remove src="css/home.css"/>
+             <remove src="css/custom.css"/>
+             <remove src="css/styles2.css"/>
+             <css src="css/catalog_category.css" rel="stylesheet" type="text/css"  order="170"/>
+        </head>
+        <body>
+        </body>
+</page>

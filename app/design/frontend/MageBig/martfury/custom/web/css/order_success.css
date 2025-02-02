@@ -1,0 +1,124 @@
+/* CSS FOR ORDER SUCCESS PAGE  */
+
+
+/* CSS FOR HEADING OF ORDER SUCCESS PAGE STARTS */
+.page-title{
+    font-weight: 600 !important;
+    text-align: center;
+    margin: 3rem 0rem 1rem 0rem;
+}
+
+/* CSS FOR HEADING OF ORDER SUCCESS PAGE ENDS */
+
+/* CSS FOR MAIN SECTION ON ORDER SUCCESS PAGE STARTS */
+.column.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkout-success{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+#registration > div:nth-of-type(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* CSS FOR MAIN SECTION ON ORDER SUCCESS PAGE ENDS */
+
+/* Button Styling For The Order Success Page Starts */
+.action.button, .action.continue {
+    border: 1px solid #c53e3e !important;
+}
+
+.action.primary, .action.secondary {
+    background: #c53e3e !important;
+    border: 1px solid #c53e3e !important;
+}
+
+.action.primary:hover, .action.secondary:hover {
+    color: #fff !important;
+
+
+}
+
+
+/* Button Styling For The Order Success Page Ends */
+
+/* Media Queries For The Order Success Page Starts */
+
+@media (max-width:576px){
+    
+    .page-title{
+        font-size: 2.2rem;
+        margin: 3rem 1rem 1rem 1rem;
+    }
+
+    .checkout-success{
+        margin: 2rem 1rem 2rem 1rem;
+
+    }
+
+    #registration > div:nth-of-type(2) {
+        margin: 0.5rem 1rem 2rem 1rem;
+    }
+
+    #registration > div:nth-of-type(2) > p:nth-of-type(1) {
+        text-align: center;
+    }
+
+    #registration > div:nth-of-type(2) > p:nth-of-type(2) {
+        text-align: center;
+    }
+    
+    .checkout-success > p:nth-of-type(2){
+        text-align: center;
+    }
+    
+    .action.primary, .action.secondary {
+     min-width: 40% !important;
+     font-size: 1.3rem !important;
+     padding:2px 7px !important;
+    
+    }
+
+
+}
+
+
+@media (min-width:768px){
+    .page-title{
+        font-size: 3rem;
+    }
+
+    #registration > div:nth-of-type(2) > p:nth-of-type(1) {
+        text-align: center;
+    }
+
+    #registration > div:nth-of-type(2) > p:nth-of-type(2) {
+        text-align: center;
+    }
+    
+    .checkout-success > p:nth-of-type(2){
+        text-align: center;
+    }
+    
+
+}
+
+/* Media Queries For The Order Success Page Ends */
+
+
+
+
+
+

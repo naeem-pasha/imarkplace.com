@@ -1,0 +1,82 @@
+<?php
+//echo " THIS IS A TEST ".$block->getData('message');;
+
+$value =  $block->getOrder() ;
+ 
+
+$msg_decode = base64_decode($value[1]);
+
+
+if($msg_decode == 'mw_success' || $msg_decode == 'otc_success' || $msg_decode == 'migs_success' || $msg_decode == 'pending_payment') {
+
+	if($msg_decode == 'mw_success') {
+		
+		$classCss = "message-success success message";
+
+		$message = ("Thanks Your Order has been processed."); //For Success Message
+
+	} else if($msg_decode == 'otc_success') {
+		
+		$classCss = "message-success success message";
+
+		$message = ("Order is placed and waiting for financials to be received over the counter."); //For Success Message
+
+	} else if($msg_decode == 'migs_success') {
+		
+		$classCss = "message-success success message";
+
+		$message = ("Thanks Your Order has been processed."); //For Success Message
+
+	} else if($msg_decode == 'pending_payment') {
+		
+		$classCss = "message-success success message";
+
+		$message = ("Order is placed and waiting for financials to be received over the counter."); //For Success Message
+
+	}
+
+} else {
+
+	if($msg_decode == 'mw_failed') {
+		
+		$classCss = "message-error error message";
+
+		$message = ('Sorry Your Order has been Failed.');//For Error Message
+
+	} else if($msg_decode == 'otc_failure') {
+		
+		$classCss = "message-error error message";
+
+		$message = ('Sorry Your Order has been Failed.');//For Error Message
+
+	} else if($msg_decode == 'migs_failure') {
+		
+		$classCss = "message-error error message";
+
+		$message = ('Sorry Your Order has been Failed.');//For Error Message
+
+	} else if($msg_decode == 'fraud') {
+		
+		$classCss = "message-error error message";
+
+		$message = ('Sorry Your Order has been Failed.');//For Error Message
+
+	} else if($msg_decode == 'no_data_posted') {
+		
+		$classCss = "message-error error message";
+
+		$message = ('No data posted.');//For Error Message
+
+	}
+}
+
+
+ ?>
+
+<div class="checkout-success">
+  <div role="alert"  class="messages">
+    <div class="<?php echo $classCss ?>" data-ui-id="message-success">
+      <div><?php echo $message;  ?></div>
+    </div>
+  </div>
+ </div>

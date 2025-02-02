@@ -1,0 +1,9 @@
+.cms-page-view {
+    #maincontent {
+        margin: 2rem 0 5rem;
+    }
+
+    .page-title {
+        @include page-title;
+    }
+}

@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Odoomarketplaceconnect di
+ *
+* @category  Webkul
+ * @package   Webkul_Odoomarketplaceconnect
+ * @author    Webkul
+ * @copyright Copyright (c) 2010-2017 Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ *
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Webkul\Odoomarketplaceconnect\Api\Data\SellersInterface" type="Webkul\Odoomarketplaceconnect\Model\Sellers" />
+    <preference for="Webkul\Odoomarketplaceconnect\Api\MpRepositoryInterface" type="Webkul\Odoomarketplaceconnect\Model\MpRepository" />
+    <preference for="Webkul\Odoomagentoconnect\Observer\SalesOrderAfterObserver" type="Webkul\Odoomarketplaceconnect\Observer\OrderSaveAfterObserver" />
+    <preference for="Webkul\Odoomagentoconnect\Observer\CategorySaveAfterObserver" type="Webkul\Odoomarketplaceconnect\Observer\WebsiteCategorySaveAfterObserver" />
+    <preference for="Webkul\Odoomagentoconnect\Helper\Connection" type="Webkul\Odoomarketplaceconnect\Helper\Connection" />
+    <virtualType name="SellersGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Webkul\Odoomarketplaceconnect\Model\ResourceModel\Sellers\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">SellersGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Webkul\Odoomarketplaceconnect\Model\ResourceModel\Sellers\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">odoomarketplaceconnect_sellers</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\Odoomarketplaceconnect\Model\ResourceModel\Sellers</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="odoomarketplaceconnect_sellers_listing_data_source" xsi:type="string">Webkul\Odoomarketplaceconnect\Model\ResourceModel\Sellers\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Webkul\Odoomarketplaceconnect\Api\Data\CategoryInterface" type="Webkul\Odoomarketplaceconnect\Model\Category" />
+    <virtualType name="CategoryGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Webkul\Odoomarketplaceconnect\Model\ResourceModel\Category\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">CategoryGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Webkul\Odoomarketplaceconnect\Model\ResourceModel\Category\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">odoomarketplaceconnect_category</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\Odoomarketplaceconnect\Model\ResourceModel\Category</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="odoomarketplaceconnect_category_listing_data_source" xsi:type="string">Webkul\Odoomarketplaceconnect\Model\ResourceModel\Category\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Webkul\Odoomarketplaceconnect\Api\Data\ProductInterface" type="Webkul\Odoomarketplaceconnect\Model\Product" />
+    <virtualType name="ProductGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Webkul\Odoomarketplaceconnect\Model\ResourceModel\Product\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">ProductGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Webkul\Odoomarketplaceconnect\Model\ResourceModel\Product\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">odoomarketplaceconnect_product</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\Odoomarketplaceconnect\Model\ResourceModel\Product</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="odoomarketplaceconnect_product_listing_data_source" xsi:type="string">Webkul\Odoomarketplaceconnect\Model\ResourceModel\Product\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Webkul\Odoomarketplaceconnect\Api\Data\OrderInterface" type="Webkul\Odoomarketplaceconnect\Model\Order" />
+    <virtualType name="OrderGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Webkul\Odoomarketplaceconnect\Model\ResourceModel\Order\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">OrderGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Webkul\Odoomarketplaceconnect\Model\ResourceModel\Order\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">odoomarketplaceconnect_order</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\Odoomarketplaceconnect\Model\ResourceModel\Order</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="odoomarketplaceconnect_order_listing_data_source" xsi:type="string">Webkul\Odoomarketplaceconnect\Model\ResourceModel\Order\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Webkul\Odoomarketplaceconnect\Api\Data\TransactionInterface" type="Webkul\Odoomarketplaceconnect\Model\Transaction" />
+    <virtualType name="TransactionGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Webkul\Odoomarketplaceconnect\Model\ResourceModel\Transaction\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">TransactionGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Webkul\Odoomarketplaceconnect\Model\ResourceModel\Transaction\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">odoomarketplaceconnect_transaction</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\Odoomarketplaceconnect\Model\ResourceModel\Transaction</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="odoomarketplaceconnect_transaction_listing_data_source" xsi:type="string">Webkul\Odoomarketplaceconnect\Model\ResourceModel\Transaction\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

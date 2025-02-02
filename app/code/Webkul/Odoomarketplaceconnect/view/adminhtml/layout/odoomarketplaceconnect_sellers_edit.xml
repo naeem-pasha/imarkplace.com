@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Odoomarketplaceconnect events xml
+ *
+* @category  Webkul
+ * @package   Webkul_Odoomarketplaceconnect
+ * @author    Webkul
+ * @copyright Copyright (c) 2010-2017 Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ *
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- <referenceContainer name="left">
+            <block class="Webkul\Odoomarketplaceconnect\Block\Adminhtml\Sellers\Edit\Tabs" name="Odoomarketplaceconnect.Sellers.edit.tabs"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Webkul\Odoomarketplaceconnect\Block\Adminhtml\Sellers\Edit" name="Odoomarketplaceconnect.Sellers.edit"/>
+        </referenceContainer>         -->
+    </body>
+</page>

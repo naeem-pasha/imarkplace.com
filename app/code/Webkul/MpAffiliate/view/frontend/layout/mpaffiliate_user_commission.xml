@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Webkul MpAffiliate User Commission layout.
+* @category  Webkul
+* @package   Webkul_MpAffiliate
+* @author    Webkul
+* @license   https://store.webkul.com/license.html
+*/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <head>
+        <css src="Webkul_MpAffiliate::css/style.css"/>
+        <css src="Webkul_Marketplace/css/wk_block.css"/>
+        <css src="Webkul_Marketplace/css/style.css"/>
+        <css src="Webkul_Marketplace/css/product.css"/>
+        <css src="Webkul_Marketplace/css/layout.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Webkul\MpAffiliate\Block\User\Commission" name="mpaffiliate_user_commission" template="Webkul_MpAffiliate::user/commission.phtml" cacheable="false" />
+        </referenceContainer>
+    </body>
+</page>

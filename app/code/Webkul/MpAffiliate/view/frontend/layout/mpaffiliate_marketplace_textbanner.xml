@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul MpAffiliate User Status layout.
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <head>
+        <css src="Webkul_Marketplace/css/wk_block.css"/>
+        <css src="Webkul_Marketplace/css/style.css"/>
+        <css src="Webkul_Marketplace/css/product.css"/>
+        <css src="Webkul_Marketplace/css/layout.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Webkul\MpAffiliate\Block\Marketplace\Textbanner" name="mpaffiliate_marketplace_banner" template="Webkul_MpAffiliate::marketplace/banner.phtml" cacheable="false" />
+        </referenceContainer>
+        <referenceBlock name="page.main.title" remove="true" />
+    </body>
+</page>

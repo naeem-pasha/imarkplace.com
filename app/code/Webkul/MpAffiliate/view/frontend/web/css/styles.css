@@ -1,0 +1,87 @@
+.wk-row-view td {
+    vertical-align: middle;
+}
+#affiliate-user-traffic-graph {
+    border: 1px solid #c6c6c6;
+    padding:5px;
+}
+.wk-affiliate-fieldset .vartical {
+    vertical-align: middle;
+}
+.wk-affiliate-fieldset .font-bold {
+    font-weight:bold;
+}
+.wk-affiliate-main
+{
+    top:61px;
+}
+.columns
+{
+    padding-top:35px;
+}
+.wk-affiliate-main
+{
+    z-index: 0;
+}
+.wk-mp-design .legend
+{
+    margin-left:0px !important;
+}
+.showData
+{
+     padding-bottom: 20px;
+
+}
+.showdata
+{
+   float:left;
+   margin-left: 10px;
+   height:150px;
+   cursor: pointer;
+   padding: 5px;
+   border: 1px solid #CCC;
+   width:10%;
+}
+.showfield
+{
+
+
+   border:3px solid red;
+
+}
+
+.actions-toolbar button.save{
+  float: right!important;
+  margin-right: 0px!important;
+}
+.wk_mppreorder_block {
+    border-left: 1px solid #ccc;
+    display: inline-block;
+    margin-left: 8px;
+    padding-left: 10px;
+    position: relative;
+    width: 30%;
+    left: 25px;
+}
+.wk_mppreorder_block:after, .wk_mppreorder_block:before {
+    border: 1px solid transparent;
+    content: " ";
+    height: 0;
+    left: -1px;
+    margin-top: -25px;
+    position: absolute;
+    width: 0;
+}
+.wk_mppreorder_block:after {
+    border-left-color: #ffffff;
+    border-width: 7px;
+    top: 36px;
+}
+.wk_mppreorder_block {
+    width: 80% !important;
+}
+.wk_mppreorder_block:before {
+    border-left-color: #cccccc;
+    border-width: 9px;
+    top: 34px;
+}

@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MarketplaceLearningManagementSystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="mp_lms_course_content_data" resource="default" engine="innodb"
+           comment="Course Content Data">
+        <column xsi:type="int" name="entity_id" padding="10" nullable="false"
+                identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="course_id" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Course ID"/>
+        <column xsi:type="varchar" name="title" nullable="false" comment="Content Title"/>
+        <column xsi:type="varchar" name="description" nullable="false" comment="Content Description"/>
+        <column xsi:type="varchar" name="section" nullable="false" comment="Section Title"/>
+        <column xsi:type="varchar" name="type" nullable="false" comment="Type"/>
+        <column xsi:type="int" name="preview" nullable="false" comment="Preview"/>
+        <column xsi:type="varchar" name="file_name" nullable="false" comment="File Name"/>
+        <column xsi:type="varchar" name="file_path" nullable="false" comment="File Path"/>
+        <column xsi:type="float" name="duration" nullable="false" comment="Duration"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+    <table name="mp_lms_course_qa_record" resource="default" engine="innodb"
+           comment="Question Answer">
+        <column xsi:type="int" name="entity_id" padding="10" nullable="false"
+                identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="student_id" padding="10" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Student ID"/>
+        <column xsi:type="varchar" name="student_name" comment="Student Name"/>
+        <column xsi:type="varchar" name="title" comment="Question Answer"/>
+        <column xsi:type="varchar" name="detail" comment="Detail"/>
+        <column xsi:type="int" name="chapter" comment="Chapter"/>
+        <column xsi:type="int" name="replies" comment="Replies"/>
+        <column xsi:type="varchar" name="created_date" comment="Created At"/>
+        <column xsi:type="varchar" name="status" comment="Status"/>
+        <column xsi:type="int" name="course_id" comment="Course Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+    <table name="mp_lms_qa_reply_record" resource="default" engine="innodb"
+           comment="Question Answer Reply">
+        <column xsi:type="int" name="entity_id" padding="10" nullable="false"
+                identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="qa_id" padding="10" nullable="false"
+                comment="Entity Id"/>
+        <column xsi:type="varchar" name="replied_by" comment="Replied By"/>
+        <column xsi:type="varchar" name="qna_thread" comment="Replied By"/>
+        <column xsi:type="varchar" name="created_at" comment="Replied By"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+    <table name="mp_lms_course_section" resource="default" engine="innodb"
+           comment="Course Sections">
+        <column xsi:type="int" name="entity_id" padding="10" nullable="false"
+                identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="course_id" padding="10" nullable="false"
+                comment="Entity Id"/>
+        <column xsi:type="varchar" name="title" comment="Replied By"/>
+        <column xsi:type="int" name="sort_order" comment="Replied By"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+    <table name="mp_lms_course_status" resource="default" engine="innodb"
+           comment="Course Status">
+        <column xsi:type="int" name="entity_id" padding="10" nullable="false"
+                identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="course_id" padding="10" nullable="false"
+                comment="Entity Id"/>
+        <column xsi:type="int" name="customer_id" comment="Customer Id"/>
+        <column xsi:type="int" name="content_id" comment="Content Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>

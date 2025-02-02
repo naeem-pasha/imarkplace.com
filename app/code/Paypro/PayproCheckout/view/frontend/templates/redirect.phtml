@@ -1,0 +1,90 @@
+<?php
+
+$order      = $block->getOrder();
+$orderId    = $order->getId();
+$first_name = $order->getCustomerName();
+$custEmail  = $order->getCustomerEmail();
+$custPhone  = $order->getBillingAddress()->getTelephone() ? $order->getBillingAddress()->getTelephone() : $order->getShippingAddress()->getTelephone();
+$totalprice = $order->getGrandTotal();
+$live       = $block->getConfig('payment/payprocheckout/live');
+$timeout    = intval($block->getConfig('payment/payprocheckout/orderExpireAfterMinutes'))*60;
+$storeName  = $block->getStoreName();
+$storeUrl   = $block->getStoreBaseUrl();
+$items      = $order->getAllItems();
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$currencysymbol = $objectManager->get('Magento\Store\Model\StoreManagerInterface');
+$currency = $currencysymbol->getStore()->getCurrentCurrencyCode();
+
+//Encrypting the username and password
+$token1 = $block->getConfig('payment/payprocheckout/username');
+$token2 = $block->getConfig('payment/payprocheckout/password');
+$cipher_method  = 'aes-128-ctr';
+$secret_word    = md5($block->getConfig('payment/payprocheckout/secretPublic'));
+
+//Getting Date according to Asia/Karachi Time Zone for Encryption
+$dt = new DateTime();
+$dt->setTimezone(new DateTimeZone('Asia/Karachi'));
+$dt->setTimestamp(time());
+
+$enc_key        = openssl_digest($secret_word.$dt->format('d/m/y'), 'SHA256', TRUE);
+$enc_iv         = openssl_random_pseudo_bytes(openssl_cipher_iv_length($cipher_method));
+$crypted_token1 = openssl_encrypt($token1, $cipher_method, $enc_key, 0, $enc_iv) . "::" . bin2hex($enc_iv);
+$crypted_token2 = openssl_encrypt($token2, $cipher_method, $enc_key, 0, $enc_iv) . "::" . bin2hex($enc_iv);
+unset($token, $cipher_method, $enc_key, $enc_iv);
+unset($token, $cipher_method, $enc_key, $enc_iv);
+
+// get order items
+foreach($items as $index=>$item) {
+
+    $quantity= intval($item->getQtyOrdered());
+    $prices  =floatval($item->getPrice());
+    $price=strval($prices);
+
+    $billdata[$index]['LineItem']=$item->getName();
+    $billdata[$index]['Quantity']=$quantity;
+    $billdata[$index]['UnitPrice']=$price;
+    $billdata[$index]['SubTotal']=$price*$quantity;
+}
+
+$bill=json_encode($billdata);
+//$payproIndexUrl = 'http://localhost:8000/secureform';
+$payproIndexUrl = 'https://marketplace.paypro.com.pk/secureform';
+$mangetoConfirmationUrl = $block->getConfirmUrl();
+$mangetoCancellationUrl = $block->getCancelUrl();
+$hashKey = "ah2j3iu2h2je87123yig|";
+$mode = ($live==1)?'no':'yes';
+//Get Order Amount
+$floatPrice = floatval($totalprice);
+if (strpos($floatPrice, '.') !== false) {
+    $amount = $floatPrice;
+} else {
+    $amount = sprintf("%0.1f",$floatPrice);
+}
+?>
+
+<form name="payprocheckoutform" id="paypro-payment-form" method="get" action="<?php echo $payproIndexUrl; ?>">
+    <input name="mid"               value="<?= $crypted_token1; ?>" hidden = "true"/>
+    <input name="mpw"               value="<?= $crypted_token2; ?>" hidden = "true"/>
+    <input name="first_name"        value="<?= $first_name; ?>" hidden = "true"/>
+    <input name="last_name"         value="<?= ""; ?>" hidden = "true"/>
+    <input name="secret_public"     value="<?= base64_encode($block->getConfig('payment/payprocheckout/secretPublic')); ?>" hidden = "true"/>
+    <input name="request_site_url"  value="<?= $mangetoConfirmationUrl; ?>" hidden = "true"/>
+    <input name="request_site_return_url"  value="<?= $mangetoCancellationUrl; ?>" hidden = "true"/>
+    <input name="merchant_name"     value="<?= $storeName; ?>" hidden = "true"/>
+    <input name="cartTotal"         value="<?= $amount; ?>" hidden = "true"/>
+    <input name="is_encrypted"      value="1" hidden = "true"/>
+    <input name="timeout"           value="<?= $timeout; ?>" hidden = "true"/>
+    <input name="merchant_order_id" value="<?= $orderId; ?>" hidden = "true"/>
+    <input name="paypro_order_id"   value="<?= time().'-'.$orderId; ?>" hidden = "true"/>
+    <input name="email"             value="<?= $custEmail ?>" hidden = "true"/>
+    <input name="phone"             value="<?= $custPhone ?>" hidden = "true"/>
+    <input name="request_from"      value="magento" hidden = "true"/>
+    <input name="request_is_valid"  value="true" hidden = "true"/>
+    <input name="store_currency"    value="<?= $currency ?>" hidden = "true"/>
+    <input name="mode"              value="<?= $mode ?>" hidden = "true"/>
+    <input name="cartItemList"      value="<?= urlencode($bill) ?>" hidden="true">
+</form>
+
+<script type="text/javascript">
+    document.payprocheckoutform.submit();
+</script>

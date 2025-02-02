@@ -1,0 +1,52 @@
+:root {
+    --c-primary: #002A53;
+    --c-secondary: #3e9fd6;
+    --c-black: black;
+    --c-white: white;
+    --c-light: #bdbdbd;
+    --c-gray: #a8a8a8;
+    --c-link: #007bdb;
+    --c-price: #dd2400;
+    --c-text: black;
+    --c-bg: #f9f9f9;
+    --c-bg-black: black;
+    --c-bg-white: white;
+    --c-border: #d8d8d8;
+    --c-slide: #eee;
+    --c-slide-active: black;
+    --c-icon: #d9c09e;
+    --c-icon-active: #462724;
+    --c-disabled: #b3b3b3;
+    --c-form: #6e6e6e;
+    --c-error: #dd2400;
+    --c-border-error: #ed8380;
+    --br: 50px;
+    --transition-speed: 0.3s;
+    --transition: all 0.3s ease;
+
+    --z-header: 3;
+    --z-footer: 3;
+    --z-notification: 1000;
+    --z-ui-tooltip: 1200;
+    --z-ui-tooltip-icon: 1220;
+
+    // now using only one font Ubuntu as per design
+    --font-primary: "Ubuntu", "ubuntu-custom", "Segoe UI", Roboto, "Helvetica Neue", sans-serif، Arial;
+    --font-secondary: "Ubuntu", "ubuntu-custom", "Segoe UI", Roboto, "Helvetica Neue", sans-serif، Arial;
+
+    --h1: 2rem;
+    --h2: 2rem;
+    --h3: 2rem;
+    --h4: 2rem;
+    --h5: 2rem;
+    --h6: 2rem;
+
+    @include for-desktop {
+        --h1: 3rem;
+        --h2: 3rem;
+        --h3: 1.6rem;
+        --h4: 2.4rem;
+        --h5: 2.4rem;
+        --h6: 2.4rem;
+    }
+}

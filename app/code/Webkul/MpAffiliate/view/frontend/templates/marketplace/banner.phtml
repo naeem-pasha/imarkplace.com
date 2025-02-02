@@ -1,0 +1,337 @@
+<?php
+/**
+ * Webkul MpAffiliate Textbanner layout.
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @license   https://store.webkul.com/license.html
+ */
+$bannerInfo = $block->getTextBanner();
+$sellerProduct = $block->getSellerProducts();
+$bannerId = $block->getRequest()->getParam('edit');
+$link = '';
+$text = '';
+$title = '';
+$size = '';
+if (isset($bannerId) && $bannerId!="") {
+    $editdata = $block->getTextBannerById($bannerId);
+    $link = $editdata[0]['link'];
+    $text =$editdata[0]['text'];
+    $title =$editdata[0]['title'];
+    $size =$editdata[0]['banner_size'];
+    ?>
+<form
+    action="<?= /* @noEscape */  $block->getUrl("mpaffiliate/marketplace/updatebanner") ?>"
+    method="POST"
+    id="form-customer-attr-new">
+    <div class="wk-mp-design">
+        <fieldset class="info wk-mp-fieldset fieldset" id="associate-product">
+            <legend class="legend">
+                <h1 style="float:left;"><?= /* @noEscape */  __("Update Text Banner") ?></h1>
+                <button class="button wk-mp-btn"
+                    title="<?= /* @noEscape */  __('Update Banner') ?>"
+                    type="submit" id="save-btn">
+                    <span><span><?= /* @noEscape */  __('Update Banner') ?></span></span>
+                </button>
+            </legend>
+        <input type="hidden" value="<?= /* @noEscape */  $bannerId; ?>" name="banner_id">
+<?php } else { ?>
+<form
+    action="<?= /* @noEscape */  $block->getSaveAction();?>"
+    method="POST"
+    id="form-customer-attr-new">
+    <div class="wk-mp-design">
+        <fieldset class="info wk-mp-fieldset fieldset" id="associate-product">
+            <legend class="legend">
+                <h1 style="float:left;"><?= /* @noEscape */  __("Create Text Banner") ?></h1>
+                <button class="button wk-mp-btn" title="<?= /* @noEscape */  __('Save') ?>" type="submit" id="save-btn">
+                    <span><span><?= /* @noEscape */  __('Save') ?></span></span>
+                </button>
+            </legend>
+            <input type="hidden"  name="status"  value="0">
+<?php } ?>
+            <div class="fieldset form-list" id="cust">
+                <div class="field required">
+                    <label class="label"><?= /* @noEscape */  __('Title') ?> : </label>
+                    <div class="control">
+                        <input type="text"
+                            class="input-text required-entry" name="title"
+                            value="<?php if ($title!='') { ?><?= /* @noEscape */  $title; }?>"
+                             aria-required="true"/>
+                    </div>
+                </div>
+            </div>
+            <div class="field required">
+                <label class="required"><?= /* @noEscape */  __('Text');?></label>
+                <textarea class="input-text required-entry" name="text" id="description" rows="5" cols="75">
+                    <?php if ($text!='') { ?> <?= /* @noEscape */  $text; }?>
+                </textarea>
+            </div>
+            <div class="field required">
+                <label class="label"><?= /* @noEscape */  __('Link') ?> : </label>
+                <div class="control">
+                    <select class="select validate-select"
+                        name="link"
+                        value="<?php if ($link!='') { ?> <?= /* @noEscape */ $link; } ?>"
+                        id="select-to-seller">
+                        <optgroup label="<?= /* @noEscape */  __('Select the product')?>">
+                            <?php foreach ($sellerProduct as $product) {?>
+                            <option
+                                value="<?= /* @noEscape */  $product->getProductUrl();?>"
+                                <?php if ($product->getProductUrl()==$link) { echo "selected"; }  ?>>
+                                <?= /* @noEscape */  $product->getName(); ?>
+                            </option>
+                            <?php } ?>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="field required">
+                <label class="label"><?= /* @noEscape */  __('Size') ?> : </label>
+                <div class="input-box">
+                    <select class="select validate-select" name="banner_size" id="aff_selectsizedata">
+                        <optgroup id="affiliateSizeGroupsOptions" label="Select Size:">
+                            <option value="auto" <?php if ($size=="auto") { echo "selected"; }  ?> >
+                                <?= /* @noEscape */  __('∞ (Fluid)')?>
+                            </option>
+                            <option value="88x31" <?php if ($size=="88x31") { echo "selected"; }  ?>>
+                                <?= /* @noEscape */  __('88x31 (Micro Bar)')?>
+                            </option>
+                            <option value="120x600" <?php if ($size=="120x600") { echo "selected"; }  ?>>
+                                <?= /* @noEscape */  __('120x600 (Skyscraper)')?>
+                            </option>
+                            <option value="120x240" <?php if ($size=="120x240") { echo "selected"; }  ?>>
+                                <?= /* @noEscape */  __('120x240 (Vertical Banner)')?>
+                            </option>
+                            <option value="160x600" <?php if ($size=="160x600") { echo "selected"; }  ?>>
+                                <?= /* @noEscape */  __('160x600 (Wide Skyscraper)')?>
+                            </option>
+                            <option value="234x60" <?php if ($size=="234x60") { echo "selected"; }  ?>>
+                                <?= /* @noEscape */  __('234x60 (Half Banner)')?>
+                            </option>
+                            <option value="300x600" <?php if ($size=="300x600") { echo "selected"; }  ?>>
+                                <?= /* @noEscape */  __('300x600 (Half Page Ad)')?>
+                            </option>
+                            <option value="468x60" <?php if ($size=="468x60") { echo "selected"; }  ?>>
+                                <?= /* @noEscape */  __('468x60 (Full Banner)')?>
+                            </option>
+                            <option value="728x90" <?php if ($size=="728x90") { echo "selected"; }  ?>>
+                                <?= /* @noEscape */  __('728x90 (Leaderboard)')?>
+                            </option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</form>
+
+<?php
+if (!$block->getRequest()->getParam('edit')) { ?>
+    <?php if (count($bannerInfo)) { ?>
+        <div id="all-banner">
+            <div>
+                <h1 style="float:left;"><?= /* @noEscape */  __("Banners :") ?></h1>
+            </div>
+            <table cellspacing="0" class="border wk-mp-list-table wk-mp-list-container-table">
+                <thead>
+                    <tr class="wk-content">
+                        <th class="wk-first-td">
+                            <span ><?= /* @noEscape */  __('Title')?></span>
+                        </th>
+                        <th class="wk-list-th-display">
+                            <span><?= /* @noEscape */  __('Size')?></span>
+                        </th>
+                        <th class="wk-list-th-display1">
+                            <span><?= /* @noEscape */  __('Preview')?></span>
+                        </th>
+                        <th class="wk-list-th-display">
+                            <span><?= /* @noEscape */  __('Status')?></span>
+                        </th>
+                        <th>
+                            <span><?= /* @noEscape */  __('Action')?></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="banner-table">
+            <?php foreach ($bannerInfo as $key => $val) { ?>
+                    <tr class="wk-row-view" id="<?= /* @noEscape */  $key ?>">
+                        <td class="wk-first_td">
+                            <span class="label name" title="<?= /* @noEscape */  $val['title']; ?>">
+                            <?php
+                            $texttitle = strlen($val['title'])>20?substr($val['title'], 0, 20)."..":$val['title']; ?>
+                           <?= /* @noEscape */ htmlentities($texttitle);
+                            $affSize = explode('x', $val['banner_size']);
+                            if ($affSize[0] == 'auto') {
+                                $width = 'auto';
+                                $height = 'auto';
+                            } else {
+                                $width = $affSize[1].'px';
+                                $height = $affSize[0].'px';
+                            }
+                            $code="
+                                <div style='display: inline-block;
+                                    text-align:center;
+                                    padding: 10px;
+                                    border: 1px solid #CCC;
+                                    width:".$width.";
+                                    height:".$height.";'>
+                                    <a href='".$val['link']."?&banner_id=".$val['entity_id']."'
+                                        style='text-decoration: none;'>
+                                        <strong>".htmlentities($texttitle)."</strong>
+                                    </a>
+                                    <br/><br/>
+                                    <a href='".$val['link']."?&banner_id=".$val['entity_id']."'
+                                        style='text-decoration: none;'>
+                                        <strong>".htmlentities($val['text'])."</strong>
+                                    </a>
+                                </div>";
+                            $code=htmlentities($code);
+                            ?>
+                            </span>
+                        </td>
+                        <td class="wk-list-th-display">
+                            <span class="label">
+                            <?= /* @noEscape */  $val['banner_size'];?>
+                            </span>
+                        </td>
+                        <td class="wk-list-th-display1" id="<?= /* @noEscape */  $key ?>">
+                        <input type="hidden"
+                            class="label htmlcode"
+                            name="pree"
+                            id="<?= /* @noEscape */  "diw".$key?>"
+                            value="<?= /* @noEscape */  $code ;?>"/>
+                        <span class="label prevs">
+                            <button class="button prevspc">
+                                <span>
+                                    <span><?= /* @noEscape */  __('Preview') ?></span>
+                                </span>
+                            </button>
+                        </span>
+                        </td>
+                        <?php if ($val['status']==0) { ?>
+                        <td class="wk-list-th-display" id="<?= /* @noEscape */  "status".$key?>">
+                            <?= /* @noEscape */  __('Unapproved')?>
+                        </td>
+                        <?php } else {?>
+                        <td class="wk-list-th-display" id="<?= /* @noEscape */  "status".$key?>">
+                            <?= /* @noEscape */  __('Approved')?>
+                        </td>
+                        <?php } ?>
+                        <?php if ($val['status'] == 0) { ?>
+                            <td class="">
+                                <button class="button save-data appunapp"
+                                    data-value="1"
+                                    title="<?= /* @noEscape */  __('Approve ') ?>"
+                                    style="float: left;padding: 0px auto;margin-left: 11px;"
+                                    data-affiliate-id="<?= /* @noEscape */  $val['seller_id']?>"
+                                    id="<?= /* @noEscape */  $val['entity_id'] ;?>">
+                                    <span>
+                                        <span>
+                                            <?= /* @noEscape */  __('Approve') ?>
+                                        </span>
+                                    </span>
+                                </button>
+                                <button class="button save-data"
+                                    data-value="2"
+                                    data-affiliate-id="<?= /* @noEscape */  $val['seller_id'];?>"
+                                    title="<?= /* @noEscape */  __('Delete') ?>"
+                                    style="float: left;padding: 0px auto;margin-left: 11px;"
+                                    id="<?= /* @noEscape */  $val['entity_id'] ;?>">
+                                    <span>
+                                        <span>
+                                            <?= /* @noEscape */  __('Delete') ?>
+                                        </span>
+                                    </span>
+                                </button>
+                                <?php
+                                $textBannerUrl = $block->getUrl(
+                                    'mpaffiliate/marketplace/textbanner',
+                                    ['edit' => $val['entity_id']]
+                                );
+                                ?>
+                                <a href="<?= /* @noEscape */  $textBannerUrl ?>"
+                                    style="text-decoration:none; margin-left:3%;"
+                                    id="wk_edit">
+                                    <button class="wk_deny button">
+                                        <span>
+                                            <span>
+                                                <?= /* @noEscape */  __('Edit')?>
+                                            </span>
+                                        </span>
+                                    </button>
+                                </a>
+                            </td>
+                    <?php } else { ?>
+                            <td class=" ">
+                                <button class="button save-data appunapp" data-value="0"
+                                    data-affiliate-id="<?= /* @noEscape */  $val['seller_id']?>"
+                                    title="<?= /* @noEscape */  __('Unapprove') ?>"
+                                    style="float: left;padding: 0px auto;margin-left: 11px;"
+                                    id="<?= /* @noEscape */  $val['entity_id'] ;?>">
+                                    <span>
+                                        <span>
+                                            <?= /* @noEscape */  __('Unapprove') ?>
+                                        </span>
+                                    </span>
+                                </button>
+                                <button class="button save-data" data-value="2"
+                                data-affiliate-id="<?= /* @noEscape */  $val['seller_id']?>"
+                                title="<?= /* @noEscape */  __('Delete') ?>"
+                                style="float: left;padding: 0px auto;margin-left: 11px;"
+                                id="<?= /* @noEscape */  $val['entity_id'] ;?>">
+                                    <span>
+                                        <span>
+                                            <?= /* @noEscape */  __('Delete') ?>
+                                        </span>
+                                    </span>
+                                </button>
+                                <?php
+                                $textBannerUrl = $block->getUrl(
+                                    'mpaffiliate/marketplace/textbanner',
+                                    ['edit' => $val['entity_id']]
+                                );
+                                ?>
+                                <a href="<?= /* @noEscape */  $textBannerUrl ?>"
+                                    style="text-decoration:none;margin-left:3%;"
+                                    id="wk_edit">
+                                    <button class="wk_deny button">
+                                        <span>
+                                            <span>
+                                                <?= /* @noEscape */  __('Edit')?>
+                                            </span>
+                                        </span>
+                                    </button>
+                                </a>
+                            </td>
+                    <?php } ?>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        </div>
+        <?php if ($block->getPagerHtml()): ?>
+            <div class="toolbar bottom"><?= /* @noEscape */  $block->getPagerHtml(); ?></div>
+        <?php endif ?>
+    <?php }?>
+<?php } ?>
+<script type="text/x-magento-init">
+{
+"*": {
+      "mpaffiliateTextBanner":
+          {
+            "save_banner":"<?= /* @noEscape */  $block->getUrl(
+                'mpaffiliate/marketplace/actionbanner',
+                ['_secure' => $block->getRequest()->isSecure()]
+            );?>"
+          }
+    }
+}
+</script>
+<div class="buttons-set">
+    <p class="back-link">
+        <a href="javascript:;" onclick="javascript: window.history.back();" class="left">
+            &laquo; <?= /* @noEscape */ __('Back') ?>
+        </a>
+    </p>
+</div>

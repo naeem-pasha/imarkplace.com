@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+* Webkul Software.
+*
+* @category  Webkul
+* @package   Webkul_MarketplaceLearningManagementSystem
+* @author    Webkul
+* @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+* @license   https://store.webkul.com/license.html
+*/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer_account_navigation">
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-custom">
+                <arguments>
+                    <argument name="path" xsi:type="string">mplms/mycourse/list</argument>
+                    <argument name="label" xsi:type="string">My Course</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

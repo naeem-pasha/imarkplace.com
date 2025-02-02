@@ -1,0 +1,37 @@
+<?php 
+    $news = $block->see_all();
+    if(count($news) > 0):
+?>
+<div class="row">
+    <?php foreach ($news as $_news) {
+        $img_url = null;
+        if($_news['image']){
+            $img_url = $_news['image'];
+        }else{
+            $img_url = $block->getBaseUrl().'/media/blog/news-placeholder.jpg';
+        }
+    ?>
+        <div class="col-md-4 view__all_card">
+            <div class="view___card">
+                <img alt="imarkplace" src="<?php echo $img_url ?>" class="new__card_img"   width="100%" />
+                <div class="view_all_card_bg">
+                    <h3 class="news__title"><?= $_news['title'] ?></h3>
+                    <?php if($_news['source']): ?>
+                    <h5 class="news__source">Source : <span><?= $_news['source'] ?><span></h5>
+                    <?php endif; ?>
+                    <p class="news__detail"><?= $_news['description'] ?></p>
+                    <h5 class="news__published">Publish at : <span><?= $_news['published_at'] ?> <span></h5>
+                    <?php if ( $_news['url'] ): ?>
+                        <a href="<?php echo $_news['url'] ?>" target="_blank" rel="noopener" class="news__readmore">Read more »</a>
+                    <?php endif;?>
+                </div>
+            </div>
+        </div>
+    <?php 
+        } 
+    ?>
+</div>
+<?php 
+    endif;
+?> 
+   

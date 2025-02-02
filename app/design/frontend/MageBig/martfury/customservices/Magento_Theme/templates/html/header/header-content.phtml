@@ -1,0 +1,153 @@
+<?php
+$mbHelper       = $this->helper('MageBig\MbFrame\Helper\Data');
+$logoSticky     = $mbHelper->getConfig('mbconfig/header/logo_sticky');
+$pathLogo       = $mbHelper->getBaseMediaUrl() . 'wysiwyg/magebig/logo/';
+$blockLogo      = $block->getLayout()->createBlock('Magento\Theme\Block\Html\Header\Logo');
+$blockWelcome   = $block->getLayout()->createBlock('Magento\Theme\Block\Html\Header');
+$blockCustomer  = $block->getLayout()->createBlock('Magento\Customer\Block\Account\Customer');
+//$wishlistHelper = $this->helper('Magento\Wishlist\Helper\Data');
+$menuLayout     = $mbHelper->getConfig('mbconfig/header/menu_layout');
+$topMenuBtn     = $mbHelper->getConfig('mbconfig/mobile_view/btn_menu');
+$bottomMenu     = $mbHelper->getConfig('mbconfig/mobile_view/bottom_menu');
+?>
+<div class="header-top-inner">
+    <div class="container">
+        <div class="row align-items-center header-top-row">
+            <div class="d-none d-md-block col-sm-1 col-lg-3">
+                <div class="welcome"><?= $blockWelcome->getWelcome() ?></div>
+            </div>
+            <div class="d-none d-md-block col-sm-1 col-lg-2">
+                <!-- <div class="app-download-btn">
+                    <a href="https://play.google.com/store/apps/details?id=com.greens.fins.innovations.imarkplace" class="android-download-btn" target="_blank" rel="noopener">
+                        <img alt="imarkplace" src="<?php echo $mbHelper->getBaseMediaUrl()."placeholder/android-download-btn.png";  ?>" alt="android-download" width="90px">
+                    </a>
+                    <a href="https://apps.apple.com/pk/app/imarkplace/id1645052034" class="iso-download-btn" target="_blank" rel="noopener">
+                        <img alt="imarkplace" src="<?php echo $mbHelper->getBaseMediaUrl()."placeholder/ios-download-btn.png";  ?>" alt="ios-download" width="90px">
+                    </a>
+                </div> -->
+            </div>
+            <div class="col-12 col-md-12 col-lg-7">
+                <div class="row align-items-center justify-content-end top-link-wrap">
+                    <?= $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('top-links')->toHtml(); ?>
+                    <?= $this->getChildHtml('currency') ?>
+                    <?= $this->getChildHtml('store_language') ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="header-main-content sticky-menu">
+    <div class="container">
+        <div class="header-main-inner <?php if ($menuLayout == 'horizontal') : ?>header-horizontal<?php endif;?>">
+            <div class="row align-items-center header-maininner-row">
+                <div class="col-12 col-md-3 col-lg-3 col-logo">
+                    <div class="menu-logo">
+                        <?php if ($topMenuBtn) : ?>
+                        <div class="btn-nav-mobile-top d-table-cell d-md-none"><button type="button" class="btn-nav mb-toggle-switch mb-toggle-switch__htx" aria-label="menu"><span></span></button></div>
+                        <?php endif ?>
+                        <div class="logo-top d-table-cell <?php if ($topMenuBtn) echo 'has-btn' ?>"><?= $this->getChildHtml('logo') ?></div>
+                        <div class="icon-top-mobile">
+                            <?= $this->getChildHtml('wishlist_icon') ?>
+                            <div class="minicart-action">
+                                <a class="action showcart" href="<?= $block->getUrl('checkout/cart') ?>"
+                                   data-bind="scope: 'minicart_content'">
+                                    <i class="mbi mbi-cart"></i>
+                                    <span class="counter qty empty"
+                                          data-bind="css: { empty: !!getCartParam('summary_count') == false }, blockLoader: isLoading">
+                                    <span class="counter-number" data-bind="html: getCartParam('summary_count') > 9 ? '&nbsp;9<sup>+</sup>' : getCartParam('summary_count')"></span>
+                                </span>
+                                </a>
+                            </div>
+                            <div class="user-icon-mobile user-topbar"><i class="mbi mbi-user"></i></div>
+                        </div>
+                    </div>
+                    <?= $this->getChildHtml('smartmenu.topnav') ?>
+                </div>
+                <div class="col-md-4 col-lg-4 col-xl-4 col-search">
+                    <div class="top-search-wrap mfp-with-anim">
+                        <?= $this->getChildHtml('topSearch') ?>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 col-lg-5 col-xl-5 col-btn-actions-desktop d-none d-md-block">
+                    <div class="header-content-action row no-gutters">
+                        <div class="col-auto top-links"><a href="<?= $block->getUrl('b2bmarketplace/supplier/create/'); ?>">Buyer Registration</a></div>
+                        <div class="col-auto top-links"><a href="<?= $block->getUrl('b2bmarketplace/supplier/login/'); ?>">Seller Registration</a></div>
+                        <div class="col-auto top-links top-links-login"><a href="<?= $block->getUrl('customer/account/login/'); ?>">Login</a></div>
+                            <?php /* ?>
+                            <span class="counter qty">
+                                <span class="cart-label"> - </span>
+                                <span class="subtotal-top" data-bind="scope: 'ajaxcart_content'">
+                                    <!-- ko ifnot: getCartParam('subtotal') -->
+                                    <span class="price-zero"><?= $this->helper('Magento\Framework\Pricing\Helper\Data')->currency(number_format(0, 2), true, false); ?></span>
+                                    <!-- /ko -->
+                                    <span class="price-label" data-bind="html: getCartParam('subtotal')"></span>
+                                </span>
+                            </span>
+                            */ ?>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="header-menu-content d-none d-md-block">
+    <div class="container">
+        <div class="menu-container">
+            <?php if ($menuLayout == 'vertical') : ?>
+            <div class="row align-items-center">
+                <div class="col-3 d-none">
+                </div>
+                <div class="col-9 col-md-9 col-lg-6 d-none d-md-block">
+                    <div class="horizontal-menu-wrap"><?= $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('horizontal-menu')->toHtml(); ?></div>
+                </div>
+                <div class="col-12 col-md-3 d-none d-lg-block website-switcher">
+                    <div class=""></div>
+                    <?= $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('hotline')->toHtml(); ?>
+                </div>
+            </div>
+            <?php else: ?>
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <?= $this->getChildHtml('smartmenu.topnav-hori') ?>
+                </div>
+            </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+<?php if($bottomMenu) : ?>
+<div class="d-block d-md-none col-btn-actions">
+    <div class="header-content-action row no-gutters">
+        <div class="btn-nav-mobile col">
+            <button type="button" class="btn-nav mb-toggle-switch mb-toggle-switch__htx" aria-label="menu"><span></span></button>
+            <div class="menu-btn-text"><?= $block->escapeHtml(__('Menu')) ?></div>
+        </div>
+        <div class="btn-search-mobile col">
+            <i class="mbi mbi-magnifier"></i>
+            <div class="menu-btn-text"><?= __('Search') ?></div>
+        </div>
+        <div class="col col-home">
+            <a href="<?= $block->getBaseUrl() ?>" class="go-home"><i class="mbi mbi-home3"></i></a>
+            <div class="menu-btn-text"><?= $block->escapeHtml(__('Home')) ?></div>
+        </div>
+
+        <div class="col col-cart">
+            <div class="minicart-action">
+                <a class="action showcart" href="<?= $block->getUrl('checkout/cart') ?>" data-bind="scope: 'minicart_content'">
+                    <i class="mbi mbi-cart"></i>
+                    <span class="counter qty empty" data-bind="css: { empty: !!getCartParam('summary_count') == false }, blockLoader: isLoading">
+                        <span class="counter-number" data-bind="html: getCartParam('summary_count') > 9 ? '&nbsp;9<sup>+</sup>' : getCartParam('summary_count')"></span>
+                    </span>
+                </a>
+            </div>
+            <div class="menu-btn-text"><?= $block->escapeHtml(__('My Cart')) ?></div>
+        </div>
+
+        <div class="user-topbar col">
+            <i class="mbi mbi-user"></i>
+            <div class="menu-btn-text"><?= $block->escapeHtml(__('Me')) ?></div>
+        </div>
+    </div>
+</div>
+<?php endif ?>

@@ -1,0 +1,39 @@
+.blog {
+    .post {
+        &__list {
+            padding-top: 10px;
+            margin-bottom: 30px;
+        }
+
+        &__item {
+            a {
+                color: var(--c-primary);
+
+                &:hover {
+                    color: var(--c-secondary);
+                }
+            }
+        }
+
+        &__content {
+            padding: 15px 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        &__title {
+            -webkit-line-clamp: 1;
+            color: var(--c-primary);
+        }
+
+        &__meta {
+            color: var(--c-gray);
+            font-size: 14px;
+        }
+
+        &__short-description {
+            height: 88px;
+        }
+    }
+}

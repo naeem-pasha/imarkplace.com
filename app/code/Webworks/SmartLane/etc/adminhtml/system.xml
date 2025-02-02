@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Representation of SMS module in System Configuration (Magento admin panel).
+ *
+ * Copyright © 2017- Webworks, . All rights reserved.
+ * Author : Naveed asim.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<section id="webworks" translate="label" type="text" sortOrder="102" showInDefault="1" showInWebsite="0" showInStore="0">
+			<label>SmartLane Configuration</label>
+			<tab>service</tab>
+			<resource>Webworks_SmartLane::config_smartlane</resource>
+			<group id="smartlane" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+				<label>General</label>
+				<field id="api_url" translate="label api_url" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>API Url</label>
+					<comment>API Path</comment>
+				</field>
+				<field id="api_key" translate="label api_key" type="password" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>API Key</label>
+					<comment>API Key</comment>
+				</field>
+
+				<field id="create_integration" translate="Send Auth Keys to SmartLane" type="button" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+					<label>Share Auth Keys</label>
+					<comment>Add API URL,Key and press save button before sharing Keys to Smartlane</comment>
+					<frontend_model>Webworks\SmartLane\Block\System\Config\Button</frontend_model>
+				</field>
+
+			</group>
+		</section>
+	</system>
+</config>
+

@@ -1,0 +1,23 @@
+<?php 
+    $view_all = $block->view_all();
+    if(count($view_all) > 0){
+?>  <div class="search-vendor">
+        <div class="row">
+            <?php foreach ($view_all as $vendor){ ?>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img alt="imarkplace" class="card-img-top" src="<?php echo $vendor['image']; ?>" alt="Card image" style="width:100%">
+                        <div class="card-body">
+                            <h4 class="card-title"><?php echo $vendor['name']; ?></h4>
+                            <a href="<?php echo $vendor['url']; ?>" class="btn btn-primary">See Profile</a>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+<?php }else{ ?>
+    <div>
+        <h4>No result found</h4>
+    </div>
+<?php } ?>

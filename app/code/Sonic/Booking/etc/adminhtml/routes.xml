@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+  <router id="admin">
+      <route id="ordersdetail" frontName="ordersdetail">
+          <module name="Sonic_Booking"/>
+      </route>
+      <route id="orderbook" frontName="orderbook">
+          <module name="Sonic_Booking"/>
+      </route>
+  </router>
+</config>

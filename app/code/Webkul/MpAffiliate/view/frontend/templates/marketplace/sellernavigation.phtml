@@ -1,0 +1,142 @@
+<?php
+/**
+ * Webkul Affiliate User Navigation.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+
+$viewModel = $block->getViewModel();
+$helper = $viewModel->getMpHelper();
+$isSellerGroup = $helper->isSellerGroupModuleInstalled();
+$affhelper = $viewModel->getHelper();
+$configdata = $affhelper->getAffiliateConfig();
+$isPartner = $helper->isSeller() && $configdata['enable'];
+$isAffReqAction = $helper->isAllowedAction('mpaffiliate/marketplace/affiliaterequest');
+$isAffConfAction = $helper->isAllowedAction('mpaffiliate/marketplace/affiliateconfiguration');
+$isMailtoAffiliateAction = $helper->isAllowedAction('mpaffiliate/marketplace/mailtoaffiliate');
+$isTextBannerAction = $helper->isAllowedAction('mpaffiliate/marketplace/textbanner');
+$isSummaryAction = $helper->isAllowedAction('mpaffiliate/marketplace/summary');
+$isPaymentAction = $helper->isAllowedAction('mpaffiliate/marketplace/payment');
+$isCatCommAction = $helper->isAllowedAction('mpaffiliate/marketplace/categorycommission');
+if ($isPartner && (
+    (($isSellerGroup && $isAffReqAction) || !$isSellerGroup) ||
+    (($isSellerGroup && $isAffConfAction) || !$isSellerGroup) ||
+    (($isSellerGroup && $isMailtoAffiliateAction) || !$isSellerGroup) ||
+    (($isSellerGroup && $isTextBannerAction) || !$isSellerGroup) ||
+    (($isSellerGroup && $isSummaryAction) || !$isSellerGroup) ||
+    (($isSellerGroup && $isPaymentAction) || !$isSellerGroup)
+)) { ?>
+    <?php $navSelectClass = $block->getNavSelectClass('mpaffiliate/user/affiliaterequest') ?>
+    <?php $affReqMpNavClass = $block->getNavSelectClass('mpaffiliate/marketplace/affiliaterequest') ?>
+    <?php $affConfMpNavClass = $block->getNavSelectClass('mpaffiliate/marketplace/affiliateconfiguration') ?>
+    <?php $catCommMpNavClass = $block->getNavSelectClass('mpaffiliate/marketplace/categorycommission') ?>
+    <?php $mailToAffMpNavClass = $block->getNavSelectClass('mpaffiliate/marketplace/mailtoaffiliate') ?>
+    <?php $textBannerMpNavClass = $block->getNavSelectClass('mpaffiliate/marketplace/textbanner') ?>
+    <?php $summaryMpNavClass = $block->getNavSelectClass('mpaffiliate/marketplace/summary') ?>
+    <?php $paymentMpNavClass = $block->getNavSelectClass('mpaffiliate/marketplace/payment') ?>
+<li class="nav item main-menu mpaffiliate-marketplace-navigation <?= /* @noEscape */  $navSelectClass ?>">
+    <?php if ($affReqMpNavClass) { ?>
+    <strong><?= /* @noEscape */  __('Manage Affiliate') ?></strong>
+    <?php } else { ?>
+    <a>
+            <?= /* @noEscape */  __('Manage Affiliate') ?>
+    </a>
+    <?php } ?>
+    <div id="mpaffiliate_block" class="wk_mpaffiliate_block">
+        <ul class="sub-menu">
+            <?php if (($isSellerGroup && $isAffReqAction) || !$isSellerGroup) { ?>
+                <li class="nav item <?= /* @noEscape */  $affReqMpNavClass; ?>">
+                    <?php if ($navSelectClass) { ?>
+                    <strong><?= /* @noEscape */  __('Affiliate Request') ?></strong>
+                    <?php } else { ?>
+                    <a href="<?= /* @noEscape */  $block->getNavUrl('mpaffiliate/marketplace/affiliaterequest'); ?>">
+                        <?= /* @noEscape */  __('Affiliate Request') ?>
+                    </a>
+                    <?php } ?>
+                </li>
+            <?php } ?>
+            <?php if (($isSellerGroup && $isAffConfAction) || !$isSellerGroup) { ?>        
+                <li class="nav item <?= /* @noEscape */  $affConfMpNavClass; ?>">
+                    <?php if ($affConfMpNavClass) { ?>
+                    <strong><?= /* @noEscape */  __('Affiliate Configuration') ?></strong>
+                    <?php } else { ?>
+                    <a
+                    href="<?= /* @noEscape */ $block->getNavUrl('mpaffiliate/marketplace/affiliateconfiguration') ?>">
+                        <?= /* @noEscape */  __('Affiliate Configuration') ?>
+                    </a>
+                    <?php } ?>
+                </li>
+            <?php } ?>
+            <?php if (($isSellerGroup && $isCatCommAction) || !$isSellerGroup) { ?>        
+                <li class="nav item <?= /* @noEscape */  $catCommMpNavClass ?>">
+                    <?php if ($catCommMpNavClass) { ?>
+                    <strong><?= /* @noEscape */  __('Category Commission') ?></strong>
+                    <?php } else { ?>
+                    <a href="<?= /* @noEscape */  $block->getNavUrl('mpaffiliate/marketplace/categorycommission'); ?>">
+                        <?= /* @noEscape */  __('Category Commission') ?>
+                    </a>
+                    <?php } ?>
+                </li>
+            <?php } ?>
+            <?php if (($isSellerGroup && $isMailtoAffiliateAction) || !$isSellerGroup) { ?>        
+                <li class="nav item <?= /* @noEscape */  $mailToAffMpNavClass ?>">
+                    <?php if ($mailToAffMpNavClass) { ?>
+                    <strong><?= /* @noEscape */  __('Mail to Affiliate') ?></strong>
+                    <?php } else { ?>
+                    <a href="<?= /* @noEscape */  $block->getNavUrl('mpaffiliate/marketplace/mailtoaffiliate'); ?>">
+                        <?= /* @noEscape */  __('Mail to Affiliate') ?>
+                    </a>
+                    <?php } ?>
+                </li>
+            <?php } ?>
+            <?php if (($isSellerGroup && $isTextBannerAction) || !$isSellerGroup) { ?>                    
+                <li class="nav item <?= /* @noEscape */  $textBannerMpNavClass ?>">
+                    <?php if ($textBannerMpNavClass) { ?>
+                    <strong>
+                        <?= /* @noEscape */  __('Text Banner') ?>
+                    </strong>
+                    <?php } else { ?>
+                    <a href="<?= /* @noEscape */  $block->getNavUrl('mpaffiliate/marketplace/textbanner'); ?>">
+                        <?= /* @noEscape */  __('Text Banner') ?>
+                    </a>
+                    <?php } ?>
+                </li>
+            <?php } ?>
+            <?php if (($isSellerGroup && $isSummaryAction) || !$isSellerGroup) { ?> 
+                <li class="nav item <?= /* @noEscape */  $summaryMpNavClass ?>">
+                    <?php if ($summaryMpNavClass) { ?>
+                    <strong><?= /* @noEscape */  __('Affiliate Summary') ?></strong>
+                    <?php } else { ?>
+                    <a href="<?= /* @noEscape */  $block->getNavUrl('mpaffiliate/marketplace/summary'); ?>">
+                        <?= /* @noEscape */  __('Affiliate Summary') ?>
+                    </a>
+                    <?php } ?>
+                </li>
+            <?php } ?>
+            <?php if (($isSellerGroup && $isPaymentAction) || !$isSellerGroup) { ?> 
+                <li class="nav item <?= /* @noEscape */  $paymentMpNavClass ?>">
+                    <?php if ($paymentMpNavClass) { ?>
+                    <strong><?= /* @noEscape */  __('Affiliate Payment') ?></strong>
+                    <?php } else { ?>
+                    <a href="<?= /* @noEscape */  $block->getNavUrl('mpaffiliate/marketplace/payment'); ?>">
+                        <?= /* @noEscape */  __('Affiliate Payment') ?>
+                    </a>
+                    <?php } ?>
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
+    <?= /* @noEscape */  $block->getChildHtml(); ?>
+</li>
+<script type="text/x-magento-init">
+{
+    "*" : {
+            "sellerAffiliateLink": ""
+    }
+}
+</script>
+<?php } ?>

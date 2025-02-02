@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<section id="payment">
+			<group id="meezan_bank" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Meezan Bank</label>
+				<field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+					<label>Enabled</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="api_url" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Api Url *</label>
+					<validate>required-entry required-https</validate>
+				</field>
+				<field id="title" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Title</label>
+				</field>
+				<field id="description" translate="label" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Description</label>
+				</field>
+				<field id="user_name" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+					<label>Username *</label>
+					<validate>required-entry</validate>
+				</field>
+				<field id="password" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+					<label>Password *</label>
+					<validate>required-entry</validate>
+				</field>
+				<field id="return_url" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+					<label>Return Url *</label>
+					<validate>required-entry</validate>
+					<comment><![CDATA[  http://host:port/magento_directory/meezan/index/getreturn]]></comment>
+				</field>
+				<field id="checkout_type" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
+					<label>CheckOut Type</label>
+					<source_model>Meezan\MeezanBank\Model\System\Config\Source\Store</source_model>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

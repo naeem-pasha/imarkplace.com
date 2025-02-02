@@ -1,0 +1,105 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<?php
+/** @var $block \Magento\Framework\View\Element\Template */
+/** @var $helper \Magento\Search\Helper\Data */
+$helper = $this->helper(\Magento\Search\Helper\Data::class);
+$helperVendor = $this->helper(\AALogics\Vendorsearch\Helper\Data::class);
+?>
+<div class="block block-search services-block-search">
+    <div class="block block-title"><strong><?= /* @escapeNotVerified */ __('Search') ?></strong></div>
+    <div class="block block-content">
+        <form class="form minisearch add-dropdown" id="search_mini_form" action="<?= /* @escapeNotVerified */ $helper->getResultUrl() ?>" method="get">
+            <div class="field search">
+                <label class="label" for="search" data-role="minisearch-label">
+                    <span><?= /* @escapeNotVerified */ __('Search') ?></span>
+                </label>
+                <div class="control">
+                     <select name="<?= __("searchtype") ?>" id="<?= __("searchtype") ?>">
+                        <option id="searchbyproduct" value="0">Search by Products</option>
+                        <option id="searchbyvendor" value="1">Search by Vendors</option>
+                        
+                    </select> 
+                    <!-- <i class="mbi mbi-ios-arrow-down"></i> -->
+                    <input id="search"
+                           type="text"
+                           name="<?= /* @escapeNotVerified */ $helper->getQueryParamName() ?>"
+                           value="<?= /* @escapeNotVerified */ $helper->getEscapedQueryText() ?>"
+                           placeholder="<?= /* @escapeNotVerified */ __("Search Services") ?>"
+                           class="input-text"
+                           maxlength="<?= /* @escapeNotVerified */ $helper->getMaxQueryLength() ?>"
+                           role="combobox"
+                           aria-haspopup="false"
+                           aria-expanded="false"
+                           aria-autocomplete="both"
+                           autocomplete="off"/>
+                    <div id="search_autocomplete" class="search-autocomplete"></div>
+                    <?= $block->getChildHtml() ?>
+                </div>
+            </div>
+            <div class="actions">
+                <button type="submit"
+                        title="<?= $block->escapeHtml(__('Search')) ?>"
+                        class="action search">
+                        <span><i class="mbi mbi-magnifier"></i></span>   
+                </button>
+                
+            </div>
+        </form>
+    </div>
+</div>
+<?php 
+    $catalogsearchUrl = $helper->getResultUrl(); 
+    $vendorsearchurl = $helperVendor->getVendorSearchUrl();
+?>
+<script>
+    require(['jquery'], function ($) {
+        console.log('search start');
+        $('#searchtype').on('change', function() 
+        {
+            var catserurl = "<?php echo $catalogsearchUrl; ?>";
+            var venserurl = "<?php echo $vendorsearchurl; ?>";
+
+            var stval = $(this).find(":selected").val();
+            if(stval == 1){
+                $('#search_mini_form').attr('action', venserurl);
+            }else{
+                $('#search_mini_form').attr('action', catserurl);
+            }
+        });
+
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                }
+            }
+            return false;
+        };
+        var searchtype = getUrlParameter('searchtype');
+        if(searchtype == 1){
+            var venserurl = "<?php echo $vendorsearchurl; ?>";
+            $('#search_mini_form').attr('action', venserurl);
+            $('#searchbyvendor').attr("selected", true);
+        }
+        if(searchtype == 0){
+            var catserurl = "<?php echo $catalogsearchUrl; ?>";
+            $('#search_mini_form').attr('action', catserurl);
+            $('#searchbyproduct').attr("selected", true);
+        }
+    });
+
+</script>

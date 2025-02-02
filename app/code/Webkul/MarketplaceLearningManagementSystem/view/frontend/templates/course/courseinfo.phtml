@@ -1,0 +1,136 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MarketplaceLearningManagementSystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+/* Block - \Webkul\MarketplaceLearningManagementSystem\Block\Course\CourseInfo.php */
+?>
+<?php
+$helper = $block->getHelper();
+$showEnrollStudent = $helper->getFieldValue('display_settings', 'enrolled_student');
+$showTotalDuration = $helper->getFieldValue('display_settings', 'course_duration');
+?>
+<?php
+if ($helper->getProductType() == 'course') {
+    ?>
+    <div class="course-info">
+        <div class="details">
+            <span>
+                <img alt="imarkplace" src="<?= $block->escapeUrl($block->getVideoIconUrl())?>" 
+                    class="courseinfo-icon"
+                >
+            </span>
+            <span>
+                <?= $block->escapeHtml(
+                    $helper->getTotalHoursOfCourse()." ".__(' on demand video')
+                ); ?>
+            </span>
+        </div>
+        <div class="details">
+            <span>
+                <img alt="imarkplace" src="<?= $block->escapeUrl($block->getChapterIconUrl())?>" 
+                    class="courseinfo-icon"
+                >
+            </span>
+            <span>
+                <?= $block->escapeHtml(
+                    $helper->getTotalChapterOfCourse()." ".__('Chapters')
+                ); ?>
+            </span>
+        </div>
+        <div class="details">
+            <span>
+                <img alt="imarkplace" src="<?= $block->escapeUrl($block->getDocumentIconUrl())?>" 
+                    class="courseinfo-icon"
+                >
+            </span>
+            <span>
+                <?= $block->escapeHtml(
+                    $helper->getTotalAssignmentOfCourse()." ".__('Assignments')
+                ); ?>
+            </span>
+        </div>
+        <div class="details dateinfo">
+            <span class="publish date" >
+                <span>
+                    <img alt="imarkplace" src="<?= $block->escapeUrl($block->getPublishCourseDateIconUrl())?>" 
+                    class="courseinfo-icon date">
+                </span>
+                <span>
+                    <?= $block->escapeHtml(
+                        __('Published on:').' '.$helper->getPublishCourseDate()
+                    ); ?>
+                </span>
+            </span>
+            <span class="update date" >
+                <span>
+                    <img alt="imarkplace" src="<?= $block->escapeUrl($block->getUpdateCourseDateIconUrl())?>" 
+                        class="courseinfo-icon date"
+                    >
+                </span>
+                <span>
+                    <?= $block->escapeHtml(__('Last Update:').' '.$helper->getUpdateCourseDate()); ?>
+                </span>
+            </span>
+        </div>
+        <div class="details">
+            <div>
+                <strong id="course-level" 
+                    data-courselevel="<?= $block->escapeHtml($helper->getCourseLevel()['id']) ?>"
+                >
+                    <?= $block->escapeHtml(__('Skill Level')."- ") ?>
+                </strong>
+                <?= $block->escapeHtml($helper->getCourseLevel()['text']) ?>
+            </div>
+            <div>
+                <span id="first-level" class="rectangle">&nbsp;</span>
+                <span id="second-level" class="rectangle">&nbsp;</span>
+                <span id="third-level" class="rectangle">&nbsp;</span>
+            </div>
+        </div>
+        <?php if ($showTotalDuration) { ?>
+            <div class="total-duration">
+                <div>
+                    <span>
+                        <strong><?= $block->escapeHtml(__('Total Duration'))."- " ?></strong>
+                    </span>
+                    <span id="total-duration-text">
+                        <?= $block->escapeHtml($helper->getTotalDurationOfCourse()); ?>
+                    </span>
+                </div>
+            </div>
+        <?php } ?>
+        <?php if ($showEnrollStudent) { ?>
+            <div class="enroll-student">
+                <div>
+                    <span>
+                        <strong><?= $block->escapeHtml(__('Enroll Student'))."- " ?></strong>
+                    </span>
+                    <span id="total-enroll-student">
+                        <?= $block->escapeHtml($helper->getEnrollStudents()); ?>
+                    </span>
+                </div>
+            </div>
+        <?php } ?>
+        <div class="language-info">
+            <div>
+                <span>
+                    <img alt="imarkplace" src="<?= $block->escapeUrl($block->getLanguageIconUrl())?>"        
+                        class="courseinfo-icon date"
+                    >
+                </span>
+                <strong>
+                    <?= $block->escapeHtml(__('Course Language'))."- " ?>
+                </strong><?= $block->escapeHtml($helper->getCourseLanguage()['text']); ?>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+
+

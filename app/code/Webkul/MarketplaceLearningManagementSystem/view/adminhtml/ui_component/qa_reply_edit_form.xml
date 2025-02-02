@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+<!-- 
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MarketplaceLearningManagementSystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */ -->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">qa_reply_edit_form.qa_reply_edit_form_data_source</item>
+            <item name="namespace" xsi:type="string">qa_reply_edit_form</item>
+        </item>
+        <item name="config" xsi:type="array">
+            <item name="runModal" xsi:type="string">run_import</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="childrenFromMeta" xsi:type="boolean">true</item>
+    </argument>
+	<settings>
+        <buttons>
+            <button name="save" class="Webkul\MarketplaceLearningManagementSystem\Block\Adminhtml\QAReply\Edit\Button\UpdateButton"/>
+        </buttons>
+        <dataScope>data</dataScope>
+        <!-- <ajaxSave>true</ajaxSave> -->
+        <ajaxSaveType>simple</ajaxSaveType>
+        <namespace>qa_reply_edit_form</namespace>
+        <deps>
+            <dep>qa_reply_edit_form.qa_reply_edit_form_data_source</dep>
+        </deps>
+    </settings>
+	<dataSource name="qa_reply_edit_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+                <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                <item name="filter_url_params" xsi:type="array">
+                    <item name="id" xsi:type="string">*</item>
+                </item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="mplms/qareply/save"/>
+        </settings>
+        <dataProvider class="Webkul\MarketplaceLearningManagementSystem\Model\QAReply\DataProvider" name="qa_reply_edit_form_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <container name="messages" component="Magento_Ui/js/form/components/html">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="additionalClasses" xsi:type="string">message message-error</item>
+                <item name="visible" xsi:type="boolean">false</item>
+                <item name="imports" xsi:type="array">
+                    <item name="responseData" xsi:type="string">${ $.parentName }:responseData</item>
+                </item>
+                <item name="listens" xsi:type="array">
+                    <item name="responseData.error" xsi:type="string">visible</item>
+                    <item name="responseData.messages" xsi:type="string">content</item>
+                </item>
+            </item>
+        </argument>
+    </container>
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+        <field name="entity_id" sortOrder="10" formElement="hidden">
+            <settings>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+		<field name="status" sortOrder="20" formElement="select">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Status</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Webkul\MarketplaceLearningManagementSystem\Model\Config\Source\QaStatus"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="qna_thread" sortOrder="50" formElement="textarea">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="max_text_length" xsi:type="number">255</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">reply</label>
+                <dataScope>qna_thread</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+</form>

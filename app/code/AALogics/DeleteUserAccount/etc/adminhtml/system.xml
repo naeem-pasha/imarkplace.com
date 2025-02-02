@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="aalogics" translate="label" sortOrder="10">
+            <label>Aalogics</label>
+        </tab>
+        <section id="aalogics_deleteuseraccount" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Delete User Account</label>
+            <tab>aalogics</tab>
+            <resource>AALogics_DeleteUserAccount::config_deleteuseraccount</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="email_template" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1" translate="label" type="select">
+                    <label>Email Template</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

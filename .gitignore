@@ -108,6 +108,31 @@ atlassian*
 /pub/static/*
 !/pub/static/.htaccess
 
+/.htaccess
+/Dockerfile
+/var
+/pub
+/composer.json
+/composer.lock
+/composer.lock-bk
+/package.json.sample
+/ec2-13-201-30-165.ap-south-1.compute.amazonaws.com
+/auth.json
+/auth.json.sample
+/nginx.conf.sample
+/info.php
+/nginx.conf.bkp24Dec26
+/nginx.conf.bkp17Dec23
+/setup/*
+/test-file/*
+/script.sh.bkp
+/home/*
+/grunt-config.json.sample
+/Gruntfile.js.sample
+/ValidateCustomer/
+/app.bkp/*
+/docker-compose.yml
+/dockercomposeguide
 /var/*
 !/var/.htaccess
 /vendor/*
@@ -115,4 +140,3 @@ atlassian*
 /generated/*
 !/generated/.htaccess
 .DS_Store
-

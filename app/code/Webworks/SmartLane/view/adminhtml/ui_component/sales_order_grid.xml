@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor. Test
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+        <massaction name="listing_massaction">
+            <!--<action name="smartlane_book">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">smartlane-book</item>
+                        <item name="label" xsi:type="string" translate="true">SmartLane Book</item>
+                        <item name="url" xsi:type="url" path="smartlane/bookorder/booknow"/>
+                    </item>
+                </argument>
+            </action>-->
+            <!--<action name="assign_badge">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">smartlane-book</item>
+                        <item name="label" xsi:type="string" translate="true">Smartlane</item>
+                    </item>
+                </argument>
+                <argument name="actions" xsi:type="configurableObject">
+                    <argument name="class" xsi:type="string">Webworks\SmartLane\Ui\Component\MassAction\Courier\Assignoptions</argument>
+                    <argument name="data" xsi:type="array">
+                        <item name="urlPath" xsi:type="string">smartlane/bookorder/booknow</item>
+                        <item name="paramName" xsi:type="string">courier_slug</item>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Smartlane Confirmation</item>
+                            <item name="message" xsi:type="string" translate="true">Selected order(s) will be processed by smartlane. Do you want to proceed?</item>
+                        </item>
+                    </argument>
+                </argument>
+            </action>-->
+            <action name="smartlane-book">
+                <settings>
+                    <type>smartlane-book</type>
+                    <label translate="true">Smartlane</label>
+                    <actions class="Webworks\SmartLane\Ui\Component\MassAction\Courier\Assignoptions"/>
+                </settings>
+            </action>
+            <action name="smartlane_invoice">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">smartlane-invoice</item>
+                        <item name="label" xsi:type="string" translate="true">SmartLane Invoice</item>
+                        <item name="url" xsi:type="url" path="smartlane/OrderInvoice/OrderInvoice"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Create Invoice using Smartlane</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you want to create invoice selected items using Smartlane?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </listingToolbar>
+    <!--<columns name="sales_order_columns">
+        <column name="smartlane_courier_tracking_info">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="label" xsi:type="string" translate="true">Courier Information</item>
+                </item>
+            </argument>
+        </column>
+    </columns>-->
+</listing>

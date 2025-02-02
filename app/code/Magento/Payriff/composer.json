@@ -1,0 +1,34 @@
+{
+    "name": "payriff/magento2-payment",
+    "description": "Abhipay Magento2 Payment Module",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": "MIT",
+    "authors": [{
+        "name": "Abhipay Ödeme ve Elektronik Para Kuruluşu A.Ş.",
+        "email": "support@abhipay.com.pk",
+        "homepage": "https://www.abhipay.com.pk"
+    }],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Payriff\\Payment\\": ""
+        }
+    },
+    "keywords": [
+        "API",
+        "Sanal Pos",
+        "Credit card",
+        "Abhipay",
+        "eCommerce",
+        "Magento",
+        "Magento 2",
+        "Magento extension",
+        "Payment",
+        "Payment authorization",
+        "Payment integration",
+        "Payment gateway"
+    ]
+}

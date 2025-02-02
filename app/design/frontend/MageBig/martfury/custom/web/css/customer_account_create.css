@@ -1,0 +1,235 @@
+/* CSS FOR REGISTER PAGE*/
+
+/* Main Section CSS Starts */
+
+.customer-account-create .page-title-wrapper{
+    display: none;
+}
+
+.page-title {
+    text-transform: capitalize;
+    font-size: 2.4rem;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+#maincontent.page-main .columns.row .main-wrap.col-12 {
+    padding: 0;
+    background: 0 0;
+}
+
+/* Input Styling */
+
+input:not([type=radio]):not([type=checkbox]), textarea {
+    -webkit-appearance: none;
+}
+
+input {
+    border: 1px solid #ccc;
+    padding: 0 4px;
+    max-width: 100%;
+}
+
+
+#C .custom-new-customers .block-new-customer .field .input-text {
+    background: 0 0;
+    border: 1px solid #000;
+}
+
+
+/* Input Styling */
+
+/* Main Section Background */
+#C .custom-new-customers {
+    background: #fff;
+    padding: 0;
+    margin: 0;
+}
+#C .new-customer-page-title {
+    text-align: center;
+}
+/* Main Section Background */
+
+/* Main Section Heading Styling */
+
+#C .new-customer-page-title h2 {
+    font-size: 32px;
+    font-family: 'Cinzel',serif;
+    color: #000;
+}
+
+/* Main Section Heading Styling */
+
+
+#C .custom-new-customers .block-new-customer {
+    margin: 0 auto;
+}
+
+#C .custom-new-customers .block-new-customer .fieldset.create.info {
+    padding-bottom: 0;
+}
+
+#C .custom-new-customers .block-new-customer .fieldset {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+
+#C .custom-new-customers .block-new-customer .field label {
+    color: #fff;
+}
+#C .custom-new-customers .block-new-customer .field label span {
+    color: #000;
+}
+
+
+#C .custom-new-customers .block-new-customer .field>input[type=checkbox]+label:before {
+    border: 1px solid #000;
+}
+
+#C .custom-new-customers .block-new-customer .fieldset.create.account {
+    padding-top: 10px;
+}
+
+#C .custom-new-customers .block-new-customer .password-strength-meter {
+    color: #fff;
+    background: 0 0;
+}
+
+
+/* Btn Styling */
+
+#C .action.primary, #C .action.secondary {
+    border: 1px solid #332f42;
+    background: #332f42;
+}
+
+/* Btn Styling */
+
+/* Already Have An Account */
+.supplierlogin {
+    float: right;
+    padding-top: 5px;
+}
+.suppliersignin {
+    color: blue;
+}
+a, a:hover, a:focus {
+    text-decoration: none;
+}
+
+a, button, input {
+    transition: color .25s linear,background-color .25s linear;
+}
+
+/* Already Have An Account */
+
+
+/* Description Hidden Section Styling */
+#C .custom-new-customers .new-customer-description {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    padding: 0 50px;
+}
+
+
+/* Check Box Styling */
+
+field>input[type=checkbox]:checked+label:after {
+    content: '\e934';
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+    left: 0;
+    font-family: 'mbicon' !important;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 15px;
+    letter-spacing: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #000;
+    border: 1px solid #000;
+    font-size: 10px;
+    text-align: center;
+    font-weight: 700;
+}
+/* Check Box Styling */
+
+
+/* Description Hidden Section Styling */
+
+
+/* Main Section CSS Ends */
+
+
+
+
+
+/* Media Queries for Register Page CSS */
+
+@media (max-width:610px){
+    .block .account-social-login{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .social-btn-actions-toolbar {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+    }
+
+    .btn-google{
+        width: 100%;
+    }
+
+
+}
+
+@media (min-width:610px) and (max-width:810px) {
+    .block .account-social-login{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .social-btn .btn-social {
+      text-align: center;
+    }
+
+}
+
+@media (max-width: 767px){
+    .page-title {
+        font-size: 2rem;
+    }   
+    }
+    
+@media (min-width:810px) {
+    .social-btn .btn-social {
+      text-align: center;
+    }
+
+}
+
+/* Media Queries for Register Page CSS */

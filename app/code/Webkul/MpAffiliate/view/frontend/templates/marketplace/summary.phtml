@@ -1,0 +1,322 @@
+<?php
+/**
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @license   https://store.webkul.com/license.html
+ */
+$viewModel = $block->getViewModel();
+$data = $block->getCollection();
+$priceHelper = $viewModel->getPricingHelper();
+?>
+<div class="wk-mp-design">
+    <fieldset class="fieldset info wk-mp-fieldset">
+        <legend class="legend"></legend>
+        <div class="grid">
+            <div class="hor-scroll">
+                <form 
+                    action="<?= /* @noEscape */  $block->getUrl(
+                        'mpaffiliate/marketplace/summary',
+                        ['_secure' => $block->getRequest()->isSecure()]
+                    ) ?>" 
+                    method="get"
+                    id="form-productlist-filter"
+                    name="formProductlistFilter"
+                    data-mage-init='{"validation":{}}'>
+                    <table cellspacing="0" class="border wk-mp-list-table">
+                        <thead>
+                            <tr id="wk-mp-tr-heading">
+                                <th><span><?= /* @noEscape */  __('Affiliate Name') ?></span></th>                  
+                                <th><span><?= /* @noEscape */  __('Affiliate Email') ?></span></th>
+                                <th><span>&nbsp;</span></th>
+                            </tr>
+                        </thead>
+                        <tbody class="wk-mp-body">
+                            <tr>
+                                <td>
+                                <input type="text"
+                                    class="input-text"
+                                    name="aff_name"
+                                    value="<?= /* @noEscape */  $block->getRequest()->getParam('aff_name')?>"
+                                    placeholder='<?= /* @noEscape */  __('Search by Name') ?>'/>
+                                </td>
+                                <td>
+                                <input type="text"
+                                class="input-text"
+                                name="aff_email"
+                                value="<?= /* @noEscape */  $block->getRequest()->getParam('aff_email')?>"
+                                placeholder='<?= /* @noEscape */  __('Search by Email') ?>'/>
+                                </td>
+                                <td>
+                                <button class="button" title="Save" type="submit">
+                                    <span><span><span><?= /* @noEscape */  __('Submit') ?></span></span></span>
+                                </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <table cellspacing="0" class="border wk-mp-list-table wk-mp-list-container-table">
+                    <thead>
+                        <tr class="wk-content">
+                            <th class="wk-first-td">
+                                <span class="label name">
+                                <?= /* @noEscape */  __('Affiliate Name')?>
+                                </span>
+                            </th>
+                            <th class="wk-list-th-display1">
+                                <span class="label email">
+                                <?= /* @noEscape */  __('Affiliate Email')?>
+                                </span>
+                            </th>
+                            <th class="wk-list-th-display">
+                                <span class="label pro-status">
+                                <?= /* @noEscape */  __('Click')?>
+                                </span>
+                            </th>
+                            <th class="wk-list-th-display">
+                                <span class="label qty">
+                                <?= /* @noEscape */  __('Unique click')?>
+                                </span>
+                            </th>
+                            <th class="wk-list-th-display">
+                                <span class="label qty">
+                                <?= /* @noEscape */  __('Total Sales')?>
+                                </span>
+                            </th>
+                            <th class="wk-list-th-display">
+                                <span class="label qty">
+                                <?= /* @noEscape */  __('Sale Commission')?>
+                                </span>
+                            </th>
+                            <th class="">
+                                <span class="label qty">
+                                <?= /* @noEscape */  __('Paid')?>
+                                </span>
+                            </th>
+                            <th class="">
+                                <span class="label qty">
+                                <?= /* @noEscape */  __('Balance')?>
+                                </span>
+                            </th>
+                            <th class="">
+                                <span class="label qty">
+                                <?= /* @noEscape */  __('Payment')?>
+                                </span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($data as $key => $value) {
+                            $affEmail = $block->getCustomerData($value['aff_customer_id'])->getEmail();
+                            $affFirstName = $block->getCustomerData($value['aff_customer_id'])->getFirstname();
+                            $affLastName = $block->getCustomerData($value['aff_customer_id'])->getLastname();
+                            $totalComm = $block->getTotalCommission($value['aff_customer_id'], $value['seller_id']);
+                            $paid = $block->getTotalPaid($value['aff_customer_id'], $value['seller_id']);
+                            $balance = $value['balance_amount'];
+                            $currBalance = $block->escapeHtml($priceHelper->currency($balance, true, false));
+                            $paymentMethodData = $block->getPaymentMethodData($value['aff_customer_id']);
+                            ?>
+                            <tr class="wk-row-view" id = "<?= /* @noEscape */  $value['aff_customer_id'] ?>">
+                                <td class="wk-first_td"><?= /* @noEscape */  $affFirstName." ".$affLastName ?></td>
+                                <td class="wk-first_td wk-list-th-display1">
+                                    <?= /* @noEscape */  $affEmail ?>
+                                </td>                
+                                <td class="wk-first_td wk-list-th-display">
+                                    <?= /* @noEscape */  $value['clicks'] ?>
+                                </td>
+                                <td class="wk-first_td wk-list-th-display">
+                                    <?= /* @noEscape */  $value['unique_clicks'] ?>
+                                </td>                
+                                <td class="wk-first_td wk-list-th-display">
+                                    <?= /* @noEscape */  $block->getTotalSale(
+                                        $value['aff_customer_id'],
+                                        $value['seller_id']
+                                    )?>
+                                </td>
+                                <td class="wk-list-th-display">
+                                    <span title="Sale Commission" class="label">
+                                        <?= /* @noEscape */  $block->escapeHtml(
+                                            $priceHelper->currency($totalComm, true, false)
+                                        ) ?>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span title="Received" class="label">
+                                        <?= /* @noEscape */  $block->escapeHtml(
+                                            $priceHelper->currency($paid, true, false)
+                                        )?>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span title="Balance" class="label">
+                                        <?= /* @noEscape */  $currBalance?>
+                                    </span>
+                                </td>
+                                <td class="wk-first_td">
+                                    <button class="button payment"
+                                        title="<?= /* @noEscape */  __('Payment Method') ?>"
+                                        data-formatted-balance=" <?= /* @noEscape */  $currBalance?>"
+                                        data-balance=" <?= /* @noEscape */  $balance?>"
+                                        data-affid="<?= /* @noEscape */  $value['aff_customer_id'] ?>"
+                                        data-payment='<?= /* @noEscape */  $paymentMethodData?>'
+                                        data-affEmail="<?= /* @noEscape */  $affEmail ?>"
+                                        data-affFirstName="<?= /* @noEscape */  $affFirstName ?>"
+                                        data-affLastName="<?= /* @noEscape */  $affLastName ?>"
+                                        style="float: left;width: auto!important;margin-left: 11px;">
+                                        <span><span> <?= /* @noEscape */  __('Payment Method') ?></span></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<div class="buttons-set">
+    <p class="back-link">
+        <a href="javascript:;" onclick="javascript: window.history.back();" class="left">
+            &laquo; <?= /* @noEscape */ __('Back') ?>
+        </a>
+    </p>
+</div>
+
+<script id="banktransfer-template" type="text/x-magento-template">
+    <form id="ask-form-<%- affid %>"
+        method="get"
+        enctype="multipart/form-data"
+        action="<%- formaction %>"
+        class="wk-affiliate-pay-form">
+        <div class="modal-body">
+            <div class="bootbox-body">
+                <div class="field">
+                    <b><?= /* @noEscape */ __('Balance Amount') ?> : <%- balance %></b>
+                </div>
+                <div class="field">
+                    <label class="label"><?= /* @noEscape */ __('Account Holder') ?> : <%- accountHolder %></label>
+                </div>
+                <div class="field">
+                    <label class="label"><?= /* @noEscape */ __('Bank Name') ?> : <%- bankName %></label>
+                </div>
+                <div class="field">
+                    <label class="label"><?= /* @noEscape */ __('Account Number') ?> : <%- accountNumber %></label>
+                </div>
+                <div class="field">
+                    <label class="label"><?= /* @noEscape */ __('Bank Address') ?> : <%- bankAddress %></label>
+                </div>
+                <div class="field">
+                    <label class="label"><?= /* @noEscape */ __('S.W.I.F.T Code') ?>: <%- code %></label>
+                </div>
+                <div class="tran fieldset">
+                    <h3><?= /* @noEscape */ __('Enter Transaction Detail') ?></h3>
+                    <div class="field">
+                        <label class="label"><?= /* @noEscape */ __('Transaction Id') ?> : </label>
+                        <input type="text" class="admin__control-text transaction_id" name="transaction_id">
+                    </div>
+                    <div class="field required">
+                        <label class="label"><?= /* @noEscape */ __('Amount') ?> : </label>
+                        <input type="text"
+                            class="admin__control-text required-entry transaction_amount"
+                            name="transaction_amount">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</script>
+<script id="checkmo-template" type="text/x-magento-template">
+    <form id="ask-form-<%- affid %>"
+        method="get"
+        enctype="multipart/form-data"
+        action="<%- formaction %>"
+        class="wk-affiliate-pay-form">
+        <div class="modal-body">
+            <div class="field">
+                <b>Balance Amount : <%- balance %></b>
+            </div>
+            <div class="bootbox-body">
+                <div class="field">
+                    <label class="label">Payable To : </label>
+                    <div  ><%- payableTo %></div>
+                </div>
+                <div class="tran fieldset">
+                    <h3>Enter Transaction Detail</h3>
+                    <div class="field">
+                        <label class="label">Transaction Id : </label>
+                        <input type="text" class="admin__control-text transaction_id" name="transaction_id">
+                    </div>
+                    <div class="field required">
+                        <label class="label">Amount : </label>
+                        <input type="text"
+                            class="admin__control-text required-entry transaction_amount"
+                            name="transaction_amount">
+                    </div>
+                </div>
+            </div>
+        </div>
+  </form>
+</script>
+<script id="paypal_standard-template" type="text/x-magento-template">
+    <div class="modal-body">
+        <div class="field">
+            <b><?= /* @noEscape */ __('Balance Amount') ?> : <%- balance %></b>
+        </div>
+        <div class="field">
+            <label class="label"><?= /* @noEscape */ __('Pay to') ?> : <%- affEmail %></label>
+        </div>
+        <form action="https://www.<%- urlFix %>paypal.com/webscr"
+            id="wk_aff_paypal_standard_checkout<%- affid %>"
+            name="paypal_standard_checkout"
+            method="POST">
+            <input id="business" name="business" value="<%- affEmail %>" type="hidden"/>
+            <input id="invoice" name="invoice" value="<%- invoice %>" type="hidden"/>
+            <input id="currency_code" name="currency_code" value="<%- currentCurrencyCode %>" type="hidden"/>
+            <input id="paymentaction" name="paymentaction" value="sale" type="hidden"/>
+            <input id="return" name="return" value="<%- returnurl %>aff_id/<%- affid %>" type="hidden"/>
+            <input id="cancel_return" name="cancel_return" value="<%- cancelReturn %>" type="hidden"/>
+            <!-- <input id="notify_url" name="notify_url" value="<%- ipnnotify %>" type="hidden"/> -->
+            <input id="bn" name="bn" value="Varien_Cart_WPS_US" type="hidden"/>
+            <input id="charset" name="charset" value="utf-8" type="hidden"/>
+            <input id="item_name_1" name="item_name_1" value="Affiliate User Payment" type="hidden"/>
+            <div class="field required">
+                <label class="label"><?= /* @noEscape */ __('Amount to Pay') ?> : </label>
+                <input type="text"
+                    class="admin__control-text required-entry amount_1"
+                    id="amount_1"
+                    value="<%- ammounttopay %>"
+                    name="amount_1"/>
+            </div>
+            <input id="quantity_1" name="quantity_1" value="1" type="hidden"/>
+            <input id="cmd" name="cmd" value="_cart" type="hidden"/>
+            <input id="upload" name="upload" value="1" type="hidden"/>
+            <input id="tax_cart" name="tax_cart" value="0.00" type="hidden"/>
+            <input id="discount_amount_cart" name="discount_amount_cart" value="0.00" type="hidden"/>
+            <input id="email" name="email" value="<%- affEmail %>" type="hidden"/>
+            <input id="first_name" name="first_name" value="<%- affFirstName %>" type="hidden"/>
+            <input id="last_name" name="last_name" value="<%- affLastName %>" type="hidden"/>
+            <div class="actions" style="margin: 20px;text-align: center;">
+                <button class="action save primary" style="padding: 15px 30px;"
+                    title="<?= /* @noEscape */ __('Pay with Paypal') ?>"
+                    type="submit">
+                    <span><?= /* @noEscape */ __('Pay with Paypal') ?></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "paymethod": {
+                "url" : "<?= /* @noEscape */  $block->getUrl(
+                    'mpaffiliate/marketplace/paymethod',
+                    ['_secure' => $block->getRequest()->isSecure()]
+                )?>",
+                "paypalinfo":<?= /* @noEscape */  $block->getPaypalInfo()?>
+            }
+        }
+    }
+</script>

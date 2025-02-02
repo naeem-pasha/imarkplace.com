@@ -1,0 +1,17 @@
+<div class="wk-customer-message-container">
+    <div class="wk-customer-supplier-list-container">
+
+        <h2>Delete Account</h2>
+
+        <form action="<?php echo $block->getBaseUrl().'customer_account/email/send'; ?>" class="form my-form" data-mage-init='{"validation":{}}'>
+            <div class="form-group">
+                <input type="checkbox" name="delete_my_account" id="deletemyaccount" class="" required="true"  >
+                <label for="deletemyaccount">Delete My Account</label>
+            </div>
+            <div class="form-group cst-delete-btn">
+                <button type="submit" class="btn">Submit</button>
+            </div>
+        </form>
+        
+    </div>
+</div>

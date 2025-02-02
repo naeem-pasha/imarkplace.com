@@ -1,0 +1,274 @@
+<?php
+/**
+ * Webkul MpAffiliate User Commission template.
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @license   https://store.webkul.com/license.html
+ */
+?>
+<style>
+.modal-content strong {
+    word-break: break-all;
+}
+</style>
+<?php
+$isAffiliate=$block->isAffiliate();
+$bannerType = $block->getRequest()->getParam('ads');
+$aff_id = $block->getAffId();
+if ($isAffiliate) { ?>
+<div class="wk-mp-design ">
+    <fieldset class="fieldset info">
+        <div class="grid">
+            <div class="hor-scroll">
+                <center>
+                    <div class='banner_filter'>
+                        <?php if ($bannerType == 'text') { ?>
+                            <a href="<?= /* @noEscape */ $block->getUrl('mpaffiliate/user/banner/')?>"
+                                title="<?= /* @noEscape */ __('Product Ads') ?>">
+                                <?= /* @noEscape */ __('Product Ads') ?>
+                            </a>
+                            <span style="padding: 0px 0;">
+                                <span style="border-right:1px solid #ccc;">&nbsp;</span>
+                            </span>
+                            <strong title="<?= /* @noEscape */ __('Text Ads') ?>">
+                                <?= /* @noEscape */ __('Text Ads') ?>
+                            </strong>
+                        <?php } else { ?>
+                            <strong title="<?= /* @noEscape */ __('Product Ads') ?>">
+                                <?= /* @noEscape */ __('Product Ads') ?>
+                            </strong>
+                            <span style="padding: 0px 0;">
+                                <span style="border-right:1px solid #ccc;">&nbsp;</span>
+                            </span>
+                            <?php
+                            $bannerUrl = $block->getUrl(
+                                'mpaffiliate/user/banner/',
+                                ['ads'=>'text', '_secure' => $block->getRequest()->isSecure()]
+                            );
+                            ?>
+                            <a href="<?= /* @noEscape */ $bannerUrl ?>"
+                                title="<?= /* @noEscape */ __('Text Ads') ?>">
+                                <?= /* @noEscape */ __('Text Ads') ?>
+                            </a>
+                        <?php } ?>
+                    </div>
+                </center>
+                <?php if ($bannerType=="text") { ?>
+                    <div class="wk-mp-aff-searchbox" id="wk-mp-aff-banner-ads-searchbox">
+                        <form 
+                            action="<?= /* @noEscape */ $block->getCurrentUrl() ?>" 
+                            method="get"
+                            id="form-banner-ads-list-filter"
+                            name="formBannerAdslistFilter"
+                            data-mage-init='{"validation":{}}'>
+                            <input type="text"
+                                class="input-text"
+                                name="q"
+                                value="<?= /* @noEscape */ $block->getRequest()->getParam('q')?>"
+                                placeholder='<?= /* @noEscape */ __('Search by banner title') ?>'/>
+                        </form>
+                    </div>
+                    <table cellspacing="0" class="border wk_mp_list_table wk_mp_list_container_table">
+                        <thead>
+                            <tr class="wk_content">
+                                <th class="wk_first_td">
+                                    <span class="label">
+                                        <?= /* @noEscape */ __('Seller Name')?>
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="label name">
+                                        <?= /* @noEscape */ __('Title')?>
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="label">
+                                        <?= /* @noEscape */ __('Size')?>
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="label htmlcode">
+                                        <?= /* @noEscape */ __('HTML Code')?>
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="label preview">
+                                        <?= /* @noEscape */ __('Preview')?>
+                                    </span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($block->getCollection() as $text) { ?>
+                            <tr class="wk_row_view">
+                                <td class="wk_first_td">
+                                    <span class="label">
+                                        <?= /* @noEscape */ $block->getSellerNameBySelllerId($text->getSellerId()); ?>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="label name"
+                                        title="<?= /* @noEscape */ htmlentities($text->getName()); ?>">
+                                        <?php
+                                        $texttitle = htmlentities(
+                                            strlen($text->getTitle())>20?
+                                            substr($text->getTitle(), 0, 20)."..":$text->getTitle()
+                                        );
+                                        ?>
+                                        <?= /* @noEscape */ ($texttitle);
+                                        $affSize = explode('x', $text->getBannerSize());
+                                        if ($affSize[0] == 'auto') {
+                                            $width = 'auto';
+                                            $height = 'auto';
+                                        } else {
+                                            $width = $affSize[1].'px';
+                                            $height = $affSize[0].'px';
+                                        }
+                                        $code="<div style='display: inline-block;text-align:center;padding: 10px; border: 1px solid #CCC;width:".$width.";height:".$height.";'><a href='".$text->getLink()."?&aff_id=".$aff_id."&banner_id=".$text->getId()."' style='text-decoration: none;'><strong>".$texttitle."</strong></a><br /><br /><a href='".$text->getLink()."?&aff_id=".$aff_id."&banner_id=".$text->getId()."' style='text-decoration: none;'>".htmlentities($text->getText())."</strong></a></div>";
+                                        $code = htmlentities($code);
+                                        ?>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="label">
+                                        <?= /* @noEscape */ $text->getBannerSize();?>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="label htmlcode">
+                                    <input readonly type="text" value="<?= /* @noEscape */ $code ;?>" />
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="label preview">
+                                    <button class="button">
+                                    <span><span><?= /* @noEscape */ __('Preview') ?></span></span>
+                                    </button>
+                                    </span>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                        </tbody>
+                    </table>
+                    <?php
+                    if (count($block->getCollection()) <= 0) { ?>
+                        <div class="fieldset wk_mp_fieldset">
+                            <div class="wk_emptymsg" style="text-align:center;">
+                                    <?= /* @noEscape */ __('No Banners Available') ?>
+                            </div>
+                        </div>
+                    <?php } ?>
+                <?php } else { ?>
+                    <div class="wk-mp-aff-searchbox" id="wk-mp-aff-banner-ads-searchbox">
+                        <form 
+                            action="<?= /* @noEscape */ $block->getCurrentUrl() ?>" 
+                            method="get"
+                            id="form-banner-ads-list-filter"
+                            name="formBannerAdslistFilter"
+                            data-mage-init='{"validation":{}}'>
+                            <input type="text"
+                                class="input-text"
+                                name="q"
+                                value="<?= /* @noEscape */ $block->getRequest()->getParam('q')?>"
+                                placeholder='<?= /* @noEscape */ __('Search by product name') ?>'/>
+                        </form>
+                    </div>
+                    <table cellspacing="0" class="border wk_mp_list_table wk_mp_list_container_table">
+                        <thead>
+                            <tr class="wk_content">
+                                <th class="wk_first_td">
+                                    <span class="label name">
+                                        <?= /* @noEscape */ __('Product Name')?>
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="label">
+                                        <?= /* @noEscape */ __('Image')?>
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="label">
+                                        <?= /* @noEscape */ __('Seller Name')?>
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="label htmlcode">
+                                        <?= /* @noEscape */ __('HTML Code')?>
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="label preview">
+                                        <?= /* @noEscape */ __('Preview')?>
+                                    </span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($block->getCollection() as $products) { ?>
+                            <tr class="wk_row_view">
+                                <td class="wk_first_td">
+                                    <span class="label name" title="<?= /* @noEscape */ $products->getName(); ?>">
+                                    <?= /* @noEscape */ $products->getName(); ?>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="label catalog_img" >
+                                        <img 
+                                            src="<?= /* @noEscape */ $block->getProImgUrl($products); ?>"
+                                            alt="<?= /* @noEscape */ $products->getName(); ?>"
+                                            class="image" />
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="label">
+                                    <?= /* @noEscape */ $block->getSellerNameByProdId($products->getId()); ?>
+                                    </span>
+                                </td>
+                                <td>
+                                <span class="label htmlcode">
+                                <input type="text" readonly
+                                value="<?= /* @noEscape */ $block->getHtmlCodeForAds($products, $aff_id) ?>"/>
+                                </span>
+                                </td>
+                                <td>
+                                    <span class="label preview">
+                                        <button class="button">
+                                        <span><span><?= /* @noEscape */ __('Preview') ?></span></span>
+                                        </button>
+                                    </span>
+                                </td>
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                    <?php if (count($block->getCollection()) <= 0) { ?>
+                        <div class="fieldset wk_mp_fieldset">
+                            <div class="wk_emptymsg" style="text-align:center;">
+                                    <?= /* @noEscape */ __('No Product ads Available') ?>
+                            </div>
+                        </div>
+                    <?php } ?>
+                <?php } ?>
+                <?php if ($block->getPagerHtml()): ?>
+                    <div class="toolbar bottom"><?= /* @noEscape */ $block->getPagerHtml(); ?></div>
+                <?php endif ?>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<div class="buttons-set">
+    <p class="back-link">
+        <a href="javascript:;" onclick="javascript: window.history.back();" class="left">
+            &laquo; <?= /* @noEscape */ __('Back') ?>
+        </a>
+    </p>
+</div>
+<?php } ?>
+<script type="text/x-magento-init">
+{
+"*": {
+      "userBanner":""
+    }
+}
+</script>

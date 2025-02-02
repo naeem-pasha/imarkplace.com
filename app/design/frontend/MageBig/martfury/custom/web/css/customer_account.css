@@ -1,0 +1,121 @@
+/* CSS FOR CUSTOMER PROFILE PAGE */
+
+/* CSS FOR THE SAVE ADDRESS BTN STARTS */
+.actions-toolbar .primary .action.save.primary{
+    background: #c53e3e !important;
+    border:1px solid #c53e3e !important;
+}
+
+/* CSS FOR THE SAVE ADDRESS BTN ENDS */
+
+/* CSS FOR THE APPLY FILTER BTN IN MY REQUESTED QUOTE SECTION STARTS */
+
+.wk-qs-filter-action > button:nth-of-type(1){
+    background: #c53e3e !important;
+    border:1px solid #c53e3e !important;
+
+}
+
+   /* CSS FOR THE SAVE ADDRESS BTN STARTS */
+   .action.primary:hover, .action.secondary:hover {
+    color: #fff;
+}
+   /* CSS FOR THE SAVE ADDRESS BTN ENDS */
+
+
+/* CSS FOR THE TOP MY ACCOUNT HEADING STARTS */
+
+.page-title-wrapper  .page-title{
+    font-weight: 600;
+    margin-top: 1.7rem;
+
+}
+
+.account-nav-content .nav.items .nav.item a:hover{
+    color: #c53e3e;
+}
+
+
+/* CSS FOR THE TOP MY ACCOUNT HEADING ENDS */
+
+
+/* CSS FOR THE MAIN SECTION STARTS */
+.account .column.main{
+    padding: 1.5rem;
+}
+
+
+/* CSS FOR THE MAIN SECTION ENDS */
+
+/* CSS FOR THE APPLY FILTER BTN IN MY REQUESTED QUOTE SECTION ENDS */
+
+
+
+
+/* Media Queries for the Account Information Page Starts */
+@media (max-width:576px){
+    .actions-toolbar .primary .action.save.primary{
+        padding: 2px 6px;
+        min-width: 32%;
+    }
+
+    /* CSS FOR THE SAVE ADDRESS BTN STARTS */
+   .form-address-edit .actions-toolbar .action.primary {
+    line-height: 2.2rem;
+    padding: 3px 5px;
+    font-size: 1.4rem;
+   }
+   .page-title-wrapper  .page-title{
+    text-align: center;
+
+}
+
+   /* CSS FOR THE SAVE ADDRESS BTN ENDS */
+
+   /* CSS FOR THE APPLY FILTER BTN STARTS */
+    
+.wk-qs-filter-action > button:nth-of-type(1){
+    min-width: 31%;
+    max-width: 31%;
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 5px 8px;
+    line-height: 19px;
+    margin-top: 1.2rem;
+}
+
+.wk-qs-filter-item-label {
+    margin-top: 1rem;
+}
+
+.fieldset>.field .label, .fieldset>.fields>.field .label {
+
+  font-size: 1.4rem;
+
+
+}
+
+
+
+   /* CSS FOR THE APPLY FILTER BTN ENDS */
+    
+}
+
+
+@media (min-width:576px) and (max-width:767px){
+    .wk-qs-filter-item-label {
+        margin-top: 1rem;
+    }
+
+    .page-title-wrapper  .page-title{
+        text-align: center;
+        
+    
+    }
+        
+}
+
+
+/* Media Queries for the Account Information Page Ends */
+
+

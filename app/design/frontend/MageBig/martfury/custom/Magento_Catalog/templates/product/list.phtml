@@ -1,0 +1,314 @@
+<?php
+/**
+ * Copyright © magebig.com - All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+use Magento\Framework\App\Action\Action;
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @var $block \Magento\Catalog\Block\Product\ListProduct
+ */
+?>
+<?php
+$_productCollection = $block->getLoadedProductCollection();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$mbHelper = $this->helper('MageBig\MbFrame\Helper\Data');
+$labelHelper = $this->helper('MageBig\WidgetPlus\Helper\Config');
+
+$showAddCart = $mbHelper->getConfig('mbconfig/category_view/show_addcart');
+$showCompare = $mbHelper->getConfig('mbconfig/category_view/show_compare');
+$showWishlist = $mbHelper->getConfig('mbconfig/category_view/show_wishlist');
+$showRating = $mbHelper->getConfig('mbconfig/category_view/show_rating');
+$showQuickview = $mbHelper->getConfig('mbconfig/category_view/show_quickview');
+$isHover = $mbHelper->getConfig('mbconfig/category_view/product_image_hover');
+?>
+<?= $block->getChildHtml('category.product.filter.mobile'); ?>
+<?php if (!$_productCollection->count()): ?>
+    <div class="message info empty"><div><?= /* @escapeNotVerified */ __('We can\'t find products matching the selection.') ?></div></div>
+<?php else: ?>
+    <?php
+    $toolbar = $block->getToolbarHtml();
+    echo $toolbar;
+    ?>
+    <?= $block->getAdditionalHtml() ?>
+    <?php
+    if ($block->getMode() == 'grid') {
+        $viewMode = 'grid';
+        $image = 'category_page_grid';
+        $showDescription = false;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+        $class = $mbHelper->getPageColumn();
+    } else {
+        $viewMode = 'list';
+        $image = 'category_page_list';
+        $showDescription = true;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+        $class = 'col-12';
+    }
+    /**
+     * Position for actions regarding image size changing in vde if needed
+     */
+    $pos = $block->getPositioned();
+    ?>
+    <?php if ($viewMode == 'grid') : ?>
+        <div class="products wrapper <?= /* @escapeNotVerified */ $viewMode; ?> products-<?= /* @escapeNotVerified */ $viewMode; ?>">
+            <?php $iterator = 1; ?>
+            <ol class="products list items product-items row wasif-test-125">
+                <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
+                <?php foreach ($_productCollection as $_product): ?>
+                    <li class="item product product-item  <?= $class ?>">
+                        <div class="product-item-info test99" data-container="product-grid">
+                            <div class="product-show">
+                                <?php $productImage = $block->getImage($_product, $image); ?>
+                                <a href="<?= /* @escapeNotVerified */ $_product->getProductUrl() ?>" class="product photo product-item-photo">
+                                    <span class="main-photo"><?= $productImage->toHtml(); ?></span>
+                                    <?php if ($isHover) : ?>
+                                        <?php $hoverImg = $block->getImage($_product, 'product_grid_hover'); ?>
+                                        <?php if (!strpos($hoverImg->getImageUrl(), 'mb_hover_img')) : ?>
+                                            <span class="hover-photo"><?= $hoverImg->toHtml(); ?></span>
+                                        <?php endif ?>
+                                    <?php endif ?>
+                                    <?php if ($labelHelper->getDiscountPercent($_product)) : ?>
+                                        <span class="discount-percent"><?= $labelHelper->getDiscountPercent($_product); ?></span>
+                                    <?php endif;?>
+                                </a>
+                                <div class="product details product-item-details">
+                                    <?php if ($_product->getTypeId() == 'configurable') : ?>
+                                        <div class="swatches-list">
+                                            <?= $block->getProductDetailsHtml($_product); ?>
+                                        </div>
+                                    <?php else : ?>
+                                        <?= $block->getProductDetailsHtml($_product); ?>
+                                    <?php endif; ?>
+                                    <?php
+                                    $_productNameStripped = $block->stripTags($_product->getName(), null, true);
+                                    ?>
+                                    <h2 class="product name product-item-name">
+                                        <a class="product-item-link"
+                                        href="<?= /* @escapeNotVerified */ $_product->getProductUrl() ?>"
+                                        title="<?= /* @escapeNotVerified */ $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>">
+                                            <?= /* @escapeNotVerified */ $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+                                        </a>
+                                    </h2>
+                                    <?php if ($showRating) : ?>
+                                        <?= $block->getReviewsSummaryHtml($_product, $templateType); ?>
+                                    <?php endif; ?>
+                                    <?= /* @escapeNotVerified */ $block->getProductPriceHtml(
+                                        $_product,
+                                        \Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE,
+                                        \Magento\Framework\Pricing\Render::ZONE_ITEM_LIST
+                                    ) ?>
+                                </div>
+                                <div class="product-btn wasif-test-btn-125">
+                                    <div class="row no-gutters text-center">
+                                        
+
+                                        <div class="col-2 btn-qiuk-view" <?php if (!$showQuickview) : ?>style="display: none;"<?php endif; ?>>
+                                            <?= $this->helper('MageBig\QuickView\Helper\Data')->getQuickViewButton($_product, 'mb-tooltip'); ?>
+                                        </div>
+                                        <?php if ($showAddCart) : ?>
+                                            <?php if ($_product->isSaleable()): ?>
+                                                <div class="col-8 btn-add-to-cart">
+                                                    <?php $postParams = $block->getAddToCartPostParams($_product); ?>
+                                                    <form data-role="tocart-form" data-product-sku="<?=  /* @NoEscape */ $_product->getSku() ?>" action="<?= /* @escapeNotVerified */ $postParams['action'] ?>" method="post">
+                                                        <input type="hidden" name="product" value="<?= /* @escapeNotVerified */ $_product->getEntityId() ?>">
+                                                        <input type="hidden" name="<?= /* @escapeNotVerified */ Action::PARAM_NAME_URL_ENCODED; ?>" value="<?= /* @escapeNotVerified */ $postParams['data'][Action::PARAM_NAME_URL_ENCODED] ?>">
+                                                        <?= $block->getBlockHtml('formkey') ?>
+                                                        <button type="submit"
+                                                            title="<?= $block->escapeHtml(__('Add to Cart')) ?>"
+                                                            class="action tocart mb-tooltip">
+                                                            <!-- <i class="mbi mbi-bag2" ><span>Add to cart </span></i> -->
+                                                            <span class="bag-img-icon">
+                                                            <!-- <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <mask id="mask0_510_873" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
+                                                                <rect width="32" height="32" fill="#D9D9D9"/>
+                                                                </mask>
+                                                                <g mask="url(#mask0_510_873)">
+                                                                <path d="M8.83268 28C8.21046 28 7.69402 27.7947 7.28335 27.384C6.87179 26.9724 6.66602 26.4556 6.66602 25.8333V11.5C6.66602 10.8778 6.87179 10.3613 7.28335 9.95067C7.69402 9.53911 8.21046 9.33333 8.83268 9.33333H11.3327V8.66667C11.3327 7.37778 11.7882 6.27778 12.6993 5.36667C13.6105 4.45556 14.7105 4 15.9993 4C17.2882 4 18.3882 4.45556 19.2993 5.36667C20.2105 6.27778 20.666 7.37778 20.666 8.66667V9.33333H23.166C23.7882 9.33333 24.3051 9.53911 24.7167 9.95067C25.1273 10.3613 25.3327 10.8778 25.3327 11.5V25.8333C25.3327 26.4556 25.1273 26.9724 24.7167 27.384C24.3051 27.7947 23.7882 28 23.166 28H8.83268ZM8.83268 26.6667H23.166C23.3882 26.6667 23.5825 26.5831 23.7487 26.416C23.9158 26.2498 23.9993 26.0556 23.9993 25.8333V11.5C23.9993 11.2778 23.9158 11.0836 23.7487 10.9173C23.5825 10.7502 23.3882 10.6667 23.166 10.6667H20.666V14C20.666 14.2 20.6051 14.3613 20.4833 14.484C20.3607 14.6058 20.1993 14.6667 19.9993 14.6667C19.7993 14.6667 19.638 14.6058 19.5153 14.484C19.3936 14.3613 19.3327 14.2 19.3327 14V10.6667H12.666V14C12.666 14.2 12.6051 14.3613 12.4833 14.484C12.3607 14.6058 12.1993 14.6667 11.9993 14.6667C11.7993 14.6667 11.638 14.6058 11.5153 14.484C11.3936 14.3613 11.3327 14.2 11.3327 14V10.6667H8.83268C8.61046 10.6667 8.41624 10.7502 8.25002 10.9173C8.0829 11.0836 7.99935 11.2778 7.99935 11.5V25.8333C7.99935 26.0556 8.0829 26.2498 8.25002 26.416C8.41624 26.5831 8.61046 26.6667 8.83268 26.6667ZM12.666 9.33333H19.3327V8.66667C19.3327 7.73333 19.0105 6.94444 18.366 6.3C17.7216 5.65556 16.9327 5.33333 15.9993 5.33333C15.066 5.33333 14.2771 5.65556 13.6327 6.3C12.9882 6.94444 12.666 7.73333 12.666 8.66667V9.33333Z" fill="#1C1B1F"/>
+                                                                </g>
+                                                            </svg> -->
+                                                                <!-- <img alt="imarkplace" src="/media/wysiwyg/shopping_bag.svg"> -->
+                                                                Add to cart 
+                                                            </span>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            <?php else: ?>
+                                                <div class="col-2">
+                                                    <?php if ($_product->getIsSalable()): ?>
+                                                        <div class="stock available"><span><?= /* @escapeNotVerified */ __('In stock') ?></span></div>
+                                                    <?php else: ?>
+                                                        <div class="stock unavailable"><span><?= /* @escapeNotVerified */ __('Out of stock') ?></span></div>
+                                                    <?php endif; ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                        <?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && $showWishlist): ?>
+                                            <div class="col-2 btn-wishlist">
+                                                <button type="button"
+                                                        data-post='<?= /* @escapeNotVerified */ $block->getAddToWishlistParams($_product); ?>'
+                                                        class="action towishlist mb-tooltip" data-action="add-to-wishlist"
+                                                        title="<?= /* @escapeNotVerified */ __('Add to Wishlist') ?>"><i aria-hidden="true" class="mbi mbi-heart"></i></button>
+                                            </div>
+                                        <?php endif; ?>
+                                        <?php if ($block->getAddToCompareUrl() && $showCompare): ?>
+                                            <?php $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare');?>
+                                            <div class="col btn-compare">
+                                                <button type="button" class="action tocompare mb-tooltip"
+                                                        data-post='<?= /* @escapeNotVerified */ $compareHelper->getPostDataParams($_product);?>'
+                                                        title="<?= /* @escapeNotVerified */ __('Add to Compare') ?>"><i aria-hidden="true" class="mbi mbi-chart-bars"></i></button>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ol>
+        </div>
+    <?php else : ?>
+        <div class="products wrapper <?= /* @escapeNotVerified */ $viewMode; ?> products-<?= /* @escapeNotVerified */ $viewMode; ?>">
+            <?php $iterator = 1; ?>
+            <ol class="products list items product-items row">
+                <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
+                <?php foreach ($_productCollection as $_product): ?>
+                    <li class="item product product-item <?= $class ?>">
+                        <div class="product-item-info" data-container="product-grid">
+                            <?php
+                            $productImage = $block->getImage($_product, $image);
+                            ?>
+                            <div class="row product details product-item-details">
+                                <div class="col-12 col-sm-3">
+                                    <div class="product-show">
+                                        <a href="<?= /* @escapeNotVerified */ $_product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+                                            <span class="main-photo"><?= $productImage->toHtml(); ?></span>
+                                            <?php if ($isHover) : ?>
+                                                <?php $hoverImg = $block->getImage($_product, 'product_grid_hover'); ?>
+                                                <?php if (!strpos($hoverImg->getImageUrl(), 'mb_hover_img')) : ?>
+                                                    <span class="hover-photo"><?= $hoverImg->toHtml(); ?></span>
+                                                <?php endif ?>
+                                            <?php endif ?>
+                                            <?php if ($labelHelper->getDiscountPercent($_product)) : ?>
+                                                <span class="discount-percent"><?= $labelHelper->getDiscountPercent($_product); ?></span>
+                                            <?php endif;?>
+                                        </a>
+                                        <?= $this->helper('MageBig\QuickView\Helper\Data')->getQuickViewButton($_product, 'mb-tooltip'); ?>
+                                        <?php if ($_product->getTypeId() == 'configurable') : ?>
+                                            <div class="swatches-list">
+                                                <?= $block->getProductDetailsHtml($_product); ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-9">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-8">
+                                            <div class="product-list-details">
+                                                <?php
+                                                $_productNameStripped = $block->stripTags($_product->getName(), null, true);
+                                                ?>
+                                                <h2 class="product name product-item-name">
+                                                    <a class="product-item-link"
+                                                       href="<?= /* @escapeNotVerified */ $_product->getProductUrl() ?>"
+                                                       title="<?= /* @escapeNotVerified */ $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>">
+                                                        <?= /* @escapeNotVerified */ $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+                                                    </a>
+                                                </h2>
+                                                <?php if ($showRating) : ?>
+                                                    <?= $block->getReviewsSummaryHtml($_product, $templateType); ?>
+                                                <?php endif; ?>
+
+                                                <div class="product-item-inner">
+                                                    <?php if ($showDescription):?>
+                                                        <div class="product description product-item-description">
+                                                            <?= /* @escapeNotVerified */ $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-4">
+                                            <div class="product-btn-info">
+                                                <?= /* @escapeNotVerified */ $block->getProductPriceHtml(
+                                                    $_product,
+                                                    \Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE,
+                                                    \Magento\Framework\Pricing\Render::ZONE_ITEM_LIST
+                                                ) ?>
+                                                <?php if ($showAddCart) : ?>
+                                                    <?php if ($_product->isSaleable()): ?>
+                                                        <div class="price-block">
+                                                            <?php $postParams = $block->getAddToCartPostParams($_product); ?>
+                                                            <form data-role="tocart-form" data-product-sku="<?=  /* @NoEscape */ $_product->getSku() ?>" action="<?= /* @escapeNotVerified */ $postParams['action'] ?>" method="post">
+                                                                <input type="hidden" name="product" value="<?= /* @escapeNotVerified */ $_product->getEntityId() ?>">
+                                                                <input type="hidden" name="<?= /* @escapeNotVerified */ Action::PARAM_NAME_URL_ENCODED ?>" value="<?= /* @escapeNotVerified */ $postParams['data'][Action::PARAM_NAME_URL_ENCODED] ?>">
+                                                                <?= $block->getBlockHtml('formkey')?>
+                                                                <button type="submit"
+                                                                        title="<?= $block->escapeHtml(__('Add to Cart')) ?>"
+                                                                        class="action tocart primary"><span><?= $block->escapeHtml(__('Add to Cart')) ?></span></button>
+                                                            </form>
+                                                        </div>
+                                                    <?php else: ?>
+                                                        <div class="price-block">
+                                                            <?php if ($_product->getIsSalable()): ?>
+                                                                <div class="stock available"><span><?= /* @escapeNotVerified */ __('In stock') ?></span></div>
+                                                            <?php else: ?>
+                                                                <div class="stock unavailable"><span><?= /* @escapeNotVerified */ __('Out of stock') ?></span></div>
+                                                            <?php endif; ?>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+
+                                                <?php if ($showWishlist || $showCompare): ?>
+                                                    <div class="row no-gutters">
+                                                        <?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && $showWishlist): ?>
+                                                            <div class="col btn-wishlist">
+                                                                <button type="button"
+                                                                        data-post='<?= /* @escapeNotVerified */ $block->getAddToWishlistParams($_product); ?>'
+                                                                        class="action towishlist" data-action="add-to-wishlist"
+                                                                        title="<?= /* @escapeNotVerified */ __('Add to Wishlist') ?>"><i aria-hidden="true" class="mbi mbi-heart"></i> <span><?= /* @escapeNotVerified */ __('Wishlist') ?></span></button>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                        <?php if ($block->getAddToCompareUrl() && $showCompare): ?>
+                                                            <?php $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare');?>
+                                                            <div class="col btn-compare">
+                                                                <button type="button" class="action tocompare"
+                                                                        data-post='<?= /* @escapeNotVerified */ $compareHelper->getPostDataParams($_product);?>'
+                                                                        title="<?= /* @escapeNotVerified */ __('Add to Compare') ?>"><i aria-hidden="true" class="mbi mbi-chart-bars"></i> <span><?= /* @escapeNotVerified */ __('Compare') ?></span></button>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ol>
+        </div>
+    <?php endif; ?>
+
+
+    <?= $toolbar ?>
+    <?php if (!$block->isRedirectToCartEnabled()) : ?>
+        <script type="text/x-magento-init">
+        {
+            "[data-role=tocart-form], .form.map.checkout": {
+                "catalogAddToCart": {
+                    "product_sku": "<?= /* @NoEscape */ $_product->getSku() ?>"
+                }
+            }
+        }
+        </script>
+    <?php endif; ?>
+<?php endif; ?>

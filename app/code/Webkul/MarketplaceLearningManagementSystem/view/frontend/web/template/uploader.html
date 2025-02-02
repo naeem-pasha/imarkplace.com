@@ -1,0 +1,34 @@
+<div id="content-uploader">
+    <form id="fileuploadForm" 
+        data-bind="attr: { action: getUrl() }"
+        method="post" enctype="multipart/form-data"
+    >
+        <div class="admin-field _required fileuploader-fieldset">
+            <span class="file-upload-label uploader-label">
+                <label>
+                    <span>
+                        Select File to Import
+                    </span>
+                </label>
+            </span>
+            <span class="admin__field-control uploader-field-control">
+                <input name="importContent" id="importContent" type="file"  
+                    class="import-filebox"
+                    data-bind="event: { change: validateExt() }"
+                />
+                <input type="submit" 
+                    id="startUpload" 
+                    value="Start Upload" 
+                    class="btnSubmit" 
+                    data-bind="click: startUpload"
+                /><br>
+                <span class="allowed-ext" id="allowed-ext" data-contenttype="1">
+                    Allowed Extension: mp4, ogg
+                </span> 
+                <label class="admin__field-error uploader-error">Invalid Extension!</label>
+                <label class="admin__field-error file-error" style="display: none;">The uploaded file exceeds the max file size!</label>
+            </span>
+        </div>
+        <div id="progress-div"><div class="progress-bar"></div></div>
+    </form>
+</div>

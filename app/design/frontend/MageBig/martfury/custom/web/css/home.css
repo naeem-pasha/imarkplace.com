@@ -1,0 +1,2578 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&font-display=swap');body {
+  margin: 0;
+  overflow-x: hidden
+}
+
+
+
+
+/* CSS FOR IMAGE SLIDER ISSUE RESOLVE TESTING STARTS */
+/* General container styling */
+.item-slider {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Image slide styling to cover the container without distortion */
+.img-slide {
+    width: 100%;
+    height: 100%; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the container */
+    display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .img-slide {
+        height: 100%; /* Adjust height for mobile for a more compact view */
+    }
+}
+
+/* CSS FOR IMAGE SLIDER ISSUE RESOLVE TESTING ENDS */
+
+
+
+/* Changes in the Styling for the  Quick View Option */
+
+/* Styling for the Add To Cart Btn Starts */
+.action.tocart.mb-tooltip {
+  color: #fff;
+  margin-bottom: 1rem;
+  background-color: #c53e3e;
+  border-radius: 0.6rem;
+  padding: 0.7rem 1.2rem;
+}
+
+.action.tocart.mb-tooltip .bag-img-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Styling for the Add To Cart Btn Starts */
+
+/* Styling for the Add Qucik View Btn Starts */
+.btn-quickview.mb-tooltip:hover {
+  color: #fff;
+}
+
+.btn-quickview.mb-tooltip:hover .mbi-eye {
+  background-color: #c53e3e;
+}
+
+.action.towishlist.mb-tooltip:hover {
+  color: #fff;
+
+}
+
+.action.towishlist.mb-tooltip:hover .mbi-heart {
+  background-color: #c53e3e;
+}
+
+.action.tocompare.mb-tooltip:hover {
+  color: #fff;
+}
+
+.action.tocompare.mb-tooltip:hover .mbi-chart-bars {
+  background-color: #c53e3e;
+}
+
+
+.product-btn .btn-add-to-cart {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.product-btn>div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* Styling for the Add Qucik View Btn Ends */
+
+/* Styling for the product prompt box starts*/
+.box-tocart .fieldset-add .custom-qty .btn-qty.minus {
+  background-color: #c53e3e !important;
+
+}
+
+.box-tocart .fieldset-add .custom-qty .btn-qty.plus {
+  background-color: #c53e3e !important;
+
+}
+
+.wishlisticonnew .action.towishlist.mb-tooltip {
+  color: #999;
+}
+
+.box-tocart .fieldset-add .add-cart-btn button {
+  background-color: #c53e3e;
+  border: 1px solid #c53e3e;
+}
+
+.box-tocart .fieldset-add .add-cart-btn button:hover {
+  color: #fff;
+}
+
+/* Styling for the product prompt box starts*/
+
+/* Styling for the comparison prompt starts */
+.ajaxwishlist-buttons>button:first-child {
+  background-color: #c53e3e;
+  border: 1px solid #c53e3e;
+
+}
+
+/* Styling for the comparison prompt ends */
+.category-products {
+  height: 100%;
+}
+
+.widget-product .owl-carousel .product-item {
+  height: 100%;
+} 
+
+.block.widget .product-item-info {
+  height: 100%;
+}
+
+.product-btn {
+  width: 91%;
+  padding: 5px 0px;
+  margin: 7.5px;
+
+
+}
+/* Changes in the Styling for the  Quick View Option */
+
+/* .owl-carousel .owl-item img {
+  height: 100% !important
+} */
+
+.cms-products .page-main .main-wrap .block-static-block.widget {
+  background-color: #fff;
+  margin-bottom: 0
+}
+
+
+.view-all-button:hover {
+  color: #fff !important;
+  text-decoration: none
+}
+
+user-icon1:hover {
+  color: #723939 !important;
+  text-decoration: underline
+}
+
+.container-banner {
+  margin-top: 1.5rem;
+  padding-right: 0;
+  padding-left: 0
+}
+
+
+.owl-carousel.owl-theme .owl-dots .owl-dot.active span,.owl-carousel.owl-theme .owl-dots .owl-dot:hover span {
+  background: #ff153e !important
+}
+
+.owl-theme .owl-dots .owl-dot span {
+  width: 10px;
+  height: 10px;
+  margin: 5px 7px;
+  background: #fff0f0;
+  display: block;
+  backface-visibility: visible;
+  transition: opacity .2s ease;
+  border-radius: 30px
+}
+
+/* .object-fit .img-lazy-wrap img {
+  object-fit: revert !important;
+  height: 100% !important;
+  width: 100% !important
+} */
+
+.user-icon1 {
+  color: #000 !important
+}
+
+.discount-percent {
+  padding: .25em .4em !important;
+  font-size: 75% !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  text-align: right !important;
+  white-space: nowrap !important;
+  vertical-align: baseline !important;
+  border-radius: .25rem !important;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  color: #fff;
+  background-color: #dc3545 !important;
+  float: right !important;
+  font-weight: 500 !important
+}
+
+.widget-product {
+  margin-bottom: 0 !important
+}
+
+.banner-container {
+  margin-top: 3rem
+}
+
+.price-container .price {
+  font-weight: 400 !important
+}
+
+
+#flex-display {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important
+}
+
+.flex-display2 {
+  display: flex;
+  align-items: center
+}
+
+
+
+
+@media (min-width: 1000px) and (max-width:1200px) {
+  .left_arrow_img {
+      position:relative !important;
+      right: .37rem !important;
+      width: 1rem !important;
+      position: relative
+  }
+
+  .carousel-inner {
+      height: 100%
+  }
+
+  .carousel-item {
+      height: 100%
+  }
+
+  .h-99 {
+      height: 99%
+  }
+
+  .h-97 {
+      height: 97% !important
+  }
+
+  .owl-prev {
+      left: -39px !important
+  }
+
+  .right_arrow_img {
+      position: relative !important;
+      right: .3rem !important;
+      width: 1rem !important
+  }
+
+  .product-card {
+      height: 97.3% !important
+  }
+
+  .h-100 {
+      height: 100%
+  }
+
+  #saleCarousel {
+      height: 100%
+  }
+
+  #saleCarousel2 {
+      height: 100%
+  }
+
+  #saleCarousel3 {
+      height: 100%
+  }
+
+  #saleCarousel4 {
+      height: 100%
+  }
+
+  .summer-sale {
+      height: 85vh !important
+  }
+
+  .product-card {
+      width: 92% !important
+  }
+
+  .sale-banner img {
+      width: 81% !important;
+      height: 100% !important;
+      margin: 0 4% !important
+  }
+}
+
+
+
+@media (min-width: 802px) and (max-width:1295px) {
+  .screen-above-1100 {
+      height:auto !important;
+      padding-top: .6rem !important;
+      padding-bottom: .6rem !important;
+      margin-top: 1px
+  }
+}
+
+@media (min-width: 1296px) {
+  .screen-above-1100 {
+      height:auto !important;
+      background-color: #fff !important;
+      padding-top: 1.5rem !important;
+      padding-bottom: 1.5rem !important;
+      margin-top: 1px
+  }
+}
+
+@media (min-width: 800px) {
+
+
+  .service-box {
+      flex-direction: column !important;
+      align-items: center;
+      min-height: 140px !important;
+      padding: 20px !important;
+      border-radius: 5px;
+      background-color: #fff;
+      display: flex;
+      justify-content: center !important;
+      gap: 1rem !important;
+      padding-right: 2rem !important;
+      padding-left: 2rem !important
+  }
+
+  .service-box img {
+      max-width: 44px !important;
+      margin-right: 1px !important
+  }
+
+  .service-title {
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      text-align: center
+  }
+}
+
+@media (min-width: 800px) and (max-width:1400px) {
+  .service-box {
+      flex-direction:column !important;
+      align-items: center;
+      min-height: 140px !important;
+      padding: 20px !important;
+      border-radius: 5px;
+      background-color: #fff;
+      display: flex;
+      justify-content: center !important;
+      gap: 1rem !important;
+      padding-right: 2rem !important;
+      padding-left: 2rem !important
+  }
+
+  .service-box img {
+      max-width: 44px !important;
+      margin-right: 1px !important
+  }
+
+  .service-title {
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      text-align: center
+  }
+}
+
+@media (max-width: 290px) {
+  .card-title {
+      font-size:8px !important;
+      font-weight: 400;
+      font-family: 'Poppins'
+  }
+
+  .service-box {
+      flex-direction: column !important;
+      align-items: center;
+      min-height: 126px !important;
+      padding: 20px !important;
+      border-radius: 5px;
+      background-color: #fff;
+      display: flex;
+      justify-content: center !important;
+      gap: 1rem !important;
+      padding-right: 2rem !important;
+      padding-left: 2rem !important
+  }
+
+  .service-box img {
+      max-width: 25px !important;
+      margin-right: 1px !important
+  }
+
+  .service-title {
+      font-size: 9px !important;
+      font-weight: 600 !important;
+      text-align: center
+  }
+
+  .summer-sale-text {
+      position: relative;
+      right: 1.3rem;
+      font-size: 13px !important
+  }
+
+  .category-card {
+      flex-direction: column;
+      width: 97%
+  }
+
+  .category-card {
+      margin: -6px 0 !important
+  }
+
+  #accessories1 {
+      position: relative;
+      left: 0
+  }
+
+  #book1 {
+      position: relative;
+      left: 0 !important
+  }
+
+  .carousel-item img {
+      display: block;
+      margin: 0 auto;
+      width: 63%
+  }
+
+  .category-image {
+      width: 100% !important;
+      position: relative;
+      left: .5rem
+  }
+
+  #electronics {
+      position: relative;
+      left: 0 !important
+  }
+
+  #fashion1 {
+      position: relative;
+      left: 0 !important
+  }
+
+  #sports1 {
+      position: relative;
+      left: 0 !important
+  }
+
+  #grocery1 {
+      position: relative;
+      left: 0 !important
+  }
+
+  .first-margin {
+      margin-top: 1.8rem
+  }
+
+  .view-all-button {
+      position: relative !important;
+      left: 1.5rem !important;
+      border-radius: 1px
+  }
+
+  .view-all-button:hover {
+      color: #fff
+  }
+
+  .banner-container {
+      display: none !important
+  }
+
+  .star-rating {
+      font-size: 8px !important
+  }
+
+  .price {
+      font-size: 11px !important
+  }
+
+  .product-card {
+      height: auto !important
+  }
+}
+
+@media (min-width: 1000px) {
+  .below-line {
+      width:64%;
+      position: relative;
+      left: .25rem;
+      bottom: .8rem
+  }
+
+  .summersale {
+      box-shadow: 0 4px 5px rgba(0,0,0,.2),0 0px 0px rgba(0,0,0,.19) !important
+  }
+
+  .fashionsale {
+      box-shadow: 0 4px 5px rgba(0,0,0,.2),0 0px 0px rgba(0,0,0,.19) !important
+  }
+
+  .electronicssale {
+      box-shadow: 0 4px 5px rgba(0,0,0,.2),0 0px 0px rgba(0,0,0,.19) !important
+  }
+
+  .imarkplacemart {
+      box-shadow: 0 4px 5px rgba(0,0,0,.2),0 0px 0px rgba(0,0,0,.19) !important
+  }
+
+
+  #mt-0 {
+      margin-top: 0 !important
+  }
+}
+
+.carousel-indicators button {
+  background-color: #f3f4f6 !important;
+  width: 12px;
+  height: 12px;
+  opacity: .5;
+  border: 0;
+  border-radius: 50%;
+  margin-right: .3rem;
+  margin-bottom: .35rem;
+  opacity: 2
+}
+
+.carousel-indicators .active {
+  background-color: #ff153e !important;
+  opacity: 1
+}
+
+@media (min-width: 992px) and (max-width:1024px) {
+  .carousel-control-next,.carousel-control-prev {
+      position:absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+      align-items: center;
+      -ms-flex-pack: center;
+      margin: 0 2%;
+      justify-content: center;
+      width: 15%;
+      color: #fff;
+      text-align: center;
+      opacity: .5;
+      transition: opacity .15s ease
+  }
+
+  .sale-banner img {
+      width: 83% !important;
+      height: 98.2% !important;
+      margin: 3% 0 !important
+  }
+}
+
+@media (min-width: 1024px) and (max-width:1366px) {
+  .carousel-control-next,.carousel-control-prev {
+      position:absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+      align-items: center;
+      -ms-flex-pack: center;
+      margin: 0 2%;
+      justify-content: center;
+      width: 15%;
+      color: #fff;
+      text-align: center;
+      opacity: .5;
+      transition: opacity .15s ease
+  }
+
+  .sale-banner img {
+      width: 83%;
+      height: 89%;
+      margin: 3% 0
+  }
+
+  .star-rating {
+      color: #231f20;
+      font-size: 14px
+  }
+
+  .card-title {
+      margin-bottom: .75rem;
+      font-size: 13.9px !important;
+      text-align: center;
+      font-weight: 400;
+      font-family: 'Poppins'
+  }
+
+  .price {
+      background: linear-gradient(#ea1b98,#ff1b00);
+      padding: 0;
+      font-size: 17px;
+      margin: 0;
+      font-weight: lighter;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent
+  }
+
+  .old-price {
+      text-decoration: line-through;
+      color: #999;
+      font-size: 14px
+  }
+}
+
+@media (min-width: 768px) and (max-width:992px) {
+  .sale-banner {
+      display:none
+  }
+
+  .col-md-3-salebanner {
+      display: none
+  }
+
+  .col-md-9-carousel {
+      width: 100%;
+      flex: 0 0 100%;
+      max-width: 100%
+  }
+
+  .owl-prev,.owl-next {
+      display: none !important
+  }
+
+
+}
+
+@media (min-width: 993px) {
+  .sale-banner {
+      display:block
+  }
+
+  .col-md-3-salebanner {
+      display: block;
+      width: 25%;
+      flex: 0 0 25%;
+      max-width: 25%
+  }
+
+  .col-md-9-carousel {
+      width: 75%;
+      flex: 0 0 75%;
+      max-width: 75%
+  }
+
+}
+
+@media (max-width: 767px) {
+  .col-md-9-carousel {
+      width:100%;
+      flex: 0 0 100%;
+      max-width: 100%
+  }
+
+  .container img {
+      max-width: 68% !important
+  }
+}
+
+.no-padding {
+  padding-left: 0 !important;
+  padding-right: 0 !important
+}
+
+.category-image,.category-description {
+  margin-bottom: 0 !important
+}
+
+
+.icon-container .icon {
+  margin: 0 15px;
+  font-size: 35px;
+  cursor: pointer;
+  font-weight: 400 !important
+}
+
+
+section {
+  margin: 10px 0 0
+}
+
+.custom-menu-dropdown {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem
+}
+
+.width-6 {
+  width: 6%
+}
+
+
+.custom-menu-dropdown-icons {
+  color: #fff;
+  font-size: 2.3rem;
+  font-weight: 400
+}
+
+.no-padding-container {
+  padding: 0;
+  width: 100%
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0
+}
+
+.no-gutters>.col,.no-gutters>[class*=col-] {
+  padding-right: 0;
+  padding-left: 0
+}
+
+.category-card {
+  display: flex;
+  align-items: center;
+  width: 98%;
+  margin: 10px 0;
+  background: #fff;
+  transition: transform .2s
+}
+
+.category-card:hover {
+  transform: scale(1.02)
+}
+
+@media (max-width: 576px) {
+  .product.photo.product-item-photo>p:first-of-type {
+      position:absolute;
+      top: .1rem;
+      right: 0
+  }
+
+  .action.tocart.mb-tooltip {
+      color: #fff;
+      margin-bottom: 1rem;
+      background-color: #c53e3e;
+      border-radius: 0.6rem;
+      padding: 0.5rem 0.6rem;
+      font-size: 1rem;
+      text-transform: capitalize;
+    }
+  
+    .action.towishlist.mb-tooltip .mbi {
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      line-height: 25px;
+      display: inline-block;
+      border-radius: 50%;
+    }
+  
+    .btn-quickview.mb-tooltip.mbi {
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      line-height: 25px;
+      display: inline-block;
+      border-radius: 50%;
+    }
+  
+    .action.tocompare.mb-tooltip .mbi {
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      line-height: 25px;
+      display: inline-block;
+      border-radius: 50%;
+    }
+  
+    .card-title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    min-height: 100% !important;
+    }
+  
+    .product-card{
+      margin-top: 2px !important;
+      margin-left: 10px !important;
+      margin-right: 10px !important;
+      margin-bottom: 2px !important;
+  }
+  
+}
+
+@media (min-width: 576px) and (max-width:1200px) {
+  .product.photo.product-item-photo>p:first-of-type {
+      position:absolute;
+      top: 0;
+      right: 0
+  }
+}
+
+@media (min-width: 1200px) {
+  .product.photo.product-item-photo>p:first-of-type {
+      position:absolute;
+      top: 0;
+      right: 0
+  }
+}
+
+@media (min-width: 1910px) {
+  .product-image-container {
+      display:inline !important
+  }
+}
+
+@media (min-width: 1204px) {
+  .width1 {
+      width:100%
+  }
+
+  .widget-product-grid {
+      height: 100% !important
+  }
+  
+.product-items.widget-product-grid.owl-carousel.owl-theme.owl-loaded.owl-drag .owl-stage-outer{
+    height: 100% !important
+
+
+  }
+
+.product-items.widget-product-grid.owl-carousel.owl-theme.owl-loaded.owl-drag .owl-stage-outer .owl-stage {
+    height: 100% !important
+
+}
+
+.product-items.widget-product-grid.owl-carousel.owl-theme.owl-loaded.owl-drag .owl-stage-outer .owl-stage  .owl-item  {
+    height: 100% !important
+
+}
+
+  .product-show {
+      height: 100%;
+      padding-bottom: 0 !important
+  }
+
+  .widget-product {
+      margin-bottom: 0 !important;
+      height: 100%
+  }
+
+  .category-card {
+      transition: box-shadow .3s ease
+  }
+
+  .no-padding-container {
+      padding: 2px !important
+  }
+
+  .carousel-inner {
+      height: 100% !important
+  }
+
+  .carousel-item {
+      height: 100% !important
+  }
+
+  .h-100 {
+      height: 100%
+  }
+
+  .product-card {
+      height: 98% !important
+  }
+
+  .card-title {
+      margin-bottom: 1.8rem !important;
+      font-weight: 400;
+      font-family: 'Poppins'
+  }
+
+  .category-card:hover {
+      box-shadow: 0 4px 6px rgba(0,0,0,.1),0 4px 6px rgba(0,0,0,.1)
+  }
+
+  #saleCarousel2 {
+      height: 100%
+  }
+
+  #saleCarousel3 {
+      height: 100%
+  }
+
+  #saleCarousel4 {
+      height: 100%
+  }
+
+  .summer-sale {
+      height: 85vh !important
+  }
+
+  .product-card {
+      width: 92% !important
+  }
+
+  .star-rating {
+      margin-bottom: 1rem
+  }
+
+  .summer-sale-header {
+      margin-bottom: 1.3rem !important
+  }
+
+  .price {
+      font-size: 19px !important
+  }
+
+  .old-price {
+      font-size: 15px !important
+  }
+
+  .col-md-3-salebanner {
+      height: 100% !important
+  }
+
+  .carousel-item img {
+      display: block !important;
+      width: 100% !important;
+      margin-top: 0 !important
+  }
+
+  .summer-sale-text {
+      position: relative !important;
+      right: 1.3rem !important
+  }
+
+  .view-all-button {
+      position: relative;
+      left: .9rem;
+      border-radius: 1px
+  }
+
+  #summer-height {
+      height: auto !important
+  }
+
+  .sale-banner img {
+      width: 83% !important;
+      height: auto;
+      margin: 0 4% !important
+  }
+
+  .left_arrow_img {
+      position: relative !important;
+      right: .37rem !important;
+      width: 1rem !important
+  }
+
+  .right_arrow_img {
+      position: relative !important;
+      right: .3rem !important;
+      width: 1rem !important
+  }
+
+  .h-26 {
+      height: 26.5rem !important
+  }
+
+  .h-100 {
+      height: 100% !important
+  }
+
+  .h-97 {
+      height: 98% !important
+  }
+}
+
+@media (min-width: 1357px) and (max-width:2400px) {
+  .owl-prev {
+      left:-33px !important
+  }
+}
+
+@media (min-width: 1240px) and (max-width:1290px) {
+  #summer-height {
+      height:100% !important
+  }
+
+  .sale-banner img {
+      height: 51vh !important
+  }
+}
+
+@media (min-width: 1295px) and (max-width:1322px) {
+  .sale-banner img {
+      width:81% !important;
+      height: 68vh !important;
+      margin: 0 4% !important
+  }
+
+  .service-box {
+      min-height: 95px !important;
+      flex-direction: row !important
+  }
+
+  .imarklogo {
+      width: auto;
+      height: 8vh
+  }
+}
+
+@media (min-width: 1299px) and (max-width:1325px) {
+  .sale-banner img {
+      width:81% !important;
+      height: 59vh !important;
+      margin: 0 4% !important
+  }
+}
+
+@media (min-width: 992px) and (max-width:1200px) {
+  .width1 {
+      width:100%
+  }
+
+  .summer-sale-text {
+      position: relative !important;
+      right: 1.3rem !important
+  }
+
+  .view-all-button {
+      position: relative;
+      left: .9rem;
+      border-radius: 1px
+  }
+
+  .category-card {
+      display: flex !important;
+      flex-direction: column !important;
+      width: 100% !important
+  }
+
+  .category-image {
+      margin-right: 1px !important;
+      width: 98.2% !important
+  }
+
+  .category-name {
+      font-size: 1.5rem !important;
+      font-weight: 600 !important;
+      padding-top: .6rem !important
+  }
+
+  .first-margin {
+      margin-top: 1.9rem !important
+  }
+
+  #toys1 {
+      position: relative;
+      left: 0 !important
+  }
+
+  #accessories1 {
+      position: relative;
+      left: 0 !important
+  }
+
+  #book1 {
+      position: relative;
+      left: 0 !important
+  }
+
+  #electronics {
+      position: relative;
+      left: 0 !important
+  }
+
+  #fashion1 {
+      position: relative;
+      left: 0 !important
+  }
+
+  #sports1 {
+      position: relative;
+      left: 0 !important
+  }
+
+  #grocery1 {
+      position: relative;
+      left: 0 !important
+  }
+}
+
+.category-image {
+  width: 50%;
+  height: auto;
+  margin-right: 10px
+}
+
+.mar1 {
+  margin-right: 2.1rem
+}
+
+.category-name {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #333;
+  text-align: center
+}
+
+#health1 {
+  margin-right: 1rem
+}
+
+#toys1 {
+  margin-right: 1.3rem;
+  position: relative;
+  right: .2rem
+}
+
+#accessories1 {
+  position: relative;
+  left: .1rem
+}
+
+#book1 {
+  position: relative;
+  left: 1.4rem
+}
+
+#electronics {
+  position: relative;
+  right: .2rem
+}
+
+#fashion1 {
+  position: relative;
+  left: .7rem
+}
+
+#sports1 {
+  position: relative;
+  left: 1.1rem
+}
+
+#grocery1 {
+  position: relative;
+  left: .6rem
+}
+
+@media (min-width: 576px) {
+  .col-sm-6 .col-xs-6 {
+      width:40%
+  }
+
+  .card {
+      position: relative;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border-radius: .25rem;
+      height: auto;
+      margin: 9px
+  }
+
+  .summer-sale-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+      margin-left: 8px
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .card {
+      position:relative;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border-radius: .25rem;
+      height: auto;
+      margin: 10px
+  }
+
+  .card-title {
+      font-size: 11px;
+      text-align: center;
+      font-family: "Poppins";
+      font-weight: 400
+  }
+
+  .price {
+      background: linear-gradient(#ea1b98,#ff1b00);
+      padding: 0;
+      font-size: 15px;
+      margin: 0;
+      font-weight: lighter;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent
+  }
+
+  .old-price {
+      text-decoration: line-through;
+      color: #999;
+      font-size: 13px
+  }
+}
+
+@media (max-width: 340px) {
+  .category-name {
+      font-size:9px !important;
+      margin-top: .3rem
+  }
+
+}
+
+@media (min-width: 572px) and (max-width:768px) {
+  .category-image {
+      width:100% !important;
+      position: relative;
+      left: .5rem
+  }
+
+  .carousel-item img {
+      width: 100% !important
+  }
+
+  .category-card {
+      margin: -6px 0 !important
+  }
+
+  .first-margin {
+      margin-top: 1.8rem
+  }
+
+  .category-name {
+      font-size: 17px !important;
+      margin-top: .4rem;
+      margin-bottom: .4rem
+  }
+
+  #toys1 {
+      margin-right: 1.3rem;
+      position: relative;
+      left: 0
+  }
+
+  .view-all-button {
+      position: relative !important;
+      left: 1.5rem !important;
+      border-radius: 1px
+  }
+
+  .summer-sale-text {
+      margin-left: -13px !important
+  }
+
+  .card-title {
+      font-size: 12px !important;
+      font-weight: 400;
+      font-family: 'Poppins'
+  }
+
+  .star-rating {
+      font-size: 15px !important
+  }
+
+  .price {
+      font-size: 16.4px !important
+  }
+
+  .old-price {
+      font-size: 16px !important
+  }
+
+  #accessories1 {
+      position: relative;
+      left: 0
+  }
+
+  #book1 {
+      position: relative;
+      left: 0
+  }
+
+  #electronics {
+      position: relative;
+      left: 0
+  }
+
+  #fashion1 {
+      position: relative;
+      left: 0
+  }
+
+  #sports1 {
+      position: relative;
+      left: 0
+  }
+
+  #grocery1 {
+      position: relative;
+      left: 0
+  }
+
+  .product-card {
+      height: auto !important
+  }
+}
+
+
+@media (min-width: 1590px) {
+  .category-name {
+      font-size:1.39rem !important
+  }
+
+  .category-name {
+      font-size: 1.6rem !important
+  }
+
+  #accessories1 {
+      position: relative;
+      left: -.7rem
+  }
+
+  #book1 {
+      position: relative
+  }
+
+  #electronics {
+      position: relative
+  }
+
+  #fashion1 {
+      position: relative
+  }
+
+  #sports1 {
+      position: relative
+  }
+
+  #grocery1 {
+      position: relative
+  }
+
+  #toys1 {
+      position: relative
+  }
+}
+
+@media (min-width: 768px) and (max-width:992px) {
+  .width1 {
+      width:100% !important
+  }
+
+  .category-image {
+      width: 98% !important;
+      position: relative;
+      left: .5rem
+  }
+
+  .carousel-item img {
+      width: 100% !important
+  }
+
+  .category-card {
+      display: flex !important;
+      flex-direction: column !important;
+      margin: -6px 0 !important;
+      width: 100% !important
+  }
+
+  .first-margin {
+      margin-top: 1.8rem
+  }
+
+  .category-name {
+      font-size: 17px !important;
+      margin-top: .4rem;
+      margin-bottom: .4rem
+  }
+
+  #toys1 {
+      margin-right: 1.3rem;
+      position: relative;
+      left: 0
+  }
+
+  .view-all-button {
+      position: relative !important;
+      left: 1.1rem !important;
+      border-radius: 1px
+  }
+
+  .summer-sale-text {
+      margin-left: -13px !important
+  }
+
+  .card-title {
+      font-size: 14px !important;
+      font-weight: 400;
+      font-family: 'Poppins'
+  }
+
+  .star-rating {
+      font-size: 15px !important
+  }
+
+  .price {
+      font-size: 15px !important
+  }
+
+  .old-price {
+      font-size: 20px !important
+  }
+
+  #accessories1 {
+      position: relative;
+      left: 0
+  }
+
+  #book1 {
+      position: relative;
+      left: 0
+  }
+
+  #electronics {
+      position: relative;
+      left: 0
+  }
+
+  #fashion1 {
+      position: relative;
+      left: 0
+  }
+
+  #sports1 {
+      position: relative;
+      left: 0
+  }
+
+  #grocery1 {
+      position: relative;
+      left: 0
+  }
+}
+
+@media (min-width: 484px) and (max-width:556px) {
+  .summer-sale-text {
+      position:relative;
+      right: 1rem
+  }
+}
+
+
+@media (min-width: 290px) and (max-width:572px) {
+
+  .category-name {
+      font-size: 13px
+  }
+
+  .first-margin {
+      margin-top: 1.8rem
+  }
+
+  .category-card {
+      margin: -3px 2px !important
+  }
+
+  .category-image {
+      margin-right: 0 !important
+  }
+
+  .view-all-button {
+      position: relative !important;
+      left: 1.5rem !important;
+      border-radius: 1px
+  }
+
+  #health1 {
+      margin-right: 1rem
+  }
+
+  #toys1 {
+      margin-right: 1.3rem;
+      position: relative;
+      left: 0
+  }
+
+  .category-image {
+      width: 100% !important
+  }
+
+  #accessories1 {
+      position: relative;
+      left: 0
+  }
+
+  #book1 {
+      position: relative;
+      left: 0
+  }
+
+  #electronics {
+      position: relative;
+      left: 0
+  }
+
+  #fashion1 {
+      position: relative;
+      left: 0
+  }
+
+  #sports1 {
+      position: relative;
+      left: 0
+  }
+
+  #grocery1 {
+      position: relative;
+      left: 0
+  }
+
+  .carousel-item img {
+      width: 100% !important
+  }
+
+  .card-title {
+      font-size: 9.5px !important;
+      font-weight: 400;
+      font-family: 'Poppins'
+  }
+
+  .star-rating {
+      font-size: 11px !important
+  }
+
+  .price {
+      font-size: 13px !important
+  }
+
+  .old-price {
+      font-size: 13px !important
+  }
+}
+
+@media (max-width: 767px) {
+  .category-card {
+      flex-direction:column;
+      width: 97%
+  }
+
+  .summer-sale-text {
+      font-size: 16px;
+      font-weight: 700;
+      color: #000;
+      margin-left: 8px
+  }
+
+  .view-all-button {
+      background: linear-gradient(to right,#ea1b98,#ff1b00);
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      font-size: 13px;
+      cursor: pointer;
+      margin: 0 10px;
+      border-radius: 1px
+  }
+
+  .star-rating {
+      color: #231f20;
+      font-size: 13px
+  }
+
+  .card {
+      position: relative;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border-radius: .25rem;
+      height: auto;
+      margin: 10px
+  }
+}
+
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  transition: box-shadow .3s ease
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,.2),0 6px 20px rgba(0,0,0,.19)
+}
+
+@media (min-width: 200px) and (max-width:480px) {
+  .view-all-button {
+      background:linear-gradient(to right,#ea1b98,#ff1b00);
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      font-size: 8px;
+      cursor: pointer;
+      margin: 0 10px;
+      border-radius: 1px
+  }
+
+  .beauty-img {
+      width: 100% !important;
+      object-fit: revert !important
+  }
+
+  .leather-img {
+      width: auto !important;
+      object-fit: revert !important
+  }
+
+  .appliance-img {
+      width: auto !important;
+      object-fit: revert !important
+  }
+
+  .shoe-img {
+      width: 100% !important;
+      object-fit: revert !important
+  }
+
+  .wooden-img {
+      width: 100% !important;
+      object-fit: revert !important
+  }
+
+  .summer-sale-text {
+      position: relative;
+      right: 1.3rem
+  }
+
+  .card {
+      position: relative;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 1px solid rgba(0,0,0,.125);
+      border-radius: .25rem;
+      transition: box-shadow .3s ease
+  }
+
+  .card:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,.2),0 6px 20px rgba(0,0,0,.19)
+  }
+
+  .badge-danger {
+      color: #fff;
+      background-color: #dc3545;
+      font-size: xx-small !important
+  }
+
+  .card-title {
+      margin-bottom: .35rem !important;
+      text-align: center !important;
+      font-weight: 400;
+      font-family: 'Poppins'
+  }
+
+  .star-rating {
+      color: #231f20;
+      font-size: 7px
+  }
+
+  .price {
+      background: linear-gradient(#ea1b98,#ff1b00);
+      padding: 0;
+      font-size: 9px;
+      margin: 0;
+      font-weight: lighter;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent
+  }
+
+  .old-price {
+      text-decoration: line-through;
+      color: #999;
+      font-size: 8px
+  }
+
+}
+
+.banner:last-child {
+  margin-right: 0
+}
+
+.summersale {
+  background-color: #fff;
+  margin-top: 4%;
+  padding: 0 5%
+}
+
+.fashionsale {
+  background-color: #fff;
+  margin-top: 4%;
+  padding: 0 5%
+}
+
+.electronicssale {
+  background-color: #fff;
+  margin-top: 4%;
+  padding: 0 5%
+}
+
+.imarkplacemart {
+  background-color: #fff;
+  margin-top: 4%;
+  padding: 0 5%
+}
+
+.sale-banner {
+  text-align: left;
+  color: #000;
+  height: 100%
+}
+
+.sale-banner img {
+  width: 81%;
+  height: 89%;
+  margin: 0 4%
+}
+
+.carousel-item img {
+  display: block
+}
+
+.product-card {
+  text-align: center;
+  border: none
+}
+
+.price {
+  color: #e74c3c;
+  font-weight: 700
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #999
+}
+
+.badge-danger {
+  color: #fff;
+  background: linear-gradient(to right,#ea1b98,#ff1b00);
+  font-size: 1.1rem;
+  float: right
+}
+
+.card-title {
+  margin-bottom: .75rem;
+  font-size: 12px;
+  text-align: left;
+  font-weight: 400;
+  font-family: 'Poppins'
+}
+
+.star-rating {
+  color: #231f20
+}
+
+#black {
+  color: #231f20 !important
+}
+
+.star-rating .fa-star {
+  color: #ff4081
+}
+
+.card-body {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-height: 1px;
+  text-align: left;
+  padding: 1.25rem
+}
+
+.price {
+  background: linear-gradient(#ea1b98,#ff1b00);
+  padding: 0;
+  font-size: 20px;
+  margin: 0;
+  font-weight: lighter;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent
+}
+
+.summer-sale-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #a7a9ac;
+  padding: 10px 20px;
+  margin: 3% 1%
+}
+
+.summer-sale-text {
+  font-size: 24px;
+  font-weight: 600;
+  color: #000
+}
+
+.view-all-button {
+  background: linear-gradient(to right,#ea1b98,#ff1b00);
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 1px
+}
+
+.owl-prev,.owl-next {
+  position: absolute !important;
+  top: 44% !important;
+  transform: translateY(-50%) !important;
+  background: linear-gradient(to right,#ea1b98,#ff1b00) !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 10px !important;
+  cursor: pointer !important;
+  width: 24px !important;
+  height: 59px !important;
+  opacity: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important
+}
+
+.owl-prev {
+  left: -31px !important
+}
+
+.owl-next {
+  right: -32px !important
+}
+
+.carousel-control-next,.carousel-control-prev {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 0 !important;
+  color: #fff;
+  text-align: center;
+  opacity: .5;
+  transition: opacity .15s ease
+}
+
+.carousel-control-next,.carousel-control-prev {
+  opacity: 2 !important
+}
+
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid rgba(0,0,0,.125) !important;
+  border-radius: .25rem;
+  height: auto;
+  margin: 10px
+}
+
+.service-box {
+  align-items: center;
+  min-height: 100px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fff;
+  display: flex;
+  box-shadow: 0 4px 5px rgba(0,0,0,.2),0 0px 0px rgba(0,0,0,.19) !important
+}
+
+.service-box img {
+  max-width: 50px;
+  margin-right: 20px
+}
+
+.service-title {
+  font-size: 18px;
+  font-weight: 600
+}
+
+
+@media (max-width: 997px) {
+  .left_arrow_img {
+      position:relative !important;
+      right: .37rem !important;
+      width: 1rem !important
+  }
+
+  .right_arrow_img {
+      position: relative !important;
+      right: .3rem !important;
+      width: 1rem !important
+  }
+
+  .owl-prev {
+      left: -31px !important
+  }
+}
+
+@media only screen and (max-width: 801px) {
+
+  .card {
+      position: relative;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border-radius: .25rem;
+      margin: 10px
+  }
+
+  .price {
+      background: linear-gradient(#ea1b98,#ff1b00);
+      padding: 0;
+      font-size: 15px;
+      margin: 0;
+      font-weight: lighter;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent
+  }
+
+  .old-price {
+      text-decoration: line-through;
+      color: #999;
+      font-size: 13px
+  }
+}
+
+
+@media (min-width: 768px) and (max-width:801px) {
+
+  .card {
+      position: relative;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 1px solid rgba(0,0,0,.125);
+      border-radius: .25rem;
+      transition: box-shadow .3s ease
+  }
+
+  .card:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,.2),0 6px 20px rgba(0,0,0,.19)
+  }
+
+
+  .sale-banner {
+      text-align: center;
+      color: #000;
+      height: 100%;
+      margin: 10px;
+      display: block !important
+  }
+}
+
+
+
+@media (max-width: 320px) {
+  #saleCarousel .carousel-control-prev,#saleCarousel .carousel-control-next {
+      display:none
+  }
+
+  .summer-sale-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+      margin-left: 8px
+  }
+}
+
+@media (max-width: 480px) {
+  #saleCarousel .carousel-item img {
+      max-width:100%;
+      height: auto
+  }
+
+  .summer-sale-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+      margin-left: 8px
+  }
+}
+
+@media (min-width: 601px) and (max-width:797px) {
+  .product-card {
+      height:auto
+  }
+
+  .service-box {
+      flex-direction: column !important;
+      align-items: center;
+      min-height: 140px !important;
+      padding: 20px !important;
+      border-radius: 5px;
+      background-color: #fff;
+      display: flex;
+      justify-content: center !important;
+      gap: 1rem !important;
+      padding-right: 2rem !important;
+      padding-left: 2rem !important
+  }
+
+  .service-box img {
+      max-width: 30px !important;
+      margin-right: 1px !important
+  }
+
+  .service-title {
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      text-align: center
+  }
+}
+
+@media (min-width: 604px) and (max-width:711px) {
+  .product-card {
+      height:auto !important
+  }
+}
+
+@media only screen and (max-width: 769px) {
+
+  .carousel-indicators {
+      display: none !important
+  }
+
+  #saleCarousel {
+      margin: 20px 0
+  }
+
+  .carousel-control-prev {
+      display: none !important
+  }
+
+  .carousel-control-next {
+      display: none !important
+  }
+
+  .view-all-button {
+      background: linear-gradient(to right,#ea1b98,#ff1b00);
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin: 0 10px;
+      border-radius: 1px
+  }
+
+  .carousel-item img {
+      display: block;
+      margin: 0 auto
+  }
+
+  .summer-sale-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #a7a9ac;
+      padding: 10px 20px;
+      margin: 0
+  }
+
+  .sale-banner {
+      text-align: center;
+      color: #000;
+      height: 100%;
+      margin: 10px;
+      display: none
+  }
+
+  .card-body {
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      min-height: 1px;
+      text-align: center;
+      padding: 1.25rem
+  }
+
+  .card-title {
+      margin-bottom: .75rem;
+      font-size: 13px;
+      text-align: center;
+      font-weight: 400;
+      font-family: 'Poppins'
+  }
+}
+
+@media only screen and (device-width: 768px) {
+
+  .carousel-item img {
+      display: block;
+      margin: 0 auto;
+      width: 46%
+  }
+
+  .summer-sale-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #a7a9ac;
+      padding: 10px 20px;
+      margin: 0
+  }
+
+  .sale-banner {
+      text-align: center;
+      color: #000;
+      height: 100%;
+      margin: 10px;
+      display: none
+  }
+
+  .card-body {
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      min-height: 1px;
+      text-align: center;
+      padding: 1.25rem
+  }
+
+  .card-title {
+      margin-bottom: .75rem;
+      font-size: 13px;
+      text-align: center;
+      font-weight: 400;
+      font-family: 'Poppins'
+  }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width:1024px) and (orientation:portrait) {
+  .carousel-item img {
+      display:block;
+      margin: 0 auto;
+      width: 74%
+  }
+
+  .category-name {
+      font-weight: 600
+  }
+
+  .summer-sale-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #a7a9ac;
+      padding: 10px 20px;
+      margin: 0
+  }
+
+  .card-body {
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      min-height: 1px;
+      text-align: center;
+      padding: 1.25rem
+  }
+
+  .card-title {
+      margin-bottom: .75rem;
+      font-size: 13px;
+      text-align: center;
+      font-weight: 400;
+      font-family: 'Poppins'
+  }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width:1024px) and (orientation:landscape) {
+  .carousel-item img {
+      display:block;
+      margin: 0 auto;
+      width: 92%
+  }
+
+  .summer-sale-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #a7a9ac;
+      padding: 10px 20px;
+      margin: 0
+  }
+
+  .card-body {
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      min-height: 1px;
+      text-align: center;
+      padding: 1.25rem
+  }
+
+  .card-title {
+      margin-bottom: .75rem;
+      font-size: 13px;
+      text-align: center;
+      font-family: 'Poppins'
+  }
+}
+
+@media (min-width: 292px) and (max-width:400px) {
+  .product-card {
+      height:auto !important
+  }
+}
+
+@media (min-width: 292px) and (max-width:397px) {
+  .mobile-flex {
+      display:flex;
+      justify-content: center
+  }
+
+  .service-box {
+      flex-direction: column;
+      align-items: center;
+      min-height: 127px;
+      display: flex;
+      justify-content: center;
+      border-radius: 0 !important;
+      gap: 1rem;
+      padding-right: 3.7rem;
+      border-right: 1px solid #f9dada;
+      box-shadow: none !important;
+      background-color: transparent !important
+  }
+
+  .service-box img {
+      max-width: 95% !important;
+      margin-right: 1px
+  }
+
+  .service-title {
+      font-size: 8px;
+      font-weight: 600;
+      text-align: center
+  }
+}
+
+@media (min-width: 400px) and (max-width:600px) {
+
+  .service-box {
+      flex-direction: column;
+      align-items: center;
+      min-height: 127px;
+      padding: 20px;
+      border-radius: 5px;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding-right: 2rem;
+      padding-left: 2rem
+  }
+
+  .service-box img {
+      max-width: 37px;
+      margin-right: 1px
+  }
+
+  .service-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-align: center
+  }
+
+  .product-card {
+      height: auto !important
+  }
+
+}
+
+@media (min-width: 2600px) {
+  .screen-above-1100 {
+      height:6vh !important
+  }
+
+  .left_arrow_img {
+      position: relative !important;
+      right: .37rem !important;
+      width: 1rem !important;
+      position: relative
+  }
+
+  .owl-prev {
+      left: -39px !important
+  }
+
+  .right_arrow_img {
+      position: relative !important;
+      right: .3rem !important;
+      width: 1rem !important
+  }
+
+  .price {
+      font-size: 31px !important
+  }
+
+  .star-rating {
+      font-size: 1rem !important
+  }
+
+  .card-title {
+      font-size: 14px !important;
+      font-weight: 400;
+      font-family: 'Poppins'
+  }
+
+  .old-price {
+      font-size: 26px !important
+  }
+
+  .category-name {
+      font-size: 2.1rem !important
+  }
+
+  .summer-sale-text {
+      font-size: 30px
+  }
+
+  #accessories1 {
+      position: relative;
+      left: 0
+  }
+
+  #book1 {
+      position: relative;
+      left: 0 !important
+  }
+
+  #electronics {
+      position: relative;
+      left: 0 !important
+  }
+
+  #fashion1 {
+      position: relative;
+      left: 0 !important
+  }
+
+  #sports1 {
+      position: relative;
+      left: 0 !important
+  }
+
+  #grocery1 {
+      position: relative;
+      left: 0 !important
+  }
+
+  .category-name {
+      font-size: 1.6rem !important
+  }
+
+  .product-card {
+      height: 98% !important
+  }
+
+  .sale-banner img {
+      height: auto !important
+  }
+}
+
+.maximum-width {
+  max-width: 2508px
+}
+
+@media (min-width: 1590px) and (max-width:2600px) {
+  .sale-banner img {
+      height:auto
+  }
+
+  #summer-height {
+      height: 100% !important
+  }
+
+  .price {
+      font-size: 32px !important
+  }
+
+  .star-rating {
+      font-size: 1.5rem !important
+  }
+
+  .card-title {
+      font-size: 21px !important;
+      font-weight: 400;
+      font-family: 'Poppins'
+  }
+
+  .old-price {
+      font-size: 26px !important
+  }
+
+  .summer-sale-text {
+      font-size: 30px
+  }
+}
+
+@media (min-width: 1490px) and (max-width:1533px) {
+  .sale-banner img {
+      width:81% !important;
+      height: 64vh !important;
+      margin: 0 4% !important
+  }
+}
+
+@media (min-width: 1589px) and (max-width:1674px) {
+  .sale-banner img {
+      width:81% !important;
+      height: 74vh !important;
+      margin: 0 4% !important
+  }
+}
+
+@media (max-width: 1320px) {
+
+  .flex-display1 {
+      display: flex;
+      justify-content: center;
+      align-items: center
+  }
+}
+
+@media (min-width: 1324px) and (max-width:1674px) {
+
+  .flex-display1 {
+      display: flex;
+      justify-content: center;
+      align-items: center
+  }
+}
+
+@media (max-width: 320px) {
+  .banner-container {
+      display:none !important
+  }
+}
+
+@media (min-width: 320px) and (max-width:810px) {
+  .banner-container {
+      display:flex;
+      margin-top: 3rem
+  }
+
+  .banner {
+      margin-right: 0;
+      width: 100%;
+      height: min-content
+  }
+
+  .banner2 {
+      display: none;
+      width: 0;
+      height: 0
+  }
+}
+
+@media (min-width: 820px) {
+  .banner-container {
+      display:flex;
+      justify-content: space-between;
+      margin-top: 3rem
+  }
+
+  .banner {
+      margin-right: 0;
+      width: 49%
+  }
+
+  .banner2 {
+      margin-right: 0;
+      width: 49%
+  }
+}
+
+.widgetplus-block {
+  position: relative
+}

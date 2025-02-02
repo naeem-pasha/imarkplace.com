@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Odoomarketplaceconnect system configuration
+ *
+* @category  Webkul
+ * @package   Webkul_Odoomarketplaceconnect
+ * @author    Webkul
+ * @copyright Copyright (c) 2010-2017 Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ *
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="webkul" translate="label" sortOrder="10">
+            <label>Webkul</label>
+        </tab>
+        <section id="odoomagentoconnect" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Odoo Configuration</label>
+            <tab>webkul</tab>
+            <resource>Webkul_Odoomagentoconnect::config_webkul</resource>
+
+            <group id="odoomarketplaceconnect" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Marketplace Settings</label>
+                <field id="auto_seller" translate="label comment" sortOrder="0" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Auto Seller Synchronization</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip>If enabled, Marketplace Seller will automatically be created or updated to Odoo during marketplace seller save.</tooltip>
+                </field>
+
+                <field id="auto_category" translate="label comment" sortOrder="0" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Auto Category Synchronization</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip>If enabled, Website Category will automatically be created or updated to Odoo during website category save.</tooltip>
+                </field>
+                <field id="auto_order" translate="label comment" sortOrder="0" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Auto Seller's Order Synchronization</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip>If enabled, Marketplace Seller's Order will automatically be created or updated to Odoo during seller's order placed.</tooltip>
+                </field>
+                <field id="auto_product" translate="label comment" sortOrder="0" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Auto Seller's Product Synchronization</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip>If enabled, Marketplace Seller's Product will automatically be created or updated to Odoo during seller's product save.</tooltip>
+                </field>
+    
+                <field id="auto_transaction" translate="label comment" sortOrder="0" type="select" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Auto Seller's Transaction Sync</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip>If enabled, Seller's Transaction will automatically be created or updated to Odoo during seller's transaction generated.</tooltip>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

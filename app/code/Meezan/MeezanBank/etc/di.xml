@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="MeezanBankFacade" type="Magento\Payment\Model\Method\Adapter">
+        <arguments>
+            <argument name="code" xsi:type="const">\Meezan\MeezanBank\Model\Ui\ConfigProvider::CODE</argument>
+            <argument name="formBlockType" xsi:type="string">Magento\Payment\Block\Form</argument>
+            <argument name="infoBlockType" xsi:type="string">Meezan\MeezanBank\Block\Info</argument>
+            <argument name="valueHandlerPool" xsi:type="object">MeezanBankValueHandlerPool</argument>
+            <argument name="commandPool" xsi:type="object">MeezanBankCommandPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="MeezanBankConfig" type="Magento\Payment\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="const">\Meezan\MeezanBank\Model\Ui\ConfigProvider::CODE</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="MeezanBankLogger" type="Magento\Payment\Model\Method\Logger">
+        <arguments>
+            <argument name="config" xsi:type="object">MeezanBankConfig</argument>
+        </arguments>
+    </virtualType>
+    <type name="Meezan\MeezanBank\Gateway\Http\Client\ClientMock">
+        <arguments>
+            <argument name="logger" xsi:type="object">MeezanBankLogger</argument>
+        </arguments>
+    </type>
+    <virtualType name="MeezanBankCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="authorize" xsi:type="string">MeezanBankAuthorizeCommand</item>
+                <item name="capture" xsi:type="string">MeezanBankCaptureCommand</item>
+                <item name="void" xsi:type="string">MeezanBankVoidCommand</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="MeezanBankAuthorizeCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
+        <arguments>
+            <argument name="requestBuilder" xsi:type="object">MeezanBankAuthorizationRequest</argument>
+            <argument name="handler" xsi:type="object">MeezanBankResponseHandlerComposite</argument>
+            <argument name="transferFactory" xsi:type="object">Meezan\MeezanBank\Gateway\Http\TransferFactory</argument>
+            <argument name="client" xsi:type="object">Meezan\MeezanBank\Gateway\Http\Client\ClientMock</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="MeezanBankAuthorizationRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
+        <arguments>
+            <argument name="builders" xsi:type="array">
+                <item name="transaction" xsi:type="string">Meezan\MeezanBank\Gateway\Request\AuthorizationRequest</item>
+                <item name="mockData" xsi:type="string">Meezan\MeezanBank\Gateway\Request\MockDataRequest</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Meezan\MeezanBank\Gateway\Request\AuthorizationRequest">
+        <arguments>
+            <argument name="config" xsi:type="object">MeezanBankConfig</argument>
+        </arguments>
+    </type>
+    <virtualType name="MeezanBankCaptureCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
+        <arguments>
+            <argument name="requestBuilder" xsi:type="object">Meezan\MeezanBank\Gateway\Request\CaptureRequest</argument>
+            <argument name="handler" xsi:type="object">Meezan\MeezanBank\Gateway\Response\TxnIdHandler</argument>
+            <argument name="transferFactory" xsi:type="object">Meezan\MeezanBank\Gateway\Http\TransferFactory</argument>
+            <argument name="validator" xsi:type="object">Meezan\MeezanBank\Gateway\Validator\ResponseCodeValidator</argument>
+            <argument name="client" xsi:type="object">Meezan\MeezanBank\Gateway\Http\Client\ClientMock</argument>
+        </arguments>
+    </virtualType>
+    <type name="Meezan\MeezanBank\Gateway\Request\CaptureRequest">
+        <arguments>
+            <argument name="config" xsi:type="object">MeezanBankConfig</argument>
+        </arguments>
+    </type>
+    <virtualType name="MeezanBankVoidCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
+        <arguments>
+            <argument name="requestBuilder" xsi:type="object">Meezan\MeezanBank\Gateway\Request\VoidRequest</argument>
+            <argument name="handler" xsi:type="object">Meezan\MeezanBank\Gateway\Response\TxnIdHandler</argument>
+            <argument name="transferFactory" xsi:type="object">Meezan\MeezanBank\Gateway\Http\TransferFactory</argument>
+            <argument name="validator" xsi:type="object">Meezan\MeezanBank\Gateway\Validator\ResponseCodeValidator</argument>
+            <argument name="client" xsi:type="object">Meezan\MeezanBank\Gateway\Http\Client\ClientMock</argument>
+        </arguments>
+    </virtualType>
+    <type name="Meezan\MeezanBank\Gateway\Request\VoidRequest">
+        <arguments>
+            <argument name="config" xsi:type="object">MeezanBankConfig</argument>
+        </arguments>
+    </type>
+    <virtualType name="MeezanBankResponseHandlerComposite" type="Magento\Payment\Gateway\Response\HandlerChain">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="txnid" xsi:type="string">Meezan\MeezanBank\Gateway\Response\TxnIdHandler</item>
+                <item name="fraud" xsi:type="string">Meezan\MeezanBank\Gateway\Response\FraudHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="MeezanBankValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="string">MeezanBankConfigValueHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="MeezanBankConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">MeezanBankConfig</argument>
+        </arguments>
+    </virtualType>
+    <type name="Meezan\MeezanBank\Block\Info">
+        <arguments>
+            <argument name="config" xsi:type="object">MeezanBankConfig</argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Webkul Software.
+ *
+ * @category Webkul
+ * @package Webkul_MarketplaceLearningManagementSystem
+ * @author Webkul
+ * @copyright Copyright (c) WebkulSoftware Private Limited (https://webkul.com)
+ * @license https://store.webkul.com/license.html
+ *
+ */
+ -->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/lms/course-content/:id" method="GET">
+        <service class="Webkul\MarketplaceLearningManagementSystem\Api\ContentRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/lms/course-content/" method="GET">
+        <service class="Webkul\MarketplaceLearningManagementSystem\Api\ContentRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/lms/course-content/:id" method="DELETE">
+        <service class="Webkul\MarketplaceLearningManagementSystem\Api\ContentRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/lms/course-section/:id" method="GET">
+        <service class="Webkul\MarketplaceLearningManagementSystem\Api\CourseSectionRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/lms/course-section/" method="GET">
+        <service class="Webkul\MarketplaceLearningManagementSystem\Api\CourseSectionRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/lms/course-section/:id" method="DELETE">
+        <service class="Webkul\MarketplaceLearningManagementSystem\Api\CourseSectionRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/lms/qa-record/:id" method="GET">
+        <service class="Webkul\MarketplaceLearningManagementSystem\Api\QARecordRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/lms/qa-record/" method="GET">
+        <service class="Webkul\MarketplaceLearningManagementSystem\Api\QARecordRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/lms/qa-record/:id" method="DELETE">
+        <service class="Webkul\MarketplaceLearningManagementSystem\Api\QARecordRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/lms/qa-reply/:id" method="GET">
+        <service class="Webkul\MarketplaceLearningManagementSystem\Api\QAReplyRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/lms/qa-reply/" method="GET">
+        <service class="Webkul\MarketplaceLearningManagementSystem\Api\QAReplyRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/lms/qa-reply/:id" method="DELETE">
+        <service class="Webkul\MarketplaceLearningManagementSystem\Api\QAReplyRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+</routes>

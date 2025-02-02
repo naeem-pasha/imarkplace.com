@@ -1,0 +1,110 @@
+<?php
+/**
+ * Webkul MpAffiliate Configuration layout.
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+$configData = $block->getConfigration();
+?>
+<form 
+    action="<?= /* @noEscape */  $block->getUrl('mpaffiliate/marketplace/saveconfig');?>"
+    method="POST"
+    data-mage-init='{"validation":{}}' id="form-mpaffiliate-configuration">
+    <div class="wk-mp-design">
+        <fieldset class="info wk-mp-fieldset fieldset" id="associate-product">
+            <legend class="legend">
+                <button class="button wk-mp-btn"
+                    title="<?= /* @noEscape */  __('Save setting') ?>"
+                    type="submit" id="save-btn">
+                    <span><span><?= /* @noEscape */  __('Save Setting') ?></span></span>
+                </button>
+            </legend>
+            <?= /* @noEscape */  $block->getBlockHtml('formkey')?>
+            <?= /* @noEscape */  $block->getBlockHtml('seller.formkey')?>
+            <div class="fieldset form-list" id="cust">
+                <div class="field required">
+                    <label class="label"><?= /* @noEscape */  __('Per  click') ?> : </label>
+                    <div class="control">
+                        <input type="number"
+                            min="0"
+                            class="input-text required-entry"
+                            name="per click"
+                            value="<?= /* @noEscape */  $block->escapeHtml($configData['per_click']) ?>"
+                            aria-required="true"/>
+                    </div>
+                </div>
+                <div class="field required">
+                    <label class="label"><?= /* @noEscape */  __('Per unique click') ?> : </label>
+                    <div class="control">
+                        <input type="number"
+                            min="0"
+                            class="input-text required-entry"
+                            name="unique click"
+                            value="<?= /* @noEscape */  $block->escapeHtml($configData['unique_click']) ?>"
+                            aria-required="true" />
+                    </div>
+                </div>
+                <legend class="legend">
+                    <span><?= /* @noEscape */  __('Per Sale') ?></span>
+                </legend>
+                <div class="field required">
+                    <label class="label"><?= /* @noEscape */  __('Set Commission Type') ?> : </label>
+                    <div class="control">
+                        <select name="commission_type" class="select required-entry">
+                            <option value="fixed"
+                                <?php if ($configData['commission_type']=="fixed") {echo "selected";} ?>>
+                                <?= /* @noEscape */  __("Fixed");?>
+                            </option>
+                            <option value="percentage"
+                                <?php if ($configData['commission_type']=="percentage") {echo "selected";} ?>>
+                                <?= /* @noEscape */  __("Percentage");?>
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field required">
+                    <label class="label"><?= /* @noEscape */  __('Set Commission Rate') ?> : </label>
+                    <div class="control">
+                        <input type="number" min="0" class="input-text required-entry"
+                        name="commission_rate"
+                        value="<?= /* @noEscape */  $block->escapeHtml($configData['commission_rate']) ?>"
+                        aria-required="true" />
+                    </div>
+                </div>
+                <legend class="legend">
+                    <span><?= /* @noEscape */  __('Payout setting') ?></span>
+                </legend>
+                <div class="field required">
+                    <label class="label"><?= /* @noEscape */  __('Minimum Payout Balance') ?> : </label>
+                    <div class="control">
+                        <input type="number" min="0"
+                        class="input-text required-entry"
+                        name="payout_balance"
+                        value="<?= /* @noEscape */  $block->escapeHtml($configData['payout_balance']) ?>"
+                        aria-required="true"/>
+                    </div>
+                </div>
+                <div class="field required">
+                    <label class="label"><?= /* @noEscape */  __('Payment Day Of The Month') ?> : </label>
+                    <div class="control">
+                        <input type="number" min="0"
+                        class="input-text required-entry"
+                        name="payment_day"
+                        value="<?= /* @noEscape */  $block->escapeHtml($configData['payment_day']) ?>"
+                        aria-required="true"/>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</form>
+<div class="buttons-set">
+    <p class="back-link">
+        <a href="javascript:;" onclick="javascript: window.history.back();" class="left">
+            &laquo; <?= /* @noEscape */ __('Back') ?>
+        </a>
+    </p>
+</div>

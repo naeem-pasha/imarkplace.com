@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Odoomarketplaceconnect Webapi
+ *
+* @category  Webkul
+ * @package   Webkul_Odoomarketplaceconnect
+ * @author    Webkul
+ * @copyright Copyright (c) 2010-2017 Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ *
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../app/code/Magento/Webapi/etc/webapi.xsd">
+
+    <route url="/V1/odoomarketplaceconnect/VendorProduct" method="POST">
+        <service class="\Webkul\Odoomarketplaceconnect\Api\MpRepositoryInterface" method="setVendorProduct"/>
+        <resources>
+            <resource ref="Webkul_Odoomagentoconnect::manager"/>
+        </resources>
+    </route>
+
+    <route url="/V1/odoomarketplaceconnect/Vendor" method="POST">
+        <service class="\Webkul\Odoomarketplaceconnect\Api\MpRepositoryInterface" method="setVendorStatus"/>
+        <resources>
+            <resource ref="Webkul_Odoomagentoconnect::manager"/>
+        </resources>
+    </route>
+
+</routes>

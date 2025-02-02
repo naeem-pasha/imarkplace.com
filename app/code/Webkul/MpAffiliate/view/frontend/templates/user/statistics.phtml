@@ -1,0 +1,118 @@
+<?php
+/**
+ * Webkul MpAffiliate User Clicks Graph.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+
+?>
+<div class="actions-toolbar showData">
+    <div class="primary">
+        <a href="<?= /* @noEscape */  $block->getUrl('mpaffiliate/user/statistics', ['view'=>'daily']); ?>">
+            <button  id="daily" type="button" class="action primary" title="Daily">
+                <span><?= /* @noEscape */  __('Daily')?></span>
+            </button>
+        </a>
+    </div>
+    <div class="primary">
+        <a href="<?= /* @noEscape */  $block->getUrl('mpaffiliate/user/statistics', ['view'=>'monthly']); ?>">        
+            <button  id="monthly" type="button" class="action primary" title="Monthly">
+                <span><?= /* @noEscape */  __('Monthly')?></span>
+            </button>
+        </a>
+    </div>
+</div>
+<fieldset class="info wk-affiliate-traffic-graph-fieldset fieldset" id="affiliate-user-traffic-graph">
+    <legend class="legend">
+        <span><?= /* @noEscape */  __('Traffic Graph') ?></span>
+    </legend>
+    <?php if ($block->getRequest()->getParam('view') == 'daily') { ?>
+        <fieldset class="info wk-affiliate-traffic-graph-fieldset fieldset" id="affiliate-user-traffic-graph">
+            <div id="line_top_x"></div>   
+        </fieldset>
+    <?php } else { ?>
+<fieldset class="info wk-affiliate-traffic-graph-fieldset fieldset" id="affiliate-user-traffic-graph">
+    <div id="line_top_x-month"></div>  
+</fieldset>
+    <?php } ?>
+    
+</fieldset>
+<div class="buttons-set">
+    <p class="back-link">
+        <a href="javascript:;" onclick="javascript: window.history.back();" class="left">
+            &laquo; <?= /* @noEscape */ __('Back') ?>
+        </a>
+    </p>
+</div>
+<?php
+$data = [];
+foreach ($block->getAffilaiteUserStatisticsGraph() as $key => $value) {
+    $val = [];
+    $val[0] = $key;
+    $val[1] = $value;
+    $data[] =$val;
+}
+$dataMonth = [];
+foreach ($block->getAffilaiteUserStatisticsGraph() as $key => $value) {
+    $val = [];
+    $val[0] = $key;
+    $val[1] = $value;
+    $dataMonth[] =$val;
+}
+?>
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['line']});
+      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawChartMonth);
+
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Day');
+      data.addColumn('number', 'Traffic Graph Daily');
+      data.addRows(<?= /* @noEscape */ json_encode($data); ?>);
+
+      var options = {
+        chart: {
+          title: '',
+          subtitle: ''
+        },
+        width: 900,
+        height: 500,
+        axes: {
+          x: {
+            0: {side: 'top'}
+          }
+        }
+      };
+
+      var chart = new google.charts.Line(document.getElementById('line_top_x'));
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+    function drawChartMonth() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', '<?= /* @noEscape */ __("Month") ?>');
+      data.addColumn('number', '<?= /* @noEscape */ __("Traffic Graph Monthly") ?>');
+      data.addRows(<?= /* @noEscape */ json_encode($dataMonth); ?>);
+
+      var options = {
+        chart: {
+          title: '',
+          subtitle: ''
+        },
+        width: 900,
+        height: 500,
+        axes: {
+          x: {
+            0: {side: 'top'}
+          }
+        }
+      };
+
+      var chart = new google.charts.Line(document.getElementById('line_top_x-month'));
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+  </script>

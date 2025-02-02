@@ -1,0 +1,143 @@
+<?php
+/**
+ * Webkul MpAffiliate User Commission template.
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @license   https://store.webkul.com/license.html
+ */
+?>
+<?php
+$isAffiliate=$block->isAffiliate();
+$summaryDetail = $block->getSummary();
+$affConfig = $block->getAdminConfig();
+if ($isAffiliate) {
+    $sellerEmail = $block->getRequest()->getParam('seller_email');
+    ?>
+    <div class="wk-mp-design ">
+        <fieldset class="fieldset info wk-mp-fieldset">
+            <legend class="legend">
+                <span><?= /* @noEscape */ __('Commission Rates') ?></span>
+            </legend>
+            <div class="grid">
+                <div class="hor-scroll">
+                    <form action="" method="get">
+                        <table cellspacing="0" class="border wk-mp-list-table">
+                            <thead>
+                                <tr id="wk-mp-tr-heading">
+                                    <th><span><?= /* @noEscape */ __('Seller Email') ?></span></th>
+                                    <th><span>&nbsp;</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="wk-mp-body">
+                                <tr>
+                                    <td>
+                                        <span class="">
+                                            <input type="text"
+                                                name="seller_email"
+                                                id="seller_email"
+                                                class="input-text"
+                                                value="<?= /* @noEscape */ $sellerEmail ?>"
+                                                placeholder="<?= /* @noEscape */ __('Search By Seller Email'); ?>"/>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button class="button" title="Save" type="submit">
+                                            <span><span><span><?= /* @noEscape */ __('Submit') ?></span></span></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                    <table cellspacing="0" class="border wk-mp-list-table wk-mp-list-container-table">
+                        <thead>
+                            <tr class="wk-content">
+                                <th class="wk-first-td">
+                                    <span class="label"><?= /* @noEscape */ __('Seller Name')?></span>
+                                </th>
+                                <th>
+                                    <span class="label"><?= /* @noEscape */ __('Seller Email')?></span>
+                                </th>
+                                <th>
+                                    <span class="label"><?= /* @noEscape */ __('Per Click')?></span>
+                                </th>
+                                <th>
+                                    <span class="label"><?= /* @noEscape */ __('Per Unique Click')?></span>
+                                </th>
+                                <th>
+                                    <span class="label"><?= /* @noEscape */ __('Commission Type')?></span>
+                                </th>
+                                <th>
+                                    <span class="label"><?= /* @noEscape */ __('Commission Rate')?></span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <?php
+                        if ($summaryDetail->getSize() <= 0) { ?>
+                            <div class="wk_emptymsg">
+                            <?= /* @noEscape */ __('No Commission Rates Available') ?>
+                            </div>
+                        <?php } else { ?>
+                            <tbody>
+                                <?php foreach ($summaryDetail as $oneDetail) {
+                                    $name = $block->getSellerData($oneDetail->getSellerId())->getName();
+                                    $email = $block->getSellerData($oneDetail->getSellerId())->getEmail();
+                                    $perClick= $oneDetail->getPerClick()!="" ?
+                                        $oneDetail->getPerClick() : $affConfig['per_click'];
+                                    $uniqueClick= $oneDetail->getUniqueClick()!="" ?
+                                        $oneDetail->getUniqueClick() : $affConfig['unique_click'];
+                                    $commissionType = $oneDetail->getCommissionType()!="" ?
+                                        $oneDetail->getCommissionType() : $affConfig['type_on_sale'];
+                                    $commissionRate = $oneDetail->getCommissionRate() != "" ?
+                                        $oneDetail->getCommissionRate() : $affConfig['rate']
+                                    ?>
+                                    <tr class="wk_row_view">
+                                        <td class="wk_first_td_th">
+                                            <span class="label">
+                                            <?= /* @noEscape */ $name ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="label">
+                                            <?= /* @noEscape */ $email ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span title="Pro1" class="label">
+                                            <?= /* @noEscape */ $perClick  ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span title="Pro1" class="label">
+                                            <?= /* @noEscape */ $uniqueClick ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span title="Pro1" class="label">
+                                            <?= /* @noEscape */ $commissionType ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span title="Pro1" class="label">
+                                            <?= /* @noEscape */ $commissionRate ?>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        <?php } ?>
+                    </table>
+                    <?= /* @noEscape */ $block->getPagerHtml();?>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+<?php } ?>
+<div class="buttons-set">
+    <p class="back-link">
+        <a href="javascript:;" onclick="javascript: window.history.back();" class="left">
+            &laquo; <?= /* @noEscape */ __('Back') ?>
+        </a>
+    </p>
+</div>

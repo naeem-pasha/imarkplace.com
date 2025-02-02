@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/** Webkul MpAffiliate adminhtml routes xml
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="mpaffiliate" frontName="mpaffiliate">
+            <module name="Webkul_MpAffiliate" />
+        </route>
+    </router>
+</config>

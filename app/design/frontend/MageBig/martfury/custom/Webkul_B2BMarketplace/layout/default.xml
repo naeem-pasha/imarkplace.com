@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_B2BMarketplace
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+    </head>
+    <body>
+        <referenceBlock name="b2b-request-quote-link" remove="true"/>
+        <referenceBlock name="header.links">
+            <block class="Webkul\B2BMarketplace\Block\Supplier\LoginLink" name="supplier-login-link">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Supplier Sign In</argument>
+                    <argument name="path" xsi:type="string">b2bmarketplace/supplier/login/</argument>
+                </arguments>
+            </block>
+            <block class="Webkul\B2BMarketplace\Block\Supplier\RegisterLink" name="supplier-register-link">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Supplier Sign Up</argument>
+                    <argument name="path" xsi:type="string">b2bmarketplace/supplier/create/</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

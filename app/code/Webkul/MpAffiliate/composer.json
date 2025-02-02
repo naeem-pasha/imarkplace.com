@@ -1,0 +1,20 @@
+{
+    "name": "webkul/marketplace-affiliate",
+    "description": "Marketplace Affiliate For Magento2",
+    "require": {
+        "webkul/module-marketplace": "5.0.*"
+    },
+    "type": "magento2-module",
+    "version": "5.0.0",
+    "license": [
+        "proprietary"
+    ],
+    "autoload": {
+        "files": [
+            "src/app/code/Webkul/MpAffiliate/registration.php"
+        ],
+        "psr-4": {
+            "Webkul\\MpAffiliate\\": "src/app/code/Webkul/MpAffiliate/"
+        }
+    }
+}

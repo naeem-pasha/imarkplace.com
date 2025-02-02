@@ -1,0 +1,10 @@
+From:     %{digest}-request
+To:       %{digest} Distribution: dist-%{digest};
+Subject:  %{digest} Digest V%(cur) #%(msg)
+Reply-To: %{digest}
+--------
+%{digest} Digest
+Volume %(cur) : Issue %(msg)
+%(weekday{date}), %02(mday{date}) %(month{date}) %(year{date})
+
+Today's Topics are attached.

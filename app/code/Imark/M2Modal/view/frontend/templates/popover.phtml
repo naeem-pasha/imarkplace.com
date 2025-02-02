@@ -1,0 +1,58 @@
+<?php
+/** @var \Imark\M2Modal\Block\Template $block */
+?>
+<style>
+    button.m2modal {
+    display: none;
+    }
+    .modal-popup.modal-slide .modal-footer {
+    border-top: 0px solid #c1c1c1;
+    text-align: right;
+    }
+    .modal-content-pasha{
+        line-height: 0;
+    }
+    .modal-popup .modal-inner-wrap {
+        width: 961px;
+    }
+
+</style>
+<div id="modal-content">
+    <?php echo $block->getContent(); ?>
+</div>
+
+<script>
+
+    
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: false,
+                //title: 'Popover Modal==',
+                buttons: [{
+                    text: $.mage.__('O--K'),
+                    class: 'm2modal',
+                    style:'',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+ 
+            var popup = modal(options, $('#modal-content'));
+            $('#modal-content').modal('openModal');
+        }  
+    );
+</script>
+<!--<button id="popover-modal-button" data-mage-init='{"popver-modal": {"target": "#modal-content"}}'>
+    Open Modal
+</button>-->

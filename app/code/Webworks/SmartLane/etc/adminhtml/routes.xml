@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Product:       Webworks Autobooking
+ * author:        Naveed Asim
+ * File:          app/code/Webworks/AutoBooking/etc/adminhtml/routes.xml
+ * Copyright:     Webworks / All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="smartlane" frontName="smartlane">
+            <module name="Webworks_SmartLane" before="Magento_Backend"/>
+        </route>
+    </router>
+</config>

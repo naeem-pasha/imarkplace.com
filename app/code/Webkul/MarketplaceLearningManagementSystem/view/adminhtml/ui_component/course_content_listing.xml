@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MarketplaceLearningManagementSystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">course_content_listing.course_content_listing_data_source</item>
+        </item>
+        <item name="imports" xsi:type="array">
+            <item name="product_id" xsi:type="string">${ $.provider }:data.slider_id</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>content_column</spinner>
+        <deps>
+            <dep>course_content_listing.course_content_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="course_content_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="cacheRequests" xsi:type="boolean">false</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="Webkul\MarketplaceLearningManagementSystem\Ui\DataProvider\Product\ContentDataProvider" name="course_content_listing_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="params" xsi:type="array">
+                        <item name="filters_modifier" xsi:type="array"/>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <statefull>
+                    <property name="applied" xsi:type="boolean">false</property>
+                </statefull>
+            </settings>
+        </filters>
+        <bookmark name="bookmarks">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="namespace" xsi:type="string">course_content_listing</item>
+                    </item>
+                </item>
+            </argument>
+        </bookmark>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="content_column" class="Magento\Ui\Component\Listing\Columns">
+        <column name="entity_id" sortOrder="10">
+            <settings>
+                <filter>textRange</filter>
+                <addField>true</addField>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="title" sortOrder="30">
+            <settings>
+                <addField>true</addField>
+                <filter>text</filter>
+                <label translate="true">Content Title</label>
+            </settings>
+        </column>
+        <column name="description" sortOrder="40">
+            <settings>
+                <addField>true</addField>
+                <filter>text</filter>
+                <label translate="true">Description</label>
+            </settings>
+        </column>
+        <column name="type" sortOrder="50">
+            <settings>
+                <addField>true</addField>
+                <filter>text</filter>
+                <label translate="true">Type Id</label>
+            </settings>
+        </column>
+        <column name="section" sortOrder="60">
+            <settings>
+                <addField>true</addField>
+                <filter>text</filter>
+                <label translate="true">Section Id</label>
+            </settings>
+        </column>
+        <column name="preview" sortOrder="80">
+            <settings>
+                <addField>true</addField>
+                <filter>text</filter>
+                <label translate="true">Preview</label>
+            </settings>
+        </column>
+        <column name="file_name" sortOrder="90">
+            <settings>
+                <addField>true</addField>
+                <filter>text</filter>
+                <label translate="true">File Name</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Webkul\MarketplaceLearningManagementSystem\Ui\Component\Listing\Columns\ContentAction" component="Webkul_MarketplaceLearningManagementSystem/js/grid/actions" sortOrder="200">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+    <modal name="course_content_update_modal">
+        <settings>
+            <options>
+                <option name="title" xsi:type="string">Update Content</option>
+            </options>
+        </settings>
+        <insertForm name="update_course_content_form_loader" component="Webkul_MarketplaceLearningManagementSystem/js/form/components/insert-form">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="listingProvider" xsi:type="string">ns = course_content_listing, index = course_content_listing</item>
+                        <item name="modalProvider" xsi:type="string">${ $.parentName }</item>
+                    </item>
+                </argument>
+                <settings>
+                    <formSubmitType>ajax</formSubmitType>
+                    <renderUrl path="mui/index/render_handle">
+                        <param name="handle">course_content_edit</param>
+                        <param name="buttons">1</param>
+                    </renderUrl>
+                    <loading>false</loading>
+                    <toolbarContainer>${ $.parentName }</toolbarContainer>
+                    <externalProvider>${ $.ns }.course_content_edit_form_data_source</externalProvider>
+                    <ns>course_content_edit_form</ns>
+                </settings>
+            </insertForm>
+    </modal>
+</listing>

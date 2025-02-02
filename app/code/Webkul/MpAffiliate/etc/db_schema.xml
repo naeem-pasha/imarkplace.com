@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="mp_affiliate_sale" resource="default" engine="innodb" comment="Affiliate Product Sale Record">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" padding="10" identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="order_id" unsigned="true" nullable="false" comment="Magento Order Id"/>
+        <column xsi:type="text" name="order_increment_id" comment="Order Increment Id"/>
+        <column xsi:type="int" name="aff_customer_id" unsigned="true" nullable="false" comment="Affilate User Id"/>
+        <column xsi:type="int" name="seller_id" unsigned="true" nullable="false" comment="Seller Id"/>
+        <column xsi:type="text" name="order_status" comment="Order Status"/>
+        <column xsi:type="decimal" name="price" scale="4" precision="12"  nullable="false" comment="Product Price"/>
+        <column xsi:type="decimal" name="commission" scale="4" precision="12"  nullable="false" comment="Affiliate Commission"/>
+        <column xsi:type="int" name="affiliate_status" unsigned="true" nullable="false" comment="Affiliate Status"/>
+        <column xsi:type="text" name="come_from" comment="Come From"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Product Order Place Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+
+    <table name="mp_affiliate_clicks" resource="default" engine="innodb" comment="Affiliate Click Record">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" padding="10" identity="true" comment="Entity Id"/>
+        <column xsi:type="text" name="hit_type" comment="Hit Type"/>
+        <column xsi:type="int" name="hit_id" unsigned="true" nullable="false" comment="Hit Id"/>
+        <column xsi:type="int" name="aff_customer_id" unsigned="true" nullable="false" comment="Affilate User Id"/>
+        <column xsi:type="int" name="seller_id" unsigned="true" nullable="false" comment="Seller Id"/>
+        <column xsi:type="decimal" name="commission" scale="4" precision="12"  nullable="false" comment="Affiliate Commission"/>
+        <column xsi:type="text" name="customer_ip" comment="Customer IP"/>
+        <column xsi:type="text" name="customer_domain" comment="Customer Domain"/>
+        <column xsi:type="text" name="come_from" comment="Come From"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Customer View Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+
+    <table name="mp_affiliate_payment" resource="default" engine="innodb" comment="Affiliate Payment Record">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" padding="10" identity="true" comment="Entity Id"/>
+        <column xsi:type="text" name="transaction_id" comment="Transaction Id"/>
+        <column xsi:type="text" name="transaction_email" comment="Transaction Email"/>
+        <column xsi:type="text" name="ipn_transaction_id" comment="IPN Transaction Id"/>
+        <column xsi:type="int" name="aff_customer_id" unsigned="true" nullable="false" comment="Affilate User Id"/>
+        <column xsi:type="int" name="seller_id" unsigned="true" nullable="false" comment="Seller Id"/>
+        <column xsi:type="decimal" name="transaction_amount" scale="4" precision="12"  nullable="false" comment="Transaction Amount"/>
+        <column xsi:type="text" name="transaction_currency" comment="Transaction Currency"/>
+        <column xsi:type="text" name="transaction_data" comment="Transaction Data"/>
+        <column xsi:type="text" name="payment_method" comment="Payment Method Used In Transaction"/>
+        <column xsi:type="text" name="transaction_status" comment="Transaction Status"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Transaction Date"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+
+    <table name="mp_affiliate_user_balance" resource="default" engine="innodb" comment="Affiliate User Balance Record">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" padding="10" identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="aff_customer_id" unsigned="true" nullable="false" comment="Affilate User Id"/>
+        <column xsi:type="int" name="seller_id" unsigned="true" nullable="false"  comment="Seller Id"/>
+        <column xsi:type="text" name="aff_name" comment="Affilate User Name"/>
+        <column xsi:type="int" name="clicks" unsigned="true" nullable="false"  comment="Number Of Clicks"/>
+        <column xsi:type="int" name="unique_clicks" unsigned="true" nullable="false"  comment="Number Of Unique Clicks"/>
+        <column xsi:type="text" name="payment_method" comment="Payment Method Availabe For User"/>
+        <column xsi:type="decimal" name="balance_amount" scale="4" precision="12"  nullable="false" comment="Balance Amount"/>
+        <column xsi:type="int" name="pay_notify" unsigned="true" nullable="false"  comment="Payment notify for month"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+         <index referenceId="MP_AFFILIATE_USER_BALANCE_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+        <constraint xsi:type="foreign" referenceId="MP_AFFILIATE_USER_BALANCE_AFF_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID" table="mp_affiliate_user_balance" column="aff_customer_id" referenceTable="customer_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+
+    <table name="mp_affiliate_text_banner" resource="default" engine="innodb" comment="Affiliate Banner Record">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" padding="10" identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="seller_id" unsigned="true" nullable="false"  comment="Seller Id"/>
+        <column xsi:type="text" name="title" comment="Banner Title"/>
+        <column xsi:type="text" name="text" comment="Banner Text"/>
+        <column xsi:type="text" name="link" comment="Banner Link"/>
+        <column xsi:type="text" name="link_title" comment="Banner Link Title"/>
+        <column xsi:type="text" name="banner_size" comment="Banner Dimension"/>
+        <column xsi:type="text" name="status" comment="Banner Status"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Banner Create Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="MP_AFFILIATE_TEXT_BANNER_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+    </table>
+
+    <table name="mp_affiliate_user" resource="default" engine="innodb" comment="Affiliate User Record">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" padding="10" identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="customer_id" unsigned="true" nullable="false" comment="Affiliate Customer Id"/>
+        <column xsi:type="text" name="aff_name" nullable="true" comment="Affiliate Name"/>
+        <column xsi:type="text" name="aff_email" nullable="true" comment="Affiliate Name"/>
+        <column xsi:type="text" name="payment_method" nullable="true" comment="Payment Method Availabe For User"/>
+        <column xsi:type="int" name="status" unsigned="true" nullable="false" comment="Affiliate Status"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Affiliate Registration Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="MP_AFFILIATE_USER_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+        <constraint xsi:type="foreign" referenceId="MP_AFFILIATE_USER_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID" table="mp_affiliate_user" column="customer_id" referenceTable="customer_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+
+    <table name="mp_affiliate_setting" resource="default" engine="innodb" comment="Affiliate User Record">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" padding="10" identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="seller_id" unsigned="true" nullable="false"  comment="Seller Id"/>
+        <column xsi:type="decimal" name="per_click" scale="2" precision="12" comment="Per click"/>
+        <column xsi:type="decimal" name="unique_click" nullable="false" scale="2" precision="12" comment="Unique Click"/>
+        <column xsi:type="text" name="commission_type" nullable="true" comment="Commission Type Fixed/Percentage"/>
+        <column xsi:type="decimal" name="commission_rate" scale="4" precision="12"  nullable="false" comment="Commission Rate"/>
+        <column xsi:type="decimal" name="payout_balance" scale="4" precision="12"  nullable="false" comment="payout balance"/>
+        <column xsi:type="int" name="payment_day" nullable="false" comment="payment day"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+
+    <table name="mp_affiliate_request" resource="default" engine="innodb" comment="Affiliate User Record">
+        <column xsi:type="int" name="affiliate_request_id" unsigned="true" nullable="false" padding="10" identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="seller_id" unsigned="true" nullable="false"  comment="Seller Id"/>
+        <column xsi:type="int" name="affiliate_id" unsigned="true" nullable="false" comment="Affiliate id"/>
+        <column xsi:type="text" name="aff_link" nullable="false" comment="Banner Title"/>
+        <column xsi:type="int" name="status" unsigned="true" nullable="false" comment="Status"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="affiliate_request_id"/>
+        </constraint>
+    </table>
+
+     <table name="mp_affiliate_catcommission" resource="default" engine="innodb" comment="MpAffiliate Commission Table">
+        <column xsi:type="int" name="entity_id" nullable="false" padding="10" identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="seller_id" nullable="false"  comment="Seller ID"/>
+        <column xsi:type="int" name="category_id" nullable="false" comment="Category Id"/>
+        <column xsi:type="text" name="commission_type" nullable="false" comment="Commission Type"/>
+        <column xsi:type="int" name="commission" nullable="false" comment="Commission"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>

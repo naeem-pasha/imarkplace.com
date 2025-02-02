@@ -1,0 +1,157 @@
+<?php
+/**
+ * Webkul MpAffiliate Payment template.
+ *
+ * @category  Webkul
+ * @package   Webkul_MpAffiliate
+ * @author    Webkul
+ * @copyright Copyright (c)  Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+$viewModel = $block->getViewModel();
+$priceHelper = $viewModel->getPricingHelper();
+?>
+<div class="fieldset wk_fieldset">
+    <div class="grid">
+        <div class="hor-scroll table-wrapper">
+            <form action="" method="get">
+                <table cellspacing="0" class="border wk-mp-list-table">
+                    <thead>
+                        <tr id="wk-mp-tr-heading">
+                            <th><span><?= /* @noEscape */  __('Affiliate Name') ?></span></th>
+                            <th><span><?= /* @noEscape */  __('Affiliate Email') ?></span></th>
+                            <th><span>&nbsp;</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="wk-mp-body">
+                        <tr>
+                            <td>
+                                <span class="">
+                                    <input type="text"
+                                        name="aff_name"
+                                        id="aff_name"
+                                        class="input-text"
+                                        value="<?= /* @noEscape */  $block->getRequest()->getParam('aff_name') ?>"
+                                        placeholder="<?= /* @noEscape */  __('Search By Affiliate Name') ?>"/>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="">
+                                    <input type="text"
+                                        name="aff_email"
+                                        id="aff_email"
+                                        class="input-text"
+                                        value="<?= /* @noEscape */  $block->getRequest()->getParam('aff_email') ?>"
+                                        placeholder="<?= /* @noEscape */  __('Search By Affiliate Email') ?>"/>
+                                </span>
+                            </td>
+                            <td>
+                                <button class="button" title="<?= /* @noEscape */  __('Save') ?>" type="submit">
+                                    <span><span><span><?= /* @noEscape */  __('Submit') ?></span></span></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>Banner
+                </table>
+            </form>
+            <table cellspacing="0" class="border wk-mp-list-table wk-mp-list-container-table">
+                <thead>
+                    <tr class="wk-content">
+                        <th class="">
+                            <span class="label"><?= /* @noEscape */  __('Affiliate Name')?></span>
+                        </th>
+                        <th class="wk-list-th-display">
+                            <span class="label"><?= /* @noEscape */  __('Affiliate Email')?></span>
+                        </th>
+                        <th class="">
+                            <span class="label"><?= /* @noEscape */  __('Paid By')?></span>
+                        </th>
+                        <th class="wk-list-th-display1">
+                            <span class="label"><?= /* @noEscape */  __('Transaction Id')?></span>
+                        </th>
+                        <th>
+                            <span class="label"><?= /* @noEscape */  __('Transaction Amount')?></span>
+                        </th>
+                        <th>
+                            <span class="label"><?= /* @noEscape */  __('Transaction Details')?></span>
+                        </th>
+                        <th class="wk-list-th-display">
+                            <span class="label"><?= /* @noEscape */  __('Transaction Date')?></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($block->getPaymentOfSeller() as $key => $val) {
+                        $affUserData = $block->getCustomerData($val['aff_customer_id']);
+                        $paymentMethod = "";
+                        if ($val['payment_method'] == "checkmo") {
+                            $paymentMethod = "Cheque / Money Order";
+                        } elseif ($val['payment_method'] == "banktransfer") {
+                            $paymentMethod = "Bank Transfer";
+                        } elseif ($val['payment_method'] == "paypal_standard") {
+                            $paymentMethod = "Paypal Standard";
+                        }
+                        ?>
+                    <tr class="wk_row_view">
+                        <td class="wk_first_td_th">
+                            <span class="label">
+                                <?= /* @noEscape */  $affUserData['firstname']." ".$affUserData['lastname'] ?>
+                            </span>
+                        </td>
+                        <td class="wk-list-th-display">
+                            <span title="<?= /* @noEscape */  __('Email')?>" class="label">
+                                <?= /* @noEscape */  $affUserData['email'] ?>
+                            </span>
+                        </td>
+                        <td class="">
+                            <span title="<?= /* @noEscape */  __('Payment Method') ?>" class="label">
+                                <?= /* @noEscape */  $paymentMethod ?>
+                            </span>
+                        </td>
+                        <td class="wk-list-th-display1">
+                            <span title="<?= /* @noEscape */  __('Transaction Id') ?>" class="label">
+                                <?= /* @noEscape */  $val['transaction_id'] ?>
+                            </span>
+                        </td>
+                        <td>
+                            <span title="<?= /* @noEscape */  __('Transaction Amount') ?>" class="label">
+                                <?= /* @noEscape */  $priceHelper->currency($val['transaction_amount'], true, false)?>
+                            </span>
+                        </td>
+                        <td>
+                            <span title="<?= /* @noEscape */  __('Transaction Details') ?>" class="label">
+                                <?= /* @noEscape */  $val['transaction_data']?>
+                            </span>
+                        </td>
+
+                        <td class="wk-list-th-display">
+                            <span title="<?= /* @noEscape */  __('Created At') ?>" class="label">
+                                <?php $date = date_create($val['created_at']) ?>
+                                <?= /* @noEscape */  date_format($date, 'd/m/y') ?>
+                            </span>
+                        </td>
+                        <div class="wk_clear"></div>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+            <?= /* @noEscape */  $block->getPagerHtml();?>
+            <?php
+            if (count($block->getPaymentOfSeller()) <= 0) { ?>
+                <div class="fieldset wk_mp_fieldset">
+                    <div class="wk_emptymsg" style="text-align:center;">
+                        <?= /* @noEscape */  __('No Payment History Available') ?>
+                    </div>
+                </div>
+            <?php }?>
+        </div>
+    </div>
+</div>
+<div class="buttons-set">
+    <p class="back-link">
+        <a href="javascript:;" onclick="javascript: window.history.back();" class="left">
+            &laquo; <?= /* @noEscape */ __('Back') ?>
+        </a>
+    </p>
+</div>

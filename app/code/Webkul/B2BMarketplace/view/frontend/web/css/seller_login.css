@@ -1,0 +1,123 @@
+/* CSS FOR SELLER LOGIN PAGE */
+
+body {
+    font-family: "Poppins",sans-serif;
+}
+
+:root {
+    --new-primary: #c53e3e;
+    --new-primary-hover:#c53e3e;
+    --font-bold: 600;
+}
+
+#C body {
+background-color:#f5f5f5;
+   
+}
+
+.page-layout-seller-login .wk-mp-page-wrapper {
+margin-left: auto !important;
+margin-right: auto !important;
+}
+
+#C .page-layout-seller-login .wk-mp-login-header {
+    background-color: transparent !important;
+    text-align: center !important;
+    border-bottom: none !important;
+
+}
+
+.text-hide {
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
+
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Hidden Section CSS  */
+#C .header.links {
+    display: none;
+}
+
+.b2bmarketplace-supplier-login .page-title-wrapper.wk-page-title-wrapper {
+border-bottom: none !important;
+
+}
+.welcome {
+    overflow: hidden;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+
+/* Hidden Section CSS */
+
+/* Login Section Div Styling Starts */
+input, textarea {
+    font-family: "Poppins",sans-serif !important;
+}
+.page-title {
+    text-transform: capitalize;
+    font-family: "Poppins",sans-serif !important;
+    font-weight: var(--font-bold) !important;
+
+}
+
+
+.fieldset {
+    border: none;
+    padding: 0;
+    margin-bottom: 15px;
+    min-width: 0;
+}
+
+.field.required>.label, .field._required>.label {
+     font-weight: 500;
+     font-size: 1.5rem;
+}
+
+
+#C .action.primary, #C .action.secondary {
+    background-color: var(--new-primary);
+    border: 1px solid var(--new-primary);
+    
+}
+
+.action.primary:hover, .action.secondary:hover {
+    background-color: var(--new-primary-hover) !important;
+    color: #fff !important;
+}
+a:hover {
+    color: #dd2400 !important;
+}
+
+a {
+    color: #000;
+}
+
+a, a:hover, a:focus {
+    text-decoration: none;
+}
+
+
+a {
+    color: #000;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.secondary.wk-secondary {
+margin-top: 14px !important;
+
+}
+
+/* Login Section Div Styling Ends */
+

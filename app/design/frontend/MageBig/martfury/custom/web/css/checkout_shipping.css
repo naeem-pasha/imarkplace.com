@@ -1,0 +1,28 @@
+/* CSS FOR THE CHECKOUT SHIPPING PAGE */
+
+
+.checkout-index-index .opc-progress-bar-item._active:before {
+    background-color: #c53e3e !important;
+}
+
+
+.checkout-index-index .opc-progress-bar-item._active>span:before {
+    background-color: #c53e3e !important;
+}
+
+/* CSS FOR THE BUTTON STYLING STARTS */
+
+.action.button, .action.continue, .action.update, .action.clear {
+    border: 1px solid #c53e3e !important;
+}
+
+.action.primary, .action.secondary {
+    background: #c53e3e !important;
+    border: 1px solid #c53e3e !important;
+}
+.action.primary:hover, .action.secondary:hover {
+    color: #fff !important;
+}
+
+/* CSS FOR THE BUTTON STYLING ENDS */
+
