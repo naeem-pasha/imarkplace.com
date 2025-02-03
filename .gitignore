@@ -110,8 +110,10 @@ atlassian*
 
 /.htaccess
 /Dockerfile
+/pub/media/
+/pub/media/*
+/pub/1703571912_filesystem_media.tgz
 /var
-/pub
 /composer.json
 /composer.lock
 /composer.lock-bk
