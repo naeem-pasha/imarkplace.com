@@ -684,9 +684,9 @@ class SmartMenu extends \Magento\Framework\View\Element\Template
                 }
             }
             if ($catInfo->getData('smartmenu_static_bottom')) {
-              //  $html .= '<div class="mbmenu-block mbmenu-block-bottom grid-full std">';
-              //  $html .= $this->_getStatic($catInfo->getData('smartmenu_static_bottom'));
-              //  $html .= '</div>';
+                $html .= '<div class="mbmenu-block mbmenu-block-bottom grid-full std">';
+                $html .= $this->_getStatic($catInfo->getData('smartmenu_static_bottom'));
+                $html .= '</div>';
             }
         }
 

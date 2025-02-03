@@ -1,6 +1,0 @@
-; mhl.reply
-;
-; default message filter for `repl' (repl -format)
-;
-from:nocomponent,formatfield="%(unquote(decode(friendly{text}))) writes:"
-body:component="> ",overflowtext="> ",overflowoffset=0

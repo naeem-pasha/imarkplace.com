@@ -7,6 +7,7 @@
 // @codingStandardsIgnoreFile
 
 ?>
+
 <legend class = 'legend'>
     <h2 style="text-align:center">
         <span>
@@ -16,7 +17,7 @@
         </span>
     </h2>
 </legend><br />
-<form class = 'form quickrfq'
+<form class = 'form quickrfq pasha'
 action = "<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>"
 id = 'quickrfq_form'
 enctype = 'multipart/form-data'
@@ -28,7 +29,9 @@ data-mage-init = '{"validation":{}}'>
 <div class='row'>
 <div class="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-6">
 <fieldset class = 'fieldset'>
-<div class = 'field name required'>
+
+    
+    <div class = 'field name required'>
 <label class = 'label' for = 'company'><?php echo __( 'Company Name:' ) ?></label>
 <div class = 'control'>
 <input name = 'company' id = 'company' value = '' class = 'input-text' type = 'text' data-validate = '{required:true}'/>
@@ -45,6 +48,7 @@ data-mage-init = '{"validation":{}}'>
 
 <div class="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-6">
 <fieldset class = 'fieldset'>
+
 <div class = 'field email required'>
 <label class = 'label' for = 'email'><span><?php /* @escapeNotVerified */ echo __( 'Email' ) ?></span></label>
 <div class = 'control'>

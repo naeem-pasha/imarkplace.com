@@ -152,8 +152,6 @@
   width: 91%;
   padding: 5px 0px;
   margin: 7.5px;
-
-
 }
 /* Changes in the Styling for the  Quick View Option */
 
@@ -199,11 +197,6 @@ user-icon1:hover {
   border-radius: 30px
 }
 
-/* .object-fit .img-lazy-wrap img {
-  object-fit: revert !important;
-  height: 100% !important;
-  width: 100% !important
-} */
 
 .user-icon1 {
   color: #000 !important

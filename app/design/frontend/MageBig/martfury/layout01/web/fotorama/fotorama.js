@@ -2,7 +2,10 @@
  * Fotorama 4.6.4 | http://fotorama.io/license/
  */
 fotoramaVersion = '4.6.4';
+
+
 (function (window, document, location, $, undefined) {
+    
     "use strict";
     var _fotoramaClass = 'fotorama',
         _fullscreenClass = 'fotorama__fullscreen',

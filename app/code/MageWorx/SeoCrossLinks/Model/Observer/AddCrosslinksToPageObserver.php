@@ -135,6 +135,6 @@ class AddCrosslinksToPageObserver implements \Magento\Framework\Event\ObserverIn
      */
     protected function _getAvailableActions()
     {
-        return array('cms_page_view');
+        return array('');
     }
 }

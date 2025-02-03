@@ -19,7 +19,7 @@
         <css src="Webkul_B2BMarketplace::css/login.css"/>
         <css src="Webkul_B2BMarketplace::css/quote.css"/>
         <css src="Webkul_B2BMarketplace::css/seller_login.css"/>
-	<remove src="css/header.css"/>
+        <remove src="css/header.css"/>
         <remove src="css/footer.css"/>
         <remove src="css/home.css"/>
         <remove src="css/styles2.css"/>
