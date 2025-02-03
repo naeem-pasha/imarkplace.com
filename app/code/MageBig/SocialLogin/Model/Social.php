@@ -35,8 +35,6 @@ use Magento\User\Model\User;
  *
  * @package MageBig\SocialLogin\Model
  */
-
-
 class Social extends AbstractModel
 {
     const STATUS_PROCESS = 'processing';
@@ -104,7 +102,8 @@ class Social extends AbstractModel
         AbstractResource $resource = null,
         AbstractDb $resourceCollection = null,
         array $data = []
-    ) {
+    )
+    {
         $this->customerFactory = $customerFactory;
         $this->customerRepository = $customerRepository;
         $this->customerDataFactory = $customerDataFactory;

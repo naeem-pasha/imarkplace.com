@@ -46,8 +46,8 @@ $sellerProductCount = $helper->getSellerProCount($sellerId);
                     <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
                     <?php foreach ($products as $_product): ?>
                         <?= $block->escapeHtml(($iterator++ == 1)) ?
-                        '<li class="item product product-item">' :
-                        '</li><li class="item product product-item">' ?>
+                        '<li class="item product product-item col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3">' :
+                        '</li><li class="item product product-item col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3">' ?>
                         <div class="product-item-info" data-container="product-grid">
                             <?php
                             $productImage = $block->getImage($_product, $image);

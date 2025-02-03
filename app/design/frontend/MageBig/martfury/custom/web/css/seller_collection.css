@@ -497,14 +497,35 @@ background-color: var(--button-color) !important;
 
     /* Card Btn Styling Starts */
     .product-item-actions{
-        flex-direction: column;
-        gap: 1.4rem;
+        flex-direction: row;
+        gap: 1.1rem;
+    }
+
+    .product-item-inner .actions-secondary a {
+        padding: 3px 5px !important;
+        min-width: 100% !important;
+        height: 3.1rem !important;
+        width: 100% !important;
+        line-height: 2.5rem !important;
+        font-size: 1.2rem !important;
     }
   
+/* CSS FOR THE WISHLIST BUTTON ON MOBILE SCREENS STARTS */
     .product-item-inner .action.primary {
-        padding: 2px 9px !important;
+        padding: 2px 8px !important;
         min-width: 100% !important;
+        height: 3.1rem !important;
+        width: 100% !important;
+        line-height: 2.5rem !important;
+        font-size: 1.2rem !important;
     }
+
+ .product-item-inner .actions-secondary a.action.towishlist:after {
+   font-size: 10px !important;
+   
+  }
+
+/* CSS FOR THE WISHLIST BUTTON ON MOBILE SCREENS ENDS */
 
     /* Card Btn Styling Ends */
 
@@ -540,6 +561,15 @@ background-color: var(--button-color) !important;
     .mb-trigger-next .action.primary{
         min-width: 32%;
 }
+
+
+/* CSS FOR THE ADD TO CART BTN ON MOBILE SCREEN START */
+
+#C .action.primary, #C .action.secondary {
+    font-size: 1.3rem; 
+}
+
+/* CSS FOR THE ADD TO CART BTN ON MOBILE SCREEN END */
 
 
 }

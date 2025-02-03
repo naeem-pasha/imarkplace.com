@@ -2,6 +2,7 @@
 use Magento\Framework\App\Action\Action;
 
 $i = 0;
+
 ?>
 <?php if (!$carousel): ?>
     <div class="product-items row">
@@ -11,12 +12,12 @@ $i = 0;
             <div class="owl-carousel owl-theme">
             <?php endif ?>
             <?php if (($i % $column == 0 || ($row > 1 && $i % $row == 0)) && $carousel): ?>
-                <div class="category-products">
+                <div class="category-products  maximum-width mx-xl-auto">
                     <div
-                        class="product-items <?= $type; ?> <?= $carousel && $row == 1 ? ' owl-carousel owl-theme' : '' ?> <?= !$carousel ? ' row' : '' ?>">
+                        class="product-items  <?= $type; ?> <?= $carousel && $row == 1 ? ' owl-carousel owl-theme' : '' ?> <?= !$carousel ? ' row' : '' ?>">
                     <?php endif ?>
                     <?php $i++ ?>
-                    <div class="product-item<?= !$carousel ? ' col-6 col-sm-4 col-md-3' : '' ?>">
+                    <div class="product-item <?= !$carousel ? ' col-6 col-sm-4 col-md-3' : '' ?>">
                         <div class="product-item-info test123">
                             <div class="product-show wasif-test123">
                             <div class="card product-card h-97 ">
@@ -49,7 +50,7 @@ $i = 0;
                                 </a>
                             </div>
                              <?php if ($block->getData('product_style') != 4): ?>
-                                    <div class="product-btn wasif-test123">
+                                    <div class="product-btn wasif-test">
                                         <div class="row no-gutters text-center">
                                             <div class="col-2 btn-qiuk-view" <?php if (!$showQuickview): ?>style="display: none;" <?php endif; ?>>
                                                 <?= $this->helper('MageBig\QuickView\Helper\Data')->getQuickViewButton($_product, 'mb-tooltip'); ?>

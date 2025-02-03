@@ -47,9 +47,9 @@ $isSellerGroup = $_helper->isSellerGroupModuleInstalled();
                                     <a href="<?= /* @noEscape */ $block
                                     ->escapeHtml($block->getUrl('customer_account/delete/', [
                                         '_secure' => $block->getRequest()->isSecure()])); ?>" target="_blank" rel="noopener">
-                                        <span><?= $block->escapeHtml(__('Account Details')) ?></span>
+                                        <span><?= $block->escapeHtml(__('Delete My Account')) ?></span>
                                     </a>
-                                </li> 
+                                </li>
                             <?php } ?>
                         <?php } ?>
                     </ul>

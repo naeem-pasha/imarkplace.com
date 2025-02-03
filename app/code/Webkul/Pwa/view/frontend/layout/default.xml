@@ -20,7 +20,6 @@
         </referenceBlock>
 
         <move element="pwa_pages_js" destination="header-wrapper" after="minicart"/>
-             
     	<referenceBlock name="head.additional">
             <block class="Webkul\Pwa\Block\PwaHome" name="pwa.head.manifest" template="Webkul_Pwa::head.phtml" ifconfig="pwa/general_settings/status"></block>
         </referenceBlock>

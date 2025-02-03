@@ -19,7 +19,7 @@ $captcha = $block->getCaptchaModel();
                  id="captcha-container-<?= $block->escapeHtmlAttr($block->getFormId()) ?>"
                  data-mage-init='{"captcha":{"url": "<?= $block->escapeUrl($block->getRefreshUrl()) ?>",
                                              "type": "<?= $block->escapeHtmlAttr($block->getFormId()) ?>"}}'>
-                <div class="control captcha-image">
+                <div class="control captcha-image wasif-testing-110">
                     <img alt="<?= $block->escapeHtmlAttr(__('Please type the letters and numbers below')) ?>" class="captcha-img img-fluid" width="200" height="50" src="<?= $block->escapeUrl($captcha->getImgSrc()) ?>"/>
                     <button type="button" class="reload captcha-reload"
                             data-mage-init='{"Magento_Captcha/js/captcha-fix":{}}'

@@ -11,11 +11,11 @@
 <?php $_product = $block->getProduct(); ?>
 <?php $buttonTitle = __('Add to Cart'); ?>
 <?php if ($_product->isSaleable()): ?>
-    <div class="box-tocart ">
+    <div class="box-tocart wasif-check">
         <div class="fieldset-add">
             <?php if ($block->shouldRenderQuantity()): ?>
 
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 lineupquantity">
                             <label class="labelquantity" for="qty"><span>
@@ -40,7 +40,13 @@
                 </div>
                 <br>
             <?php endif; ?>
-            <div class="add-cart-btn">
+
+            <div class="product-button-section mt-2 d-flex flex-column">
+            <button type="submit"  title="<?= /* @escapeNotVerified */ $buttonTitle ?>"   class="add-to-cart-btn" ><?= /* @escapeNotVerified */ $buttonTitle ?></button>
+
+            <button class="buy-now-btn">Buy Now</button>
+          </div>
+            <!-- <div class="add-cart-btn">
                 <button type="submit" title="<?= /* @escapeNotVerified */ $buttonTitle ?>" class="action primary add-cart1"
                     id="product-addtocart-button">
                     <span>
@@ -49,22 +55,22 @@
                     <!-- <span class="btnglobalspan">
                         <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                     </span>
---> </button>
-            </div>
-
+ </button>
+            </div> -->
+<!-- 
             <div class="actions">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 wishlisticonnew">
-                            <?= $block->getChildHtml('', true) ?>
+                     <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 wishlisticonnew">
+                     <?php /* echo $block->getChildHtml('', true); */ ?>
                             <p class="addtowish">ADD TO WISHLIST</p>
-                        </div>
+                        </div> 
                         <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12"></div>
                         <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12"></div>
                     </div>
                 </div>
 
-            </div>
+            </div> -->
 
            
 

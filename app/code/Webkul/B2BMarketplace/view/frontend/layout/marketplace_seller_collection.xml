@@ -11,17 +11,15 @@
  */
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="seller-1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <head>
-        <css src="Webkul_B2BMarketplace::css/supplier/collection.css"/>
-        <!--  
-        <remove src="css/custom.css"/>
+	<head>
+        <!-- <remove src="css/custom.css"/>
         <remove src="css/styles2.css"/>
         <remove src="css/main.css"/>
         <remove src="css/styles-l.css"/>
         <remove src="css/print.css"/>
-        <remove src="css/localfont.css"/>
-        --> 
-   </head>
+        <remove src="css/localfont.css"/> -->
+        
+    </head>
     <body>
         <referenceContainer name="content">
             <block class="Webkul\Marketplace\Block\Collection" name="marketplace_sellercollection" template="Webkul_B2BMarketplace::supplier/profile/collectionview.phtml" before="-">
