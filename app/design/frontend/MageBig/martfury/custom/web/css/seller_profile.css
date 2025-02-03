@@ -1,0 +1,318 @@
+
+:root{
+    --button-color:#c53e3e;
+    --background-light-color:#f5f5f5;
+    --white-color:#fff;
+    --border-line-color:#e6e6e6;
+}
+
+
+/* CSS FOR THE BODY STYLING STARTS */
+#C body {
+    background-color: var(--background-light-color);
+}
+/* CSS FOR THE BODY STYLING ENDS */
+
+
+/* CSS FOR THE RATING STARTS */
+.wk-supplier-rating-avg{
+    color: var(--button-color);
+}
+
+/* CSS FOR THE RATING ENDS */
+
+
+/* CSS FOR THE SELLER PROFILE PRODUCT PAGE  *
+
+
+/* CSS FOR THE Review Page Start*/
+.wk-supplier-menu-li.active, body.layout01.layout02 .wk-supplier-menu-li:hover {
+    background-color: #c53e3e !important;
+}
+
+
+
+/* CSS FOR THE VIEW DETAIL BTN STARTS */
+/* CSS FOR THE TOP VENDOR HEADING PART STARTS*/
+body.layout01.layout02 .wk-supplier-collection-header-box.wk-supplier-margin-bottom {
+background-color: var(--background-light-color) !important;
+
+}
+/* CSS FOR THE TOP VENDOR HEADING PART ENDS*/
+
+
+/* CSS TO FIX THE HORIZONTAL LINE ALIGNMENT STARTS */
+.wk-supplier-rating-block {
+padding-left: 0rem;
+}
+
+/* CSS TO FIX THE HORIZONTAL LINE ALIGNMENT ENDS */
+
+
+
+/* CSS FOR THE TOP LIST SECTION OF THE VENDOR PROFILE PAGE STARTS */
+.wk-supplier-menu-li:hover{
+    background-color:var(--button-color) !important;
+    color:#fff;
+
+}
+
+/* CSS FOR THE TOP LIST SECTION OF THE VENDOR PROFILE PAGE ENDS */
+
+
+/* CSS FOR THE CARD MAIN DIV STARTS */
+
+body.layout01.layout02 .wk-supplier-collection-container {
+background-color:var(--background-light-color) !important;
+
+}
+
+
+.product-item-info > a:nth-of-type(1){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* CSS FOR THE CARD DETAILS STARTS   */
+.product-items .product-item .product-item-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0rem 0rem 1rem 0rem;
+}
+
+
+.product-items .product-item .product-item-details .product-item-name{
+   max-height:100%;
+   margin-bottom: 0;
+   text-align: center;
+   width: 100%;
+}
+
+
+.product-items .product-item .product-item-details .product-item-name .product-item-link{
+  font-size: 1.3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+  text-transform: capitalize;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  min-height: 100% !important;
+  color: #000;
+}
+
+
+.price-container .price{
+ color:var(--button-color) !important;
+
+}
+
+
+/* CSS FOR THE CARD DETAILS ENDS */
+
+
+/* CSS FOR THE CARD MAIN DIV ENDS */
+.product-item-inner .product.actions.product-item-actions .action.tocart.primary{
+    background: var(--button-color);
+    border: 1px solid var(--button-color);
+    font-weight: 500;
+    padding:2px 10px;
+    font-size: 1.37rem;
+}
+
+.product-item-inner .product.actions.product-item-actions .action.tocart.primary:hover{
+   color: var(--white-color);
+}
+
+
+
+
+.wk-supplier-collection-view-btn a{ 
+    background: var(--button-color);    
+    border: 1px solid var(--button-color);
+}
+
+.wk-supplier-collection-view-btn a:hover{
+    background: var(--button-color);
+    border: var(--button-color);
+    font-weight: 500;
+
+}
+
+
+/* CSS FOR THE VIEW DETAIL BTN ENDS */
+
+
+
+
+
+/* CSS FOR THE MAIN SECTION STARTS */
+.products.wrapper.grid.products-grid{
+    position:relative;
+    width: 100%;
+    margin-left:0;
+    margin-right:0;
+}
+
+
+.products.list.items.product-items{
+    width: 100%;
+}
+
+/* CSS FOR THE MAIN SECTION ENDS */
+
+
+/* CSS FOR THE POLICIES SECTION STARTS */
+.wk-supplier-profile-block .wk-supplier-collection-h2 {
+    font-weight: 500;
+    font-size: 2.2rem;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.wk-supplier-policy-block.wk-supplier-shipping-policy h3 {
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem;
+}
+
+.wk-supplier-policy-block.wk-supplier-return-policy h3 {
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem;
+}
+/* CSS FOR THE POLICIES SECTION ENDS */
+
+
+@media (max-width:576px){
+    .products.list.items.product-items .item.product.product-item{
+        background: var(--white-color);
+        border-right: 1px solid var(--border-line-color);
+        border-bottom: 1px solid var(--border-line-color);
+        padding: 0 !important;
+        margin-bottom: 0;
+        vertical-align: top;
+    }
+
+    .product-item-inner .product.actions.product-item-actions .action.tocart.primary {
+        background: var(--button-color);
+        border: 1px solid var(--button-color);
+        font-weight: 500;
+        padding: 0px 10px;
+        font-size: 1.1rem;
+        min-width: 100%;
+    }
+
+    .wk-supplier-collection-header-box, .wk-supplier-collection-container {
+     padding-left: 0rem !important;
+     padding-right: 0rem !important;
+       
+    }
+
+    /* CSS FOR THE REVIEW HEADING STARTS */
+     .wk-supplier-collection-container .wk-supplier-collection-h2.review-heading{
+        font-size: 1.9rem;
+     }
+
+     .wk-supplier-rating-avg-wrapper .rating-summary .rating-result:before, .wk-supplier-rating-avg-wrapper .rating-summary .rating-result > span:before {
+      font-size: 2rem;
+      height: 2.4rem;
+    }
+
+    /* CSS FOR THE REVIEW HEADING ENDS */
+
+    .product-items .product-item .product-item-details{
+        padding: 0.47rem;
+        margin: 0rem 1rem 1rem 1rem;
+    }
+
+    /* CSS FOR THE LAST POLICIES SECTION STARTS */
+   .wk-supplier-profile-block .wk-supplier-collection-h2{
+    font-size:1.9rem;
+    font-weight: 500;
+    font-family: 'Poppins',sans-serif !important;
+    }
+
+    .wk-supplier-policy-block.wk-supplier-shipping-policy h3{
+        font-size: 1.9rem;
+        font-weight: 500;
+        font-family: 'Poppins',sans-serif;
+
+    }
+
+    .wk-supplier-policy-block.wk-supplier-return-policy h3{
+        font-size: 1.9rem;
+        font-weight: 500;
+        font-family: 'Poppins',sans-serif;
+    }
+    /* CSS FOR THE LAST POLICIES SECTION ENDS */
+
+    /* CSS FOR THE TESCO HEADING ON TOP STARTS */
+    a.wk-supplier-collection-title, a.wk-supplier-collection-title:visited{
+        font-size: 1.85rem;
+    }
+    /* CSS FOR THE TESCO HEADING ON TOP ENDS */
+
+    /* CSS FOR THE TOP LIST SECTION STARTS */
+    .wk-supplier-menu-container ul.wk-supplier-menu-ul a.wk-supplier-menu-title {
+     font-size: 1.5rem !important;
+    }
+
+    /* CSS FOR THE TOP LIST SECTION ENDS */
+}
+
+@media (min-width:576px) and (max-width:1200px){
+    .products.list.items.product-items .item.product.product-item{
+        background: var(--white-color);
+        border-right: 1px solid var(--border-line-color);
+        border-bottom: 1px solid var(--border-line-color);
+        padding: 0 !important;
+        margin-bottom: 0;
+        vertical-align: top;
+    }
+}
+
+@media (min-width:768px){
+
+.product-items .product-item .product-item-details {
+ margin:0rem 1rem 1rem 1rem;
+}
+
+}
+
+@media (min-width:1200px){
+
+/* CSS FOR THE CARD li STARTS */
+.products.list.items.product-items .item.product.product-item{
+    background:var(--white-color);
+    border-right:1px solid var(--border-line-color);
+    border-bottom:1px solid var(--border-line-color);
+    padding:0 !important;
+    margin-bottom: 0;
+    vertical-align: top;
+}
+
+/* CSS FOR THE CARD li ENDS */
+
+
+
+/* CSS FOR THE TOP HEADING STARTS */
+a.wk-supplier-collection-title, a.wk-supplier-collection-title:visited {
+font-size: 2.5rem;
+
+}
+
+a.wk-supplier-collection-title:hover{
+    font-size: 2.5rem;
+}
+
+/* CSS FOR THE TOP HEADING ENDS */
+
+
+}

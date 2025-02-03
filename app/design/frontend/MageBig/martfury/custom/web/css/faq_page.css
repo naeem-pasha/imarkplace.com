@@ -1,0 +1,142 @@
+/* CSS FOR FAQ PAGE */
+:root {
+  --font-bold: 600;
+  --font-semibold: 500;
+}
+
+#C body {
+  background-color: #f5f5f5;
+}
+
+/* Navbar Categories Hover Starts */
+
+#C .header .vertical-menu:hover {
+  background: #000 !important;
+}
+/* Navbar Categories Hover Ends */
+
+/* CSS FOR BREADCRUMS SECTION STARTS*/
+#C .wrapper-breadcrums {
+  display: block;
+  background: #f5f5f5;
+}
+
+.wrapper-breadcrums .breadcrumbs {
+  min-height: 2.5rem;
+  display: inline-block;
+}
+
+#maincontent.page-main .columns.row .main-wrap.col-12 {
+  padding: 0;
+  background: 0 0;
+}
+
+/* List Styling Starts */
+
+.policy-documents ul {
+  padding-left: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+/* List Styling Ends */
+
+/* Input Styling Starts*/
+input,
+textarea {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* Input Styling Ends*/
+
+/* CSS FOR BREADCRUMS SECTION ENDS*/
+
+/* MAIN SECTION STYLING STARTS */
+.policy-documents {
+  padding: 0 30px;
+}
+
+/* FAQ Heading Styling */
+.policy-documents .policy-documents-main-title {
+  text-align: center;
+  padding: 20px 0;
+  font-weight: var(--font-bold);
+  font-family: "Poppins", sans-serif !important;
+}
+/* FAQ Heading Styling */
+
+/* Imarkplace Heading Styling */
+.policy-documents .policy-documents-sub-title {
+  padding: 30px 0 0;
+  color: #212121;
+  font-size: 2.2rem;
+  font-weight: var(--font-bold);
+  font-family: "Poppins", sans-serif !important;
+  text-align: left;
+}
+
+.policy-documents p {
+  font-family: "Poppins", sans-serif !important;
+  text-align: justify;
+}
+/* Imarkplace Heading Styling */
+
+/* List Styling Starts */
+ul,
+ol {
+  padding-left: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+/* List Styling Ends */
+
+/* Anchor List Styling Starts */
+
+.policy-documents p a {
+  color: #0e4ec4;
+}
+
+/* Anchor List Styling Ends */
+
+/* MAIN SECTION STYLING ENDS */
+
+/* Media Queries for FAQ Page */
+@media (max-width: 768px) {
+  .cms-page-view main#maincontent {
+    margin: 0px 15px;
+  }
+
+  .policy-documents .policy-documents-main-title {
+    font-size: 2.5rem;
+  }
+
+  .policy-documents .policy-documents-sub-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 525px) {
+  .policy-documents p {
+    font-size: 1.5rem;
+  }
+  .policy-documents ul {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .policy-documents .policy-documents-main-title {
+    font-size: 2.8rem;
+  }
+
+  .policy-documents .policy-documents-sub-title {
+    font-size: 2.48rem;
+  }
+  .policy-documents p {
+    font-size: 1.68rem;
+  }
+  .policy-documents ul {
+    font-size: 1.68rem;
+  }
+}

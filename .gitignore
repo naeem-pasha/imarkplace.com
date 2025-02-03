@@ -140,3 +140,93 @@ atlassian*
 /generated/*
 !/generated/.htaccess
 .DS_Store
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Vendor Folder
+vendor/
+
+
+#App Code MageBig Folder 
+app/code/MageBig/FastCheckout.zip
+app/code/MageBig/FastCheckout.zip
+app/design.zip
+
+#App Design and Code
+app/code/Imark/MobileLogin/
+app/code/Imark/OdooIntegration.zip
+app/code/Imark/Sitemap.zip
+app/code/MageBig/ExtendPageBuilder/
+app/code/MageBig/FastCheckout.zip
+app/code/MageBig/FastCheckout/
+app/code/MageBig/MbLib.zip
+app/code/MageBig/MbLib/Block/
+app/code/MageBig/MbLib/Cron/
+app/code/MageBig/MbLib/Model/
+app/code/MageBig/MbLib/Observer/
+app/code/MageBig/MbLib/etc/adminhtml/events.xml
+app/code/MageBig/MbLib/etc/crontab.xml
+app/code/Vendor/
+app/design.zip
+
+     
+#Config and Editor Files
+.editorconfig
+.htaccess.bkp
+.htaccess.sample
+.php_cs.dist
+.user.ini
+
+
+#Config and Cache Files
+app/etc/csp_whitelist.xml
+composer.lock.bkp
+composer.lock.bkp-26Feb24
+ 
+ 
+#Test Files
+dev/tests/acceptance/.gitignore
+dev/tests/api-functional/.gitignore
+dev/tests/integration/.gitignore
+dev/tests/integration/testsuite/Magento/Setup/Console/Command/_files/output/
+dev/tests/integration/tmp/
+dev/tests/setup-integration/.gitignore
+dev/tests/static/.gitignore
+dev/tests/static/testsuite/Magento/Test/_files/
+dev/tests/unit/.gitignore
+dev/tests/unit/tmp/
+
+#Generated and Dependencies
+generated/
+magento-module/
+modules-dependencies.csv
+
+#Nginx Config Backup
+nginx.conf.bkp
+
+#Public Files
+pub/errors/404.php
+pub/errors/503.php
+pub/errors/506.php
+pub/health_check.php
+pub/htaccess
+pub/info.php
+pub/test.html
+pub/test.php
+pub/web_system.php
+
+

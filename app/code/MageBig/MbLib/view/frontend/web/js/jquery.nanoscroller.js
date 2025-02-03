@@ -13,9 +13,9 @@
     }
 })(function ($, window, document) {
     "use strict";
-    var BROWSER_IS_IE7, BROWSER_SCROLLBAR_WIDTH, DOMSCROLL, DOWN, DRAG, ENTER, KEYDOWN, KEYUP, MOUSEDOWN, MOUSEENTER,
+    var BROWSER_SCROLLBAR_WIDTH, DOMSCROLL, DOWN, DRAG, ENTER, KEYDOWN, KEYUP, MOUSEDOWN, MOUSEENTER,
         MOUSEMOVE, MOUSEUP, MOUSEWHEEL, NanoScroll, PANEDOWN, RESIZE, SCROLL, SCROLLBAR, TOUCHMOVE, UP, WHEEL, cAF,
-        defaults, getBrowserScrollbarWidth, hasTransform, isFFWithBuggyScrollbar, rAF, transform, _elementStyle,
+        defaults, getBrowserScrollbarWidth, hasTransform, rAF, transform, _elementStyle,
         _prefixStyle, _vendor;
     defaults = {
 
@@ -300,15 +300,6 @@
     TOUCHMOVE = 'touchmove';
 
     /**
-     @property BROWSER_IS_IE7
-     @type Boolean
-     @static
-     @final
-     @private
-     */
-    BROWSER_IS_IE7 = window.navigator.appName === 'Microsoft Internet Explorer' && /msie 7./i.test(window.navigator.appVersion) && window.ActiveXObject;
-
-    /**
      @property BROWSER_SCROLLBAR_WIDTH
      @type Number
      @static
@@ -363,19 +354,6 @@
         scrollbarWidth = outer.offsetWidth - outer.clientWidth;
         document.body.removeChild(outer);
         return scrollbarWidth;
-    };
-    isFFWithBuggyScrollbar = function () {
-        var isOSXFF, ua, version;
-        ua = window.navigator.userAgent;
-        isOSXFF = /(?=.+Mac OS X)(?=.+Firefox)/.test(ua);
-        if (!isOSXFF) {
-            return false;
-        }
-        version = /Firefox\/\d{2}\./.exec(ua);
-        if (version) {
-            version = version[0].replace(/\D+/g, '');
-        }
-        return isOSXFF && +version > 23;
     };
 
     /**
@@ -641,7 +619,29 @@
             $.each(eventPassive, function (index, event) {
                 $.event.special[event] = {
                     setup: function (_, ns, handle) {
-                        this.addEventListener(event, handle, {passive: !!ns.indexOf('noPreventDefault')});
+                        if (event === 'wheel') {
+                            if ('onwheel' in document.createElement('div')) {
+                                this.addEventListener(event, handle, {passive: !!ns.indexOf('noPreventDefault')});
+                            }
+                        }
+
+                        if (event === 'mousewheel') {
+                            if (document.onmousewheel !== undefined) {
+                                this.addEventListener(event, handle, {passive: !!ns.indexOf('noPreventDefault')});
+                            }
+                        }
+
+                        if (event === 'touchstart') {
+                            if ('ontouchstart' in document.documentElement) {
+                                this.addEventListener(event, handle, {passive: !!ns.indexOf('noPreventDefault')});
+                            }
+                        }
+
+                        if (event === 'touchmove') {
+                            if ('ontouchmove' in document.documentElement) {
+                                this.addEventListener(event, handle, {passive: !!ns.indexOf('noPreventDefault')});
+                            }
+                        }
                     }
                 };
             });
@@ -690,13 +690,7 @@
             }
             this.pane = this.$el.children("." + paneClass);
             this.slider = this.pane.find("." + sliderClass);
-            if (BROWSER_SCROLLBAR_WIDTH === 0 && isFFWithBuggyScrollbar()) {
-                currentPadding = window.getComputedStyle(this.content, null).getPropertyValue('padding-right').replace(/[^0-9.]+/g, '');
-                cssRule = {
-                    right: -14,
-                    paddingRight: +currentPadding + 14
-                };
-            } else if (BROWSER_SCROLLBAR_WIDTH) {
+            if (BROWSER_SCROLLBAR_WIDTH) {
                 cssRule = {
                     right: -BROWSER_SCROLLBAR_WIDTH
                 };
@@ -747,11 +741,7 @@
             content = this.content;
             contentStyle = content.style;
             contentStyleOverflowY = contentStyle.overflowY;
-            if (BROWSER_IS_IE7) {
-                this.$content.css({
-                    height: this.$content.height()
-                });
-            }
+
             contentHeight = content.scrollHeight + BROWSER_SCROLLBAR_WIDTH;
             parentMaxHeight = parseInt(this.$el.css("max-height"), 10);
             if (parentMaxHeight > 0) {
@@ -930,9 +920,7 @@
             if (!this.iOSNativeScrolling && this.pane.length) {
                 this.pane.remove();
             }
-            if (BROWSER_IS_IE7) {
-                this.$content.height('');
-            }
+
             this.$content.removeAttr('tabindex');
             if (this.$el.hasClass(this.options.enabledClass)) {
                 this.$el.removeClass(this.options.enabledClass);
@@ -1015,4 +1003,3 @@
     };
     $.fn.nanoScroller.Constructor = NanoScroll;
 });
-

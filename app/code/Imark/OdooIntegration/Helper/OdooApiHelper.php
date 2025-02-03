@@ -7,10 +7,10 @@ use Magento\Framework\App\Helper\AbstractHelper;
 class OdooApiHelper extends AbstractHelper
 {
 
-    //protected $odooUrl = "http://192.168.0.174:8069"; // Odoo server URL
+    protected $odooUrl = "http://192.168.0.174:8069"; // Odoo server URL
     //protected $odooUrl = "http://192.168.156.77:8069"; // Odoo server URL
-   // protected $odooUrl = "http://54.173.65.42:8069"; // Odoo server URL
-     protected $odooUrl = "https://lms.greenedtech.com"; // Odoo server URL
+    //protected $odooUrl = "http://54.173.65.42:8069"; // Odoo server URL
+    
 
     public function getSessionId()
     {

@@ -62,7 +62,7 @@ if ($partner['shop_url']) {
     $locsearch = $block->escapeHtml($partner['company_locality']);
     ?>
     <div class="wk_mp_design">
-        <?= $block->getChildHtml("marketplace_seller_top_block")?>
+        <?php  $block->getChildHtml("marketplace_seller_top_block")?>
         <div class="wk-mp-collection-container">
             <div class="wk-mp-collection-left">
                 <?= $block->getChildHtml('marketplace_sellercollectionleft')?>
@@ -148,8 +148,8 @@ if ($partner['shop_url']) {
 
                                 ?>
                                 <?php foreach ($all_products as $_product): ?>
-                                    <?= /* @noEscape */(($iterator++ == 1)) ? '<li class="item product product-item">' :
-                                    '</li><li class="item product product-item">' ?>
+                                    <?= /* @noEscape */(($iterator++ == 1)) ? '<li class="item product product-item col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6">' :
+                                    '</li><li class="item product product-item col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6">' ?>
                                     <div class="product-item-info" data-container="product-grid">
                                         <?php
                                         $productImage = $block->getImage($_product, $image);
@@ -274,22 +274,22 @@ if ($partner['shop_url']) {
                                                                 </span>
                                                             </a>
                                                         <?php endif; ?>
-                                                        <?php
+                                                        <?php 
                                                         $compareHelper = $quickOrderBlock->helper(
                                                             \Magento\Catalog\Helper\Product\Compare::class
                                                         );
                                                         ?>
-                                                        <a href="#"
+                                                        <!-- <a href="#"
                                                         class="action tocompare"
-                                                        title="<?= $block->escapeHtml($block
-                                                        ->escapeHtml(__('Add to Compare'))); ?>"
-                                                        aria-label="<?= $block->escapeHtml($block
-                                                        ->escapeHtml(__('Add to Compare'))); ?>"
-                                                        data-post='<?= $block->escapeHtml($compareHelper
-                                                        ->getPostDataParams($_product)); ?>'
+                                                        title="<?php /* $block->escapeHtml($block
+                                                        ->escapeHtml(__('Add to Compare'))); */ ?>"
+                                                        aria-label="<?php /* $block->escapeHtml($block
+                                                        ->escapeHtml(__('Add to Compare')));*/ ?>"
+                                                        data-post='<?php /* $block->escapeHtml($compareHelper
+                                                        ->getPostDataParams($_product)); */ ?>'
                                                         role="button">
-                                                            <span><?= $block->escapeHtml(__('Add to Compare')) ?></span>
-                                                        </a>
+                                                            <span><?php /* $block->escapeHtml(__('Add to Compare')) */ ?></span>
+                                                        </a> -->
                                                     </div>
                                                 </div>
                                                 <?php if ($showDescription):?>

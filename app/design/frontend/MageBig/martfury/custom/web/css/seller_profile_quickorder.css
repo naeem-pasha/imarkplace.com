@@ -1,0 +1,28 @@
+/* CSS FOR THE SELLER PROFILE QUICK ORDER */
+
+
+/* CSS FOR THE TOP NAVBAR SECTION */
+
+.wk-supplier-menu-li.active, body.layout01.layout02 .wk-supplier-menu-li:hover {
+    background-color: #c53e3e !important;
+}
+
+.wk-rfq-add-btn-label {
+
+    background-color: #c53e3e;
+    border: 1px solid #c53e3e;
+
+}
+
+.wk-rfq-add-btn-label:before {
+color:#c53e3e;
+
+}
+
+
+.wk-supplier-primary-btn:hover {
+    background-color: #c53e3e;
+    border: 1px solid #c53e3e;
+}
+
+

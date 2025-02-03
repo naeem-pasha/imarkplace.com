@@ -18,5 +18,7 @@
             <link src="js/catalog_product.js" />
         </head>
         <body>
+          <referenceBlock name="your_navbar_section_name" remove="true"/>
+          
         </body>
 </page>
