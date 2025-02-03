@@ -1,2 +1,0 @@
-%(lit)%(formataddr{addresses})\
-%<(nonnull)%(void(width))%(void(decode))%(putaddr Resent-To: )\n%>

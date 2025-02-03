@@ -1,4 +1,0 @@
-ignores=mmh-*
-extras:raw
-:
-body:nocomponent,overflowoffset=0,raw
