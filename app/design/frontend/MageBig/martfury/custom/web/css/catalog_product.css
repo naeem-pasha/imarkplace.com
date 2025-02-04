@@ -914,6 +914,18 @@ font-weight: 400 !important;
     }
     /* Quantity Div Styling End */
 
+    /* Removing top extra space on mobile screens start*/
+    .catalog-product-view .product-info-main-top.product-info-main {
+        padding: 0rem !important;
+        margin-bottom: 0rem !important;
+        margin-top: 0rem !important;
+    }
+
+    .padding-main-custom {
+        margin-top: 0.4rem !important;
+    }
+    /* Removing top extra space on mobile screens start*/
+
 }
 
 @media (min-width: 992px) {
@@ -931,6 +943,15 @@ font-weight: 400 !important;
     .product.data.items .item.content {
         padding-left: 0rem !important;
     }
+
+
+    /* Removing Extra Spaces on Desktop Screen for the Main Container */
+   .catalog-product-view .product-info-main-top.product-info-main {
+    margin-top: 5px !important;
+    padding: 8px !important;
+    }
+    /* Removing Extra Spaces on Desktop Screen for the Main Container */
+
 
 }
 
@@ -1102,8 +1123,6 @@ font-weight: 400 !important;
     }
 
     /* Services Mobile Screen Changes End*/
-
-
 
 }
 
@@ -1986,3 +2005,6 @@ font-size: 1.7rem !important;
 
 
 }
+
+
+
