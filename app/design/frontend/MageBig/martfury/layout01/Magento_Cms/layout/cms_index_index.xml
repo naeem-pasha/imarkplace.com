@@ -9,14 +9,7 @@
     
      <head>
         <!-- Remove the specific CSS file by its src attribute -->
-        
-
-       <!--
-       
-        <remove src="css/home.css"/>
-        <remove src="css/header.css"/>
-        <remove src="css/footer.css"/>
-    -->
+     
        <remove src="css/styles2.css"/>
        <remove src="css/custom.css"/>
         <remove src="css/main.css"/>

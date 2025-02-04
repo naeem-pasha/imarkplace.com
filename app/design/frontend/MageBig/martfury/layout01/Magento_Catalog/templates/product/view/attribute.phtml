@@ -102,7 +102,7 @@ if ($_attributeType && $_attributeType == 'text') {
                                                                                                                                                                                                                                         "minText"           : "<?= $minText; ?>",
                                                                                                                                                                                                                                         "secText"           : "<?= $secText; ?>",
                                                                                                                                                                                                                                         "daySingularText"   : "<?= $daySingularText; ?>",
-                                                                                                                                                                                                                                        "hourSingularText"  : "<?= $hourSingularText; ?>",
+                                                                                                                                                                                                                                           "hourSingularText"  : "<?= $hourSingularText; ?>",
                                                                                                                                                                                                                                         "minSingularText"   : "<?= $minSingularText; ?>",
                                                                                                                                                                                                                                         "secSingularText"   : "<?= $secSingularText; ?>",
                                                                                                                                                                                                                                         "offset"            : <?= $cfHelper->getOffsetTimeZone(); ?>
@@ -113,6 +113,11 @@ if ($_attributeType && $_attributeType == 'text') {
 <?php endif; ?>
 <?php if ($_attributeValue): ?>
     <div class="product attribute <?= /* @escapeNotVerified */$_className ?>">
+    <?php if (strpos($_className, 'overview') !== false): ?>
+        <div>
+            <h3 class="mt-4 mt-2 highlight-heading">Highlights:</h3>
+        </div>
+    <?php endif; ?>
         <?php if ($renderLabel): ?><strong class="type">
                 <?= /* @escapeNotVerified */$_attributeLabel . '#: ' ?>
             </strong>

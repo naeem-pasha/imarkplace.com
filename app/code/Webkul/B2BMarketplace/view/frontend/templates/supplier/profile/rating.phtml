@@ -140,7 +140,7 @@ $totalRatingStar = $helper->getSelleRating($sellerId);
 $ratingClass = "wk-supplier-rating-icon wk-supplier-star".(int)$totalRatingStar;
 $ratingPercent = $totalRatingStar*20;
 ?>
-<h2 class="wk-supplier-collection-h2"><?= $block->escapeHtml(__("Review(s)")) ?></h2>
+<h2 class="wk-supplier-collection-h2 review-heading"><?= $block->escapeHtml(__("Review(s)")) ?></h2>
 <div class="wk-supplier-rating-block" id="rating">
     <div class="wk-supplier-rating-container">
         <div class="wk-supplier-rating-avg-wrapper">

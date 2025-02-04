@@ -13,6 +13,7 @@ use Magento\Framework\View\Element\AbstractBlock;
 use \Magento\Catalog\Block\Product\AbstractProduct;
 use \Magento\Framework\DataObject\IdentityInterface;
 
+
 /**
  * Blog post related products block
  */

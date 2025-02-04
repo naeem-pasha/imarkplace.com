@@ -1,4 +1,47 @@
 & when (@media-common = true) {
+    .loading-mask .loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -15px;
+        margin-left: -15px;
+        width: 30px;
+        height: 30px;
+        border: 2px dashed @button-primary__background;
+        border-radius: 100%;
+        animation: loadingD 1.5s .3s cubic-bezier(.17,.37,.43,.67) infinite;
+        content: '';
+    }
+
+    .loading-mask .loader img {
+        display: none;
+    }
+
+    @keyframes loadingD {
+        0% {
+            transform: rotate(0deg)
+        }
+
+        50% {
+            transform: rotate(180deg)
+        }
+
+        100% {
+            transform: rotate(360deg)
+        }
+    }
+
+    .ui-helper-hidden-accessible {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+        display: none;
+    }
 
     /* Magnific Popup CSS */
 
@@ -316,9 +359,10 @@
 
     .mfp-figure {
         line-height: 0;
+        display: inline-block;
     }
 
-    .mfp-figure:after {
+    /*.mfp-figure:after {
         content: '';
         position: absolute;
         left: 0;
@@ -331,7 +375,7 @@
         z-index: -1;
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
         background: #444;
-    }
+    }*/
 
     .mfp-figure small {
         color: #BDBDBD;
@@ -342,6 +386,7 @@
 
     .mfp-figure figure {
         margin: 0;
+        position: relative;
     }
 
     .mfp-bottom-bar {
@@ -363,6 +408,8 @@
 
     .mfp-image-holder .mfp-content {
         max-width: 100%;
+        width: 100%;
+        text-align: center;
     }
 
     .mfp-gallery .mfp-image-holder .mfp-figure {

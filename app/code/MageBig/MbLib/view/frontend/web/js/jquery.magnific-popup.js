@@ -135,14 +135,14 @@
          * This function is triggered only once when $.fn.magnificPopup or $.magnificPopup is executed
          */
         init: function() {
-            var appVersion = navigator.appVersion;
+            var appVersion = navigator['userAgentData'] ? navigator['userAgentData'].platform.toLowerCase() : navigator.appVersion;
             mfp.isAndroid = (/android/gi).test(appVersion);
             mfp.isIOS = (/iphone|ipad|ipod/gi).test(appVersion);
             mfp.supportsTransition = supportsTransitions();
 
             // We disable fixed positioned lightbox on devices that don't handle it nicely.
             // If you know a better way of detecting this - let me know.
-            mfp.probablyMobile = (mfp.isAndroid || mfp.isIOS || /(Opera Mini)|Kindle|webOS|BlackBerry|(Opera Mobi)|(Windows Phone)|IEMobile/i.test(navigator.userAgent) );
+            mfp.probablyMobile = navigator['userAgentData'] ? navigator['userAgentData'].mobile : (mfp.isAndroid || mfp.isIOS || /(Opera Mini)|Kindle|webOS|BlackBerry|(Opera Mobi)|(Windows Phone)|IEMobile/i.test(navigator.userAgent) );
             _document = $(document);
 
             mfp.popupsCache = {};
@@ -640,7 +640,7 @@
             var disableOn = options.disableOn !== undefined ? options.disableOn : $.magnificPopup.defaults.disableOn;
 
             if(disableOn) {
-                if($.isFunction(disableOn)) {
+                if (typeof disableOn === "function") {
                     if( !disableOn.call(mfp) ) {
                         return true;
                     }
@@ -787,7 +787,7 @@
                             if(el.is('img')) {
                                 el.attr('src', value);
                             } else {
-                                el.replaceWith( $('<img alt="imarkplace">').attr('src', value).attr('class', el.attr('class')) );
+                                el.replaceWith( $('<img>').attr('src', value).attr('class', el.attr('class')) );
                             }
                         } else {
                             el.attr(arr[1], value);
@@ -1116,7 +1116,7 @@
             var src = mfp.st.image.titleSrc;
 
             if(src) {
-                if($.isFunction(src)) {
+                if (typeof src === "function") {
                     return src.call(mfp, item);
                 } else if(item.el) {
                     return item.el.attr(src) || '';
@@ -1794,7 +1794,7 @@
                 _mfpTrigger('LazyLoad', item);
 
                 if(item.type === 'image') {
-                    item.img = $('<img alt="imarkplace" class="mfp-img" />').on('load.mfploader', function() {
+                    item.img = $('<img class="mfp-img" />').on('load.mfploader', function() {
                         item.hasSize = true;
                     }).on('error.mfploader', function() {
                         item.hasSize = true;

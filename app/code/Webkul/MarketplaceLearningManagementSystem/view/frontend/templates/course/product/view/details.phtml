@@ -42,7 +42,7 @@ $totalLec = ($lmsHelper->getTotalLecturesOfCourse() == 1) ? ($lmsHelper->getTota
                 </div>
                 <div id="course-content-accordion" data-mage-init='{
                     "accordion":{
-                        "active": [1, 2],
+                        "active": [0],
                         "collapsible": true,
                         "openedState": "active",
                         "multipleCollapsible": true
@@ -56,7 +56,7 @@ $totalLec = ($lmsHelper->getTotalLecturesOfCourse() == 1) ? ($lmsHelper->getTota
                                         <?= $block->escapeHtml($index++ . ". " . $sectionData['title']) ?>
                                     </span>
                                     <span class="section-icon">
-                                        <img src="<?= $block->escapeUrl(
+                                        <img alt="imarkplace" src="<?= $block->escapeUrl(
                                             $block->getViewFileUrl(
                                                 'Webkul_MarketplaceLearningManagementSystem::images/accordion_arrow.png'
                                             )
@@ -103,7 +103,7 @@ $totalLec = ($lmsHelper->getTotalLecturesOfCourse() == 1) ? ($lmsHelper->getTota
                                         $lockIcon = 'Webkul_MarketplaceLearningManagementSystem::images/lock.png';
                                         ?>
                                         <span class="content-icon">
-                                            <img src="<?=
+                                            <img alt="imarkplace" src="<?=
                                                 ($contentData['preview']) ?
                                                 $block->escapeUrl(
                                                     $block->getViewFileUrl(
@@ -140,9 +140,6 @@ $totalLec = ($lmsHelper->getTotalLecturesOfCourse() == 1) ? ($lmsHelper->getTota
         <?php
     }
     ?>
-
-
-
     <div class="product info detailed">
         <?php $layout = $block->getLayout(); ?>
         <div class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
@@ -157,43 +154,26 @@ $totalLec = ($lmsHelper->getTotalLecturesOfCourse() == 1) ? ($lmsHelper->getTota
                 ?>
 
 
-                <section id="accordion" class="accordion">
-                    <div class="accordion-container">
-                        <!-- <details class="accordion-item"> -->
-                        <summary class="accordion-trigger">
-                            <span class="accordion-title">
-                                <div class="data-item-title" data-role="collapsible"
-                                    id="tab-label-<?php echo  /*@noEscape */ $alias ?>">
+                <div class="data item title" data-role="collapsible" id="tab-label-<?=  /*@noEscape */$alias ?>">
+                    <a class="data switch" tabindex="-1" data-toggle="trigger" href="#<? //= /*@noEscape */$alias ?>"
+                        id="tab-label-<?= /*@noEscape */$alias ?>-title">
+                        <?= /*@noEscape */$label ?>
+                    </a>
+                </div>
 
-                                    <a class="data switch" tabindex="0" data-toggle="trigger"
-                                        href="#<?php echo /*@noEscape */ $alias ?>"
-                                        id="tab-label-<?php echo /*@noEscape */ $alias ?>-title">
-                                        <?php echo /*@noEscape */ $label ?>
-                                    </a>
 
-                                </div>
-                            </span>
-                            <span class="accordion-icon">
-                                &plus;
-                            </span>
-                        </summary>
-                        <div class="accordion-content">
-                            <div>
-                                <div class="data item content active"
-                                    aria-labelledby="tab-label-<?php echo /*@noEscape */ $alias ?>-title"
-                                    id="<?php echo /*@noEscape */ $alias ?>" data-role="content">
+                <div>
+                    <div class="data item content" aria-labelledby="tab-label-<?= /*@noEscape */$alias ?>-title"
+                        id="<?= /*@noEscape */$alias ?>" data-role="content">
 
-                                    <?php if ($name == "product.info.description" && !$isShowDescription): ?>
-                                        <?php echo "" ?>
-                                    <?php else: ?>
-                                        <?php echo /*@noEscape */ $html ?>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- </details> -->
+                        <?php if ($name == "product.info.description" && !$isShowDescription): ?>
+                            <?= "" ?>
+                        <?php else: ?>
+                            <?= /*@noEscape */$html ?>
+                        <?php endif; ?>
                     </div>
-                </section>
+
+                </div>
 
             <?php endforeach; ?>
 
@@ -201,5 +181,7 @@ $totalLec = ($lmsHelper->getTotalLecturesOfCourse() == 1) ? ($lmsHelper->getTota
 
     </div>
     </div>
+
+
 
 <?php endif; ?>

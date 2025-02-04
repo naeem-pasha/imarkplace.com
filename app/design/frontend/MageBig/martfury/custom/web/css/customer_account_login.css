@@ -161,8 +161,8 @@ input:not([type=radio]):not([type=checkbox]), textarea {
 
 /* Sign In Btn Styling */
 #C .action.primary, #C .action.secondary {
-    background: #35354c;
-    border: 1px solid #2a2323;
+    background: #c53e3e;
+    border: 1px solid #c53e3e;
 }
 
 .action.primary:hover, .action.secondary:hover {

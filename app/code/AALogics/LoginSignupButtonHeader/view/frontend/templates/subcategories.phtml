@@ -30,7 +30,6 @@
     .single_card {
         margin: 0 0 30px 0;
         background-color: #fff;
-       text-align:center;
     }
     .single_card:hover .text_wrap{
         color: #fff;
@@ -44,7 +43,7 @@
     .single_card .img_wrap img {
         width: 100%;
         /* border-radius: 30px; */
-        height: 150px;
+        height: 300px;
         object-fit: cover;
     }
 
@@ -72,18 +71,6 @@
     .top_services .single_service .icon {
         margin-bottom: 20px;
     }
-
-    #C .page-products .page-title-wrapper {
-    	display: none;
-    	background: #fff;
-    	text-align: center;
-    	margin-bottom: 15px
-    }
-    .category-image .image {
-    	display: none;
-    	height: auto;
-    	max-width: 100%;
-    }
 </style>
 
 <?php
@@ -96,28 +83,27 @@ $subcategories = $block->getSubCategories();
     <div class="all_cards">
         <div class="container">
             <div class="row">
-                <?php //print"<pre>"; print_r($subcategories);                        ?>
-                <?php foreach ($subcategories as $subCategory): ?>
-                    <?php //echo $subCategory['description'];                        ?>
-                    <?php $subCtgName = $subCategory['name'] ?>
-                    <?php
-                    $url = $subCategory['description'];
-                    if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
+		<?php //print"<pre>"; print_r($subcategories); ?>
+                <?php foreach ($subcategories as $subCategory) : ?>
+		     <?php //echo $subCategory['description']; ?>
+		     <?php $subCtgName = $subCategory['name'] ?>
+		     <?php 
                         $url = $subCategory['description'];
-                    } else {
-                        $url = $subCategory['url'];
-                    }
-                    ?>
-                    <div class="col-md-2">
+                        if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
+                          $url = $subCategory['description'];
+                        } else {
+                          $url = $subCategory['url'];
+                        }
+                     ?>
+		     <div class="col-md-4">
                         <a href="<?php echo $url; ?>">
                             <div class="single_card pasha_card">
-                                <div class="img_wrap text_wrap">
-                                    <img src="<?php echo $subCategory['image'] ?>" alt="" />
-                                    <p>
-                                        <?php echo $subCategory['name'] ?>
-                                    </p>
+                                <div class="img_wrap">
+                                    <img alt="imarkplace" src="<?php echo $subCategory['image']?>" />
                                 </div>
-
+                                <div class="text_wrap">
+                                    <h4><?php echo $subCategory['name'] ?></h4>
+                                </div>
                             </div>
                         </a>
                     </div>

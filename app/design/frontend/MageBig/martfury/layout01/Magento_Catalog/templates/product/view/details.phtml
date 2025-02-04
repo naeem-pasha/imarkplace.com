@@ -8,8 +8,10 @@
 $mbHelper = $this->helper('MageBig\MbFrame\Helper\Data');
 ?>
 <?php if ($detailedInfoGroup = $block->getGroupChildNames('detailed_info', 'getChildHtml')):?>
-    <div class="product info detailed <?php if (!$mbHelper->getConfig('mbconfig/product_view/product_tabs')) echo 'vertical'; ?>">
+
+    <div class="mx-xl-auto maximum-width description-parent-container <?php if (!$mbHelper->getConfig('mbconfig/product_view/product_tabs')) echo 'vertical'; ?>">
         <?php $layout = $block->getLayout(); ?>
+        <div class="container-fluid my-4">
         <div class="product data items" data-mage-init='{"tabs":{"openedState":"opened", "animate": {"duration": 300}}}'>
             <?php foreach ($detailedInfoGroup as $name):?>
                 <?php
@@ -20,21 +22,56 @@ $mbHelper = $this->helper('MageBig\MbFrame\Helper\Data');
                     $alias = $layout->getElementAlias($name);
                     $label = $block->getChildData($alias, 'title');
                 ?>
-                <div class="data item title"
+                <div class="description-inner-heading" 
                      aria-labeledby="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title"
                      data-role="collapsible" id="tab-label-<?= /* @escapeNotVerified */ $alias ?>">
-                    <a class="data switch"
+                    <a class="description-heading span-unique-class-detail"
                        tabindex="-1"
                        data-toggle="switch"
                        href="#<?= /* @escapeNotVerified */ $alias ?>"
                        id="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title">
                         <?= /* @escapeNotVerified */ $label ?>
+
+                        <span id="span2" style="display:none">|</span>
                     </a>
-                </div>
+                    
+                </div>  
                 <div class="data item content" id="<?= /* @escapeNotVerified */ $alias ?>" data-role="content">
                     <?= /* @escapeNotVerified */ $html ?>
-                </div>
+                </div>        
             <?php endforeach;?>
+            
+        </div>
+        <div class="description-icon-parent-container">
+          <div class="description-icon-inner-container">
+            <div class="icon-container-instagram">
+              <a href="#">
+                <img
+                src="/media/wysiwyg/instagram-logo.png" 
+                  alt="Follow iMarkPlace on Instagram"
+                  class="instagram-logo"
+                />
+              </a>
+            </div>
+            <div class="icon-text-instagram">
+              <span> Get inspired daily! Follow us </span>
+            </div>
+          </div>
+          <div class="description-icon-inner-container">
+            <div class="icon-container-facebook">
+              <a href="#">
+                <img
+                  src="/media/wysiwyg/facebook-logo.png" 
+                  alt="Follow iMarkPlace on Facebook"
+                  class="facebook-logo"
+                />
+              </a>
+            </div>
+            <div class="icon-text-facebook">
+              <span>Get inspired daily! Follow us </span>
+            </div>
+          </div>
+        </div>
         </div>
     </div>
 <?php endif; ?>

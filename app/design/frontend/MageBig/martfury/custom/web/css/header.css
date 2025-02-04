@@ -15,6 +15,18 @@ body {
     transform: scaleX(0)
 }
 
+/* Changes in the Styling of  Become a Seller Link Starts*/
+.become-seller-style{
+   color:#fff;
+   text-decoration: none;
+
+}
+.become-seller-style:hover{
+  color: #e5c0c0;
+}
+
+/* Changes in the Styling of Become a Seller Link Ends */
+
 .logo {
     text-align: center
 }
@@ -266,7 +278,7 @@ ul,ol {
 
 .navbar-nav .nav-link {
     color: #fff !important;
-    padding: 17px 32px;
+    padding: 16px 40px;
     text-wrap: nowrap;
     font-size: 1.8rem
 }
@@ -474,7 +486,7 @@ input.input-text {
     font-size: 3rem;
     cursor: pointer;
     display: inline-block;
-    vertical-align: top;
+    vertical-align: top;`
     line-height: 42px;
     color: #000
 }
@@ -587,6 +599,20 @@ input.input-text {
         text-align: center;
         display: none
     }
+   
+    .search-container input[type=text] {
+        font-size: 11px; 
+    }
+    
+    select{
+        padding-right: 15px;
+        font-size: 11px;
+
+    }
+    .search-container button{
+        font-size: 11px;
+    }
+
 }
 
 @media (min-width: 992px) {
