@@ -12,8 +12,16 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="seller-1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
 	<head>
-        <css src="Webkul_B2BMarketplace::css/supplier/collection.css"/>
-        <css src="Webkul_B2BMarketplace::css/quote.css"/>
+        <!-- <css src="Webkul_B2BMarketplace::css/supplier/collection.css"/> -->
+        <!-- <css src="Webkul_B2BMarketplace::css/quote.css"/> -->
+       <css src="css/seller_profile_quickorder.css" rel="stylesheet" type="text/css" order="170" />
+        <remove src="css/styles2.css"/>
+        <remove src="css/custom.css"/>
+        <remove src="css/main.css"/>
+        <remove src="css/styles-l.css"/>
+        <remove src="css/home.css"/>
+        <remove src="css/print.css"/>
+        
     </head>
     <body>
         <referenceContainer name="content">

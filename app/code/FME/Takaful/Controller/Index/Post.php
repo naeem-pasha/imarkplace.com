@@ -116,9 +116,7 @@ class Post extends \FME\Takaful\Controller\Index
                 ->setTemplateVars(['data' => $postObject])
                 ->setFrom($this->scopeConfig->getValue(self::XML_PATH_EMAIL_SENDER, $storeScope))
                 ->addTo($this->scopeConfig->getValue(self::XML_PATH_EMAIL_RECIPIENT, $storeScope))
-                ->addCc('muhammad.iqbal@takafulbazaar.com')
-                //->addCc('pasha.hexa@gmail.com')
-                ->addBcc('naeem@greensfin.com')
+                ->addCc('pasha.hexa@gmail.com')
                 ->setReplyTo($post['email'])
                 ->getTransport();
                         

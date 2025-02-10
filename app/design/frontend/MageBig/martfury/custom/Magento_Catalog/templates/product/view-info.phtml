@@ -5,7 +5,7 @@ $social = $_mbHelper->getConfig('mbconfig/product_view/share_social');
 ?>
 <div class="product-info-main-top product-info-main">
     <?php if ($social): ?>
-        <div class="row align-items-center">
+        <!-- <div class="row align-items-center">
             <div class="col-12 col-lg-8 col-xl-9">
 
                 <div class="info-after-title">
@@ -15,9 +15,9 @@ $social = $_mbHelper->getConfig('mbconfig/product_view/share_social');
             <!-- Moving Social Icons Div From Here to Stars Place -->
             <!-- <div class="col-12 col-lg-4 col-xl-3">
                 <?php // = $this->getChildHtml('product.info.social.share')  ?>
-            </div> -->
+            </div> 
          
-        </div>
+        </div> -->
     <?php else: ?>
         <?= $this->getChildHtml('page.main.title') ?>
         <div class="info-after-title">
@@ -27,12 +27,12 @@ $social = $_mbHelper->getConfig('mbconfig/product_view/share_social');
     <?php endif ?>
 </div>
 <?php if ($productLayout): ?>
-    <div class="product-info-main-content">
+    <div class="padding-main-custom mt-4 maximum-width mx-xl-auto">
         <div class="row">
-            <div class="col-12 col-md-12 col-lg-6 col-xl-6">
+            <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 product-image-container4 wasif-media">
                 <?= $this->getChildHtml('product.info.media') ?>
             </div>
-            <div class="col-12 col-md-12 col-lg-6 col-xl-6">
+            <div class="col-md-12 col-lg-4 col-xl-4 col-xs-12 product-decription-container wasif-content">
 
                 <?= $this->getChildHtml('page.main.title') ?>
         
@@ -52,13 +52,119 @@ $social = $_mbHelper->getConfig('mbconfig/product_view/share_social');
                 <?= $this->getChildHtml('product.info.main') ?>
                 <?= $_mbHelper->getCategoryStore($block->getProduct()); ?>
             </div>
-            <div class="col-12 col-xl-0">
-                <div class="sidebar-product-wrap">
-                    <?php //= $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('sidebar-product')->toHtml(); ?>
+
+    
+    <!-- Mobile Screen Services Section -->
+<div class="container my-4 mx-xl-auto  w-38 policies-section-mobile">
+        <div class="row">
+            <div class="col-3 col-md-3 col-sm-3 col-lg-3 col-xxl-4  mb-4 mobile-flex">
+                 <div class="service-box">
+                     <img src="/media/wysiwyg/affordable-price.png" alt="Affordable Price" width="auto" height="auto" loading="lazy">
+                     <div class="service-title">Affordable Price</div>
+                </div>
+            </div>
+            <div class="col-3 col-md-3 col-sm-3 col-lg-3 col-xxl-4 mb-4 mobile-flex">
+                <div class="service-box">
+                     <img src="/media/wysiwyg/customer-support.png" alt="Customer Support" width="auto" height="auto" loading="lazy">
+                    <div class="service-title">Customer Support</div>
+                </div>
+            </div>
+            <div class="col-3 col-md-3 col-sm-3 col-lg-3 col-xxl-4 mb-4  mobile-flex">
+                <div class="service-box">
+                     <img src="/media/wysiwyg/service.png" alt="24/7 Services" width="auto" height="auto" loading="lazy">
+                     <div class="service-title">24/7 Services</div>
+                </div>
+            </div>
+            <div class="col-3 col-md-3 col-sm-3 col-lg-3  col-xxl-4 mb-4  mobile-flex">
+                <div class="service-box" id="service-box-no-border">
+                    <img src="/media/wysiwyg/priority-delivery.png" alt="Priority Delivery" width="auto" height="auto" loading="lazy">
+                    <div class="service-title">Priority Delivery</div>
                 </div>
             </div>
         </div>
     </div>
+    
+    
+<!-- Desktop Screen Services Section -->
+            <div class="col-md-3 col-lg-3 col-xl-3 col-xs-12 policies-section d-md-flex justify-content-center wasif-policy">
+                <!-- <div class="sidebar-product-wrap">
+                    <?php //= $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('sidebar-product')->toHtml(); ?>
+                </div> -->
+                <div class="additional-complete-policy">
+            <div
+              class="policy-wrap-container d-flex flex-column justify-content-center gap-3"
+            >
+              <div class="policy-outer-box">
+                <div class="icon-box">
+                  <span>
+                    <img
+                      src="/media/wysiwyg/affordable-price.png" 
+                      alt="Affordable Price"
+                      class="affordable-price-style"
+                    />
+                  </span>
+                </div>
+                <div class="policy-content">
+                  <h3 class="policy-content-heading">Affordable Price</h3>
+                </div>
+              </div>
+              <div class="policy-outer-box">
+                <div class="icon-box">
+                  <span>
+                    <img
+                    src="/media/wysiwyg/customer-support.png" 
+                      alt="Customer Support"
+                      class="affordable-price-style"
+                    />
+                  </span>
+                </div>
+                <div class="policy-content">
+                  <h3 class="policy-content-heading">Customer Support</h3>
+                </div>
+              </div>
+              <div class="policy-outer-box">
+                <div class="icon-box">
+                  <span>
+                    <img
+                         src="/media/wysiwyg/service.png" 
+                      alt="24/7 Service"
+                      class="affordable-price-style"
+                    />
+                  </span>
+                </div>
+                <div class="policy-content">
+                  <h3 class="policy-content-heading">24/7 Services</h3>
+                </div>
+              </div>
+              <div class="policy-outer-box">
+                <div class="icon-box">
+                  <span>
+                    <img
+                      src="/media/wysiwyg/priority-delivery.png" 
+                      alt="Priority Delivery"
+                      class="affordable-price-style"
+                    />
+                  </span>
+                </div>
+                <div class="policy-content">
+                  <h3 class="policy-content-heading">Priority Delivery</h3>
+                </div>
+              </div>
+            </div>  
+          </div>
+            </div>
+       
+          <div class="product-discount-banner col-md-12 offset-lg-5 col-lg-8 col-xl-8">
+            <img
+            src="/media/wysiwyg/product-discount.png"
+            alt="Upto 40% Off"
+            class="product-discount-banner-photo" />
+          </div>
+
+
+        </div>
+    </div>
+
 <?php else: ?>
     <div class="product-info-main-content">
         <div class="row">
@@ -71,4 +177,4 @@ $social = $_mbHelper->getConfig('mbconfig/product_view/share_social');
             </div>
         </div>
     </div>
-<?php endif ?>
+<?php endif ?>  

@@ -16,39 +16,20 @@ class OrderObserver implements ObserverInterface
     }
 
     public function execute(Observer $observer)
-    {  
-	try {
- 
-            // $payment = $observer->getPayment();
-            // $order = $payment->getOrder();
+    {
+        $order = $observer->getEvent()->getOrder();
+        foreach ($order->getAllItems() as $item) {
+            $productId = $item->getProductId();  // Product ID
+            $sku = $item->getSku();              // SKU
+            $itemId = $item->getItemId();        // Order Item ID
+        }
+        $orderData = [
+            'customer_name' => $order->getCustomerName(),
+            'customer_email' => $order->getCustomerEmail(),
+            'course_id' => $sku, // Replace this with the actual course ID, if available in the order data
+        ];
 
-            // // Example: Add a comment to the order
-            // $order->addStatusHistoryComment('Observer triggered: sales_order_payment_place_end');
-            // $order->save();
-
-            $order = $observer->getEvent()->getOrder();
-            foreach ($order->getAllItems() as $item) {
-                $productId = $item->getProductId();  // Product ID
-                $sku = $item->getSku();              // SKU
-                $itemId = $item->getItemId();        // Order Item ID
-            }
-            $original = $sku;
-            $sku = str_replace("GE-", "", $original);
-            //echo $sku; // Outputs: 8
-            $orderData = [
-                'customer_name' => $order->getCustomerName(),
-                'customer_email' => $order->getCustomerEmail(),
-                'course_id' => $sku, // Replace this with the actual course ID, if available in the order data
-            ];
-            // Call Odoo API to create a user in Odoo
-            $this->odooApiHelper->createUserInOdoo($orderData);
-        
-        } catch (\Exception $e) {
-            // Log the exception for debugging
-            $writer = new \Zend_Log_Writer_Stream(BP . '/var/log/custom_observer.log');
-            $logger = new \Zend_Log();
-            $logger->addWriter($writer);
-            $logger->err($e->getMessage());
-        }       
+        // Call Odoo API to create a user in Odoo
+        $this->odooApiHelper->createUserInOdoo($orderData);
     }
 }

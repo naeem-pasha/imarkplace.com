@@ -33,9 +33,9 @@
                     </select>
                 </div>
                 <div class="name"><input name="address" type="text" placeholder="Address"></div>
-                <?php
+                <?php 
                     $submit_btn_value = 'Request a Call';
-                    if($block->getData('is_wallet') && $block->getData('is_wallet') == "yes" ):
+                    if($block->getData('is_wallet') && $block->getData('is_wallet') == "yes" ): 
                     $submit_btn_value = "Submit Information";
                 ?>
                     <div class="name"><input name="cnic" type="text" placeholder="CNIC" data-validate='{"required":true}'></div>
@@ -47,14 +47,9 @@
 </div>
 <!-- <div class="col-lg-6">
     <div class="book-your-services-image">
-        <?php
-              //$url = $block->getBaseUrl().'/media/wysiwyg/our-services1.png'
-        ?>
-        <img alt="imarkplace" src="
-          <?php
-               //echo $url;
-          ?>
-        "/>
+        <?php // $url = $block->getBaseUrl()."/media/wysiwyg/our-services1.png"; ?>
+        
+        <img alt="imarkplace" src="<?php// echo $url ?>" />
     </div>
 </div> -->
 

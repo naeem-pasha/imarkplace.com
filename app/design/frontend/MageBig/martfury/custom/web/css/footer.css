@@ -3,6 +3,13 @@
   margin: 0rem !important;
 }
 
+/* CSS Payment Method Anchor Starts */
+
+.payment-div-anchor{
+  text-align: center;
+}
+
+
 .widgetplus-block {
   position: relative !important;
 }
@@ -151,6 +158,7 @@
 
 .payment-div{
   width: 100%;
+  display: flex;
 }
 
 .payment-div img{
