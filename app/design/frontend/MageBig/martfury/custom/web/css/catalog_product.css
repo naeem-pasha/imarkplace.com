@@ -914,6 +914,7 @@ font-weight: 400 !important;
     }
     /* Quantity Div Styling End */
 
+<<<<<<< HEAD
     /* Removing top extra space on mobile screens start*/
     .catalog-product-view .product-info-main-top.product-info-main {
         padding: 0rem !important;
@@ -926,6 +927,8 @@ font-weight: 400 !important;
     }
     /* Removing top extra space on mobile screens start*/
 
+=======
+>>>>>>> 1e2946de (commit changes of remote branch master)
 }
 
 @media (min-width: 992px) {
@@ -944,6 +947,7 @@ font-weight: 400 !important;
         padding-left: 0rem !important;
     }
 
+<<<<<<< HEAD
 
     /* Removing Extra Spaces on Desktop Screen for the Main Container */
    .catalog-product-view .product-info-main-top.product-info-main {
@@ -953,6 +957,8 @@ font-weight: 400 !important;
     /* Removing Extra Spaces on Desktop Screen for the Main Container */
 
 
+=======
+>>>>>>> 1e2946de (commit changes of remote branch master)
 }
 
 @media (max-width: 380px) {
@@ -1124,6 +1130,11 @@ font-weight: 400 !important;
 
     /* Services Mobile Screen Changes End*/
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 1e2946de (commit changes of remote branch master)
 }
 
 /* Media Queries for the Mobile Screens (525px) Start*/
@@ -1994,6 +2005,7 @@ margin-top: 2.7rem;
  font-size: 1.7rem !important;   
 
 }   
+<<<<<<< HEAD
 
 .product-button-section .buy-now-btn {
 font-size: 1.7rem !important;
@@ -2002,9 +2014,21 @@ font-size: 1.7rem !important;
 
 /* Product Button Styling End */
 
+=======
+>>>>>>> 1e2946de (commit changes of remote branch master)
 
+.product-button-section .buy-now-btn {
+font-size: 1.7rem !important;
 
 }
 
+<<<<<<< HEAD
 
 
+=======
+/* Product Button Styling End */
+
+
+
+}
+>>>>>>> 1e2946de (commit changes of remote branch master)
