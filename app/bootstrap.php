@@ -9,8 +9,11 @@
  */
 error_reporting(E_ALL);
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 431d12af (Stop tracking files listed in .gitignore and app/bootstrap.php)
 if (in_array('phar', \stream_get_wrappers())) {
     stream_wrapper_unregister('phar');
 }
@@ -36,6 +39,10 @@ HTML;
 require_once __DIR__ . '/autoload.php';
 // Sets default autoload mappings, may be overridden in Bootstrap::create
 \Magento\Framework\App\Bootstrap::populateAutoloader(BP, []);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 431d12af (Stop tracking files listed in .gitignore and app/bootstrap.php)
 $profilerConfig = [
     'drivers' => [
         [
