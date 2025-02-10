@@ -140,10 +140,9 @@ atlassian*
 /generated/*
 !/generated/.htaccess
 .DS_Store
-<<<<<<< HEAD
-/pub/Imark_OrderStatusChange.zip
-=======
 
+/pub/Imark_OrderStatusChange.zip
+pub/Imark_OrderStatusChange.zip
 #Wasif Magento Ignore
 .editorconfig
 .htaccess.bkp
@@ -189,4 +188,3 @@ pub/test.html
 pub/test.php
 pub/web_system.php
 
->>>>>>> 2ac054ceb37c6b68e0008e223ea32b1834a3d6ff
