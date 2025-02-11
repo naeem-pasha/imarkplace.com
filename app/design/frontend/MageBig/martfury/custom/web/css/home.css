@@ -2529,7 +2529,7 @@ section {
   }
 }
 
-@media (min-width: 320px) and (max-width:810px) {
+@media (min-width: 320px) and (max-width:820px) {
   .banner-container {
       display:flex;
       margin-top: 3rem
@@ -2538,7 +2538,7 @@ section {
   .banner {
       margin-right: 0;
       width: 100%;
-      height: min-content
+      height: 100%;
   }
 
   .banner2 {
@@ -2548,7 +2548,7 @@ section {
   }
 }
 
-@media (min-width: 820px) {
+@media (min-width: 821px) {
   .banner-container {
       display:flex;
       justify-content: space-between;

@@ -14,15 +14,23 @@ $productUrl = $_helper->productAttribute($_product, $_product->getProductUrl(), 
 $productName = $_helper->productAttribute($_product, $_product->getName(), 'name');
 ?>
 <div class="social-share">
+    <div class="social-text">
+        <p>Share Us:</p>
+    </div>
     <ul class="social-listing">
         <li class="facebook">
             <button type="button" class="share-item mb-tooltip" title="<?= __('Share on Facebook') ?>" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+'<?= $productUrl ?>');return false;"><span class="mbi mbi-facebook"></span></button>
         </li>
         <li class="twitter">
-            <button type="button" class="share-item mb-tooltip" title="<?= __('Share on Twitter') ?>" onclick="window.open('https://twitter.com/share?text=<?= $productName ?>&amp;url=<?= $productUrl ?>');return false;"><span class="mbi mbi-twitter"></span></button>
+            <button type="button" class="share-item mb-tooltip" title="<?= __('Share on X (Twitter)') ?>" onclick="window.open('https://twitter.com/share?text=<?= $productName ?>&amp;url=<?= $productUrl ?>');return false;">
+                <!-- Add Twitter X Icon as Inline SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 30 30" fill="currentColor">
+                    <path d="M26.37,26l-8.795-12.822l0.015,0.012L25.52,4h-2.65l-6.46,7.48L11.28,4H4.33l8.211,11.971L12.54,15.97L3.88,26h2.65 l7.182-8.322L19.42,26H26.37z M10.23,6l12.34,18h-2.1L8.12,6H10.23z"></path>
+                </svg>
+            </button>
         </li>
-        <li class="email">
-            <button type="button" class="share-item mb-tooltip" title="<?= __('Share via Gmail') ?>" onclick="window.open('https://mail.google.com/mail/u/0/?view=cm&amp;fs=1&amp;to&amp;su=<?= $productName ?>&amp;body=<?= $productUrl ?>&amp;ui=2&amp;tf=1');return false;"><span class="mbi mbi-google"></span>
+        <li class="instagram">
+            <button type="button" class="share-item mb-tooltip" title="<?= __('Share on Instagram') ?>" onclick="window.open('https://www.instagram.com/imarkplace/=<?= $productName ?>&amp;body=<?= $productUrl ?>&amp;ui=2&amp;tf=1');return false;"><span class="mbi mbi-instagram"></span>
             </button>
         </li>
     </ul>
