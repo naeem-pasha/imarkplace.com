@@ -8,6 +8,7 @@
  * Environment initialization
  */
 error_reporting(E_ALL);
+
 if (in_array('phar', \stream_get_wrappers())) {
     stream_wrapper_unregister('phar');
 }
@@ -33,6 +34,19 @@ HTML;
 require_once __DIR__ . '/autoload.php';
 // Sets default autoload mappings, may be overridden in Bootstrap::create
 \Magento\Framework\App\Bootstrap::populateAutoloader(BP, []);
+
+$profilerConfig = [
+    'drivers' => [
+        [
+            'output' => 'html',  // Output in HTML format
+            'baseDir' => __DIR__ . '/var/log',
+            'filePath' => 'profiler.html' // File path for output within baseDir
+        ]
+    ]
+];
+$profilerDriver = new \Magento\Framework\Profiler\Driver\Standard($profilerConfig);
+\Magento\Framework\Profiler::add($profilerDriver);
+\Magento\Framework\Profiler::enable();
 
 /* Custom umask value may be provided in optional mage_umask file in root */
 $umaskFile = BP . '/magento_umask';

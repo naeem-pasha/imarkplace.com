@@ -957,6 +957,7 @@ font-weight: 400 !important;
     }
     /* Quantity Div Styling End */
 
+
     /* Removing top extra space on mobile screens start*/
     .catalog-product-view .product-info-main-top.product-info-main {
         padding: 0rem !important;
@@ -968,6 +969,7 @@ font-weight: 400 !important;
         margin-top: 0.4rem !important;
     }
     /* Removing top extra space on mobile screens start*/
+
 
     .box-tocart .fieldset-add {
         margin-top: 1.4rem;
@@ -2076,17 +2078,11 @@ font-size: 1.7rem !important;
 }
 
 /* Product Button Styling End */
-
 .data.item.content  .product.attribute.description .value ul li{
     font-size: 1.4rem;
 }
 
+.product-button-section .buy-now-btn {
+font-size: 1.7rem !important;
 
 }
-
-
-
-
-
-
-
