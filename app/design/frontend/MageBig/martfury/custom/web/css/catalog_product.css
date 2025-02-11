@@ -113,11 +113,14 @@ body {
 
 .product-info-price {
     border-bottom: none;
+    margin-bottom: 0px !important;
+    padding-bottom: 10px !important;
 }
 
 .product-info-price .price-box {
     display: flex;
     align-items: center;
+    margin-top: 0.4rem;
 }
 
 .product-info-price .price-box .price-wrapper .price {
@@ -186,7 +189,7 @@ body {
     display: flex;
     justify-content: start;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 1.4rem;
     margin-bottom: 1rem;
 }
 
@@ -202,6 +205,8 @@ font-weight: 400 !important;
 .social-share {
     display: flex;
     justify-content: start;
+    gap: 2rem;
+    align-items: center;
 }
 
 /* CSS For The Social Icons Div End */
@@ -292,6 +297,35 @@ font-weight: 400 !important;
 
 /* Product Quantity Section Styling End */
 
+/* CSS For The Social Icons in the Social Container Start */
+
+.social-share .social-listing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-share .social-listing li.instagram button  {
+    border-radius: 0.4rem;
+    background: #d6249f !important;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%) !important;
+
+}
+
+.social-share .social-listing li.twitter button  {
+    border-radius: 0.4rem;
+    background: #000 !important;
+  
+}
+.social-share .social-listing li.facebook button {
+    border-radius:0.4rem;
+}
+
+
+/* CSS For The Social Icon in the Social Container End */
+
+
 /* Product BTN Section Styling Start */
 
 .product-button-section .add-to-cart-btn {
@@ -302,7 +336,7 @@ font-weight: 400 !important;
     color: var(--white-color);
     font-weight: var(--font-weight-700);
     padding: 0.8rem 3rem;
-    font-size: 2.1rem;
+    font-size: 1.8rem;
     border-radius: 0rem;
 }
 
@@ -313,7 +347,7 @@ font-weight: 400 !important;
     text-transform: uppercase;
     font-weight: var(--font-weight-700);
     padding: 0.8rem 3rem;
-    font-size: 2.1rem;
+    font-size: 1.8rem;
 }
 /* Product BTN Section Styling End */
 
@@ -713,6 +747,7 @@ font-weight: 400 !important;
 .box-tocart .fieldset-add {
     width: 100%;
     margin-top: 1.9rem;
+    margin-bottom: 2rem;
 }
 
 /* CSS To Give 100% Width to the parent container of button Start */
@@ -903,6 +938,14 @@ font-weight: 400 !important;
         gap: 0rem;
     }
 
+    .product-button-section .add-to-cart-btn {
+        width: 50%;
+       
+    }   
+    .product-button-section .buy-now-btn {
+        width: 50%;
+    }
+
     .product.data.items .item.content {
         padding-left: 0rem !important;
     }
@@ -914,7 +957,7 @@ font-weight: 400 !important;
     }
     /* Quantity Div Styling End */
 
-<<<<<<< HEAD
+
     /* Removing top extra space on mobile screens start*/
     .catalog-product-view .product-info-main-top.product-info-main {
         padding: 0rem !important;
@@ -927,8 +970,18 @@ font-weight: 400 !important;
     }
     /* Removing top extra space on mobile screens start*/
 
-=======
->>>>>>> 1e2946de (commit changes of remote branch master)
+
+    .box-tocart .fieldset-add {
+        margin-top: 1.4rem;
+    }
+    .product-info-price {
+        margin-top:0px !important;
+    }
+
+    .social-share{
+        margin-bottom:2.8rem;
+    }
+
 }
 
 @media (min-width: 992px) {
@@ -947,7 +1000,6 @@ font-weight: 400 !important;
         padding-left: 0rem !important;
     }
 
-<<<<<<< HEAD
 
     /* Removing Extra Spaces on Desktop Screen for the Main Container */
    .catalog-product-view .product-info-main-top.product-info-main {
@@ -956,9 +1008,28 @@ font-weight: 400 !important;
     }
     /* Removing Extra Spaces on Desktop Screen for the Main Container */
 
+    .product-button-section {
+    width: 100%;
+    }
 
-=======
->>>>>>> 1e2946de (commit changes of remote branch master)
+    .product-button-section .add-to-cart-btn {
+        width: 50%;
+    }
+    
+    .product-button-section .buy-now-btn {
+        width: 50%; 
+    }
+
+    .social-share {
+        margin-top: 2.4rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .box-tocart .fieldset-add {
+        margin-top: 1.9rem;
+        margin-bottom: 2rem;
+    }
+
 }
 
 @media (max-width: 380px) {
@@ -1130,11 +1201,6 @@ font-weight: 400 !important;
 
     /* Services Mobile Screen Changes End*/
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 1e2946de (commit changes of remote branch master)
 }
 
 /* Media Queries for the Mobile Screens (525px) Start*/
@@ -2005,7 +2071,6 @@ margin-top: 2.7rem;
  font-size: 1.7rem !important;   
 
 }   
-<<<<<<< HEAD
 
 .product-button-section .buy-now-btn {
 font-size: 1.7rem !important;
@@ -2013,22 +2078,11 @@ font-size: 1.7rem !important;
 }
 
 /* Product Button Styling End */
-
-=======
->>>>>>> 1e2946de (commit changes of remote branch master)
+.data.item.content  .product.attribute.description .value ul li{
+    font-size: 1.4rem;
+}
 
 .product-button-section .buy-now-btn {
 font-size: 1.7rem !important;
 
 }
-
-<<<<<<< HEAD
-
-
-=======
-/* Product Button Styling End */
-
-
-
-}
->>>>>>> 1e2946de (commit changes of remote branch master)

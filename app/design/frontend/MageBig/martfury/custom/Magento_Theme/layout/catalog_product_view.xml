@@ -6,19 +6,27 @@
  */
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-        <head>
-            <remove src="css/home.css"/>
-            <remove src="css/styles2.css"/>
-            <remove src="css/custom.css"/>
-            <remove src="css/main.css"/>
-            <remove src="css/print.css"/>
-            <remove src="css/styles-l.css"/>
-            <remove src="css/localfont.css"/>
-            <css src="css/catalog_product.css" rel="stylesheet" type="text/css"  order="160"/>
-            <link src="js/catalog_product.js" />
-        </head>
-        <body>
-          <referenceBlock name="your_navbar_section_name" remove="true"/>
-          
-        </body>
+    <head>
+        <remove src="css/home.css"/>
+        <remove src="css/styles2.css"/>
+        <remove src="css/custom.css"/>
+        <remove src="css/main.css"/>
+        <remove src="css/print.css"/>
+        <remove src="css/styles-l.css"/>
+        <remove src="css/localfont.css"/>
+        <css src="css/catalog_product.css" rel="stylesheet" type="text/css" order="160"/>
+        <link src="js/catalog_product.js" />
+    </head>
+    <body>
+        <referenceBlock name="your_navbar_section_name" remove="true"/>
+        <referenceBlock name="product.info.overview" remove="true" />
+        
+
+        <move element="product.info.social.share" destination="product.info.main" after="product.info.form"/>
+
+
+
+        <!-- Move product highlights after the add to cart form -->
+        <!-- <move element="product.info.overview" destination="product.info.main" after="product.info.form" /> -->
+    </body>
 </page>

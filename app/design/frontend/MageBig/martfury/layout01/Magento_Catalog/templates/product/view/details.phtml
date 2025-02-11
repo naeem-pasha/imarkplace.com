@@ -12,40 +12,54 @@ $mbHelper = $this->helper('MageBig\MbFrame\Helper\Data');
     <div class="mx-xl-auto maximum-width description-parent-container <?php if (!$mbHelper->getConfig('mbconfig/product_view/product_tabs')) echo 'vertical'; ?>">
         <?php $layout = $block->getLayout(); ?>
         <div class="container-fluid my-4">
-        <div class="product data items" data-mage-init='{"tabs":{"openedState":"opened", "animate": {"duration": 300}}}'>
-            <?php foreach ($detailedInfoGroup as $name):?>
-                <?php
-                    $html = $layout->renderElement($name);
-                    if (!trim($html)) {
-                        continue;
-                    }
-                    $alias = $layout->getElementAlias($name);
-                    $label = $block->getChildData($alias, 'title');
-                ?>
-                <div class="description-inner-heading" 
-                     aria-labeledby="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title"
-                     data-role="collapsible" id="tab-label-<?= /* @escapeNotVerified */ $alias ?>">
-                    <a class="description-heading span-unique-class-detail"
-                       tabindex="-1"
-                       data-toggle="switch"
-                       href="#<?= /* @escapeNotVerified */ $alias ?>"
-                       id="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title">
-                        <?= /* @escapeNotVerified */ $label ?>
+    <!-- Container for all tab headings -->
+    <div class="product data items" data-mage-init='{"tabs":{"openedState":"closed", "animate": {"duration": 300}}}'>
+        <?php foreach ($detailedInfoGroup as $name): ?>
+            <?php
+                $html = $layout->renderElement($name);
+                if (!trim($html)) {
+                    continue;
+                }
+                $alias = $layout->getElementAlias($name);
+                $label = $block->getChildData($alias, 'title');
+            ?>
+            <div class="description-inner-heading"
+                 aria-labeledby="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title"
+                 data-role="collapsible"
+                 id="tab-label-<?= /* @escapeNotVerified */ $alias ?>">
+                <a class="description-heading span-unique-class-detail wasif-testing2"
+                   tabindex="-1"
+                   data-toggle="switch"
+                   href="#<?= /* @escapeNotVerified */ $alias ?>"
+                   id="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title">
+                    <?= /* @escapeNotVerified */ $label ?>
+                    <span id="span2" style="display:none">|</span>
+                </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
 
-                        <span id="span2" style="display:none">|</span>
-                    </a>
-                    
-                </div>  
-                <div class="data item content" id="<?= /* @escapeNotVerified */ $alias ?>" data-role="content">
-                    <?= /* @escapeNotVerified */ $html ?>
-                </div>        
-            <?php endforeach;?>
-            
-        </div>
-        <div class="description-icon-parent-container">
+    <!-- Container for all tab content -->
+    <div class="tab-content-container mt-2 mt-md-4">
+        <?php foreach ($detailedInfoGroup as $name): ?>
+            <?php
+                $html = $layout->renderElement($name);
+                if (!trim($html)) {
+                    continue;
+                }
+                $alias = $layout->getElementAlias($name);
+            ?>
+            <div class="data item content" id="<?= /* @escapeNotVerified */ $alias ?>" style="display: none;">
+                <?= $html ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+   <!-- Container For The Social Media Icons -->
+   <div class="description-icon-parent-container">
           <div class="description-icon-inner-container">
             <div class="icon-container-instagram">
-              <a href="#">
+              <a href="https://www.instagram.com/imarkplace/"  target="_blank">
                 <img
                 src="/media/wysiwyg/instagram-logo.png" 
                   alt="Follow iMarkPlace on Instagram"
@@ -59,7 +73,7 @@ $mbHelper = $this->helper('MageBig\MbFrame\Helper\Data');
           </div>
           <div class="description-icon-inner-container">
             <div class="icon-container-facebook">
-              <a href="#">
+              <a href="https://www.facebook.com/imarkplace.official/"  target="_blank">
                 <img
                   src="/media/wysiwyg/facebook-logo.png" 
                   alt="Follow iMarkPlace on Facebook"
@@ -72,6 +86,9 @@ $mbHelper = $this->helper('MageBig\MbFrame\Helper\Data');
             </div>
           </div>
         </div>
-        </div>
-    </div>
+
+
+   </div>
+
+</div>
 <?php endif; ?>
