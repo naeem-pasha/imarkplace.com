@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="checkout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <!--<update handle="checkout_index_index"/>-->
+    <body>
+        <attribute name="class" value="fast-checkout-index"/>
+        <referenceContainer name="page.wrapper">
+            <block class="MageBig\FastCheckout\Block\FastCheckout" name="checkout-header-logo" template="MageBig_FastCheckout::checkout-header.phtml" before="-" ifconfig="fastcheckout/general/is_active_module">
+                <block class="Magento\Theme\Block\Html\Header\Logo" name="logo-checkout-header">
+                    <action method="setTemplate">
+                        <argument name="template" xsi:type="string">MageBig_FastCheckout::logo.phtml</argument>
+                    </action>
+                    <arguments>
+                       <!-- <argument name="logoPathResolver" xsi:type="object">Magento\Theme\ViewModel\Block\Html\Header\LogoPathResolver</argument>
+                        <argument name="logo_size_resolver" xsi:type="object">Magento\Theme\ViewModel\Block\Html\Header\LogoSizeResolver</argument> -->
+                        <argument name="view_helper" xsi:type="object">MageBig\FastCheckout\Block\Data</argument>
+                    </arguments>
+                </block>
+            </block>
+            <block class="MageBig\FastCheckout\Block\FastCheckout" name="footer.checkout.bottom" after="-" template="MageBig_FastCheckout::checkout-footer.phtml" ifconfig="fastcheckout/general/is_active_module"/>
+
+            <!-- Remove block from theme -->
+            <referenceContainer name="page.main.title" remove="true" />
+            <referenceContainer name="checkout.header.container" remove="true" />
+            <referenceContainer name="checkout.logo" remove="true" />
+            <referenceBlock name="footer.checkout" remove="true" />
+            <referenceBlock name="copyright" remove="true" />
+        </referenceContainer>
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="progressBar" xsi:type="array">
+                                    <item name="config" xsi:type="array">
+                                        <item name="componentDisabled" xsi:type="boolean">true</item>
+                                    </item>
+                                </item>
+                                <item name="estimation" xsi:type="array">
+                                    <item name="config" xsi:type="array">
+                                        <item name="componentDisabled" xsi:type="boolean">true</item>
+                                    </item>
+                                </item>
+                                <item name="steps" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="shipping-step" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="shippingAddress" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <!--<item name="shipping-address-fieldset" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="region_id" xsi:type="array">
+                                                                    <item name="sortOrder" xsi:type="string">2</item>
+                                                                </item>
+                                                                <item name="postcode" xsi:type="array">
+                                                                    <item name="sortOrder" xsi:type="string">3</item>
+                                                                </item>
+                                                                <item name="company" xsi:type="array">
+                                                                    <item name="sortOrder" xsi:type="string">4</item>
+                                                                </item>
+                                                                <item name="vat_id" xsi:type="array">
+                                                                    <item name="sortOrder" xsi:type="string">5</item>
+                                                                </item>
+                                                                <item name="country_id" xsi:type="array">
+                                                                    <item name="sortOrder" xsi:type="string">1</item>
+                                                                </item>
+                                                                <item name="telephone" xsi:type="array">
+                                                                    <item name="sortOrder" xsi:type="string">6</item>
+                                                                </item>
+                                                            </item>
+                                                        </item>-->
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                        <item name="billing-step" xsi:type="array">
+                                            <item name="component" xsi:type="string">uiComponent</item>
+                                            <item name="children" xsi:type="array">
+                                                <item name="payment" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="payments-list" xsi:type="array">
+                                                            <item name="component" xsi:type="string">Magento_Checkout/js/view/payment/list</item>                                                            <!-- Ensure this component is added -->
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="before-place-order" xsi:type="array">
+                                                                    <item name="children" xsi:type="array">
+                                                                        <item name="agreements" xsi:type="array">
+                                                                            <item name="config" xsi:type="array">
+                                                                                <item name="componentDisabled" xsi:type="boolean">false</item>
+                                                                            </item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                        <item name="afterMethods" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="discount" xsi:type="array">
+                                                                    <item name="config" xsi:type="array">
+                                                                        <item name="componentDisabled" xsi:type="boolean">true</item>
+                                                                    </item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                                <item name="sidebar" xsi:type="array">
+                                    <item name="config" xsi:type="array">
+                                        <item name="template" xsi:type="string">MageBig_FastCheckout/sidebar</item>
+                                    </item>
+                                    <item name="children" xsi:type="array">
+                                        <item name="summary" xsi:type="array">
+                                            <item name="component" xsi:type="string">uiComponent</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="template" xsi:type="string">MageBig_FastCheckout/summary</item>
+                                            </item>
+                                            <item name="children" xsi:type="array">
+                                                <item name="itemsBefore" xsi:type="array">
+                                                    <item name="sortOrder" xsi:type="string">0</item>
+                                                </item>
+                                                <item name="cart_items" xsi:type="array">
+                                                    <item name="sortOrder" xsi:type="string">10</item>
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="details" xsi:type="array">
+                                                            <item name="config" xsi:type="array">
+                                                                <item name="template" xsi:type="string">MageBig_FastCheckout/view/summary/item/details</item>
+                                                            </item>
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="qty_increment" xsi:type="array">
+                                                                    <item name="sortOrder" xsi:type="string">10</item>
+                                                                    <item name="component" xsi:type="string">MageBig_FastCheckout/js/view/summary/item/qty-increment</item>
+                                                                    <item name="displayArea" xsi:type="string">after_option_details</item>
+                                                                </item>
+                                                                <item name="subtotal" xsi:type="array">
+                                                                    <item name="sortOrder" xsi:type="string">20</item>
+                                                                    <item name="displayArea" xsi:type="string">after_option_details</item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                    <item name="config" xsi:type="array">
+                                                        <item name="template" xsi:type="string">MageBig_FastCheckout/summary/cart-items</item>
+                                                    </item>
+                                                </item>
+                                                <item name="itemsAfter" xsi:type="array">
+                                                    <item name="sortOrder" xsi:type="string">20</item>
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="discount" xsi:type="array">
+                                                            <item name="sortOrder" xsi:type="string">10</item>
+                                                            <item name="component" xsi:type="string">Magento_SalesRule/js/view/payment/discount</item>
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="errors" xsi:type="array">
+                                                                    <item name="sortOrder" xsi:type="string">0</item>
+                                                                    <item name="component" xsi:type="string">Magento_SalesRule/js/view/payment/discount-messages</item>
+                                                                    <item name="displayArea" xsi:type="string">messages</item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                                <item name="totals" xsi:type="array">
+                                                    <item name="sortOrder" xsi:type="string">30</item>
+                                                </item>
+                                                <item name="itemsAfterTotal" xsi:type="array">
+                                                    <item name="sortOrder" xsi:type="string">40</item>
+                                                    <item name="component" xsi:type="string">uiComponent</item>
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="agreements" xsi:type="array">
+                                                            <item name="component" xsi:type="string">Magento_CheckoutAgreements/js/view/checkout-agreements</item>
+                                                            <item name="sortOrder" xsi:type="string">20</item>
+                                                            <item name="displayArea" xsi:type="string">before-place-order</item>
+                                                            <item name="dataScope" xsi:type="string">checkoutAgreements</item>
+                                                            <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                        </item>
+                                                        <item name="place-order-btn" xsi:type="array">
+                                                            <item name="component" xsi:type="string">MageBig_FastCheckout/js/view/place-order-btn</item>
+                                                            <item name="displayArea" xsi:type="string">place-order-btn</item>
+                                                            <item name="config" xsi:type="array">
+                                                                <item name="template" xsi:type="string">MageBig_FastCheckout/view/place-order-btn</item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>
