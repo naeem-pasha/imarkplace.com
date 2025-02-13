@@ -383,9 +383,9 @@ class Writer implements WriterInterface
         foreach ($images->getCollection() as $image) {
 
             $this->imageCount++;
-            $preparedImageUrl     = htmlspecialchars($image->getUrl());
-            $preparedThumbnailUrl = htmlspecialchars($images->getThumbnail());
-            $preparedTitle        = htmlspecialchars($images->getTitle());
+            $preparedImageUrl     = htmlspecialchars($image->getUrl() ?? '', ENT_QUOTES, 'UTF-8');
+            $preparedThumbnailUrl = htmlspecialchars($images->getThumbnail() ?? '', ENT_QUOTES, 'UTF-8');
+            $preparedTitle        = htmlspecialchars($images->getTitle() ?? '', ENT_QUOTES, 'UTF-8');
             $preparedCaption      = $image->getCaption() ? htmlspecialchars($image->getCaption()) : '';
 
             $xmlImage = $this->getWrappedString($preparedImageUrl, 'image:loc');
