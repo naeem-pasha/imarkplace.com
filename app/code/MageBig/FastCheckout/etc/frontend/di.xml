@@ -1,0 +1,21 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Controller\Index\Index">
+        <plugin name="magebig_fast_checkout_controller_index" type="MageBig\FastCheckout\Plugin\Checkout\Controller\Index\Index" sortOrder="0" />
+    </type>
+
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="magebig_checkoutAddress_plugin_checkout_layoutProcessor" type="MageBig\FastCheckout\Plugin\Checkout\Block\LayoutProcessor" sortOrder="10" />
+    </type>
+
+    <type name="Magento\Checkout\Model\DefaultConfigProvider">
+        <plugin name="magebig_checkout_default_config_provider" type="MageBig\FastCheckout\Plugin\Checkout\Model\FastCheckoutConfigProvider" sortOrder="10" />
+    </type>
+
+    <type name="Magento\Paypal\Model\ExpressConfigProvider">
+        <plugin name="magebig_paypal_express_config_provider" type="MageBig\FastCheckout\Plugin\Checkout\Model\FastCheckoutExpressConfigProvider" sortOrder="10" />
+    </type>
+
+    <type name="Magento\Checkout\Helper\Data">
+        <plugin name="magebig_checkout_helper_data" type="MageBig\FastCheckout\Plugin\Checkout\Helper\DataPlugin" sortOrder="10" />
+    </type>
+</config>

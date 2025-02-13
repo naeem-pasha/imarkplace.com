@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var $block MageBig\FastCheckout\Block\FastCheckout
+ */
+?>
+<?php if ($block->getFooterContent()): ?>
+<div class="checkout-footer-wrap">
+    <div class="checkout-footer-inner">
+        <div class="container page-main">
+            <div class="checkout-footer">
+                <?= /** @noEscape  */ $block->getFooterContent() ?>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif ?>

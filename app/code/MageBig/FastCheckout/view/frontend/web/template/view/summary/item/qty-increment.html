@@ -1,0 +1,13 @@
+<div class="cart-product-qty">
+    <button type="button" data-bind="click: function (data, event) {qtyDecrement($parents[1], event);}" class="qty-increment qty-down mb-icon-minus"></button>
+    <input data-bind="attr: {id: 'cart-item-' + $parents[1].item_id + '-qty'},
+            value: $parents[1].qty,
+            event: {
+                focusout: function (data, event) {onQtyFocusOut($parents[1], event);},
+                focusin: function (data, event) {onQtyFocusIn($parents[1], event);},
+                keyup: function (data, event) {onQtyKeyUp($parents[1], event);},
+            }"
+           type="text"
+           class="item-qty cart-item-qty">
+    <button type="button" data-bind="click: function (data, event) {qtyIncrement($parents[1], event);}" class="qty-increment qty-up mb-icon-plus"></button>
+</div>

@@ -1,0 +1,35 @@
+<?php
+/**
+ * @var $block \MageBig\FastCheckout\Block\Adminhtml\System\Config\Form\AddressSort
+ */
+
+$element = $block->getElement();
+?>
+<div class="admin__field-control control">
+    <p><strong><?= /* @noEscape  */ __('Drag & Drop to sort Address Fields') ?></strong></p>
+    <table id="<?= /** @noEscape  */ $element->getHtmlId() ?>" class="admin__dynamic-rows admin__control-table">
+        <?php foreach ($block->getOptions() as $option): ?>
+        <tr class="ui-state-default collection-option data-row">
+            <td class="col-draggable">
+                <div class="draggable-handle"></div>
+            </td>
+            <td>
+                <input type="hidden"
+                       name="<?= /** @noEscape  */ $element->getName() ?>[]"
+                       value="<?= /** @noEscape  */ $option['value'] ?>"/>
+                <span><?= /** @noEscape  */ $option['label'] ?></span>
+            </td>
+        </tr>
+        <?php endforeach ?>
+    </table>
+</div>
+<script>
+    require([
+        "jquery",
+        "jquery/ui",
+        "mage/mage"
+    ], function (jQuery) {
+        jQuery('#<?= $element->getHtmlId()?> tbody').sortable();
+        jQuery('#<?= $element->getHtmlId()?> tbody').disableSelection();
+    });
+</script>

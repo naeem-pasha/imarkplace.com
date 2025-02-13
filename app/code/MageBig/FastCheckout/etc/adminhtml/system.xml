@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="fastcheckout" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Fast Checkout</label>
+            <tab>magebig_extensions</tab>
+            <resource>MageBig_FastCheckout::config_fastcheckout</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>General</label>
+                <field id="version" translate="label comment" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <frontend_model>MageBig\FastCheckout\Block\Adminhtml\System\Config\Form\Module</frontend_model>
+                </field>
+                <field id="is_active_module" translate="label" type="select" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Fast Checkout</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="license" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>License Key</label>
+                </field>
+                <field id="logo_checkout" translate="label comment" type="image" showInDefault="1" showInStore="1"
+                       showInWebsite="1">
+                    <label>Logo</label>
+                    <comment>JPG,PNG,GIF,SVG</comment>
+                    <backend_model>MageBig\FastCheckout\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">wysiwyg/logo</upload_dir>
+                    <base_url type="media" scope_info="1">wysiwyg/logo</base_url>
+                </field>
+                <field id="show_back_to_cart" translate="label" type="select" showInDefault="1" showInStore="1"
+                       showInWebsite="1" canRestore="1">
+                    <label>Show Back To Cart Button</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_login_form" translate="label" type="select" showInDefault="1" showInWebsite="1"
+                       canRestore="1">
+                    <label>Show Login Form</label>
+                    <source_model>MageBig\FastCheckout\Model\Config\Source\ShowLoginForm</source_model>
+                    <comment>Show login form below email field in Guest checkout</comment>
+                </field>
+                <field id="show_billing_address" translate="label" type="select" showInDefault="1" showInWebsite="1"
+                       canRestore="1">
+                    <label>Show Billing Address</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Show "My billing and shipping address are the same"</comment>
+                </field>
+                <field id="redirect_to_checkout" translate="label" type="select" showInDefault="1" showInStore="1"
+                       showInWebsite="1" canRestore="1">
+                    <label>Redirect to Checkout</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Redirect to Checkout page after add product to cart</comment>
+                </field>
+                <field id="default_shipping_method" translate="label" type="select" showInDefault="1" showInWebsite="1">
+                    <label>Default Shipping Method</label>
+                    <source_model>MageBig\FastCheckout\Model\Config\Source\Shipping\Allmethods</source_model>
+                </field>
+                <field id="default_payment_method" translate="label" type="select" showInDefault="1" showInWebsite="1">
+                    <label>Default Payment Method</label>
+                    <source_model>MageBig\FastCheckout\Model\Config\Source\Payment\Allmethods</source_model>
+                </field>
+                <field id="top_content" translate="label" type="editor" showInDefault="1" showInStore="1"
+                       showInWebsite="1">
+                    <label>Top Content</label>
+                    <frontend_model>MageBig\FastCheckout\Block\Adminhtml\System\Config\Editor</frontend_model>
+                </field>
+                <field id="footer_content" translate="label" type="editor" showInDefault="1" showInStore="1"
+                       showInWebsite="1">
+                    <label>Footer Content</label>
+                    <frontend_model>MageBig\FastCheckout\Block\Adminhtml\System\Config\Editor</frontend_model>
+                </field>
+            </group>
+            <group id="shipping_address" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Address</label>
+                <field id="street_lines" translate="label comment" showInDefault="1" showInWebsite="1">
+                    <label>Number of Lines in a Street Address</label>
+                    <backend_model>Magento\Customer\Model\Config\Backend\Address\Street</backend_model>
+                    <comment>Valid range: 1-4</comment>
+                    <validate>required-entry validate-digits validate-digits-range digits-range-1-4</validate>
+                </field>
+                <field id="country_id_show" translate="label" type="select" showInDefault="1" showInWebsite="1">
+                    <label>Show Country on Shipping Address</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="country_id_billing_show" translate="label" type="select" showInDefault="1" showInWebsite="1">
+                    <label>Show Country on Billing Address</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="region_show" translate="label" type="select" showInDefault="1" showInWebsite="1">
+                    <label>Show Region</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="postcode_show" translate="label" type="select" showInDefault="1" showInWebsite="1">
+                    <label>Show Zip/Postal Code</label>
+                    <source_model>MageBig\FastCheckout\Model\Config\Source\Noreq</source_model>
+                    <backend_model>Magento\Customer\Model\Config\Backend\Show\AddressOnly</backend_model>
+                </field>
+                <field id="telephone_show" translate="label" type="select" showInDefault="1" showInWebsite="1">
+                    <label>Show Telephone</label>
+                    <source_model>Magento\Config\Model\Config\Source\Nooptreq</source_model>
+                    <backend_model>Magento\Customer\Model\Config\Backend\Show\AddressOnly</backend_model>
+                </field>
+                <field id="company_show" translate="label" type="select" showInDefault="1" showInWebsite="1">
+                    <label>Show Company</label>
+                    <source_model>Magento\Config\Model\Config\Source\Nooptreq</source_model>
+                    <backend_model>Magento\Customer\Model\Config\Backend\Show\AddressOnly</backend_model>
+                </field>
+                <field id="fax_show" translate="label" type="select" showInDefault="1" showInWebsite="1">
+                    <label>Show Fax</label>
+                    <source_model>Magento\Config\Model\Config\Source\Nooptreq</source_model>
+                    <backend_model>Magento\Customer\Model\Config\Backend\Show\AddressOnly</backend_model>
+                </field>
+                <field id="taxvat_show" translate="label" type="select" showInDefault="1" showInWebsite="1">
+                    <label>Show TAX/VAT</label>
+                    <source_model>Magento\Config\Model\Config\Source\Nooptreq</source_model>
+                    <backend_model>Magento\Customer\Model\Config\Backend\Show\AddressOnly</backend_model>
+                </field>
+                <field id="sort_address_fields" translate="label comment tooltip" sortOrder="20" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Sort Address Fields</label>
+                    <frontend_model>MageBig\FastCheckout\Block\Adminhtml\System\Config\Form\AddressSort</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment><![CDATA[Drag & Drop to sort address fields]]></comment>
+                </field>
+            </group>
+            <group id="additional" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Additional</label>
+                <field id="show_full_name" translate="label" type="select" showInDefault="1" showInWebsite="1">
+                    <label>Show Full Name field in Address</label>
+                    <source_model>MageBig\FastCheckout\Model\Config\Source\FullName</source_model>
+                    <comment><![CDATA[Show Full Name field instead First Name & Last Name fields]]></comment>
+                </field>
+                <field id="full_name_label" translate="label" type="text" showInDefault="1" showInStore="1"
+                       showInWebsite="1">
+                    <label>Full Name Label</label>
+                </field>
+                <field id="street_address_label" translate="label" type="text" showInDefault="1" showInStore="1"
+                       showInWebsite="1">
+                    <label>Street Address Label</label>
+                    <comment><![CDATA[For Shipping Address - Street Address Line 1]]></comment>
+                </field>
+                <field id="page_layout" translate="label" type="select" showInDefault="1" showInStore="1"
+                       showInWebsite="1">
+                    <label>Page layout</label>
+                    <source_model>MageBig\FastCheckout\Model\Config\Source\Layout</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

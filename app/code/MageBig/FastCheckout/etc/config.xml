@@ -1,0 +1,47 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <fastcheckout>
+            <general>
+                <is_active_module>0</is_active_module>
+                <mbext>fastcheckout</mbext>
+                <mbsku>MBEXT001</mbsku>
+                <show_back_to_cart>1</show_back_to_cart>
+                <show_login_form>0</show_login_form>
+                <show_back_to_cart>0</show_back_to_cart>
+                <show_billing_address>1</show_billing_address>
+                <redirect_to_checkout>1</redirect_to_checkout>
+                <top_content/>
+                <footer_content><![CDATA[<div>© 2022 <a href="https://www.magebig.com">www.magebig.com</a>. All rights reserved.</div><div>Secure payment</div>]]></footer_content>
+            </general>
+            <shipping_address>
+                <street_lines>1</street_lines>
+                <country_id_show>1</country_id_show>
+                <country_id_billing_show>1</country_id_billing_show>
+                <region_show>1</region_show>
+                <postcode_show>req</postcode_show>
+                <telephone_show>req</telephone_show>
+                <company_show>0</company_show>
+                <fax_show/>
+                <taxvat_show/>
+                <sort_address_fields><![CDATA[["firstname","lastname","telephone","street","country_id","region","city","postcode","company","fax"]]]></sort_address_fields>
+            </shipping_address>
+            <additional>
+                <show_full_name>0</show_full_name>
+                <full_name_label><![CDATA[Full Name]]></full_name_label>
+                <street_address_label><![CDATA[Delivery Address]]></street_address_label>
+                <page_layout>2</page_layout>
+            </additional>
+        </fastcheckout>
+        <checkout>
+            <options>
+                <display_billing_address_on>1</display_billing_address_on>
+            </options>
+        </checkout>
+        <customer>
+            <address>
+                <street_lines>1</street_lines>
+                <company_show>0</company_show>
+            </address>
+        </customer>
+    </default>
+</config>
