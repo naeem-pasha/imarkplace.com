@@ -2086,3 +2086,105 @@ font-size: 1.7rem !important;
 font-size: 1.7rem !important;
 
 }
+
+}
+
+
+
+/* Quick View Page Issues Fix Start */
+.quickview-wrap .policies-section{
+    display: none !important;
+  }
+  
+  .quickview-wrap .policies-section-mobile{
+    display: none !important;
+  }
+  
+  .quickview-wrap .product-discount-banner{
+    display: none;
+  }
+    
+  .quickview-wrap  .lineupquantity {
+    padding-left: 0 !important;
+  }
+  
+  .quickview-wrap .product-button-section{
+    gap: 1rem;
+  }
+  
+  .quickview-wrap .product-button-section{
+    gap: 1rem;
+  }
+  
+  .quickview-wrap .product-button-section .add-to-cart-btn{
+    background: #c52e3e !important;
+    color: #fff;
+    border: none;
+    font-size: 1.7rem;
+    border-radius: 0.4rem;
+    padding: 0.7rem;
+    font-weight: 400;
+    text-transform: capitalize;
+
+  }
+  
+  .quickview-wrap .product-button-section .buy-now-btn{
+    background: #c52e3e !important;
+    color: #fff;
+    border: none;
+    font-size: 1.7rem;
+    border-radius: 0.4rem;
+    padding: 0.7rem;
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+  
+  .quickview-wrap  .price-box {
+    display: flex;
+    justify-content: start;
+  }
+  
+  .quickview-wrap .social-share {
+    display: flex;
+    justify-content: start;
+    gap: 2rem;
+    margin-top: 2.4rem;
+    margin-bottom: 1.2rem;
+    
+  }
+  
+  .quickview-wrap .social-share .social-text{
+    display: flex;
+    align-items: center;
+    
+  }
+  .quickview-wrap .social-share .social-listing{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    
+  }
+  
+  .quickview-wrap .social-share .social-listing li.facebook button {
+    border-radius: .4rem;
+  }
+  
+  .quickview-wrap .social-share .social-listing li.twitter button {
+    border-radius: .4rem;
+    background: #000 !important;
+  }
+  
+  .quickview-wrap .social-share .social-listing li.instagram button {
+    border-radius: .4rem;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%) !important;
+  }
+  
+@media(max-width:992px){
+    .quickview-wrap .product-button-section {
+        margin-bottom: 2rem;
+        padding:1rem
+    }
+}
+
+  /* Quick View Page Issues Fix End */

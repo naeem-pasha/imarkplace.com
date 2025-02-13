@@ -1,0 +1,65 @@
+<?php
+/**
+ * @var $block MageBig\FastCheckout\Block\FastCheckout
+ */
+?>
+<div class="checkout-header-wrap">
+    <div class="container page-main">
+        <div class="checkout-header">
+            <?php if ($block->getBackToCart()): ?>
+            <div class="back-to-cart">
+                <button type="button" class="btn-back-to-cart"
+                        title="<?= $block->escapeHtmlAttr(__('Back to cart')) ?>"><span></span></button>
+            </div>
+            <?php endif ?>
+            <div class="logo-header">
+                <?= $block->getChildHtml() ?>
+            </div>
+            <div class="button-login" data-bind="scope: 'customer'">
+                <?php if ($block->isLoggedIn()): ?>
+                <a class="name" href="<?= $block->escapeUrl($block->getBaseUrl()) ?>customer/account/">
+                    <img loading="lazy" width="22" height="22"
+                     src="<?= $block->escapeUrl($block->getViewFileUrl('MageBig_FastCheckout::images/icon-user.svg'))?>"
+                     alt="<?= $block->escapeHtmlAttr(__('User')) ?>" />
+                    <span data-bind="text: customer().firstname"><?= $block->escapeHtml(__('Hi')) ?></span>
+                </a>
+                <?php else: ?>
+                <img loading="lazy" width="22" height="22"
+                   src="<?= $block->escapeUrl($block->getViewFileUrl('MageBig_FastCheckout::images/icon-user.svg')) ?>"
+                   alt="<?= $block->escapeHtmlAttr(__('User')) ?>" />
+                <span><?= $block->escapeHtml(__('Sign In')) ?></span>
+                <?php endif ?>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="checkout-top-wrap">
+    <?php if ($block->getTopContent()): ?>
+    <div class="container page-main">
+        <div class="checkout-top-content">
+            <?= $block->escapeJs($block->getTopContent()) ?>
+        </div>
+    </div>
+    <?php endif ?>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "MageBig_FastCheckout/js/fast-checkout": {}
+        }
+    }
+</script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "customer": {
+                        "component": "Magento_Customer/js/view/customer"
+                    }
+                }
+            }
+        }
+    }
+</script>

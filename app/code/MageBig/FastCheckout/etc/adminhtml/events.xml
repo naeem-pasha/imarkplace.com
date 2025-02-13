@@ -1,0 +1,5 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="admin_system_config_changed_section_fastcheckout">
+        <observer name="magebig_admin_system_config_changed_section_fastcheckout" instance="MageBig\FastCheckout\Observer\ConfigChange" />
+    </event>
+</config>

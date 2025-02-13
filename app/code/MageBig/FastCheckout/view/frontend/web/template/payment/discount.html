@@ -1,0 +1,48 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="payment-option opc-payment-additional discount-code">
+    <div class="payment-option-content" data-role="content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <form class="form form-discount" id="discount-form">
+            <div class="payment-option-inner">
+                <div class="field">
+                    <div class="control">
+                        <input class="input-text discount-code"
+                               type="text"
+                               id="discount-code"
+                               name="discount_code"
+                               placeholder=" "
+                               data-validate="{'required-entry':true}"
+                               data-bind="value: couponCode, attr:{disabled:isApplied()}">
+                        <label class="label" for="discount-code">
+                            <span data-bind="i18n: 'Discount code'"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <!-- ko ifnot: isApplied() -->
+                        <button class="action action-apply" type="submit" data-bind="attr: {'title': $t('Apply coupon')}, click: apply">
+                            <span><!-- ko i18n: 'Apply'--><!-- /ko --></span>
+                        </button>
+                    <!-- /ko -->
+                    <!-- ko if: isApplied() -->
+                        <button class="action action-cancel" type="submit" data-bind="attr: {'title': $t('Cancel coupon')}, click: cancel">
+                            <span><!-- ko i18n: 'Cancel'--><!-- /ko --></span>
+                        </button>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <!-- ko foreach: getRegion('captcha') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
+        </form>
+    </div>
+</div>
