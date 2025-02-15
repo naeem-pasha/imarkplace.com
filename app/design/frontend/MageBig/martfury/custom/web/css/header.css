@@ -151,7 +151,7 @@ body {
 .vertical-menu .navigation {
     min-width: 300px;
     width: 100%;
-    padding: 15px 0;
+    padding: 0px 0;
     border: 1px solid #d3d3d3;
     position: absolute;
     top: 100%;
@@ -390,8 +390,8 @@ input,button,select,optgroup,textarea {
 }
 
 #C .header .vertical-menu:hover {
-    background: var(--new-primary);
-    color: #fff
+    background: #000 !important;
+    color: #fff !important;
 }
 
 #C .header .vertical-menu {
@@ -942,3 +942,329 @@ input.input-text {
         height:6vh !important
     }
 }
+
+
+
+
+
+
+ /* CSS FOR THE HEADER HORIZONTAL DROPDOWN  START*/
+
+  #C .term-list.smartmenu.magebig-nav.prepnt_cat .level-1.nav-.level-top .simple-dropdown.submenu.show-sub  .show-sub-content ul.level-1 .level0.level-top a.level-top{
+    color: #000 !important;
+  }
+  #C .term-list.smartmenu.magebig-nav.prepnt_cat .level-1.nav-.level-top .simple-dropdown.submenu.show-sub  .show-sub-content ul.level-1 .level0.level-top.mega_left .simple-dropdown.submenu.show-sub .show-sub-content ul li a {
+    color: #343434 !important;
+  }
+  #C ul.term-list.smartmenu.magebig-nav.prepnt_cat {
+    padding: 0;
+  }
+  #C .magebig-nav div.submenu ul.level-1 .level0.level-top{
+    padding: 0 10px;
+  }
+
+  #C .mega_left.parent .simple-dropdown.submenu.show-sub .show-sub-content{
+    display: flex;
+  }
+  #C .mega_left.parent .simple-dropdown.submenu.show-sub .show-sub-content .mbmenu-block.mbmenu-block-bottom.grid-full.std{
+    flex-basis: 40%;
+    padding: 0;
+  }
+  #C .mega_left.parent .simple-dropdown.submenu.show-sub .show-sub-content .mbmenu-block.mbmenu-block-bottom.grid-full.std .img-inside{
+    position: relative;
+    height: 100%;
+  }
+  #C .mega_left.parent .simple-dropdown.submenu.show-sub .show-sub-content .mbmenu-block.mbmenu-block-bottom.grid-full.std .img-inside img{
+    height: 100%;
+  }
+  ul.term-list li.level-1.level-top ul.level-1 li.level0.level-top.active,
+  ul.term-list li.level-1.level-top ul.level-1 li.level0.level-top:hover{
+      background-color: #fff !important;
+      color:#000 !important;
+  }
+  ul.term-list li.level-1.level-top ul.level-1 li.level0.level-top.active a,
+  ul.term-list li.level-1.level-top ul.level-1 li.level0.level-top:hover a{
+      color: #000 !important;
+  }
+  .show-sub-content ul.level-1 {
+    direction: ltr;
+  }
+  #C .navigation > .term-list.smartmenu.magebig-nav.prepnt_cat > li:nth-child(1) > .simple-dropdown.submenu.show-sub >  .show-sub-content{
+    max-height: 400px;
+    overflow: auto;
+    direction: rtl;
+}
+
+.show-sub-content .mbmenu-block.mbmenu-block-bottom .btn.action.primary{
+    background:#c53e3e;
+    color: #fff !important;
+    
+}
+
+
+ul.nav-collapse .level0 {
+    padding:10px 42px 10px 15px;
+}
+
+@media only screen and (min-device-width: 767px) and (max-device-width: 820px){
+
+
+    .header-main-content.sticky-menu .vertical-menu .navigation{
+        margin-top: 0px;
+        box-shadow: 0 0 5px 1px #58585863;
+        border-radius: 0;
+        border: none;
+        background: #fff !important;
+        padding-bottom: 5px;
+      }
+      .cms-c-homepage .header-main-content.sticky-menu .vertical-menu .navigation{
+        margin-top: 0px;
+        box-shadow: none;
+        border-radius: 0;
+        border: none;
+        padding-top: 0;
+        padding-bottom: 5px;
+        background: #fff !important;
+      }
+      .catalog-category-view .sidebar-wrap .sidebar.sidebar-main .block.block-nav, .catalog-category-view .sidebar-wrap .sidebar.sidebar-main .block.filter{
+        border-radius: 10px;
+      }
+    
+      .header-main-content.sticky-menu.active .vertical-menu:hover  .navigation{
+        display: block;
+        margin-top: 0px;
+        box-shadow: 0px 6px 5px 1px #58585863;
+      }
+      #C .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu {
+        min-width: 440px;
+        top: -9px;
+        transition: none;
+        width: 100%;
+        border-radius: 0 0 10px 0;
+        box-shadow: none;
+        overflow: hidden;
+        max-height: 413px;
+        overflow-y: auto;
+        background: white !important;
+        margin-left: 0px;
+      }
+    
+      .magebig-nav li.level-1 .submenu.show-sub:before{
+        background-color: transparent;
+      }
+      .magebig-nav li.level-1 .submenu.show-sub .submenu.show-sub:before{
+        background-color: #fff !important;
+      }
+      .magebig-nav li.level-1 .submenu.show-sub .show-sub-content ul.level-1 li.level0:hover div.submenu .show-sub-content .menu-items ul li .simple-dropdown{
+        min-width: auto;
+        opacity: 1;
+        visibility: visible;
+        display: contents;
+      }
+      .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu .show-sub-content .menu-items .level0 .mega_left.parent .simple-dropdown .show-sub-content .level1{
+        display: flex;
+        flex-direction: column;
+      }
+      .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu .show-sub-content .menu-items ul.level0{
+      display: flex;
+      flex-wrap: wrap;
+      }
+      .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu .show-sub-content .menu-items ul.level0 li.level1{
+        width: 33%;
+        margin-bottom: 22px;
+      }
+        .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu .show-sub-content .menu-items ul.level0 li.level1 .simple-dropdown .show-sub-content ul.level1 li.level2{
+        padding-left: 5px;
+      }
+      .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu .show-sub-content .menu-items ul.level0 li.level1 >a{
+        font-weight: 600;
+        border: none;
+      }
+      .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu .show-sub-content .menu-items ul.level0 li.level1 >a::before{
+        display: none;
+      }
+        .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu .show-sub-content .menu-items ul.level0 li .simple-dropdown {
+      left: 0;
+      top: 45%;
+      }
+        .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu .show-sub-content .menu-items ul.level0 li .simple-dropdown .show-sub-content ul.level1 li a{
+        padding: 3px 0;
+        border: none;
+      }
+      .navigation .magebig-nav .simple-dropdown ul.level0 li{
+        width: auto;
+      }
+      .header-main-inner  .vertical-menu .navigation{
+        padding-top: 0;
+      }
+      .header-main-inner  .magebig-nav .simple-dropdown ul li a {
+        padding: 10px 0;
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+      .header-main-inner .vertical-menu .navigation li.level-1.nav-.level-top {
+        padding-bottom: 10px;
+        padding-top: 0;
+      }
+      .header-main-inner .vertical-menu .navigation li.level-1.nav-.level-top + li.level-1.nav-.level-top {
+        display: none;
+      }
+      .navigation ul.term-list.smartmenu.magebig-nav .level-1 > a span {
+        display: none;
+      }
+      .navigation ul.term-list.smartmenu.magebig-nav:nth-child(2) .simple-dropdown.submenu  .show-sub-content ul.level-1 li.level10 .simple-dropdown{
+        min-height: 240px;
+      }
+      .navigation .magebig-nav li .simple-dropdown .parent>a:before{
+        top: 11px;
+      }
+    
+      .vertical-menu .navigation li.level-1.nav-.level-top {
+          padding-bottom: 10px;
+          padding-top: 5px;
+      }
+    
+      ul.smartmenu.magebig-nav li.level0 a:hover{
+        transform:unset;
+          font-weight: 500;
+      }
+      ul.smartmenu.magebig-nav li.level0 .simple-dropdown .show-sub-content ul li a:hover{
+        transform:none;
+          transition: none;
+          font-weight: normal;
+      }
+  
+
+
+}
+
+@media only screen and (min-device-width: 821px) and (max-device-width: 5600px){
+    .header-main-content.sticky-menu .vertical-menu .navigation{
+      margin-top: 0px;
+      box-shadow: 0 0 5px 1px #58585863;
+      border-radius: 0;
+      border: none;
+      background: #fff !important;
+      padding-bottom: 5px;
+    }
+    .cms-c-homepage .header-main-content.sticky-menu .vertical-menu .navigation{
+      margin-top: 0px;
+      box-shadow: none;
+      border-radius: 0;
+      border: none;
+      padding-top: 0;
+      padding-bottom: 5px;
+      background: #fff !important;
+    }
+    .catalog-category-view .sidebar-wrap .sidebar.sidebar-main .block.block-nav, .catalog-category-view .sidebar-wrap .sidebar.sidebar-main .block.filter{
+      border-radius: 10px;
+    }
+  
+    .header-main-content.sticky-menu.active .vertical-menu:hover  .navigation{
+      display: block;
+      margin-top: 0px;
+      box-shadow: 0px 6px 5px 1px #58585863;
+    }
+    #C .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu {
+      min-width: 494px;
+      top: -9px;
+      transition: none;
+      width: 100%;
+      border-radius: 0 0 10px 0;
+      box-shadow: none;
+      overflow: hidden;
+      max-height: 413px;
+      overflow-y: auto;
+      background: white !important;
+      margin-left: 0px;
+    }
+  
+    .magebig-nav li.level-1 .submenu.show-sub:before{
+      background-color: transparent;
+    }
+    .magebig-nav li.level-1 .submenu.show-sub .submenu.show-sub:before{
+      background-color: #fff !important;
+    }
+    .magebig-nav li.level-1 .submenu.show-sub .show-sub-content ul.level-1 li.level0:hover div.submenu .show-sub-content .menu-items ul li .simple-dropdown{
+      min-width: auto;
+      opacity: 1;
+      visibility: visible;
+      display: contents;
+    }
+    .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu .show-sub-content .menu-items .level0 .mega_left.parent .simple-dropdown .show-sub-content .level1{
+      display: flex;
+      flex-direction: column;
+    }
+    .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu .show-sub-content .menu-items ul.level0{
+    display: flex;
+    flex-wrap: wrap;
+    }
+    .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu .show-sub-content .menu-items ul.level0 li.level1{
+      width: 33%;
+      margin-bottom: 22px;
+    }
+      .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu .show-sub-content .menu-items ul.level0 li.level1 .simple-dropdown .show-sub-content ul.level1 li.level2{
+      padding-left: 5px;
+    }
+    .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu .show-sub-content .menu-items ul.level0 li.level1 >a{
+      font-weight: 600;
+      border: none;
+    }
+    .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu .show-sub-content .menu-items ul.level0 li.level1 >a::before{
+      display: none;
+    }
+      .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu .show-sub-content .menu-items ul.level0 li .simple-dropdown {
+    left: 0;
+    top: 45%;
+    }
+      .magebig-nav li .submenu.show-sub .show-sub-content ul.level-1 .level0 div.submenu .show-sub-content .menu-items ul.level0 li .simple-dropdown .show-sub-content ul.level1 li a{
+      padding: 3px 0;
+      border: none;
+    }
+    .navigation .magebig-nav .simple-dropdown ul.level0 li{
+      width: auto;
+    }
+    .header-main-inner  .vertical-menu .navigation{
+      padding-top: 0;
+    }
+    .header-main-inner  .magebig-nav .simple-dropdown ul li a {
+      padding: 10px 0;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+    .header-main-inner .vertical-menu .navigation li.level-1.nav-.level-top {
+      padding-bottom: 10px;
+      padding-top: 0;
+    }
+    .header-main-inner .vertical-menu .navigation li.level-1.nav-.level-top + li.level-1.nav-.level-top {
+      display: none;
+    }
+    .navigation ul.term-list.smartmenu.magebig-nav .level-1 > a span {
+      display: none;
+    }
+    .navigation ul.term-list.smartmenu.magebig-nav:nth-child(2) .simple-dropdown.submenu  .show-sub-content ul.level-1 li.level10 .simple-dropdown{
+      min-height: 240px;
+    }
+    .navigation .magebig-nav li .simple-dropdown .parent>a:before{
+      top: 11px;
+    }
+  
+    .vertical-menu .navigation li.level-1.nav-.level-top {
+        padding-bottom: 10px;
+        padding-top: 5px;
+    }
+  
+    ul.smartmenu.magebig-nav li.level0 a:hover{
+      transform:unset;
+        font-weight: 500;
+    }
+    ul.smartmenu.magebig-nav li.level0 .simple-dropdown .show-sub-content ul li a:hover{
+      transform:none;
+        transition: none;
+        font-weight: normal;
+    }
+
+}
+
+ /* CSS FOR THE HEADER HORIZONTAL DROPDOWN END */
+
